@@ -1,1 +1,718 @@
+/* ========================================
+   GARDEN'S
+   Floresça a sua melhor versão
+======================================== */
 
+
+/* ---------- VARIÁVEIS ---------- */
+
+:root {
+    --verde: #2d4a3e;
+    --verde-claro: #3d6353;
+    --bege: #f4f0eb;
+    --bege-escuro: #e7ded3;
+    --dourado: #c5a059;
+    --branco: #ffffff;
+    --texto: #252525;
+    --texto-claro: #6f6f6f;
+    --borda: #e4e0dc;
+}
+
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: var(--branco);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* ---------- CONTAINER ---------- */
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.header {
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+/* ---------- LOGO ---------- */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 145px;
+    height: auto;
+    max-height: 62px;
+    object-fit: contain;
+}
+
+
+/* ---------- MENU ---------- */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    color: var(--dourado);
+}
+
+
+/* ---------- CARRINHO ---------- */
+
+.cart-link {
+    background: var(--verde);
+    color: var(--branco) !important;
+    padding: 10px 16px;
+    border-radius: 6px;
+}
+
+.cart-link:hover {
+    background: var(--verde-claro);
+}
+
+#cart-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: var(--dourado);
+    color: var(--branco);
+    font-size: 11px;
+}
+
+
+/* ---------- BOTÃO MOBILE ---------- */
+
+.menu-button {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--verde);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   MENU MOBILE
+======================================== */
+
+.mobile-menu {
+    display: none;
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+    padding: 10px 5%;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--borda);
+    font-weight: 600;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    min-height: 650px;
+    background: var(--verde);
+    overflow: hidden;
+}
+
+.hero-content {
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    align-items: center;
+    gap: 50px;
+}
+
+
+/* ---------- TEXTO HERO ---------- */
+
+.hero-text {
+    color: var(--branco);
+    padding: 70px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-small {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: #e5d3a8;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.hero h1 strong {
+    display: block;
+    color: #f1dfb8;
+}
+
+.hero p {
+    max-width: 500px;
+    font-size: 18px;
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+
+
+/* ---------- FOTO DA GARDENIA ---------- */
+
+.hero-owner {
+    height: 650px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-owner::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero-owner img {
+    position: relative;
+    z-index: 1;
+    height: 590px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+
+/* ========================================
+   BOTÕES
+======================================== */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 25px;
+    border-radius: 6px;
+    background: var(--dourado);
+    color: var(--branco);
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+
+/* ========================================
+   SEÇÕES
+======================================== */
+
+section {
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title span,
+.section-label {
+    display: block;
+    color: var(--dourado);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section-title h2,
+.about h2,
+.contact h2,
+.owner-text h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--verde);
+    font-weight: normal;
+}
+
+
+/* ========================================
+   CATEGORIAS
+======================================== */
+
+.categories {
+    background: var(--branco);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.category-card {
+    display: block;
+}
+
+.category-image {
+    height: 350px;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55),
+            transparent
+        ),
+        url("../assets/vestidos/vestido-03.jpg")
+        center / cover no-repeat;
+
+    background-color: var(--bege);
+    transition: 0.3s;
+}
+
+.category-card:hover .category-image {
+    transform: translateY(-4px);
+}
+
+.category-image span {
+    color: var(--branco);
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+
+/* ---------- SEGUNDA CATEGORIA ---------- */
+
+.category-2 {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55),
+            transparent
+        ),
+        url("../assets/vestidos/conjunto-moderno-marinho.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* ---------- TERCEIRA CATEGORIA ---------- */
+
+.category-3 {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55),
+            transparent
+        ),
+        url("../assets/vestidos/conjunto-moderno-preto.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.category-card h3 {
+    margin-top: 16px;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    color: var(--verde);
+}
+
+.category-card p {
+    color: var(--texto-claro);
+}
+
+
+/* ========================================
+   SOBRE
+======================================== */
+
+.about {
+    background: var(--bege);
+}
+
+.about-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: var(--texto-claro);
+    font-size: 17px;
+}
+
+
+/* ========================================
+   SEÇÃO DA PROPRIETÁRIA
+======================================== */
+
+.owner-section {
+    background: var(--branco);
+}
+
+.owner-content {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.owner-image {
+    display: flex;
+    justify-content: center;
+}
+
+.owner-image img {
+    width: 100%;
+    max-width: 430px;
+    max-height: 560px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.owner-text h2 {
+    margin-bottom: 25px;
+}
+
+.owner-text p {
+    color: var(--texto-claro);
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.owner-text .button {
+    margin-top: 15px;
+}
+
+
+/* ========================================
+   CONTATO
+======================================== */
+
+.contact {
+    text-align: center;
+    background: var(--bege);
+}
+
+.contact p {
+    margin: 20px auto 30px;
+    color: var(--texto-claro);
+    font-size: 17px;
+}
+
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+.footer {
+    padding: 55px 0 30px;
+    text-align: center;
+    background: var(--verde);
+    color: var(--branco);
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 140px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.footer p {
+    opacity: 0.85;
+}
+
+.copyright {
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+
+/* ========================================
+   RESPONSIVO — TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .menu {
+        gap: 18px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 0.75fr;
+        gap: 25px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    .hero-owner img {
+        height: 520px;
+    }
+
+    .owner-content {
+        gap: 40px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVO — CELULAR
+======================================== */
+
+@media (max-width: 800px) {
+
+    .header-content {
+        min-height: 72px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+
+    /* HERO MOBILE */
+
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-content {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .hero-text {
+        width: 100%;
+        padding: 55px 0 30px;
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 17px;
+    }
+
+    .hero-owner {
+        width: 100%;
+        height: 390px;
+        margin-top: 0;
+    }
+
+    .hero-owner::before {
+        width: 300px;
+        height: 300px;
+        top: 35px;
+    }
+
+    .hero-owner img {
+        height: 390px;
+        width: auto;
+    }
+
+
+    /* CATEGORIAS */
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-image {
+        height: 380px;
+    }
+
+
+    /* SOBRE */
+
+    section {
+        padding: 65px 0;
+    }
+
+
+    /* PROPRIETÁRIA */
+
+    .owner-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .owner-image img {
+        max-height: 500px;
+    }
+
+    .owner-text p {
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .owner-text .button {
+        margin-top: 10px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVO — CELULAR PEQUENO
+======================================== */
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .logo img {
+        width: 120px;
+        max-height: 52px;
+    }
+
+    .hero-text {
+        padding: 45px 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-owner {
+        height: 350px;
+    }
+
+    .hero-owner img {
+        height: 350px;
+    }
+
+    .hero-owner::before {
+        width: 270px;
+        height: 270px;
+    }
+
+    .category-image {
+        height: 330px;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .owner-image img {
+        max-height: 450px;
+    }
+}
