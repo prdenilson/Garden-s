@@ -39,6 +39,7 @@
             width: 100%;
             aspect-ratio: 3 / 4;
             object-fit: cover;
+            display: block;
         }
 
         .product-information {
@@ -74,7 +75,7 @@
         .product-price-detail {
             margin-bottom: 30px;
             color: #c5a059;
-            font-size: 20px;
+            font-size: 26px;
             font-weight: bold;
         }
 
@@ -92,26 +93,16 @@
 
         .size-options {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .size-option {
-            min-width: 50px;
-            padding: 10px 15px;
-            background: #ffffff;
-            border: 1px solid #d8d2ca;
-            border-radius: 4px;
-            color: #2d4a3e;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .size-option:hover,
-        .size-option.selected {
+            padding: 12px 20px;
             background: #2d4a3e;
-            border-color: #2d4a3e;
+            border: 1px solid #2d4a3e;
+            border-radius: 4px;
             color: #ffffff;
+            font-weight: bold;
+            cursor: default;
         }
 
         .product-buttons {
@@ -132,6 +123,8 @@
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
         }
 
         .btn-add {
@@ -219,11 +212,6 @@
             .product-information h1 {
                 font-size: 34px;
             }
-
-            .size-option {
-                min-width: 46px;
-                padding: 9px 13px;
-            }
         }
     </style>
 </head>
@@ -238,7 +226,7 @@
 
             <a href="index.html" class="logo">
                 <img
-                    src="assets/logo.jpg"
+                    src="logo.jpg"
                     alt="GARDEN'S"
                 >
             </a>
@@ -261,7 +249,7 @@
                     Contato
                 </a>
 
-                <a href="carrinho.html" class="cart-link">
+                <a href="carinho.html" class="cart-link">
                     🛍️ Carrinho
                     <span id="cart-count">0</span>
                 </a>
@@ -302,7 +290,7 @@
             Contato
         </a>
 
-        <a href="carrinho.html">
+        <a href="carinho.html">
             🛍️ Carrinho
         </a>
 
@@ -348,49 +336,22 @@
                     <div
                         class="product-price-detail"
                         id="produto-preco"
-                    >
-                    </div>
+                    ></div>
 
+
+                    <!-- TAMANHO ÚNICO -->
 
                     <div class="product-option">
 
                         <label>
-                            Escolha o tamanho:
+                            Tamanho:
                         </label>
 
                         <div class="size-options">
 
-                            <button
-                                type="button"
-                                class="size-option"
-                                data-size="P"
-                            >
-                                P
-                            </button>
-
-                            <button
-                                type="button"
-                                class="size-option"
-                                data-size="M"
-                            >
-                                M
-                            </button>
-
-                            <button
-                                type="button"
-                                class="size-option"
-                                data-size="G"
-                            >
-                                G
-                            </button>
-
-                            <button
-                                type="button"
-                                class="size-option"
-                                data-size="GG"
-                            >
-                                GG
-                            </button>
+                            <div class="size-option">
+                                Tamanho Único
+                            </div>
 
                         </div>
 
@@ -468,7 +429,7 @@
             <div class="footer-logo">
 
                 <img
-                    src="assets/logo.jpg"
+                    src="logo.jpg"
                     alt="GARDEN'S"
                 >
 
@@ -501,7 +462,7 @@
             "gardens-01": {
                 nome: "Conjunto Moderno Marinho",
                 categoria: "Conjunto",
-                preco: "Consulte o preço",
+                preco: "R$ 59,90",
                 imagem: "assets/vestidos/conjunto-moderno-marinho.jpg",
                 descricao: "Um conjunto moderno e elegante, pensado para valorizar sua presença e trazer praticidade para diferentes ocasiões."
             },
@@ -509,7 +470,7 @@
             "gardens-02": {
                 nome: "Conjunto Moderno Preto",
                 categoria: "Conjunto",
-                preco: "Consulte o preço",
+                preco: "R$ 59,90",
                 imagem: "assets/vestidos/conjunto-moderno-preto.jpg",
                 descricao: "Um conjunto sofisticado e versátil para compor produções elegantes e marcantes."
             },
@@ -517,7 +478,7 @@
             "gardens-03": {
                 nome: "Conjunto Moderno Telha",
                 categoria: "Conjunto",
-                preco: "Consulte o preço",
+                preco: "R$ 59,90",
                 imagem: "assets/vestidos/conjunto-moderno-telha.jpg",
                 descricao: "Uma peça moderna em tom telha, perfeita para quem deseja unir estilo, elegância e personalidade."
             },
@@ -525,7 +486,7 @@
             "gardens-04": {
                 nome: "Conjunto Elegance",
                 categoria: "Conjunto",
-                preco: "Consulte o preço",
+                preco: "R$ 64,90",
                 imagem: "assets/vestidos/conjuto.jpg",
                 descricao: "Um conjunto pensado para mulheres que gostam de elegância, conforto e presença."
             },
@@ -533,7 +494,7 @@
             "gardens-05": {
                 nome: "Vestido Garden Classic",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-03.jpg",
                 descricao: "Um vestido clássico e elegante para valorizar sua beleza em momentos especiais."
             },
@@ -541,7 +502,7 @@
             "gardens-06": {
                 nome: "Vestido Sofisticação",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-00001.jpg",
                 descricao: "Uma escolha sofisticada para quem deseja transmitir elegância e confiança."
             },
@@ -549,7 +510,7 @@
             "gardens-07": {
                 nome: "Vestido Primavera",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-0001.jpg",
                 descricao: "Leveza e feminilidade em uma peça escolhida para acompanhar diferentes momentos."
             },
@@ -557,7 +518,7 @@
             "gardens-08": {
                 nome: "Vestido Botânico",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-001.jpg",
                 descricao: "Uma peça cheia de personalidade para mulheres que gostam de se destacar com elegância."
             },
@@ -565,7 +526,7 @@
             "gardens-09": {
                 nome: "Vestido Essencial",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-01.jpg",
                 descricao: "Uma peça versátil para compor diferentes looks com praticidade e sofisticação."
             },
@@ -573,7 +534,7 @@
             "gardens-10": {
                 nome: "Vestido Encanto",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-002.jpg",
                 descricao: "Um vestido pensado para trazer charme e elegância para sua produção."
             },
@@ -581,7 +542,7 @@
             "gardens-11": {
                 nome: "Vestido Serena",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-02.jpg",
                 descricao: "Delicadeza e elegância em uma peça que combina beleza e personalidade."
             },
@@ -589,7 +550,7 @@
             "gardens-12": {
                 nome: "Vestido Aurora",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-0003.jpg",
                 descricao: "Uma peça especial para quem deseja florescer sua melhor versão em cada ocasião."
             },
@@ -597,7 +558,7 @@
             "gardens-13": {
                 nome: "Vestido Harmonia",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-003.jpg",
                 descricao: "Um modelo elegante e harmonioso para compor um visual marcante."
             },
@@ -605,7 +566,7 @@
             "gardens-14": {
                 nome: "Vestido Nobreza",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-04.jpg",
                 descricao: "Elegância e presença em uma peça criada para momentos especiais."
             },
@@ -613,7 +574,7 @@
             "gardens-15": {
                 nome: "Vestido Delicadeza",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-0005.jpg",
                 descricao: "Uma peça delicada e feminina para valorizar seu estilo."
             },
@@ -621,7 +582,7 @@
             "gardens-16": {
                 nome: "Vestido Graça",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-005.jpg",
                 descricao: "Uma escolha elegante para mulheres que gostam de unir beleza e personalidade."
             },
@@ -629,7 +590,7 @@
             "gardens-17": {
                 nome: "Vestido Sublime",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido05.jpg",
                 descricao: "Um modelo especial para quem deseja um visual elegante e sofisticado."
             },
@@ -637,7 +598,7 @@
             "gardens-18": {
                 nome: "Vestido Plenitude",
                 categoria: "Vestido",
-                preco: "Consulte o preço",
+                preco: "R$ 84,90",
                 imagem: "assets/vestidos/vestido-06.jpg",
                 descricao: "Uma peça criada para você se sentir bonita, elegante e confiante."
             }
@@ -647,12 +608,11 @@
 
         /*
          * IDENTIFICA O PRODUTO PELA URL
-         *
-         * Exemplo:
-         * produto.html?id=gardens-01
          */
 
-        const parametros = new URLSearchParams(window.location.search);
+        const parametros = new URLSearchParams(
+            window.location.search
+        );
 
         const idProduto = parametros.get("id");
 
@@ -665,54 +625,42 @@
 
         if (!produto) {
 
-            document.getElementById("produto-container").style.display = "none";
+            document.getElementById(
+                "produto-container"
+            ).style.display = "none";
 
-            document.getElementById("produto-erro").style.display = "block";
+            document.getElementById(
+                "produto-erro"
+            ).style.display = "block";
 
         } else {
 
-            document.getElementById("produto-imagem").src = produto.imagem;
+            document.getElementById(
+                "produto-imagem"
+            ).src = produto.imagem;
 
-            document.getElementById("produto-imagem").alt = produto.nome;
+            document.getElementById(
+                "produto-imagem"
+            ).alt = produto.nome;
 
-            document.getElementById("produto-categoria").textContent = produto.categoria;
+            document.getElementById(
+                "produto-categoria"
+            ).textContent = produto.categoria;
 
-            document.getElementById("produto-nome").textContent = produto.nome;
+            document.getElementById(
+                "produto-nome"
+            ).textContent = produto.nome;
 
-            document.getElementById("produto-preco").textContent = produto.preco;
+            document.getElementById(
+                "produto-preco"
+            ).textContent = produto.preco;
 
-            document.getElementById("produto-descricao").textContent = produto.descricao;
+            document.getElementById(
+                "produto-descricao"
+            ).textContent = produto.descricao;
 
-            document.title = produto.nome + " | GARDEN'S";
-
-
-            /*
-             * SELEÇÃO DO TAMANHO
-             */
-
-            let tamanhoSelecionado = "";
-
-
-            const botoesTamanho =
-                document.querySelectorAll(".size-option");
-
-
-            botoesTamanho.forEach(botao => {
-
-                botao.addEventListener("click", () => {
-
-                    botoesTamanho.forEach(item => {
-                        item.classList.remove("selected");
-                    });
-
-                    botao.classList.add("selected");
-
-                    tamanhoSelecionado =
-                        botao.dataset.size;
-
-                });
-
-            });
+            document.title =
+                produto.nome + " | GARDEN'S";
 
 
             /*
@@ -723,20 +671,11 @@
                 .getElementById("btn-adicionar")
                 .addEventListener("click", () => {
 
-                    if (!tamanhoSelecionado) {
-
-                        alert("Por favor, escolha o tamanho.");
-
-                        return;
-
-                    }
-
-
                     adicionarAoCarrinho({
 
-                        id: produto.id || idProduto,
+                        id: idProduto,
 
-                        nome: produto.nome + " - " + tamanhoSelecionado,
+                        nome: produto.nome + " - Tamanho Único",
 
                         preco: produto.preco,
 
@@ -748,8 +687,9 @@
 
 
                     const mensagem =
-                        document.getElementById("product-message");
-
+                        document.getElementById(
+                            "product-message"
+                        );
 
                     mensagem.style.display = "block";
 
@@ -757,7 +697,7 @@
                     setTimeout(() => {
 
                         window.location.href =
-                            "carrinho.html";
+                            "carinho.html";
 
                     }, 900);
 
