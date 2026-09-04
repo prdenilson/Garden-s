@@ -1,271 +1,483 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GARDEN'S | Floresça a sua melhor versão</title>
+```
+<title>GARDEN'S | Floresça a sua melhor versão</title>
 
-    <meta name="description"
-          content="GARDEN'S — Moda feminina para você florescer a sua melhor versão.">
+<meta name="description"
+    content="GARDEN'S — Moda feminina para você florescer a sua melhor versão.">
 
-    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
+```
+
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-    <header class="header">
+```
+<!-- =====================================
+     CABEÇALHO
+====================================== -->
 
-        <div class="container header-content">
+<header class="header">
 
-            <a href="index.html" class="logo">
-                GARDEN'S
+    <div class="container header-content">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            <img
+                src="assets/logo.jpg"
+                alt="GARDEN'S"
+            >
+        </a>
+
+
+        <!-- MENU DESKTOP -->
+
+        <nav class="menu">
+
+            <a href="index.html">
+                Início
             </a>
 
-            <nav class="menu">
+            <a href="pecas.html">
+                Peças
+            </a>
 
-                <a href="index.html">Início</a>
+            <a href="index.html#sobre">
+                Sobre
+            </a>
 
-                <a href="vestidos.html">Vestidos</a>
+            <a href="index.html#contato">
+                Contato
+            </a>
 
-                <a href="index.html#sobre">Sobre</a>
+            <a href="carrinho.html" class="cart-link">
+                🛍️ Carrinho
+                <span id="cart-count">0</span>
+            </a>
 
-                <a href="index.html#contato">Contato</a>
-
-                <a href="carrinho.html" class="cart-link">
-                    🛍️ Carrinho
-                    <span id="cart-count">0</span>
-                </a>
-
-            </nav>
-
-            <button class="menu-button" id="menu-button">
-                ☰
-            </button>
-
-        </div>
-
-    </header>
+        </nav>
 
 
-    <!-- MENU MOBILE -->
-    <div class="mobile-menu" id="mobile-menu">
+        <!-- BOTÃO MENU MOBILE -->
 
-        <a href="index.html">Início</a>
-
-        <a href="vestidos.html">Vestidos</a>
-
-        <a href="index.html#sobre">Sobre</a>
-
-        <a href="index.html#contato">Contato</a>
-
-        <a href="carrinho.html">🛍️ Carrinho</a>
+        <button
+            class="menu-button"
+            id="menu-button"
+            aria-label="Abrir menu"
+            type="button"
+        >
+            ☰
+        </button>
 
     </div>
 
-
-    <!-- BANNER PRINCIPAL -->
-    <main>
-
-        <section class="hero">
-
-            <div class="container hero-content">
-
-                <div class="hero-text">
-
-                    <span class="hero-small">
-                        GARDEN'S
-                    </span>
-
-                    <h1>
-                        Floresça a sua
-                        <strong>melhor versão.</strong>
-                    </h1>
-
-                    <p>
-                        Descubra vestidos que combinam com
-                        a sua personalidade, sua beleza e
-                        o seu momento.
-                    </p>
-
-                    <a href="vestidos.html" class="button">
-                        Comprar agora
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
+</header>
 
 
-        <!-- CATEGORIAS -->
-        <section class="categories">
+<!-- =====================================
+     MENU MOBILE
+====================================== -->
 
-            <div class="container">
+<div
+    class="mobile-menu"
+    id="mobile-menu"
+>
 
-                <div class="section-title">
+    <a href="index.html">
+        Início
+    </a>
 
-                    <span>EXPLORE</span>
+    <a href="pecas.html">
+        Peças
+    </a>
 
-                    <h2>
-                        Encontre o seu estilo
-                    </h2>
+    <a href="index.html#sobre">
+        Sobre
+    </a>
 
-                </div>
+    <a href="index.html#contato">
+        Contato
+    </a>
 
+    <a href="carrinho.html">
+        🛍️ Carrinho
+    </a>
 
-                <div class="category-grid">
-
-                    <a href="vestidos.html" class="category-card">
-
-                        <div class="category-image">
-                            <span>Vestidos</span>
-                        </div>
-
-                        <h3>
-                            Vestidos
-                        </h3>
-
-                        <p>
-                            Descubra nossa coleção
-                        </p>
-
-                    </a>
+</div>
 
 
-                    <a href="vestidos.html" class="category-card">
+<!-- =====================================
+     CONTEÚDO PRINCIPAL
+====================================== -->
 
-                        <div class="category-image category-2">
-                            <span>Novidades</span>
-                        </div>
-
-                        <h3>
-                            Novidades
-                        </h3>
-
-                        <p>
-                            Peças recém-chegadas
-                        </p>
-
-                    </a>
+<main>
 
 
-                    <a href="vestidos.html" class="category-card">
+    <!-- =================================
+         HERO / DESTAQUE
+    ================================== -->
 
-                        <div class="category-image category-3">
-                            <span>Destaques</span>
-                        </div>
+    <section class="hero">
 
-                        <h3>
-                            Destaques
-                        </h3>
+        <div class="container hero-content">
 
-                        <p>
-                            Os favoritos da GARDEN'S
-                        </p>
+            <div class="hero-text">
 
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- SOBRE -->
-        <section class="about" id="sobre">
-
-            <div class="container about-content">
-
-                <div>
-
-                    <span class="section-label">
-                        SOBRE A GARDEN'S
-                    </span>
-
-                    <h2>
-                        Moda para mulheres
-                        que florescem.
-                    </h2>
-
-                    <p>
-                        A GARDEN'S nasceu para valorizar
-                        a beleza, a personalidade e a
-                        confiança de cada mulher.
-                    </p>
-
-                    <p>
-                        Cada peça é escolhida para que
-                        você se sinta bonita, elegante
-                        e segura em todos os momentos.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- CONTATO -->
-        <section class="contact" id="contato">
-
-            <div class="container">
-
-                <span class="section-label">
-                    FALE CONOSCO
+                <span class="hero-small">
+                    GARDEN'S
                 </span>
 
-                <h2>
-                    Estamos aqui para ajudar.
-                </h2>
+
+                <h1>
+                    Floresça a sua
+                    <strong>
+                        melhor versão.
+                    </strong>
+                </h1>
+
 
                 <p>
-                    Ficou com alguma dúvida sobre
-                    nossos produtos ou pedidos?
+                    Moda feminina para mulheres
+                    que querem se sentir bonitas,
+                    elegantes e confiantes.
                 </p>
 
+
                 <a
-                    href="https://wa.me/5585999999999"
+                    href="pecas.html"
                     class="button"
-                    target="_blank"
                 >
-                    Falar pelo WhatsApp
+                    Conheça nossas peças
                 </a>
 
             </div>
 
-        </section>
 
-    </main>
+            <!-- FOTO DA PROPRIETÁRIA -->
+
+            <div class="hero-owner">
+
+                <img
+                    src="assets/gardenia.jpg"
+                    alt="Gardenia — proprietária da GARDEN'S"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-    <!-- RODAPÉ -->
-    <footer class="footer">
+    <!-- =================================
+         CATEGORIAS
+    ================================== -->
+
+    <section class="categories">
 
         <div class="container">
 
-            <div class="footer-logo">
-                GARDEN'S
+
+            <div class="section-title">
+
+                <span>
+                    EXPLORE
+                </span>
+
+                <h2>
+                    Encontre o seu estilo
+                </h2>
+
             </div>
 
+
+            <div class="category-grid">
+
+
+                <!-- PEÇAS -->
+
+                <a
+                    href="pecas.html"
+                    class="category-card"
+                >
+
+                    <div class="category-image">
+
+                        <span>
+                            Peças
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Peças
+                    </h3>
+
+
+                    <p>
+                        Descubra nossa coleção
+                    </p>
+
+                </a>
+
+
+                <!-- NOVIDADES -->
+
+                <a
+                    href="pecas.html"
+                    class="category-card"
+                >
+
+                    <div class="category-image category-2">
+
+                        <span>
+                            Novidades
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Novidades
+                    </h3>
+
+
+                    <p>
+                        Peças recém-chegadas
+                    </p>
+
+                </a>
+
+
+                <!-- DESTAQUES -->
+
+                <a
+                    href="pecas.html"
+                    class="category-card"
+                >
+
+                    <div class="category-image category-3">
+
+                        <span>
+                            Destaques
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Destaques
+                    </h3>
+
+
+                    <p>
+                        Os favoritos da GARDEN'S
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         SOBRE A GARDEN'S
+    ================================== -->
+
+    <section
+        class="about"
+        id="sobre"
+    >
+
+        <div class="container about-content">
+
+            <span class="section-label">
+                SOBRE A GARDEN'S
+            </span>
+
+
+            <h2>
+                Moda para mulheres
+                que florescem.
+            </h2>
+
+
             <p>
-                Floresça a sua melhor versão.
+                A GARDEN'S nasceu para valorizar
+                a beleza, a personalidade e a
+                confiança de cada mulher.
             </p>
 
-            <p class="copyright">
-                © 2026 GARDEN'S. Todos os direitos reservados.
+
+            <p>
+                Cada peça é escolhida para que
+                você se sinta bonita, elegante
+                e segura em todos os momentos.
             </p>
 
         </div>
 
-    </footer>
+    </section>
 
 
-    <script src="js/app.js"></script>
+    <!-- =================================
+         DESTAQUE DA PROPRIETÁRIA
+    ================================== -->
+
+    <section class="owner-section">
+
+        <div class="container owner-content">
+
+
+            <div class="owner-image">
+
+                <img
+                    src="assets/gardenia.jpg"
+                    alt="Gardenia — proprietária da GARDEN'S"
+                >
+
+            </div>
+
+
+            <div class="owner-text">
+
+                <span class="section-label">
+                    QUEM ESTÁ POR TRÁS DA GARDEN'S
+                </span>
+
+
+                <h2>
+                    Feita para mulheres
+                    que florescem.
+                </h2>
+
+
+                <p>
+                    A GARDEN'S nasceu com o propósito
+                    de oferecer peças que valorizem
+                    a beleza e a personalidade de
+                    cada mulher.
+                </p>
+
+
+                <p>
+                    Mais do que vestir, queremos
+                    fazer você se sentir especial
+                    em cada momento.
+                </p>
+
+
+                <a
+                    href="pecas.html"
+                    class="button"
+                >
+                    Ver peças
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         CONTATO
+    ================================== -->
+
+    <section
+        class="contact"
+        id="contato"
+    >
+
+        <div class="container">
+
+
+            <span class="section-label">
+                FALE CONOSCO
+            </span>
+
+
+            <h2>
+                Estamos aqui para ajudar.
+            </h2>
+
+
+            <p>
+                Ficou com alguma dúvida sobre
+                nossas peças ou pedidos?
+            </p>
+
+
+            <a
+                href="https://wa.me/5585999999999"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Falar pelo WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================
+     RODAPÉ
+====================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer-logo">
+
+            <img
+                src="assets/logo.jpg"
+                alt="GARDEN'S"
+            >
+
+        </div>
+
+
+        <p>
+            Floresça a sua melhor versão.
+        </p>
+
+
+        <p class="copyright">
+            © 2026 GARDEN'S.
+            Todos os direitos reservados.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="js/app.js"></script>
+```
 
 </body>
+
 </html>
