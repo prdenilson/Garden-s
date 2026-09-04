@@ -1,827 +1,463 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>GARDEN'S | Floresça a sua melhor versão</title>
 
-    <meta name="description"
-        content="GARDEN'S — Moda feminina para você florescer a sua melhor versão.">
-
-    <link rel="stylesheet" href="css/style.css">
-
     <style>
-
-        /* ================================
-           CONTROLE DA LOGO
-        ================================= */
-
-        .header .logo img {
-            width: 120px !important;
-            height: 55px !important;
-            max-width: 120px !important;
-            max-height: 55px !important;
-            object-fit: contain !important;
-            object-position: center !important;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        .footer-logo img {
-            width: 110px !important;
-            height: 50px !important;
-            max-width: 110px !important;
-            max-height: 50px !important;
-            object-fit: contain !important;
-            object-position: center !important;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f5ef;
+            color: #304638;
         }
 
+        /* =========================
+           CABEÇALHO
+        ========================= */
 
-        /* ================================
-           HERO
-        ================================= */
-
-        .hero-gardens {
-            position: relative;
-            min-height: 750px;
-            overflow: hidden;
-            background: #2d4a3e;
-            padding-top: 20px;
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5dfd2;
+            padding: 18px 30px;
         }
 
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(25,55,44,.98) 0%,
-                    rgba(45,74,62,.90) 45%,
-                    rgba(45,74,62,.45) 70%,
-                    rgba(45,74,62,.10) 100%
-                );
-
-            z-index: 1;
-        }
-
-        .hero-gardens-content {
-            position: relative;
-            z-index: 2;
-            min-height: 720px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .hero-gardens-text {
-            color: #fff;
-            padding: 40px 0;
-            position: relative;
-            z-index: 5;
-        }
-
-        .hero-gardens-brand {
-            display: block;
-            margin-bottom: 18px;
-            color: #e5d3a8;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 5px;
-        }
-
-        .hero-gardens-text h1 {
-            margin: 0 0 25px;
-            color: #fff;
-            font-family: Georgia, serif;
-            font-size: clamp(40px, 5.5vw, 68px);
-            font-weight: normal;
-            line-height: 1.1;
-        }
-
-        .hero-gardens-text h1 strong {
-            display: block;
-            color: #f1dfb8;
-            font-weight: normal;
-        }
-
-        .hero-gardens-text p {
-            max-width: 500px;
-            margin-bottom: 32px;
-            color: rgba(255,255,255,.94);
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .hero-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 50px;
-            padding: 14px 28px;
-            border-radius: 5px;
-            background: #c5a059;
-            color: #fff;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-
-        .hero-button:hover {
-            background: #b08d4b;
-        }
-
-
-        /* ================================
-           FOTO DA GARDENIA
-        ================================= */
-
-        .hero-gardens-image {
-            position: relative;
-            height: 720px;
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
             display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
-        .hero-gardens-image::before {
-            content: "";
-            position: absolute;
-            width: 480px;
-            height: 480px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.08);
-            top: 110px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .hero-gardens-image img {
-            position: relative;
-            z-index: 2;
-            height: 670px;
-            width: auto;
-            max-width: 100%;
+        .logo {
+            width: 120px;
+            height: auto;
             object-fit: contain;
-            object-position: bottom center;
-            filter:
-                drop-shadow(
-                    0 20px 30px
-                    rgba(0,0,0,.25)
-                );
         }
 
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
 
-        /* ================================
-           BOAS-VINDAS
-        ================================= */
+        nav a {
+            text-decoration: none;
+            color: #304638;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
 
-        .welcome {
-            background: #fff;
+        nav a:hover {
+            color: #b18a45;
+        }
+
+        /* =========================
+           DESTAQUE PRINCIPAL
+        ========================= */
+
+        .hero {
+            max-width: 1200px;
+            margin: 35px auto 0;
+            padding: 0 20px;
             text-align: center;
-            padding: 85px 0;
         }
 
-        .welcome-content {
-            max-width: 760px;
+        .hero-image {
+            width: 100%;
+            max-height: 650px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 4px;
         }
 
-        .welcome h2 {
-            margin-bottom: 20px;
-            color: #2d4a3e;
+        .hero-content {
+            padding: 32px 20px 45px;
+        }
+
+        .hero-content h1 {
             font-family: Georgia, serif;
-            font-size: clamp(34px, 5vw, 50px);
+            font-size: 38px;
             font-weight: normal;
-            line-height: 1.15;
+            color: #304638;
+            margin-bottom: 12px;
         }
 
-        .welcome p {
-            max-width: 650px;
-            margin: 0 auto 30px;
-            color: #6f6f6f;
-            font-size: 17px;
+        .hero-content p {
+            font-family: Georgia, serif;
+            font-size: 20px;
+            color: #756b5c;
+            margin-bottom: 28px;
+            font-style: italic;
         }
 
+        .btn-colecao {
+            display: inline-block;
+            background: #304638;
+            color: white;
+            padding: 15px 32px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
 
-        /* ================================
-           RESPONSIVO — CELULAR
-        ================================= */
+        .btn-colecao:hover {
+            background: #b18a45;
+        }
 
-        @media (max-width: 800px) {
+        /* =========================
+           FRASE DE ESTILO
+        ========================= */
 
-            .header .logo img {
-                width: 100px !important;
-                height: 48px !important;
-                max-width: 100px !important;
-                max-height: 48px !important;
-                object-fit: contain !important;
+        .frase-estilo {
+            text-align: center;
+            padding: 55px 20px;
+            background: #eee8dc;
+        }
+
+        .frase-estilo h2 {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            font-weight: normal;
+            color: #304638;
+            margin-bottom: 10px;
+        }
+
+        .frase-estilo p {
+            font-size: 16px;
+            color: #756b5c;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards-section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 65px 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5dfd2;
+            min-height: 220px;
+            padding: 35px 25px;
+            text-align: center;
+            text-decoration: none;
+            color: #304638;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: #b18a45;
+        }
+
+        .card h3 {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #756b5c;
+        }
+
+        .card-detalhe {
+            width: 40px;
+            height: 1px;
+            background: #b18a45;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            background: #304638;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .whatsapp {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 12px 22px;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            background: #b18a45;
+            border-color: #b18a45;
+        }
+
+        .copyright {
+            margin-top: 25px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px 20px;
             }
 
-            .hero-gardens {
-                min-height: auto;
-                padding-top: 10px;
-            }
-
-            .hero-overlay {
-                background:
-                    linear-gradient(
-                        180deg,
-                        rgba(35,65,53,.98) 0%,
-                        rgba(45,74,62,.90) 50%,
-                        rgba(45,74,62,.25) 100%
-                    );
-            }
-
-            .hero-gardens-content {
-                min-height: auto;
-                display: flex;
+            .header-container {
                 flex-direction: column;
-                gap: 0;
+                gap: 15px;
             }
 
-            .hero-gardens-text {
-                width: 100%;
-                padding: 40px 0 20px;
-                text-align: center;
+            .logo {
+                width: 100px;
             }
 
-            .hero-gardens-text p {
-                margin-left: auto;
-                margin-right: auto;
-                font-size: 16px;
+            nav {
+                gap: 20px;
             }
 
-            .hero-button {
-                width: 100%;
-                max-width: 350px;
+            nav a {
+                font-size: 13px;
             }
 
-            .hero-gardens-image {
-                width: 100%;
-                height: 480px;
+            .hero {
+                margin-top: 20px;
+                padding: 0 12px;
             }
 
-            .hero-gardens-image::before {
-                width: 320px;
-                height: 320px;
-                top: 50px;
+            .hero-image {
+                max-height: 500px;
             }
 
-            .hero-gardens-image img {
-                height: 470px;
-                max-width: 95%;
+            .hero-content {
+                padding: 28px 10px 40px;
             }
 
-            .welcome {
-                padding: 65px 0;
-            }
-        }
-
-
-        /* ================================
-           CELULAR PEQUENO
-        ================================= */
-
-        @media (max-width: 480px) {
-
-            .header .logo img {
-                width: 90px !important;
-                height: 44px !important;
-                max-width: 90px !important;
-                max-height: 44px !important;
-                object-fit: contain !important;
+            .hero-content h1 {
+                font-size: 30px;
             }
 
-            .hero-gardens-text {
-                padding: 30px 0 15px;
+            .hero-content p {
+                font-size: 18px;
             }
 
-            .hero-gardens-text h1 {
-                font-size: 38px;
+            .frase-estilo {
+                padding: 45px 20px;
             }
 
-            .hero-gardens-text p {
-                font-size: 15px;
+            .frase-estilo h2 {
+                font-size: 25px;
             }
 
-            .hero-gardens-image {
-                height: 420px;
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 18px;
             }
 
-            .hero-gardens-image img {
-                height: 420px;
+            .cards-section {
+                padding: 45px 20px;
             }
 
-            .hero-gardens-image::before {
-                width: 280px;
-                height: 280px;
-            }
-
-            .welcome h2 {
-                font-size: 31px;
+            .card {
+                min-height: 180px;
             }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- =========================
+         TOPO
+    ========================= -->
 
-    <!-- =========================================
-         CABEÇALHO
-    ========================================== -->
+    <header>
+        <div class="header-container">
 
-    <header class="header">
-
-        <div class="container header-content">
-
-            <a href="index.html" class="logo">
-
-                <img
-                    src="logo.jpg"
-                    alt="GARDEN'S"
-                >
-
+            <a href="index.html">
+                <img src="logo.jpg" alt="GARDEN'S" class="logo">
             </a>
 
-
-            <nav class="menu">
-
-                <a href="index.html">
-                    Início
-                </a>
-
-                <a href="pecas.html">
-                    Peças
-                </a>
-
-                <a href="#sobre">
-                    Sobre
-                </a>
-
-                <a href="#contato">
-                    Contato
-                </a>
-
-                <a href="carrinho.html" class="cart-link">
-                    🛍️ Carrinho
-                    <span id="cart-count">0</span>
-                </a>
-
+            <nav>
+                <a href="pecas.html">PEÇAS</a>
+                <a href="carinho.html">CARRINHO</a>
+                <a href="contato.html">CONTATO</a>
             </nav>
 
-
-            <button
-                class="menu-button"
-                id="menu-button"
-                type="button"
-                aria-label="Abrir menu"
-            >
-                ☰
-            </button>
-
         </div>
-
     </header>
 
 
+    <!-- =========================
+         IMAGEM DA DONA DA LOJA
+    ========================= -->
 
-    <!-- =========================================
-         MENU MOBILE
-    ========================================== -->
+    <main>
 
-    <div
-        class="mobile-menu"
-        id="mobile-menu"
-    >
+        <section class="hero">
 
-        <a href="index.html">
-            Início
-        </a>
-
-        <a href="pecas.html">
-            Peças
-        </a>
-
-        <a href="#sobre">
-            Sobre
-        </a>
-
-        <a href="#contato">
-            Contato
-        </a>
-
-        <a href="carrinho.html">
-            🛍️ Carrinho
-        </a>
-
-    </div>
-
-
-
-    <!-- =========================================
-         HERO
-    ========================================== -->
-
-    <section class="hero-gardens">
-
-        <div class="hero-overlay"></div>
-
-
-        <div class="container hero-gardens-content">
-
-
-            <div class="hero-gardens-text">
-
-                <span class="hero-gardens-brand">
-                    GARDEN'S
-                </span>
-
-
-                <h1>
-
-                    Floresça a sua
-
-                    <strong>
-                        melhor versão.
-                    </strong>
-
-                </h1>
-
-
-                <p>
-
-                    Moda feminina para mulheres
-                    que querem se sentir bonitas,
-                    elegantes e confiantes.
-
-                </p>
-
-
-                <a
-                    href="pecas.html"
-                    class="hero-button"
-                >
-                    Conheça nossas peças
-                </a>
-
-            </div>
-
-
-
-            <!-- FOTO DA GARDENIA -->
-
-            <div class="hero-gardens-image">
-
-                <img
-                    src="gardenia.jpg"
-                    alt="Gardenia — GARDEN'S"
-                >
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         BOAS-VINDAS
-    ========================================== -->
-
-    <section class="welcome">
-
-        <div class="container welcome-content">
-
-            <span class="section-label">
-                BEM-VINDA À GARDEN'S
-            </span>
-
-
-            <h2>
-                Seu estilo também é
-                uma forma de florescer.
-            </h2>
-
-
-            <p>
-                Descubra peças escolhidas para
-                valorizar sua beleza, sua personalidade
-                e a mulher que você é.
-            </p>
-
-
-            <a
-                href="pecas.html"
-                class="button"
+            <img
+                src="gardenia.JPG"
+                alt="Gardenia - GARDEN'S"
+                class="hero-image"
             >
-                Ver coleção
-            </a>
 
-        </div>
+            <div class="hero-content">
 
-    </section>
-
-
-
-    <!-- =========================================
-         CATEGORIAS
-    ========================================== -->
-
-    <section class="categories">
-
-        <div class="container">
-
-
-            <div class="section-title">
-
-                <span>
-                    EXPLORE
-                </span>
-
-                <h2>
-                    Encontre o seu estilo
-                </h2>
-
-            </div>
-
-
-
-            <div class="category-grid">
-
-
-                <a
-                    href="pecas.html"
-                    class="category-card"
-                >
-
-                    <div class="category-image">
-
-                        <span>
-                            Peças
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        Peças
-                    </h3>
-
-                    <p>
-                        Descubra nossa coleção
-                    </p>
-
-                </a>
-
-
-
-                <a
-                    href="pecas.html"
-                    class="category-card"
-                >
-
-                    <div class="category-image category-2">
-
-                        <span>
-                            Novidades
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        Novidades
-                    </h3>
-
-                    <p>
-                        Peças recém-chegadas
-                    </p>
-
-                </a>
-
-
-
-                <a
-                    href="pecas.html"
-                    class="category-card"
-                >
-
-                    <div class="category-image category-3">
-
-                        <span>
-                            Destaques
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        Destaques
-                    </h3>
-
-                    <p>
-                        Os favoritos da GARDEN'S
-                    </p>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         SOBRE
-    ========================================== -->
-
-    <section
-        class="about"
-        id="sobre"
-    >
-
-        <div class="container about-content">
-
-            <span class="section-label">
-                SOBRE A GARDEN'S
-            </span>
-
-
-            <h2>
-                Moda para mulheres
-                que florescem.
-            </h2>
-
-
-            <p>
-                A GARDEN'S nasceu para valorizar
-                a beleza, a personalidade e a
-                confiança de cada mulher.
-            </p>
-
-
-            <p>
-                Cada peça é escolhida para que
-                você se sinta bonita, elegante
-                e segura em todos os momentos.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         GARDENIA
-    ========================================== -->
-
-    <section class="owner-section">
-
-        <div class="container owner-content">
-
-
-            <div class="owner-image">
-
-                <img
-                    src="gardenia.jpg"
-                    alt="Gardenia — proprietária da GARDEN'S"
-                >
-
-            </div>
-
-
-
-            <div class="owner-text">
-
-                <span class="section-label">
-                    QUEM ESTÁ POR TRÁS DA GARDEN'S
-                </span>
-
-
-                <h2>
-                    Feita para mulheres
-                    que florescem.
-                </h2>
-
+                <h1>Floresça a sua melhor versão</h1>
 
                 <p>
-                    A GARDEN'S nasceu com o propósito
-                    de oferecer peças que valorizem
-                    a beleza e a personalidade de
-                    cada mulher.
+                    Estilo, elegância e beleza para você se sentir ainda mais linda.
                 </p>
 
-
-                <p>
-                    Mais do que vestir, queremos
-                    fazer você se sentir especial
-                    em cada momento.
-                </p>
-
-
-                <a
-                    href="pecas.html"
-                    class="button"
-                >
-                    Ver peças
+                <a href="pecas.html" class="btn-colecao">
+                    CONHEÇA A COLEÇÃO
                 </a>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =========================
+             FRASE DE ESTILO
+        ========================= -->
 
-    <!-- =========================================
-         CONTATO
-    ========================================== -->
+        <section class="frase-estilo">
 
-    <section
-        class="contact"
-        id="contato"
-    >
-
-        <div class="container">
-
-            <span class="section-label">
-                FALE CONOSCO
-            </span>
-
-
-            <h2>
-                Estamos aqui para ajudar.
-            </h2>
-
+            <h2>Seu estilo. Sua essência. Sua melhor versão.</h2>
 
             <p>
-                Ficou com alguma dúvida sobre
-                nossas peças ou pedidos?
+                Escolhas que valorizam quem você é.
             </p>
 
-
-            <a
-                href="https://wa.me/5585999999999"
-                class="button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Falar pelo WhatsApp
-            </a>
-
-        </div>
-
-    </section>
+        </section>
 
 
+        <!-- =========================
+             CARDS
+        ========================= -->
 
-    <!-- =========================================
+        <section class="cards-section">
+
+            <div class="cards">
+
+                <!-- CARD PEÇAS -->
+
+                <a href="pecas.html" class="card">
+
+                    <div class="card-detalhe"></div>
+
+                    <h3>PEÇAS</h3>
+
+                    <p>
+                        Descubra nossa coleção e encontre o look perfeito para você.
+                    </p>
+
+                </a>
+
+
+                <!-- CARD NOVIDADES -->
+
+                <a href="novidades.html" class="card">
+
+                    <div class="card-detalhe"></div>
+
+                    <h3>NOVIDADES</h3>
+
+                    <p>
+                        Em breve, novidades para você ficar ainda mais linda.
+                    </p>
+
+                </a>
+
+
+                <!-- CARD PROMOÇÃO -->
+
+                <a href="promocao.html" class="card">
+
+                    <div class="card-detalhe"></div>
+
+                    <h3>PROMOÇÃO</h3>
+
+                    <p>
+                        Confira uma promoção especial preparada para você.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
          RODAPÉ
-    ========================================== -->
+    ========================= -->
 
-    <footer class="footer">
+    <footer>
 
-        <div class="container">
+        <p>Fale conosco pelo WhatsApp</p>
 
+        <a
+            href="https://wa.me/5585988590024"
+            target="_blank"
+            class="whatsapp"
+        >
+            WhatsApp: (85) 98859-0024
+        </a>
 
-            <div class="footer-logo">
-
-                <img
-                    src="logo.jpg"
-                    alt="GARDEN'S"
-                >
-
-            </div>
-
-
-            <p>
-                Floresça a sua melhor versão.
-            </p>
-
-
-            <p class="copyright">
-                © 2026 GARDEN'S.
-                Todos os direitos reservados.
-            </p>
-
-        </div>
+        <p class="copyright">
+            © 2026 GARDEN'S — Floresça a sua melhor versão
+        </p>
 
     </footer>
 
-
-
-    <!-- JAVASCRIPT -->
-
-    <script src="js/app.js"></script>
-
-
 </body>
-
 </html>
