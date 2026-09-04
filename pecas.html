@@ -123,8 +123,8 @@
             display: block;
             margin-top: auto;
             margin-bottom: 17px;
-            color: #c5a059;
-            font-size: 15px;
+            color: #2d4a3e;
+            font-size: 18px;
             font-weight: bold;
         }
 
@@ -134,8 +134,7 @@
             gap: 9px;
         }
 
-        .product-actions a,
-        .product-actions button {
+        .product-actions a {
             width: 100%;
             min-height: 44px;
             display: flex;
@@ -148,25 +147,16 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
+            text-decoration: none;
         }
 
         .btn-details {
-            color: #2d4a3e;
-            background: transparent;
-            border: 1px solid #2d4a3e;
-        }
-
-        .btn-details:hover {
-            background: #f1f4f2;
-        }
-
-        .btn-add-cart {
             color: #ffffff;
             background: #2d4a3e;
             border: 1px solid #2d4a3e;
         }
 
-        .btn-add-cart:hover {
+        .btn-details:hover {
             background: #3d6353;
             border-color: #3d6353;
         }
@@ -222,16 +212,11 @@
             }
 
             .product-price {
-                font-size: 13px;
+                font-size: 16px;
                 margin-bottom: 12px;
             }
 
-            .product-actions {
-                gap: 7px;
-            }
-
-            .product-actions a,
-            .product-actions button {
+            .product-actions a {
                 min-height: 40px;
                 padding: 8px 5px;
                 font-size: 11px;
@@ -250,7 +235,7 @@
 
             <a href="index.html" class="logo">
                 <img
-                    src="assets/logo.jpg"
+                    src="logo.jpg"
                     alt="GARDEN'S"
                 >
             </a>
@@ -273,7 +258,7 @@
                     Contato
                 </a>
 
-                <a href="carrinho.html" class="cart-link">
+                <a href="carinho.html" class="cart-link">
                     🛍️ Carrinho
                     <span id="cart-count">0</span>
                 </a>
@@ -314,7 +299,7 @@
             Contato
         </a>
 
-        <a href="carrinho.html">
+        <a href="carinho.html">
             🛍️ Carrinho
         </a>
 
@@ -352,49 +337,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/conjunto-moderno-marinho.jpg"
-                        alt="Conjunto Moderno Marinho"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/conjunto-moderno-marinho.jpg"
+                         alt="Conjunto Moderno Marinho"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Conjunto
-                    </span>
+                    <span class="product-category">Conjunto</span>
 
                     <h2 class="product-title">
                         Conjunto Moderno Marinho
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 59,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-01"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-01"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-01',
-                                nome:'Conjunto Moderno Marinho',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/conjunto-moderno-marinho.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -408,49 +373,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/conjunto-moderno-preto.jpg"
-                        alt="Conjunto Moderno Preto"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/conjunto-moderno-preto.jpg"
+                         alt="Conjunto Moderno Preto"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Conjunto
-                    </span>
+                    <span class="product-category">Conjunto</span>
 
                     <h2 class="product-title">
                         Conjunto Moderno Preto
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 59,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-02"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-02"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-02',
-                                nome:'Conjunto Moderno Preto',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/conjunto-moderno-preto.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -464,49 +409,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/conjunto-moderno-telha.jpg"
-                        alt="Conjunto Moderno Telha"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/conjunto-moderno-telha.jpg"
+                         alt="Conjunto Moderno Telha"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Conjunto
-                    </span>
+                    <span class="product-category">Conjunto</span>
 
                     <h2 class="product-title">
                         Conjunto Moderno Telha
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 59,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-03"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-03"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-03',
-                                nome:'Conjunto Moderno Telha',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/conjunto-moderno-telha.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -520,49 +445,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/conjuto.jpg"
-                        alt="Conjunto Elegance"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/conjuto.jpg"
+                         alt="Conjunto Elegance"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Conjunto
-                    </span>
+                    <span class="product-category">Conjunto</span>
 
                     <h2 class="product-title">
                         Conjunto Elegance
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 64,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-04"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-04"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-04',
-                                nome:'Conjunto Elegance',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/conjuto.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -576,49 +481,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-03.jpg"
-                        alt="Vestido Garden Classic"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-03.jpg"
+                         alt="Vestido Garden Classic"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Garden Classic
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-05"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-05"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-05',
-                                nome:'Vestido Garden Classic',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-03.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -632,49 +517,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-00001.jpg"
-                        alt="Vestido Sofisticação"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-00001.jpg"
+                         alt="Vestido Sofisticação"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Sofisticação
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-06"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-06"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-06',
-                                nome:'Vestido Sofisticação',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-00001.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -688,49 +553,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-0001.jpg"
-                        alt="Vestido Primavera"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-0001.jpg"
+                         alt="Vestido Primavera"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Primavera
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-07"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-07"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-07',
-                                nome:'Vestido Primavera',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-0001.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -744,49 +589,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-001.jpg"
-                        alt="Vestido Botânico"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-001.jpg"
+                         alt="Vestido Botânico"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Botânico
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-08"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-08"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-08',
-                                nome:'Vestido Botânico',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-001.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -800,49 +625,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-01.jpg"
-                        alt="Vestido Essencial"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-01.jpg"
+                         alt="Vestido Essencial"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Essencial
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-09"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-09"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-09',
-                                nome:'Vestido Essencial',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-01.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -856,49 +661,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-002.jpg"
-                        alt="Vestido Encanto"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-002.jpg"
+                         alt="Vestido Encanto"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Encanto
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-10"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-10"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-10',
-                                nome:'Vestido Encanto',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-002.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -912,49 +697,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-02.jpg"
-                        alt="Vestido Serena"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-02.jpg"
+                         alt="Vestido Serena"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Serena
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-11"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-11"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-11',
-                                nome:'Vestido Serena',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-02.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -968,49 +733,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-0003.jpg"
-                        alt="Vestido Aurora"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-0003.jpg"
+                         alt="Vestido Aurora"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Aurora
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-12"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-12"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-12',
-                                nome:'Vestido Aurora',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-0003.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1024,49 +769,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-003.jpg"
-                        alt="Vestido Harmonia"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-003.jpg"
+                         alt="Vestido Harmonia"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Harmonia
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-13"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-13"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-13',
-                                nome:'Vestido Harmonia',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-003.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1080,49 +805,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-04.jpg"
-                        alt="Vestido Nobreza"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-04.jpg"
+                         alt="Vestido Nobreza"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Nobreza
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-14"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-14"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-14',
-                                nome:'Vestido Nobreza',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-04.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1136,49 +841,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-0005.jpg"
-                        alt="Vestido Delicadeza"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-0005.jpg"
+                         alt="Vestido Delicadeza"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Delicadeza
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-15"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-15"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-15',
-                                nome:'Vestido Delicadeza',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-0005.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1192,49 +877,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-005.jpg"
-                        alt="Vestido Graça"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-005.jpg"
+                         alt="Vestido Graça"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Graça
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-16"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-16"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-16',
-                                nome:'Vestido Graça',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-005.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1248,49 +913,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido05.jpg"
-                        alt="Vestido Sublime"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido05.jpg"
+                         alt="Vestido Sublime"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Sublime
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-17"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-17"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-17',
-                                nome:'Vestido Sublime',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido05.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1304,49 +949,29 @@
             <article class="product-card">
 
                 <div class="product-image-wrapper">
-                    <img
-                        src="assets/vestidos/vestido-06.jpg"
-                        alt="Vestido Plenitude"
-                        loading="lazy"
-                    >
+                    <img src="assets/vestidos/vestido-06.jpg"
+                         alt="Vestido Plenitude"
+                         loading="lazy">
                 </div>
 
                 <div class="product-info">
 
-                    <span class="product-category">
-                        Vestido
-                    </span>
+                    <span class="product-category">Vestido</span>
 
                     <h2 class="product-title">
                         Vestido Plenitude
                     </h2>
 
                     <span class="product-price">
-                        Consulte o preço
+                        R$ 84,90
                     </span>
 
                     <div class="product-actions">
 
-                        <a
-                            href="produto.html?id=gardens-18"
-                            class="btn-details"
-                        >
+                        <a href="produto.html?id=gardens-18"
+                           class="btn-details">
                             Ver detalhes
                         </a>
-
-                        <button
-                            type="button"
-                            class="btn-add-cart"
-                            onclick="adicionarAoCarrinho({
-                                id:'gardens-18',
-                                nome:'Vestido Plenitude',
-                                preco:'Consulte o preço',
-                                imagem:'assets/vestidos/vestido-06.jpg',
-                                quantidade:1
-                            })"
-                        >
-                            Adicionar ao carrinho
-                        </button>
 
                     </div>
 
@@ -1368,7 +993,7 @@
             <div class="footer-logo">
 
                 <img
-                    src="assets/logo.jpg"
+                    src="logo.jpg"
                     alt="GARDEN'S"
                 >
 
