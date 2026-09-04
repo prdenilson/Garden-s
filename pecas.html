@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peças | GARDEN'S</title>
+
+    <meta
+        name="description"
+        content="Conheça as peças da GARDEN'S — Floresça a sua melhor versão."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* ========================================
+           CABEÇALHO DO CATÁLOGO
+        ======================================== */
+
+        .catalog-header {
+            text-align: center;
+            padding: 70px 20px 55px;
+            background: #fdfbf7;
+        }
+
+        .catalog-header h1 {
+            margin-bottom: 12px;
+            font-family: Georgia, serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: normal;
+            color: #2d4a3e;
+        }
+
+        .catalog-slogan {
+            margin-bottom: 18px;
+            color: #c5a059;
+            font-family: Georgia, serif;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .catalog-description {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #6f6f6f;
+            font-size: 16px;
+        }
+
+
+        /* ========================================
+           CATÁLOGO
+        ======================================== */
+
+        .catalog-container {
+            width: min(1200px, 92%);
+            margin: 0 auto;
+            padding: 65px 0 90px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+
+        /* ========================================
+           CARD DO PRODUTO
+        ======================================== */
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #e7e2dc;
+            border-radius: 6px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+        }
+
+
+        /* ========================================
+           IMAGEM
+        ======================================== */
+
+        .product-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            background: #f5f2ee;
+        }
+
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image-wrapper img {
+            transform: scale(1.04);
+        }
+
+
+        /* ========================================
+           INFORMAÇÕES
+        ======================================== */
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 18px;
+        }
+
+        .product-category {
+            display: block;
+            margin-bottom: 6px;
+            color: #888888;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            min-height: 48px;
+            margin: 0 0 10px;
+            color: #2d4a3e;
+            font-family: Georgia, serif;
+            font-size: 19px;
+            font-weight: normal;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            display: block;
+            margin-top: auto;
+            margin-bottom: 17px;
+            color: #c5a059;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+        /* ========================================
+           BOTÕES
+        ======================================== */
+
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .product-actions a,
+        .product-actions button {
+            width: 100%;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 12px;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-details {
+            color: #2d4a3e;
+            background: transparent;
+            border: 1px solid #2d4a3e;
+        }
+
+        .btn-details:hover {
+            background: #f1f4f2;
+        }
+
+        .btn-add-cart {
+            color: #ffffff;
+            background: #2d4a3e;
+            border: 1px solid #2d4a3e;
+        }
+
+        .btn-add-cart:hover {
+            background: #3d6353;
+            border-color: #3d6353;
+        }
+
+
+        /* ========================================
+           TABLET
+        ======================================== */
+
+        @media (min-width: 650px) {
+
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+        }
+
+
+        /* ========================================
+           DESKTOP
+        ======================================== */
+
+        @media (min-width: 1000px) {
+
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 28px;
+            }
+
+        }
+
+
+        /* ========================================
+           CELULAR PEQUENO
+        ======================================== */
+
+        @media (max-width: 480px) {
+
+            .catalog-header {
+                padding: 50px 18px 40px;
+            }
+
+            .catalog-slogan {
+                font-size: 18px;
+            }
+
+            .catalog-description {
+                font-size: 14px;
+            }
+
+            .catalog-container {
+                width: 94%;
+                padding: 40px 0 65px;
+            }
+
+            .product-grid {
+                gap: 12px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-category {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .product-title {
+                min-height: 42px;
+                font-size: 16px;
+            }
+
+            .product-price {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+
+            .product-actions {
+                gap: 7px;
+            }
+
+            .product-actions a,
+            .product-actions button {
+                min-height: 40px;
+                padding: 8px 5px;
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         CABEÇALHO
+    ======================================== -->
+
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="index.html" class="logo">
+
+                <img
+                    src="assets/logo.jpg"
+                    alt="GARDEN'S"
+                >
+
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="pecas.html">
+                    Peças
+                </a>
+
+                <a href="index.html#sobre">
+                    Sobre
+                </a>
+
+                <a href="index.html#contato">
+                    Contato
+                </a>
+
+                <a
+                    href="carrinho.html"
+                    class="cart-link"
+                >
+                    🛍️ Carrinho
+                    <span id="cart-count">0</span>
+                </a>
+
+            </nav>
+
+
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================
+         MENU MOBILE
+    ======================================== -->
+
+    <div
+        class="mobile-menu"
+        id="mobile-menu"
+    >
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="pecas.html">
+            Peças
+        </a>
+
+        <a href="index.html#sobre">
+            Sobre
+        </a>
+
+        <a href="index.html#contato">
+            Contato
+        </a>
+
+        <a href="carrinho.html">
+            🛍️ Carrinho
+        </a>
+
+    </div>
+
+
+    <!-- ========================================
+         CABEÇALHO DA PÁGINA
+    ======================================== -->
+
+    <section class="catalog-header">
+
+        <h1>
+            PEÇAS GARDEN'S
+        </h1>
+
+        <p class="catalog-slogan">
+            Floresça a sua melhor versão.
+        </p>
+
+        <p class="catalog-description">
+            Descubra nossa seleção de peças escolhidas
+            para valorizar seu estilo, sua beleza e
+            sua personalidade.
+        </p>
+
+    </section>
+
+
+    <!-- ========================================
+         CATÁLOGO
+    ======================================== -->
+
+    <main class="catalog-container">
+
+        <div class="product-grid">
+
+
+            <!-- =================================
+                 PRODUTO 01
+            ================================== -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/conjunto-moderno-marinho.jpg"
+                        alt="Conjunto Moderno Marinho"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Conjunto
+                    </span>
+
+                    <h2 class="product-title">
+                        Conjunto Moderno Marinho
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="#"
+                            class="btn-details"
+                            onclick="return false;"
+                        >
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-01',
+                                nome: 'Conjunto Moderno Marinho',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/conjunto-moderno-marinho.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 02 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/conjunto-moderno-preto.jpg"
+                        alt="Conjunto Moderno Preto"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Conjunto
+                    </span>
+
+                    <h2 class="product-title">
+                        Conjunto Moderno Preto
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="#"
+                            class="btn-details"
+                            onclick="return false;"
+                        >
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-02',
+                                nome: 'Conjunto Moderno Preto',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/conjunto-moderno-preto.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 03 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/conjunto-moderno-telha.jpg"
+                        alt="Conjunto Moderno Telha"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Conjunto
+                    </span>
+
+                    <h2 class="product-title">
+                        Conjunto Moderno Telha
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="#"
+                            class="btn-details"
+                            onclick="return false;"
+                        >
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-03',
+                                nome: 'Conjunto Moderno Telha',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/conjunto-moderno-telha.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 04 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/conjuto.jpg"
+                        alt="Conjunto Elegance"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Conjunto
+                    </span>
+
+                    <h2 class="product-title">
+                        Conjunto Elegance
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a
+                            href="#"
+                            class="btn-details"
+                            onclick="return false;"
+                        >
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-04',
+                                nome: 'Conjunto Elegance',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/conjuto.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 05 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-03.jpg"
+                        alt="Vestido Garden Classic"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Garden Classic
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-05',
+                                nome: 'Vestido Garden Classic',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-03.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 06 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-00001.jpg"
+                        alt="Vestido Sofisticação"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Sofisticação
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-06',
+                                nome: 'Vestido Sofisticação',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-00001.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 07 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-0001.jpg"
+                        alt="Vestido Primavera"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Primavera
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-07',
+                                nome: 'Vestido Primavera',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-0001.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 08 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-001.jpg"
+                        alt="Vestido Botânico"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Botânico
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-08',
+                                nome: 'Vestido Botânico',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-001.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 09 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-01.jpg"
+                        alt="Vestido Essencial"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Essencial
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-09',
+                                nome: 'Vestido Essencial',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-01.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 10 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-002.jpg"
+                        alt="Vestido Encanto"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Encanto
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-10',
+                                nome: 'Vestido Encanto',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-002.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 11 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-02.jpg"
+                        alt="Vestido Serena"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Serena
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-11',
+                                nome: 'Vestido Serena',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-02.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 12 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-0003.jpg"
+                        alt="Vestido Aurora"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Aurora
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-12',
+                                nome: 'Vestido Aurora',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-0003.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 13 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-003.jpg"
+                        alt="Vestido Harmonia"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Harmonia
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-13',
+                                nome: 'Vestido Harmonia',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-003.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 14 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-04.jpg"
+                        alt="Vestido Nobreza"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Nobreza
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-14',
+                                nome: 'Vestido Nobreza',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-04.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 15 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-0005.jpg"
+                        alt="Vestido Delicadeza"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Delicadeza
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-15',
+                                nome: 'Vestido Delicadeza',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-0005.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 16 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-005.jpg"
+                        alt="Vestido Graça"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Graça
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-16',
+                                nome: 'Vestido Graça',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-005.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 17 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido05.jpg"
+                        alt="Vestido Sublime"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Sublime
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-17',
+                                nome: 'Vestido Sublime',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido05.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUTO 18 -->
+
+            <article class="product-card">
+
+                <div class="product-image-wrapper">
+
+                    <img
+                        src="assets/vestidos/vestido-06.jpg"
+                        alt="Vestido Plenitude"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Vestido
+                    </span>
+
+                    <h2 class="product-title">
+                        Vestido Plenitude
+                    </h2>
+
+                    <span class="product-price">
+                        Consulte o preço
+                    </span>
+
+                    <div class="product-actions">
+
+                        <a href="#" class="btn-details" onclick="return false;">
+                            Ver detalhes
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-add-cart"
+                            onclick="adicionarAoCarrinho({
+                                id: 'gardens-18',
+                                nome: 'Vestido Plenitude',
+                                preco: 'Consulte o preço',
+                                imagem: 'assets/vestidos/vestido-06.jpg',
+                                quantidade: 1
+                            })"
+                        >
+                            Adicionar ao carrinho
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================================
+         RODAPÉ
+    ======================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-logo">
+
+                <img
+                    src="assets/logo.jpg"
+                    alt="GARDEN'S"
+                >
+
+            </div>
+
+            <p>
+                Floresça a sua melhor versão.
+            </p>
+
+            <p class="copyright">
+                © 2026 GARDEN'S.
+                Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ========================================
+         JAVASCRIPT PRINCIPAL
+    ======================================== -->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
