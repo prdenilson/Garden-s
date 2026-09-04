@@ -25,90 +25,32 @@
 
         header {
             background: #ffffff;
-            border-bottom: 1px solid #e5dfd2;
+            border-bottom: 1px solid #e4dfd5;
             padding: 18px 30px;
         }
 
-        .header-container {
+        .topo {
             max-width: 1200px;
             margin: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 30px;
         }
 
         .logo {
             width: 120px;
             height: auto;
-            object-fit: contain;
+            display: block;
         }
 
         nav {
             display: flex;
-            gap: 32px;
             align-items: center;
+            gap: 32px;
         }
 
         nav a {
-            text-decoration: none;
             color: #304638;
-            font-size: 15px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #b18a45;
-        }
-
-        /* =========================
-           DESTAQUE PRINCIPAL
-        ========================= */
-
-        .hero {
-            max-width: 1200px;
-            margin: 35px auto 0;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-height: 650px;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            border-radius: 4px;
-        }
-
-        .hero-content {
-            padding: 32px 20px 45px;
-        }
-
-        .hero-content h1 {
-            font-family: Georgia, serif;
-            font-size: 38px;
-            font-weight: normal;
-            color: #304638;
-            margin-bottom: 12px;
-        }
-
-        .hero-content p {
-            font-family: Georgia, serif;
-            font-size: 20px;
-            color: #756b5c;
-            margin-bottom: 28px;
-            font-style: italic;
-        }
-
-        .btn-colecao {
-            display: inline-block;
-            background: #304638;
-            color: white;
-            padding: 15px 32px;
-            border-radius: 3px;
             text-decoration: none;
             font-size: 14px;
             font-weight: bold;
@@ -116,39 +58,98 @@
             transition: 0.3s;
         }
 
-        .btn-colecao:hover {
-            background: #b18a45;
+        nav a:hover {
+            color: #b08a45;
+        }
+
+        /* =========================
+           IMAGEM PRINCIPAL
+        ========================= */
+
+        .hero {
+            width: 100%;
+            text-align: center;
+            background: #f8f5ef;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 1200px;
+            height: 650px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* =========================
+           CHAMADA
+        ========================= */
+
+        .apresentacao {
+            text-align: center;
+            padding: 42px 20px 55px;
+        }
+
+        .apresentacao h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 38px;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+
+        .apresentacao p {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 19px;
+            font-style: italic;
+            color: #756d61;
+            margin-bottom: 28px;
+        }
+
+        .botao {
+            display: inline-block;
+            background: #304638;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 34px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: #b08a45;
         }
 
         /* =========================
            FRASE DE ESTILO
         ========================= */
 
-        .frase-estilo {
+        .estilo {
             text-align: center;
-            padding: 55px 20px;
             background: #eee8dc;
+            padding: 55px 20px;
         }
 
-        .frase-estilo h2 {
-            font-family: Georgia, serif;
-            font-size: 30px;
+        .estilo h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 29px;
             font-weight: normal;
-            color: #304638;
             margin-bottom: 10px;
         }
 
-        .frase-estilo p {
+        .estilo p {
+            color: #756d61;
             font-size: 16px;
-            color: #756b5c;
         }
 
         /* =========================
            CARDS
         ========================= */
 
-        .cards-section {
-            max-width: 1100px;
+        .cards-area {
+            max-width: 1150px;
             margin: auto;
             padding: 65px 20px;
         }
@@ -160,44 +161,47 @@
         }
 
         .card {
+            min-height: 230px;
             background: #ffffff;
-            border: 1px solid #e5dfd2;
-            min-height: 220px;
-            padding: 35px 25px;
-            text-align: center;
+            border: 1px solid #e3ddd2;
             text-decoration: none;
             color: #304638;
+
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            padding: 30px 25px;
+
             transition: 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border-color: #b18a45;
+            border-color: #b08a45;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .linha {
+            width: 40px;
+            height: 1px;
+            background: #b08a45;
+            margin-bottom: 20px;
         }
 
         .card h3 {
-            font-family: Georgia, serif;
-            font-size: 25px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 26px;
             font-weight: normal;
             margin-bottom: 15px;
         }
 
         .card p {
+            color: #756d61;
             font-size: 14px;
             line-height: 1.6;
-            color: #756b5c;
-        }
-
-        .card-detalhe {
-            width: 40px;
-            height: 1px;
-            background: #b18a45;
-            margin-bottom: 20px;
         }
 
         /* =========================
@@ -206,33 +210,33 @@
 
         footer {
             background: #304638;
-            color: white;
+            color: #ffffff;
             text-align: center;
-            padding: 35px 20px;
+            padding: 38px 20px;
         }
 
         footer p {
-            margin-bottom: 15px;
             font-size: 14px;
+            margin-bottom: 16px;
         }
 
         .whatsapp {
             display: inline-block;
-            color: white;
+            color: #ffffff;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            padding: 12px 22px;
-            border-radius: 3px;
+            border: 1px solid rgba(255,255,255,0.6);
+            padding: 12px 24px;
             transition: 0.3s;
         }
 
         .whatsapp:hover {
-            background: #b18a45;
-            border-color: #b18a45;
+            background: #b08a45;
+            border-color: #b08a45;
         }
 
         .copyright {
             margin-top: 25px;
+            margin-bottom: 0;
             font-size: 12px;
             opacity: 0.7;
         }
@@ -244,12 +248,12 @@
         @media (max-width: 700px) {
 
             header {
-                padding: 15px 20px;
+                padding: 15px 18px;
             }
 
-            .header-container {
+            .topo {
                 flex-direction: column;
-                gap: 15px;
+                gap: 16px;
             }
 
             .logo {
@@ -261,36 +265,35 @@
             }
 
             nav a {
-                font-size: 13px;
+                font-size: 12px;
             }
 
-            .hero {
-                margin-top: 20px;
-                padding: 0 12px;
+            .hero img {
+                height: 500px;
             }
 
-            .hero-image {
-                max-height: 500px;
+            .apresentacao {
+                padding: 35px 18px 45px;
             }
 
-            .hero-content {
-                padding: 28px 10px 40px;
+            .apresentacao h1 {
+                font-size: 29px;
             }
 
-            .hero-content h1 {
-                font-size: 30px;
+            .apresentacao p {
+                font-size: 17px;
             }
 
-            .hero-content p {
-                font-size: 18px;
-            }
-
-            .frase-estilo {
+            .estilo {
                 padding: 45px 20px;
             }
 
-            .frase-estilo h2 {
+            .estilo h2 {
                 font-size: 25px;
+            }
+
+            .cards-area {
+                padding: 45px 20px;
             }
 
             .cards {
@@ -298,12 +301,12 @@
                 gap: 18px;
             }
 
-            .cards-section {
-                padding: 45px 20px;
+            .card {
+                min-height: 190px;
             }
 
-            .card {
-                min-height: 180px;
+            footer {
+                padding: 32px 20px;
             }
         }
     </style>
@@ -311,12 +314,10 @@
 
 <body>
 
-    <!-- =========================
-         TOPO
-    ========================= -->
+    <!-- TOPO -->
 
     <header>
-        <div class="header-container">
+        <div class="topo">
 
             <a href="index.html">
                 <img src="logo.jpg" alt="GARDEN'S" class="logo">
@@ -332,122 +333,118 @@
     </header>
 
 
-    <!-- =========================
-         IMAGEM DA DONA DA LOJA
-    ========================= -->
+    <!-- FOTO GRANDE DA DONA DA LOJA -->
 
-    <main>
+    <section class="hero">
 
-        <section class="hero">
+        <img
+            src="gardenia.jpg"
+            alt="Gardenia - GARDEN'S"
+        >
 
-            <img
-                src="gardenia.JPG"
-                alt="Gardenia - GARDEN'S"
-                class="hero-image"
-            >
+    </section>
 
-            <div class="hero-content">
 
-                <h1>Floresça a sua melhor versão</h1>
+    <!-- APRESENTAÇÃO -->
+
+    <section class="apresentacao">
+
+        <h1>Floresça a sua melhor versão</h1>
+
+        <p>
+            Elegância para vestir quem você é.
+        </p>
+
+        <a href="pecas.html" class="botao">
+            CONHEÇA A COLEÇÃO
+        </a>
+
+    </section>
+
+
+    <!-- FRASE DE ESTILO -->
+
+    <section class="estilo">
+
+        <h2>Seu estilo revela a sua essência.</h2>
+
+        <p>
+            Vista-se de confiança, beleza e personalidade.
+        </p>
+
+    </section>
+
+
+    <!-- CARDS -->
+
+    <section class="cards-area">
+
+        <div class="cards">
+
+            <!-- PEÇAS -->
+
+            <a href="pecas.html" class="card">
+
+                <div class="linha"></div>
+
+                <h3>PEÇAS</h3>
 
                 <p>
-                    Estilo, elegância e beleza para você se sentir ainda mais linda.
+                    Encontre peças escolhidas para valorizar
+                    a sua beleza e o seu estilo.
                 </p>
 
-                <a href="pecas.html" class="btn-colecao">
-                    CONHEÇA A COLEÇÃO
-                </a>
-
-            </div>
-
-        </section>
+            </a>
 
 
-        <!-- =========================
-             FRASE DE ESTILO
-        ========================= -->
+            <!-- NOVIDADES -->
 
-        <section class="frase-estilo">
+            <a href="novidades.html" class="card">
 
-            <h2>Seu estilo. Sua essência. Sua melhor versão.</h2>
+                <div class="linha"></div>
 
-            <p>
-                Escolhas que valorizam quem você é.
-            </p>
+                <h3>NOVIDADES</h3>
 
-        </section>
+                <p>
+                    Em breve, novidades para você ficar
+                    ainda mais linda.
+                </p>
 
-
-        <!-- =========================
-             CARDS
-        ========================= -->
-
-        <section class="cards-section">
-
-            <div class="cards">
-
-                <!-- CARD PEÇAS -->
-
-                <a href="pecas.html" class="card">
-
-                    <div class="card-detalhe"></div>
-
-                    <h3>PEÇAS</h3>
-
-                    <p>
-                        Descubra nossa coleção e encontre o look perfeito para você.
-                    </p>
-
-                </a>
+            </a>
 
 
-                <!-- CARD NOVIDADES -->
+            <!-- PROMOÇÃO -->
 
-                <a href="novidades.html" class="card">
+            <a href="promocao.html" class="card">
 
-                    <div class="card-detalhe"></div>
+                <div class="linha"></div>
 
-                    <h3>NOVIDADES</h3>
+                <h3>PROMOÇÃO</h3>
 
-                    <p>
-                        Em breve, novidades para você ficar ainda mais linda.
-                    </p>
+                <p>
+                    Aproveite uma promoção especial
+                    preparada para você.
+                </p>
 
-                </a>
+            </a>
 
+        </div>
 
-                <!-- CARD PROMOÇÃO -->
-
-                <a href="promocao.html" class="card">
-
-                    <div class="card-detalhe"></div>
-
-                    <h3>PROMOÇÃO</h3>
-
-                    <p>
-                        Confira uma promoção especial preparada para você.
-                    </p>
-
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
+    </section>
 
 
-    <!-- =========================
-         RODAPÉ
-    ========================= -->
+    <!-- RODAPÉ -->
 
     <footer>
 
-        <p>Fale conosco pelo WhatsApp</p>
+        <p>
+            Fale conosco pelo WhatsApp
+        </p>
 
         <a
             href="https://wa.me/5585988590024"
             target="_blank"
+            rel="noopener noreferrer"
             class="whatsapp"
         >
             WhatsApp: (85) 98859-0024
