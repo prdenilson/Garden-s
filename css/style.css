@@ -1,0 +1,476 @@
+/* ================================
+   GARDEN'S
+   Floresça a sua melhor versão
+================================ */
+
+/* ---------- VARIÁVEIS ---------- */
+
+:root {
+    --verde: #2d4a3e;
+    --verde-claro: #3d6353;
+    --bege: #f4f0eb;
+    --bege-escuro: #e7ded3;
+    --dourado: #c5a059;
+    --branco: #ffffff;
+    --texto: #252525;
+    --texto-claro: #6f6f6f;
+    --borda: #e4e0dc;
+}
+
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: var(--branco);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* ---------- CONTAINER ---------- */
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+}
+
+
+/* ---------- CABEÇALHO ---------- */
+
+.header {
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+/* ---------- LOGO ---------- */
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--verde);
+}
+
+
+/* ---------- MENU ---------- */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    color: var(--dourado);
+}
+
+
+/* ---------- CARRINHO ---------- */
+
+.cart-link {
+    background: var(--verde);
+    color: var(--branco) !important;
+    padding: 10px 16px;
+    border-radius: 6px;
+}
+
+.cart-link:hover {
+    background: var(--verde-claro);
+}
+
+#cart-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: var(--dourado);
+    color: var(--branco);
+    font-size: 11px;
+}
+
+
+/* ---------- BOTÃO MOBILE ---------- */
+
+.menu-button {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: var(--verde);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* ---------- MENU MOBILE ---------- */
+
+.mobile-menu {
+    display: none;
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+    padding: 10px 5%;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--borda);
+    font-weight: 600;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(45, 74, 62, 0.94),
+            rgba(45, 74, 62, 0.60),
+            rgba(45, 74, 62, 0.10)
+        ),
+        url("../assets/hero.jpg") center / cover no-repeat;
+
+    background-color: var(--verde);
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 600px;
+    color: var(--branco);
+    padding: 70px 0;
+}
+
+.hero-small {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: #e5d3a8;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.hero h1 strong {
+    display: block;
+    color: #f1dfb8;
+}
+
+.hero p {
+    max-width: 500px;
+    font-size: 18px;
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+
+
+/* ---------- BOTÕES ---------- */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 25px;
+    border-radius: 6px;
+    background: var(--dourado);
+    color: var(--branco);
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+
+/* ---------- SEÇÕES ---------- */
+
+section {
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title span,
+.section-label {
+    display: block;
+    color: var(--dourado);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section-title h2,
+.about h2,
+.contact h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--verde);
+    font-weight: normal;
+}
+
+
+/* ---------- CATEGORIAS ---------- */
+
+.categories {
+    background: var(--branco);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.category-card {
+    display: block;
+}
+
+.category-image {
+    height: 350px;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            transparent
+        ),
+        url("../assets/categoria-1.jpg") center / cover no-repeat;
+
+    background-color: var(--bege);
+}
+
+.category-image span {
+    color: var(--branco);
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+.category-2 {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            transparent
+        ),
+        url("../assets/categoria-2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.category-3 {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            transparent
+        ),
+        url("../assets/categoria-3.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.category-card h3 {
+    margin-top: 16px;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    color: var(--verde);
+}
+
+.category-card p {
+    color: var(--texto-claro);
+}
+
+
+/* ---------- SOBRE ---------- */
+
+.about {
+    background: var(--bege);
+}
+
+.about-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: var(--texto-claro);
+    font-size: 17px;
+}
+
+
+/* ---------- CONTATO ---------- */
+
+.contact {
+    text-align: center;
+    background: var(--branco);
+}
+
+.contact p {
+    margin: 20px auto 30px;
+    color: var(--texto-claro);
+    font-size: 17px;
+}
+
+
+/* ---------- RODAPÉ ---------- */
+
+.footer {
+    padding: 55px 0 30px;
+    text-align: center;
+    background: var(--verde);
+    color: var(--branco);
+}
+
+.footer-logo {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+
+.footer p {
+    opacity: 0.85;
+}
+
+.copyright {
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 800px) {
+
+    .menu {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero-text {
+        padding: 50px 0;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-image {
+        height: 380px;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .header-content {
+        min-height: 68px;
+    }
+
+    .logo {
+        font-size: 23px;
+        letter-spacing: 2px;
+    }
+
+    .hero {
+        min-height: 560px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .category-image {
+        height: 330px;
+    }
+
+    .button {
+        width: 100%;
+    }
+}
