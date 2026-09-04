@@ -1,1 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produto | GARDEN'S</title>
+
+    <meta
+        name="description"
+        content="Conheça os detalhes das peças GARDEN'S."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .product-page {
+            background: #fdfbf7;
+            padding: 70px 0 100px;
+        }
+
+        .product-detail {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .product-photo {
+            background: #f5f2ee;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .product-photo img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+        }
+
+        .product-information {
+            padding: 20px 0;
+        }
+
+        .product-category-detail {
+            display: block;
+            margin-bottom: 12px;
+            color: #c5a059;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .product-information h1 {
+            margin-bottom: 18px;
+            color: #2d4a3e;
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: normal;
+            line-height: 1.1;
+        }
+
+        .product-description {
+            margin-bottom: 25px;
+            color: #6f6f6f;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .product-price-detail {
+            margin-bottom: 30px;
+            color: #c5a059;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .product-option {
+            margin-bottom: 25px;
+        }
+
+        .product-option label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2d4a3e;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .size-option {
+            min-width: 50px;
+            padding: 10px 15px;
+            background: #ffffff;
+            border: 1px solid #d8d2ca;
+            border-radius: 4px;
+            color: #2d4a3e;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .size-option:hover,
+        .size-option.selected {
+            background: #2d4a3e;
+            border-color: #2d4a3e;
+            color: #ffffff;
+        }
+
+        .product-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .product-buttons button,
+        .product-buttons a {
+            width: 100%;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-add {
+            border: 1px solid #2d4a3e;
+            background: #2d4a3e;
+            color: #ffffff;
+        }
+
+        .btn-add:hover {
+            background: #3d6353;
+            border-color: #3d6353;
+        }
+
+        .btn-back {
+            border: 1px solid #2d4a3e;
+            background: transparent;
+            color: #2d4a3e;
+        }
+
+        .btn-back:hover {
+            background: #f1f4f2;
+        }
+
+        .product-message {
+            display: none;
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 5px;
+            background: #edf4ef;
+            color: #2d4a3e;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .product-error {
+            width: min(700px, 92%);
+            margin: 50px auto;
+            padding: 40px 25px;
+            background: #ffffff;
+            border: 1px solid #e4e0dc;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .product-error h1 {
+            margin-bottom: 15px;
+            color: #2d4a3e;
+            font-family: Georgia, serif;
+            font-weight: normal;
+        }
+
+        .product-error p {
+            margin-bottom: 25px;
+            color: #6f6f6f;
+        }
+
+        @media (max-width: 800px) {
+            .product-page {
+                padding: 40px 0 70px;
+            }
+
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .product-information {
+                padding: 5px 0;
+            }
+
+            .product-information h1 {
+                font-size: 38px;
+            }
+
+            .product-description {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-detail {
+                width: 94%;
+            }
+
+            .product-information h1 {
+                font-size: 34px;
+            }
+
+            .size-option {
+                min-width: 46px;
+                padding: 9px 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="index.html" class="logo">
+                <img
+                    src="assets/logo.jpg"
+                    alt="GARDEN'S"
+                >
+            </a>
+
+            <nav class="menu">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="pecas.html">
+                    Peças
+                </a>
+
+                <a href="index.html#sobre">
+                    Sobre
+                </a>
+
+                <a href="index.html#contato">
+                    Contato
+                </a>
+
+                <a href="carrinho.html" class="cart-link">
+                    🛍️ Carrinho
+                    <span id="cart-count">0</span>
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MENU MOBILE -->
+
+    <div class="mobile-menu" id="mobile-menu">
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="pecas.html">
+            Peças
+        </a>
+
+        <a href="index.html#sobre">
+            Sobre
+        </a>
+
+        <a href="index.html#contato">
+            Contato
+        </a>
+
+        <a href="carrinho.html">
+            🛍️ Carrinho
+        </a>
+
+    </div>
+
+
+    <!-- PRODUTO -->
+
+    <main class="product-page">
+
+        <div id="produto-container">
+
+            <div class="product-detail">
+
+                <div class="product-photo">
+
+                    <img
+                        id="produto-imagem"
+                        src=""
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="product-information">
+
+                    <span
+                        class="product-category-detail"
+                        id="produto-categoria"
+                    ></span>
+
+
+                    <h1 id="produto-nome"></h1>
+
+
+                    <p
+                        class="product-description"
+                        id="produto-descricao"
+                    ></p>
+
+
+                    <div
+                        class="product-price-detail"
+                        id="produto-preco"
+                    >
+                    </div>
+
+
+                    <div class="product-option">
+
+                        <label>
+                            Escolha o tamanho:
+                        </label>
+
+                        <div class="size-options">
+
+                            <button
+                                type="button"
+                                class="size-option"
+                                data-size="P"
+                            >
+                                P
+                            </button>
+
+                            <button
+                                type="button"
+                                class="size-option"
+                                data-size="M"
+                            >
+                                M
+                            </button>
+
+                            <button
+                                type="button"
+                                class="size-option"
+                                data-size="G"
+                            >
+                                G
+                            </button>
+
+                            <button
+                                type="button"
+                                class="size-option"
+                                data-size="GG"
+                            >
+                                GG
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            type="button"
+                            class="btn-add"
+                            id="btn-adicionar"
+                        >
+                            🛍️ Adicionar ao carrinho
+                        </button>
+
+                        <a
+                            href="pecas.html"
+                            class="btn-back"
+                        >
+                            ← Voltar para as peças
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="product-message"
+                        id="product-message"
+                    >
+                        Produto adicionado ao carrinho!
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ERRO -->
+
+        <div
+            class="product-error"
+            id="produto-erro"
+            style="display:none;"
+        >
+
+            <h1>
+                Produto não encontrado
+            </h1>
+
+            <p>
+                Não conseguimos encontrar essa peça.
+            </p>
+
+            <a
+                href="pecas.html"
+                class="button"
+            >
+                Ver todas as peças
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-logo">
+
+                <img
+                    src="assets/logo.jpg"
+                    alt="GARDEN'S"
+                >
+
+            </div>
+
+            <p>
+                Floresça a sua melhor versão.
+            </p>
+
+            <p class="copyright">
+                © 2026 GARDEN'S. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+
+
+    <script>
+
+        /*
+         * CATÁLOGO DOS PRODUTOS
+         */
+
+        const produtos = {
+
+            "gardens-01": {
+                nome: "Conjunto Moderno Marinho",
+                categoria: "Conjunto",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/conjunto-moderno-marinho.jpg",
+                descricao: "Um conjunto moderno e elegante, pensado para valorizar sua presença e trazer praticidade para diferentes ocasiões."
+            },
+
+            "gardens-02": {
+                nome: "Conjunto Moderno Preto",
+                categoria: "Conjunto",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/conjunto-moderno-preto.jpg",
+                descricao: "Um conjunto sofisticado e versátil para compor produções elegantes e marcantes."
+            },
+
+            "gardens-03": {
+                nome: "Conjunto Moderno Telha",
+                categoria: "Conjunto",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/conjunto-moderno-telha.jpg",
+                descricao: "Uma peça moderna em tom telha, perfeita para quem deseja unir estilo, elegância e personalidade."
+            },
+
+            "gardens-04": {
+                nome: "Conjunto Elegance",
+                categoria: "Conjunto",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/conjuto.jpg",
+                descricao: "Um conjunto pensado para mulheres que gostam de elegância, conforto e presença."
+            },
+
+            "gardens-05": {
+                nome: "Vestido Garden Classic",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-03.jpg",
+                descricao: "Um vestido clássico e elegante para valorizar sua beleza em momentos especiais."
+            },
+
+            "gardens-06": {
+                nome: "Vestido Sofisticação",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-00001.jpg",
+                descricao: "Uma escolha sofisticada para quem deseja transmitir elegância e confiança."
+            },
+
+            "gardens-07": {
+                nome: "Vestido Primavera",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-0001.jpg",
+                descricao: "Leveza e feminilidade em uma peça escolhida para acompanhar diferentes momentos."
+            },
+
+            "gardens-08": {
+                nome: "Vestido Botânico",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-001.jpg",
+                descricao: "Uma peça cheia de personalidade para mulheres que gostam de se destacar com elegância."
+            },
+
+            "gardens-09": {
+                nome: "Vestido Essencial",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-01.jpg",
+                descricao: "Uma peça versátil para compor diferentes looks com praticidade e sofisticação."
+            },
+
+            "gardens-10": {
+                nome: "Vestido Encanto",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-002.jpg",
+                descricao: "Um vestido pensado para trazer charme e elegância para sua produção."
+            },
+
+            "gardens-11": {
+                nome: "Vestido Serena",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-02.jpg",
+                descricao: "Delicadeza e elegância em uma peça que combina beleza e personalidade."
+            },
+
+            "gardens-12": {
+                nome: "Vestido Aurora",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-0003.jpg",
+                descricao: "Uma peça especial para quem deseja florescer sua melhor versão em cada ocasião."
+            },
+
+            "gardens-13": {
+                nome: "Vestido Harmonia",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-003.jpg",
+                descricao: "Um modelo elegante e harmonioso para compor um visual marcante."
+            },
+
+            "gardens-14": {
+                nome: "Vestido Nobreza",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-04.jpg",
+                descricao: "Elegância e presença em uma peça criada para momentos especiais."
+            },
+
+            "gardens-15": {
+                nome: "Vestido Delicadeza",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-0005.jpg",
+                descricao: "Uma peça delicada e feminina para valorizar seu estilo."
+            },
+
+            "gardens-16": {
+                nome: "Vestido Graça",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-005.jpg",
+                descricao: "Uma escolha elegante para mulheres que gostam de unir beleza e personalidade."
+            },
+
+            "gardens-17": {
+                nome: "Vestido Sublime",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido05.jpg",
+                descricao: "Um modelo especial para quem deseja um visual elegante e sofisticado."
+            },
+
+            "gardens-18": {
+                nome: "Vestido Plenitude",
+                categoria: "Vestido",
+                preco: "Consulte o preço",
+                imagem: "assets/vestidos/vestido-06.jpg",
+                descricao: "Uma peça criada para você se sentir bonita, elegante e confiante."
+            }
+
+        };
+
+
+        /*
+         * IDENTIFICA O PRODUTO PELA URL
+         *
+         * Exemplo:
+         * produto.html?id=gardens-01
+         */
+
+        const parametros = new URLSearchParams(window.location.search);
+
+        const idProduto = parametros.get("id");
+
+        const produto = produtos[idProduto];
+
+
+        /*
+         * MOSTRA O PRODUTO
+         */
+
+        if (!produto) {
+
+            document.getElementById("produto-container").style.display = "none";
+
+            document.getElementById("produto-erro").style.display = "block";
+
+        } else {
+
+            document.getElementById("produto-imagem").src = produto.imagem;
+
+            document.getElementById("produto-imagem").alt = produto.nome;
+
+            document.getElementById("produto-categoria").textContent = produto.categoria;
+
+            document.getElementById("produto-nome").textContent = produto.nome;
+
+            document.getElementById("produto-preco").textContent = produto.preco;
+
+            document.getElementById("produto-descricao").textContent = produto.descricao;
+
+            document.title = produto.nome + " | GARDEN'S";
+
+
+            /*
+             * SELEÇÃO DO TAMANHO
+             */
+
+            let tamanhoSelecionado = "";
+
+
+            const botoesTamanho =
+                document.querySelectorAll(".size-option");
+
+
+            botoesTamanho.forEach(botao => {
+
+                botao.addEventListener("click", () => {
+
+                    botoesTamanho.forEach(item => {
+                        item.classList.remove("selected");
+                    });
+
+                    botao.classList.add("selected");
+
+                    tamanhoSelecionado =
+                        botao.dataset.size;
+
+                });
+
+            });
+
+
+            /*
+             * ADICIONAR AO CARRINHO
+             */
+
+            document
+                .getElementById("btn-adicionar")
+                .addEventListener("click", () => {
+
+                    if (!tamanhoSelecionado) {
+
+                        alert("Por favor, escolha o tamanho.");
+
+                        return;
+
+                    }
+
+
+                    adicionarAoCarrinho({
+
+                        id: produto.id || idProduto,
+
+                        nome: produto.nome + " - " + tamanhoSelecionado,
+
+                        preco: produto.preco,
+
+                        imagem: produto.imagem,
+
+                        quantidade: 1
+
+                    });
+
+
+                    const mensagem =
+                        document.getElementById("product-message");
+
+
+                    mensagem.style.display = "block";
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "carrinho.html";
+
+                    }, 900);
+
+                });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
