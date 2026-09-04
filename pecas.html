@@ -1,68 +1,1198 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coleção — Garden's</title>
+
+    <title>Peças | GARDEN'S</title>
+
+    <meta
+        name="description"
+        content="Conheça as peças da GARDEN'S — moda feminina para florescer a sua melhor versão."
+    >
+
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ==============================
+           AJUSTES EXCLUSIVOS DA PÁGINA
+           ============================== */
+
+        .header .logo {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+
+            width: 145px !important;
+            height: 62px !important;
+            min-width: 145px !important;
+            max-width: 145px !important;
+
+            flex: 0 0 145px !important;
+            overflow: hidden !important;
+        }
+
+        .header .logo img {
+            display: block !important;
+
+            width: 145px !important;
+            height: 62px !important;
+
+            min-width: 145px !important;
+            max-width: 145px !important;
+            min-height: 62px !important;
+            max-height: 62px !important;
+
+            object-fit: contain !important;
+            object-position: left center !important;
+        }
+
+        .footer-logo img {
+            display: block !important;
+
+            width: 140px !important;
+            height: 60px !important;
+
+            max-width: 140px !important;
+            max-height: 60px !important;
+
+            object-fit: contain !important;
+        }
+
+        /* Cabeçalho da página */
+
+        .pecas-header {
+            padding: 70px 0 45px;
+            background: var(--bege);
+            text-align: center;
+        }
+
+        .pecas-header h1 {
+            margin-bottom: 12px;
+            color: var(--verde);
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.15;
+        }
+
+        .pecas-header p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--texto-claro);
+            font-size: 16px;
+        }
+
+        /* Catálogo */
+
+        .catalogo {
+            padding: 60px 0 80px;
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        .produto-card {
+            background: var(--branco);
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+            overflow: hidden;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(45, 74, 62, 0.12);
+        }
+
+        .produto-imagem {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background: var(--bege);
+            overflow: hidden;
+        }
+
+        .produto-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .produto-card:hover .produto-imagem img {
+            transform: scale(1.03);
+        }
+
+        .produto-info {
+            padding: 20px;
+        }
+
+        .produto-info h2 {
+            margin-bottom: 8px;
+            color: var(--verde);
+            font-size: 17px;
+            line-height: 1.35;
+        }
+
+        .produto-preco {
+            margin-bottom: 16px;
+            color: var(--texto);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .produto-botoes {
+            display: flex;
+            gap: 8px;
+        }
+
+        .produto-botoes a {
+            flex: 1;
+            text-align: center;
+            padding: 10px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .btn-ver {
+            border: 1px solid var(--verde);
+            color: var(--verde);
+            background: var(--branco);
+        }
+
+        .btn-ver:hover {
+            background: var(--bege);
+        }
+
+        .btn-comprar {
+            background: var(--verde);
+            color: var(--branco);
+        }
+
+        .btn-comprar:hover {
+            background: var(--verde-claro);
+        }
+
+        /* ==============================
+           TABLET
+           ============================== */
+
+        @media (max-width: 1000px) {
+            .produtos-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 22px;
+            }
+        }
+
+        /* ==============================
+           CELULAR
+           ============================== */
+
+        @media (max-width: 700px) {
+            .pecas-header {
+                padding: 50px 0 35px;
+            }
+
+            .catalogo {
+                padding: 40px 0 60px;
+            }
+
+            .produtos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .produto-info {
+                padding: 14px;
+            }
+
+            .produto-info h2 {
+                font-size: 15px;
+            }
+
+            .produto-preco {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            .produto-botoes {
+                flex-direction: column;
+            }
+
+            .produto-botoes a {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header .logo {
+                width: 120px !important;
+                height: 52px !important;
+                min-width: 120px !important;
+                max-width: 120px !important;
+                flex: 0 0 120px !important;
+            }
+
+            .header .logo img {
+                width: 120px !important;
+                height: 52px !important;
+                min-width: 120px !important;
+                max-width: 120px !important;
+                min-height: 52px !important;
+                max-height: 52px !important;
+            }
+
+            .produtos-grid {
+                gap: 12px;
+            }
+
+            .produto-info {
+                padding: 12px;
+            }
+
+            .produto-info h2 {
+                font-size: 14px;
+            }
+
+            .produto-preco {
+                font-size: 15px;
+            }
+
+            .produto-botoes a {
+                font-size: 12px;
+                padding: 9px 6px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <!-- CABEÇALHO -->
+    <!-- ==============================
+         CABEÇALHO
+         ============================== -->
+
     <header class="header">
         <div class="container header-content">
-            <a href="index.html" class="logo">
-                <img src="logo.jpg" alt="Garden's Logo">
+
+            <a href="index.html" class="logo" aria-label="GARDEN'S - Início">
+                <img src="logo.jpg" alt="GARDEN'S">
             </a>
 
-            <nav class="menu">
-                <a href="index.html#inicio">Início</a>
-                <a href="pecas.html">Coleção</a>
+            <nav class="menu" aria-label="Menu principal">
+                <a href="index.html">Início</a>
+                <a href="pecas.html">Peças</a>
                 <a href="index.html#sobre">Sobre</a>
                 <a href="index.html#contato">Contato</a>
-                <a href="#carrinho" class="cart-link">Sacola <span id="cart-count">0</span></a>
+
+                <a href="carinho.html" class="cart-link">
+                    🛍️ Carrinho
+                    <span id="cart-count">0</span>
+                </a>
             </nav>
 
-            <button class="menu-button" aria-label="Abrir Menu">☰</button>
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-label="Abrir menu"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
         </div>
     </header>
 
-    <!-- MENU MOBILE -->
-    <div class="mobile-menu">
-        <a href="index.html#inicio">Início</a>
-        <a href="pecas.html">Coleção</a>
+    <!-- ==============================
+         MENU MOBILE
+         ============================== -->
+
+    <div class="mobile-menu" id="mobile-menu">
+
+        <a href="index.html">Início</a>
+
+        <a href="pecas.html">Peças</a>
+
         <a href="index.html#sobre">Sobre</a>
+
         <a href="index.html#contato">Contato</a>
-        <a href="#carrinho">Sacola (0)</a>
+
+        <a href="carinho.html">
+            🛍️ Carrinho
+            <span id="cart-count-mobile"></span>
+        </a>
+
     </div>
 
-    <!-- CONTEÚDO DA PÁGINA DE PEÇAS -->
-    <section class="categories" style="padding-top: 60px;">
-        <div class="container">
-            <div class="section-title">
-                <span>NOSSA COLEÇÃO</span>
-                <h2>Todas as Peças</h2>
-            </div>
 
-            <!-- Grade de produtos da página pecas.html (mantenha seus produtos aqui) -->
-            <div class="category-grid">
-                <!-- Seus cards de produtos existentes continuam aqui -->
-            </div>
+    <!-- ==============================
+         TÍTULO
+         ============================== -->
+
+    <section class="pecas-header">
+        <div class="container">
+
+            <h1>Nossas Peças</h1>
+
+            <p>
+                Escolha a peça que combina com você e floresça a sua melhor versão.
+            </p>
+
         </div>
     </section>
 
-    <!-- RODAPÉ -->
-    <footer class="footer">
+
+    <!-- ==============================
+         CATÁLOGO
+         ============================== -->
+
+    <main class="catalogo">
+
         <div class="container">
-            <div class="footer-logo">
-                <img src="logo.jpg" alt="Garden's Logo">
+
+            <div class="produtos-grid">
+
+
+                <!-- 01 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-01"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/conjunto-moderno-marinho.jpg"
+                            alt="Conjunto Moderno Marinho"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Conjunto Moderno Marinho</h2>
+
+                        <p class="produto-preco">
+                            R$ 59,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a
+                                href="produto.html?id=gardens-01"
+                                class="btn-ver"
+                            >
+                                Ver detalhes
+                            </a>
+
+                            <a
+                                href="produto.html?id=gardens-01"
+                                class="btn-comprar"
+                            >
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-02"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/conjunto-moderno-preto.jpg"
+                            alt="Conjunto Moderno Preto"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Conjunto Moderno Preto</h2>
+
+                        <p class="produto-preco">
+                            R$ 59,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-02" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-02" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-03"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/conjunto-moderno-telha.jpg"
+                            alt="Conjunto Moderno Telha"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Conjunto Moderno Telha</h2>
+
+                        <p class="produto-preco">
+                            R$ 59,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-03" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-03" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-04"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/conjuto.jpg"
+                            alt="Conjunto Elegance"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Conjunto Elegance</h2>
+
+                        <p class="produto-preco">
+                            R$ 64,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-04" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-04" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-05"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-03.jpg"
+                            alt="Vestido Garden Classic"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Garden Classic</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-05" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-05" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-06"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-00001.jpg"
+                            alt="Vestido Sofisticação"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Sofisticação</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-06" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-06" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 07 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-07"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-0001.jpg"
+                            alt="Vestido Primavera"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Primavera</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-07" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-07" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 08 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-08"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-001.jpg"
+                            alt="Vestido Botânico"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Botânico</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-08" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-08" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 09 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-09"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-01.jpg"
+                            alt="Vestido Essencial"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Essencial</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-09" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-09" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 10 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-10"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-002.jpg"
+                            alt="Vestido Encanto"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Encanto</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-10" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-10" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 11 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-11"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-02.jpg"
+                            alt="Vestido Serena"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Serena</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-11" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-11" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 12 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-12"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-0003.jpg"
+                            alt="Vestido Aurora"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Aurora</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-12" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-12" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 13 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-13"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-003.jpg"
+                            alt="Vestido Harmonia"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Harmonia</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-13" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-13" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 14 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-14"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-04.jpg"
+                            alt="Vestido Nobreza"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Nobreza</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-14" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-14" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 15 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-15"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-0005.jpg"
+                            alt="Vestido Delicadeza"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Delicadeza</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-15" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-15" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 16 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-16"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-005.jpg"
+                            alt="Vestido Graça"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Graça</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-16" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-16" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 17 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-17"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido05.jpg"
+                            alt="Vestido Sublime"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Sublime</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-17" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-17" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 18 -->
+
+                <article class="produto-card">
+
+                    <a
+                        href="produto.html?id=gardens-18"
+                        class="produto-imagem"
+                    >
+                        <img
+                            src="assets/vestidos/vestido-06.jpg"
+                            alt="Vestido Plenitude"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="produto-info">
+
+                        <h2>Vestido Plenitude</h2>
+
+                        <p class="produto-preco">
+                            R$ 84,90
+                        </p>
+
+                        <div class="produto-botoes">
+
+                            <a href="produto.html?id=gardens-18" class="btn-ver">
+                                Ver detalhes
+                            </a>
+
+                            <a href="produto.html?id=gardens-18" class="btn-comprar">
+                                Comprar
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
             </div>
-            <p>Floresça a sua melhor versão todos os dias.</p>
-            <div class="copyright">
-                &copy; 2026 Garden's by Gardenia Pinheiro. Todos os direitos reservados.
-            </div>
+
         </div>
+
+    </main>
+
+
+    <!-- ==============================
+         RODAPÉ
+         ============================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-logo">
+                <img
+                    src="logo.jpg"
+                    alt="GARDEN'S"
+                >
+            </div>
+
+            <p>
+                Floresça a sua melhor versão.
+            </p>
+
+            <p>
+                © 2026 GARDEN'S. Todos os direitos reservados.
+            </p>
+
+        </div>
+
     </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+         ============================== -->
+
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const menuButton = document.getElementById("menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            if (menuButton && mobileMenu) {
+
+                menuButton.addEventListener("click", function () {
+
+                    const aberto =
+                        mobileMenu.style.display === "block";
+
+                    if (aberto) {
+
+                        mobileMenu.style.display = "none";
+
+                        menuButton.textContent = "☰";
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    } else {
+
+                        mobileMenu.style.display = "block";
+
+                        menuButton.textContent = "✕";
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "true"
+                        );
+
+                    }
+
+                });
+
+                const links =
+                    mobileMenu.querySelectorAll("a");
+
+                links.forEach(function (link) {
+
+                    link.addEventListener("click", function () {
+
+                        mobileMenu.style.display = "none";
+
+                        menuButton.textContent = "☰";
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    });
+
+                });
+
+            }
+
+        });
+    </script>
 
 </body>
 </html>
+```
