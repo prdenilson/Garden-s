@@ -1,1 +1,1482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Finalizar compra | GARDEN'S</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================
+           CHECKOUT GARDEN'S
+        ========================================= */
+
+        .checkout-page {
+            background: #f8f6f3;
+            min-height: calc(100vh - 82px);
+            padding: 45px 0 70px;
+        }
+
+        .checkout-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .checkout-title h1 {
+            color: var(--verde);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .checkout-title p {
+            color: var(--texto-claro);
+            font-size: 15px;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 380px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .checkout-card {
+            background: var(--branco);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+        }
+
+        .checkout-card + .checkout-card {
+            margin-top: 22px;
+        }
+
+        .checkout-card h2 {
+            color: var(--verde);
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 17px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+            color: #444;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 46px;
+            border: 1px solid #d8d3cd;
+            border-radius: 7px;
+            padding: 0 13px;
+            font-size: 14px;
+            color: var(--texto);
+            background: #fff;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--verde);
+            box-shadow: 0 0 0 3px rgba(45,74,62,.08);
+        }
+
+        .form-group small {
+            margin-top: 5px;
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* PAGAMENTO */
+
+        .payment-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .payment-option {
+            position: relative;
+        }
+
+        .payment-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #d8d3cd;
+            border-radius: 9px;
+            padding: 17px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .payment-option label:hover {
+            border-color: var(--verde);
+        }
+
+        .payment-option input:checked + label {
+            border-color: var(--verde);
+            background: #f4f8f5;
+            box-shadow: 0 0 0 2px rgba(45,74,62,.08);
+        }
+
+        .payment-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bege);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .payment-info strong {
+            display: block;
+            color: var(--texto);
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .payment-info span {
+            display: block;
+            color: var(--texto-claro);
+            font-size: 12px;
+        }
+
+        /* RESUMO */
+
+        .summary-card {
+            position: sticky;
+            top: 105px;
+        }
+
+        .cart-products {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-product {
+            display: flex;
+            gap: 13px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .cart-product:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .cart-product img {
+            width: 68px;
+            height: 82px;
+            object-fit: cover;
+            border-radius: 7px;
+            background: var(--bege);
+            flex-shrink: 0;
+        }
+
+        .cart-product-info {
+            flex: 1;
+        }
+
+        .cart-product-info strong {
+            display: block;
+            color: var(--texto);
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+
+        .cart-product-info span {
+            color: var(--texto-claro);
+            font-size: 12px;
+        }
+
+        .cart-product-price {
+            font-weight: 700;
+            color: var(--verde);
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: var(--borda);
+            margin: 22px 0;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .summary-line span:first-child {
+            color: var(--texto-claro);
+        }
+
+        .summary-line span:last-child {
+            font-weight: 600;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .summary-total strong:first-child {
+            color: var(--texto);
+            font-size: 16px;
+        }
+
+        .summary-total strong:last-child {
+            color: var(--verde);
+            font-size: 23px;
+        }
+
+        .checkout-button {
+            width: 100%;
+            border: none;
+            border-radius: 7px;
+            background: var(--verde);
+            color: #fff;
+            padding: 15px 18px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: .2s;
+        }
+
+        .checkout-button:hover {
+            background: var(--verde-claro);
+        }
+
+        .checkout-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .secure-message {
+            text-align: center;
+            color: #777;
+            font-size: 11px;
+            margin-top: 13px;
+            line-height: 1.5;
+        }
+
+        .empty-checkout {
+            max-width: 600px;
+            margin: 80px auto;
+            text-align: center;
+        }
+
+        .empty-checkout h2 {
+            color: var(--verde);
+            margin-bottom: 10px;
+        }
+
+        .empty-checkout p {
+            color: var(--texto-claro);
+            margin-bottom: 25px;
+        }
+
+        .back-store {
+            display: inline-block;
+            background: var(--verde);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: 700;
+        }
+
+        .message {
+            display: none;
+            margin-top: 18px;
+            padding: 13px;
+            border-radius: 7px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff1f1;
+            color: #a33;
+            border: 1px solid #f0cccc;
+        }
+
+        .message.success {
+            display: block;
+            background: #eef8f1;
+            color: #28633c;
+            border: 1px solid #c9e4d1;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 900px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
+                grid-row: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .checkout-page {
+                padding: 30px 0 50px;
+            }
+
+            .checkout-title h1 {
+                font-size: 26px;
+            }
+
+            .checkout-card {
+                padding: 20px;
+                border-radius: 9px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .cart-product img {
+                width: 60px;
+                height: 74px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container header-content">
+
+        <a href="index.html" class="logo">
+            <img src="logo.jpg" alt="GARDEN'S">
+        </a>
+
+        <nav class="menu">
+            <a href="index.html">Início</a>
+            <a href="pecas.html">Peças</a>
+            <a href="carinho.html">
+                Carrinho
+                <span id="cart-count">0</span>
+            </a>
+        </nav>
+
+        <button class="menu-button" id="menu-button" aria-label="Abrir menu">
+            ☰
+        </button>
+
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Início</a>
+        <a href="pecas.html">Peças</a>
+        <a href="carinho.html">Carrinho</a>
+    </div>
+</header>
+
+
+<main class="checkout-page">
+
+    <div class="container">
+
+        <div class="checkout-title">
+            <h1>Finalizar compra</h1>
+            <p>Preencha seus dados para receber seu pedido.</p>
+        </div>
+
+
+        <!-- =====================================
+             CHECKOUT
+        ====================================== -->
+
+        <div id="checkout-content">
+
+            <div class="checkout-layout">
+
+                <!-- =================================
+                     DADOS DO CLIENTE
+                ================================== -->
+
+                <div>
+
+                    <div class="checkout-card">
+
+                        <h2>1. Seus dados</h2>
+
+                        <div class="form-grid">
+
+                            <div class="form-group full">
+                                <label for="nome">
+                                    Nome completo *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    autocomplete="name"
+                                    placeholder="Digite seu nome completo"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="telefone">
+                                    Telefone / WhatsApp *
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="telefone"
+                                    autocomplete="tel"
+                                    placeholder="(00) 00000-0000"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email">
+                                    E-mail *
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    autocomplete="email"
+                                    placeholder="seuemail@exemplo.com"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group full">
+                                <label for="cpf">
+                                    CPF *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cpf"
+                                    inputmode="numeric"
+                                    autocomplete="off"
+                                    placeholder="000.000.000-00"
+                                    maxlength="14"
+                                    required
+                                >
+
+                                <small>
+                                    Necessário para processar o pagamento.
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         ENDEREÇO
+                    ================================== -->
+
+                    <div class="checkout-card">
+
+                        <h2>2. Endereço de entrega</h2>
+
+                        <div class="form-grid">
+
+                            <div class="form-group full">
+                                <label for="endereco">
+                                    Endereço *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="endereco"
+                                    autocomplete="street-address"
+                                    placeholder="Rua, avenida, travessa..."
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="numero">
+                                    Número *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="numero"
+                                    placeholder="Ex.: 125"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="complemento">
+                                    Complemento
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="complemento"
+                                    placeholder="Apartamento, bloco..."
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="bairro">
+                                    Bairro *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="bairro"
+                                    autocomplete="address-level3"
+                                    placeholder="Seu bairro"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="cidade">
+                                    Cidade *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cidade"
+                                    autocomplete="address-level2"
+                                    placeholder="Sua cidade"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="estado">
+                                    Estado *
+                                </label>
+
+                                <select id="estado" required>
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         PAGAMENTO
+                    ================================== -->
+
+                    <div class="checkout-card">
+
+                        <h2>3. Forma de pagamento</h2>
+
+                        <div class="payment-options">
+
+                            <div class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    id="pagamento-pix"
+                                    name="pagamento"
+                                    value="pix"
+                                    checked
+                                >
+
+                                <label for="pagamento-pix">
+
+                                    <div class="payment-icon">
+                                        ◈
+                                    </div>
+
+                                    <div class="payment-info">
+
+                                        <strong>PIX</strong>
+
+                                        <span>
+                                            Pagamento instantâneo pelo Mercado Pago
+                                        </span>
+
+                                    </div>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    id="pagamento-credito"
+                                    name="pagamento"
+                                    value="cartao_credito"
+                                >
+
+                                <label for="pagamento-credito">
+
+                                    <div class="payment-icon">
+                                        💳
+                                    </div>
+
+                                    <div class="payment-info">
+
+                                        <strong>
+                                            Cartão de crédito
+                                        </strong>
+
+                                        <span>
+                                            Pagamento seguro pela InfinitePay
+                                        </span>
+
+                                    </div>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    id="pagamento-debito"
+                                    name="pagamento"
+                                    value="cartao_debito"
+                                >
+
+                                <label for="pagamento-debito">
+
+                                    <div class="payment-icon">
+                                        💳
+                                    </div>
+
+                                    <div class="payment-info">
+
+                                        <strong>
+                                            Cartão de débito
+                                        </strong>
+
+                                        <span>
+                                            Pagamento seguro pela InfinitePay
+                                        </span>
+
+                                    </div>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="checkout-message"
+                        class="message"
+                    ></div>
+
+                </div>
+
+
+                <!-- =================================
+                     RESUMO DO PEDIDO
+                ================================== -->
+
+                <aside class="checkout-card summary-card">
+
+                    <h2>Resumo do pedido</h2>
+
+                    <div
+                        id="cart-products"
+                        class="cart-products"
+                    ></div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-line">
+
+                        <span>
+                            Produtos
+                        </span>
+
+                        <span id="subtotal">
+                            R$ 0,00
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-line">
+
+                        <span>
+                            Frete
+                        </span>
+
+                        <span>
+                            A calcular
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary-divider"></div>
+
+
+                    <div class="summary-total">
+
+                        <strong>
+                            Total
+                        </strong>
+
+                        <strong id="total">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="checkout-button"
+                        id="btn-continuar"
+                    >
+                        Continuar para pagamento
+                    </button>
+
+
+                    <div class="secure-message">
+                        🔒 Seus dados de pagamento serão processados
+                        diretamente pelo gateway de pagamento.
+                        A GARDEN'S não armazena dados do cartão.
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             CARRINHO VAZIO
+        ====================================== -->
+
+        <div
+            id="empty-checkout"
+            class="empty-checkout"
+            style="display:none;"
+        >
+
+            <h2>
+                Seu carrinho está vazio
+            </h2>
+
+            <p>
+                Adicione uma peça ao carrinho antes de finalizar a compra.
+            </p>
+
+            <a
+                href="pecas.html"
+                class="back-store"
+            >
+                Ver peças
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-logo">
+            <img
+                src="logo.jpg"
+                alt="GARDEN'S"
+            >
+        </div>
+
+        <p>
+            Floresça a sua melhor versão
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+
+<script>
+/* =========================================
+   CHECKOUT GARDEN'S
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    carregarCarrinho();
+
+    configurarMascaraCPF();
+
+    configurarMascaraTelefone();
+
+    document
+        .getElementById("btn-continuar")
+        .addEventListener("click", continuarPagamento);
+
+});
+
+
+/* =========================================
+   LER CARRINHO
+========================================= */
+
+function obterCarrinho() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("gardens_cart")
+        ) || [];
+
+    } catch (erro) {
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   CONVERTER PREÇO
+========================================= */
+
+function converterPreco(preco) {
+
+    if (typeof preco === "number") {
+
+        return preco;
+
+    }
+
+    if (!preco) {
+
+        return 0;
+
+    }
+
+    return Number(
+        String(preco)
+            .replace("R$", "")
+            .replace(/\s/g, "")
+            .replace(/\./g, "")
+            .replace(",", ".")
+    ) || 0;
+
+}
+
+
+/* =========================================
+   FORMATAR DINHEIRO
+========================================= */
+
+function formatarPreco(valor) {
+
+    return Number(valor).toLocaleString(
+        "pt-BR",
+        {
+            style: "currency",
+            currency: "BRL"
+        }
+    );
+
+}
+
+
+/* =========================================
+   CARREGAR CARRINHO
+========================================= */
+
+function carregarCarrinho() {
+
+    const carrinho = obterCarrinho();
+
+    const checkoutContent =
+        document.getElementById("checkout-content");
+
+    const emptyCheckout =
+        document.getElementById("empty-checkout");
+
+    if (carrinho.length === 0) {
+
+        checkoutContent.style.display = "none";
+
+        emptyCheckout.style.display = "block";
+
+        return;
+
+    }
+
+    checkoutContent.style.display = "block";
+
+    emptyCheckout.style.display = "none";
+
+
+    const container =
+        document.getElementById("cart-products");
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+
+    carrinho.forEach(function (item) {
+
+        const preco = converterPreco(item.preco);
+
+        const quantidade =
+            Number(item.quantidade) || 1;
+
+        const subtotal =
+            preco * quantidade;
+
+        total += subtotal;
+
+
+        const produto = document.createElement("div");
+
+        produto.className = "cart-product";
+
+
+        produto.innerHTML = `
+
+            <img
+                src="${item.imagem}"
+                alt="${item.nome}"
+            >
+
+            <div class="cart-product-info">
+
+                <strong>
+                    ${item.nome}
+                </strong>
+
+                <span>
+                    Quantidade: ${quantidade}
+                </span>
+
+            </div>
+
+            <div class="cart-product-price">
+
+                ${formatarPreco(subtotal)}
+
+            </div>
+
+        `;
+
+
+        container.appendChild(produto);
+
+    });
+
+
+    document.getElementById("subtotal").textContent =
+        formatarPreco(total);
+
+    document.getElementById("total").textContent =
+        formatarPreco(total);
+
+}
+
+
+/* =========================================
+   MÁSCARA CPF
+========================================= */
+
+function configurarMascaraCPF() {
+
+    const campo =
+        document.getElementById("cpf");
+
+
+    campo.addEventListener("input", function () {
+
+        let valor =
+            campo.value.replace(/\D/g, "");
+
+
+        valor = valor.substring(0, 11);
+
+
+        if (valor.length > 9) {
+
+            valor =
+                valor.replace(
+                    /(\d{3})(\d{3})(\d{3})(\d{1,2})/,
+                    "$1.$2.$3-$4"
+                );
+
+        } else if (valor.length > 6) {
+
+            valor =
+                valor.replace(
+                    /(\d{3})(\d{3})(\d{1,3})/,
+                    "$1.$2.$3"
+                );
+
+        } else if (valor.length > 3) {
+
+            valor =
+                valor.replace(
+                    /(\d{3})(\d{1,3})/,
+                    "$1.$2"
+                );
+
+        }
+
+
+        campo.value = valor;
+
+    });
+
+}
+
+
+/* =========================================
+   MÁSCARA TELEFONE
+========================================= */
+
+function configurarMascaraTelefone() {
+
+    const campo =
+        document.getElementById("telefone");
+
+
+    campo.addEventListener("input", function () {
+
+        let valor =
+            campo.value.replace(/\D/g, "");
+
+
+        valor = valor.substring(0, 11);
+
+
+        if (valor.length > 10) {
+
+            valor =
+                valor.replace(
+                    /(\d{2})(\d{5})(\d{4})/,
+                    "($1) $2-$3"
+                );
+
+        } else if (valor.length > 6) {
+
+            valor =
+                valor.replace(
+                    /(\d{2})(\d{4})(\d{1,4})/,
+                    "($1) $2-$3"
+                );
+
+        } else if (valor.length > 2) {
+
+            valor =
+                valor.replace(
+                    /(\d{2})(\d{1,5})/,
+                    "($1) $2"
+                );
+
+        }
+
+
+        campo.value = valor;
+
+    });
+
+}
+
+
+/* =========================================
+   VALIDAR FORMULÁRIO
+========================================= */
+
+function validarFormulario() {
+
+    const campos = [
+
+        {
+            id: "nome",
+            nome: "Nome completo"
+        },
+
+        {
+            id: "telefone",
+            nome: "Telefone / WhatsApp"
+        },
+
+        {
+            id: "email",
+            nome: "E-mail"
+        },
+
+        {
+            id: "cpf",
+            nome: "CPF"
+        },
+
+        {
+            id: "endereco",
+            nome: "Endereço"
+        },
+
+        {
+            id: "numero",
+            nome: "Número"
+        },
+
+        {
+            id: "bairro",
+            nome: "Bairro"
+        },
+
+        {
+            id: "cidade",
+            nome: "Cidade"
+        },
+
+        {
+            id: "estado",
+            nome: "Estado"
+        }
+
+    ];
+
+
+    for (const campo of campos) {
+
+        const elemento =
+            document.getElementById(campo.id);
+
+
+        if (!elemento.value.trim()) {
+
+            mostrarMensagem(
+                "Preencha o campo: " + campo.nome,
+                "error"
+            );
+
+            elemento.focus();
+
+            return false;
+
+        }
+
+    }
+
+
+    const email =
+        document.getElementById("email").value.trim();
+
+
+    const emailValido =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+
+    if (!emailValido) {
+
+        mostrarMensagem(
+            "Digite um e-mail válido.",
+            "error"
+        );
+
+        document.getElementById("email").focus();
+
+        return false;
+
+    }
+
+
+    const cpf =
+        document
+            .getElementById("cpf")
+            .value
+            .replace(/\D/g, "");
+
+
+    if (cpf.length !== 11) {
+
+        mostrarMensagem(
+            "Digite um CPF válido com 11 números.",
+            "error"
+        );
+
+        document.getElementById("cpf").focus();
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================
+   CONTINUAR PARA PAGAMENTO
+========================================= */
+
+function continuarPagamento() {
+
+    if (!validarFormulario()) {
+
+        return;
+
+    }
+
+
+    const carrinho =
+        obterCarrinho();
+
+
+    if (carrinho.length === 0) {
+
+        mostrarMensagem(
+            "Seu carrinho está vazio.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const metodoPagamento =
+        document.querySelector(
+            'input[name="pagamento"]:checked'
+        ).value;
+
+
+    const total =
+        carrinho.reduce(function (soma, item) {
+
+            return soma +
+                (
+                    converterPreco(item.preco) *
+                    (Number(item.quantidade) || 1)
+                );
+
+        }, 0);
+
+
+    const pedido = {
+
+        cliente_nome:
+            document.getElementById("nome").value.trim(),
+
+        telefone:
+            document.getElementById("telefone").value.trim(),
+
+        email:
+            document.getElementById("email").value.trim(),
+
+        cpf:
+            document
+                .getElementById("cpf")
+                .value
+                .replace(/\D/g, ""),
+
+        endereco:
+            document.getElementById("endereco").value.trim(),
+
+        numero:
+            document.getElementById("numero").value.trim(),
+
+        complemento:
+            document.getElementById("complemento").value.trim(),
+
+        bairro:
+            document.getElementById("bairro").value.trim(),
+
+        cidade:
+            document.getElementById("cidade").value.trim(),
+
+        estado:
+            document.getElementById("estado").value,
+
+        valor:
+            total,
+
+        metodo_pagamento:
+            metodoPagamento,
+
+        status_pagamento:
+            "pendente",
+
+        produtos:
+            carrinho
+
+    };
+
+
+    /*
+     * POR ENQUANTO, GUARDAMOS OS DADOS
+     * DO PEDIDO LOCALMENTE.
+     *
+     * NA PRÓXIMA ETAPA:
+     *
+     * PIX
+     * → Supabase Edge Function
+     * → Mercado Pago
+     * → QR Code
+     * → confirmação automática
+     *
+     * CARTÃO
+     * → InfinitePay
+     */
+
+
+    localStorage.setItem(
+        "gardens_checkout",
+        JSON.stringify(pedido)
+    );
+
+
+    mostrarMensagem(
+        "Dados preenchidos corretamente. O pagamento será conectado na próxima etapa.",
+        "success"
+    );
+
+
+    console.log(
+        "Pedido preparado:",
+        pedido
+    );
+
+}
+
+
+/* =========================================
+   MENSAGEM
+========================================= */
+
+function mostrarMensagem(texto, tipo) {
+
+    const mensagem =
+        document.getElementById("checkout-message");
+
+
+    mensagem.textContent = texto;
+
+    mensagem.className =
+        "message " + tipo;
+
+
+    mensagem.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+</script>
+
+</body>
+</html>
