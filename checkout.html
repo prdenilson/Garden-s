@@ -1062,6 +1062,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     configurarTelefone();
 
+    carregarDadosCliente();
+
 
     const botao =
         document.getElementById("btn-continuar");
@@ -1568,17 +1570,74 @@ function validarFormulario() {
 
 }
 
+    function carregarDadosCliente() {
+
+    let dadosCliente = null;
+
+    try {
+
+        dadosCliente = JSON.parse(
+            localStorage.getItem("gardens_cliente")
+        );
+
+    } catch (erro) {
+
+        dadosCliente = null;
+    }
+
+    if (!dadosCliente) {
+        return;
+    }
+
+    if (dadosCliente.nome) {
+        document.getElementById("nome").value = dadosCliente.nome;
+    }
+
+    if (dadosCliente.telefone) {
+        document.getElementById("telefone").value = dadosCliente.telefone;
+    }
+
+    if (dadosCliente.email) {
+        document.getElementById("email").value = dadosCliente.email;
+    }
+
+    if (dadosCliente.endereco) {
+        document.getElementById("endereco").value = dadosCliente.endereco;
+    }
+
+    if (dadosCliente.numero) {
+        document.getElementById("numero").value = dadosCliente.numero;
+    }
+
+    if (dadosCliente.complemento) {
+        document.getElementById("complemento").value = dadosCliente.complemento;
+    }
+
+    if (dadosCliente.bairro) {
+        document.getElementById("bairro").value = dadosCliente.bairro;
+    }
+
+    if (dadosCliente.cidade) {
+        document.getElementById("cidade").value = dadosCliente.cidade;
+    }
+
+    if (dadosCliente.estado) {
+        document.getElementById("estado").value = dadosCliente.estado;
+    }
+}
 
 /* ==================================================
    CONTINUAR PAGAMENTO
 ================================================== */
-
+     
 async function continuarPagamento() {
 
     if (!validarFormulario()) {
         return;
     }
-
+    
+    salvarDadosCliente();
+    
     const carrinho = obterCarrinho();
 
     if (!carrinho.length) {
