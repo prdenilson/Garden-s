@@ -9,25 +9,63 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* =========================================
-           CHECKOUT GARDEN'S
-        ========================================= */
+        /* ==================================================
+           AJUSTE DA LOGO
+        ================================================== */
+
+        .header .logo {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            width: 120px !important;
+            height: 52px !important;
+            min-width: 120px !important;
+            max-width: 120px !important;
+            flex: 0 0 120px !important;
+            overflow: hidden !important;
+        }
+
+        .header .logo img {
+            display: block !important;
+            width: 120px !important;
+            height: 52px !important;
+            min-width: 120px !important;
+            max-width: 120px !important;
+            min-height: 52px !important;
+            max-height: 52px !important;
+            object-fit: contain !important;
+            object-position: left center !important;
+        }
+
+        .footer-logo img {
+            display: block !important;
+            width: 120px !important;
+            height: 52px !important;
+            max-width: 120px !important;
+            max-height: 52px !important;
+            object-fit: contain !important;
+        }
+
+
+        /* ==================================================
+           CHECKOUT
+        ================================================== */
 
         .checkout-page {
             background: #f8f6f3;
             min-height: calc(100vh - 82px);
-            padding: 45px 0 70px;
+            padding: 40px 0 70px;
         }
 
         .checkout-title {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .checkout-title h1 {
             color: var(--verde);
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 30px;
+            margin-bottom: 6px;
         }
 
         .checkout-title p {
@@ -35,35 +73,45 @@
             font-size: 15px;
         }
 
+
+        /* ==================================================
+           LAYOUT
+        ================================================== */
+
         .checkout-layout {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 380px;
-            gap: 30px;
+            grid-template-columns: minmax(0, 1fr) 370px;
+            gap: 25px;
             align-items: start;
         }
 
         .checkout-card {
-            background: var(--branco);
+            background: #fff;
             border: 1px solid var(--borda);
-            border-radius: 12px;
-            padding: 28px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
 
         .checkout-card + .checkout-card {
-            margin-top: 22px;
+            margin-top: 20px;
         }
 
         .checkout-card h2 {
             color: var(--verde);
-            font-size: 20px;
-            margin-bottom: 22px;
+            font-size: 19px;
+            margin-bottom: 20px;
         }
+
+
+        /* ==================================================
+           FORMULÁRIO
+        ================================================== */
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 17px;
+            gap: 16px;
         }
 
         .form-group {
@@ -78,22 +126,21 @@
         .form-group label {
             font-size: 13px;
             font-weight: 700;
-            margin-bottom: 7px;
             color: #444;
+            margin-bottom: 6px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            height: 46px;
+            height: 45px;
             border: 1px solid #d8d3cd;
-            border-radius: 7px;
-            padding: 0 13px;
+            border-radius: 6px;
+            padding: 0 12px;
             font-size: 14px;
             color: var(--texto);
             background: #fff;
             outline: none;
-            transition: border-color .2s, box-shadow .2s;
         }
 
         .form-group input:focus,
@@ -108,11 +155,14 @@
             font-size: 11px;
         }
 
-        /* PAGAMENTO */
+
+        /* ==================================================
+           PAGAMENTO
+        ================================================== */
 
         .payment-options {
             display: grid;
-            gap: 12px;
+            gap: 10px;
         }
 
         .payment-option {
@@ -127,40 +177,33 @@
         .payment-option label {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 13px;
             border: 1px solid #d8d3cd;
-            border-radius: 9px;
-            padding: 17px;
+            border-radius: 8px;
+            padding: 14px;
             cursor: pointer;
-            transition: .2s;
-        }
-
-        .payment-option label:hover {
-            border-color: var(--verde);
         }
 
         .payment-option input:checked + label {
             border-color: var(--verde);
             background: #f4f8f5;
-            box-shadow: 0 0 0 2px rgba(45,74,62,.08);
         }
 
         .payment-icon {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: var(--bege);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 19px;
             flex-shrink: 0;
         }
 
         .payment-info strong {
             display: block;
-            color: var(--texto);
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 2px;
         }
 
@@ -170,23 +213,27 @@
             font-size: 12px;
         }
 
-        /* RESUMO */
+
+        /* ==================================================
+           RESUMO
+        ================================================== */
 
         .summary-card {
             position: sticky;
-            top: 105px;
+            top: 100px;
         }
 
         .cart-products {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 14px;
         }
 
         .cart-product {
             display: flex;
-            gap: 13px;
-            padding-bottom: 15px;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 14px;
             border-bottom: 1px solid var(--borda);
         }
 
@@ -196,11 +243,10 @@
         }
 
         .cart-product img {
-            width: 68px;
-            height: 82px;
+            width: 60px;
+            height: 72px;
             object-fit: cover;
-            border-radius: 7px;
-            background: var(--bege);
+            border-radius: 6px;
             flex-shrink: 0;
         }
 
@@ -210,35 +256,33 @@
 
         .cart-product-info strong {
             display: block;
-            color: var(--texto);
-            font-size: 14px;
-            line-height: 1.4;
-            margin-bottom: 5px;
+            font-size: 13px;
+            line-height: 1.35;
+            margin-bottom: 4px;
         }
 
         .cart-product-info span {
             color: var(--texto-claro);
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .cart-product-price {
-            font-weight: 700;
             color: var(--verde);
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 700;
             white-space: nowrap;
         }
 
         .summary-divider {
             height: 1px;
             background: var(--borda);
-            margin: 22px 0;
+            margin: 20px 0;
         }
 
         .summary-line {
             display: flex;
             justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-size: 14px;
         }
 
@@ -254,54 +298,83 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 15px;
-            margin-top: 18px;
         }
 
         .summary-total strong:first-child {
-            color: var(--texto);
             font-size: 16px;
         }
 
         .summary-total strong:last-child {
             color: var(--verde);
-            font-size: 23px;
+            font-size: 22px;
         }
+
+
+        /* ==================================================
+           BOTÃO
+        ================================================== */
 
         .checkout-button {
             width: 100%;
             border: none;
-            border-radius: 7px;
+            border-radius: 6px;
             background: var(--verde);
             color: #fff;
-            padding: 15px 18px;
+            padding: 15px;
+            margin-top: 22px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 24px;
-            transition: .2s;
         }
 
         .checkout-button:hover {
             background: var(--verde-claro);
         }
 
-        .checkout-button:disabled {
-            opacity: .6;
-            cursor: not-allowed;
-        }
-
         .secure-message {
             text-align: center;
             color: #777;
             font-size: 11px;
-            margin-top: 13px;
+            margin-top: 12px;
             line-height: 1.5;
         }
 
+
+        /* ==================================================
+           MENSAGENS
+        ================================================== */
+
+        .message {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff1f1;
+            color: #a33;
+            border: 1px solid #efcccc;
+        }
+
+        .message.success {
+            display: block;
+            background: #eef8f1;
+            color: #28633c;
+            border: 1px solid #c9e4d1;
+        }
+
+
+        /* ==================================================
+           CARRINHO VAZIO
+        ================================================== */
+
         .empty-checkout {
-            max-width: 600px;
-            margin: 80px auto;
+            max-width: 550px;
+            margin: 70px auto;
             text-align: center;
         }
 
@@ -312,7 +385,7 @@
 
         .empty-checkout p {
             color: var(--texto-claro);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .back-store {
@@ -320,36 +393,17 @@
             background: var(--verde);
             color: #fff;
             padding: 12px 20px;
-            border-radius: 7px;
+            border-radius: 6px;
             font-weight: 700;
         }
 
-        .message {
-            display: none;
-            margin-top: 18px;
-            padding: 13px;
-            border-radius: 7px;
-            font-size: 13px;
-            text-align: center;
-        }
 
-        .message.error {
-            display: block;
-            background: #fff1f1;
-            color: #a33;
-            border: 1px solid #f0cccc;
-        }
-
-        .message.success {
-            display: block;
-            background: #eef8f1;
-            color: #28633c;
-            border: 1px solid #c9e4d1;
-        }
-
-        /* RESPONSIVO */
+        /* ==================================================
+           CELULAR
+        ================================================== */
 
         @media (max-width: 900px) {
+
             .checkout-layout {
                 grid-template-columns: 1fr;
             }
@@ -358,42 +412,60 @@
                 position: static;
                 grid-row: 1;
             }
+
         }
 
         @media (max-width: 600px) {
+
             .checkout-page {
-                padding: 30px 0 50px;
+                padding: 28px 0 50px;
             }
 
             .checkout-title h1 {
-                font-size: 26px;
+                font-size: 25px;
             }
 
             .checkout-card {
                 padding: 20px;
-                border-radius: 9px;
             }
 
             .form-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
             }
 
             .form-group.full {
                 grid-column: auto;
             }
 
-            .cart-product img {
-                width: 60px;
-                height: 74px;
+            .header .logo {
+                width: 110px !important;
+                height: 48px !important;
+                min-width: 110px !important;
+                max-width: 110px !important;
+                flex-basis: 110px !important;
             }
+
+            .header .logo img {
+                width: 110px !important;
+                height: 48px !important;
+                min-width: 110px !important;
+                max-width: 110px !important;
+                min-height: 48px !important;
+                max-height: 48px !important;
+            }
+
         }
     </style>
 </head>
 
 <body>
 
+<!-- ==================================================
+     CABEÇALHO
+================================================== -->
+
 <header class="header">
+
     <div class="container header-content">
 
         <a href="index.html" class="logo">
@@ -401,51 +473,74 @@
         </a>
 
         <nav class="menu">
+
             <a href="index.html">Início</a>
+
             <a href="pecas.html">Peças</a>
+
             <a href="carinho.html">
                 Carrinho
                 <span id="cart-count">0</span>
             </a>
+
         </nav>
 
-        <button class="menu-button" id="menu-button" aria-label="Abrir menu">
+        <button
+            class="menu-button"
+            id="menu-button"
+            type="button"
+            aria-label="Abrir menu"
+        >
             ☰
         </button>
 
     </div>
 
     <div class="mobile-menu" id="mobile-menu">
+
         <a href="index.html">Início</a>
+
         <a href="pecas.html">Peças</a>
+
         <a href="carinho.html">Carrinho</a>
+
     </div>
+
 </header>
 
+
+<!-- ==================================================
+     CONTEÚDO
+================================================== -->
 
 <main class="checkout-page">
 
     <div class="container">
 
         <div class="checkout-title">
+
             <h1>Finalizar compra</h1>
-            <p>Preencha seus dados para receber seu pedido.</p>
+
+            <p>
+                Preencha seus dados para receber seu pedido.
+            </p>
+
         </div>
 
-
-        <!-- =====================================
-             CHECKOUT
-        ====================================== -->
 
         <div id="checkout-content">
 
             <div class="checkout-layout">
 
-                <!-- =================================
-                     DADOS DO CLIENTE
-                ================================== -->
+
+                <!-- ======================================
+                     COLUNA ESQUERDA
+                ======================================= -->
 
                 <div>
+
+
+                    <!-- DADOS -->
 
                     <div class="checkout-card">
 
@@ -453,7 +548,9 @@
 
                         <div class="form-grid">
 
+
                             <div class="form-group full">
+
                                 <label for="nome">
                                     Nome completo *
                                 </label>
@@ -463,12 +560,13 @@
                                     id="nome"
                                     autocomplete="name"
                                     placeholder="Digite seu nome completo"
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="telefone">
                                     Telefone / WhatsApp *
                                 </label>
@@ -478,12 +576,13 @@
                                     id="telefone"
                                     autocomplete="tel"
                                     placeholder="(00) 00000-0000"
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="email">
                                     E-mail *
                                 </label>
@@ -493,12 +592,13 @@
                                     id="email"
                                     autocomplete="email"
                                     placeholder="seuemail@exemplo.com"
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group full">
+
                                 <label for="cpf">
                                     CPF *
                                 </label>
@@ -507,15 +607,14 @@
                                     type="text"
                                     id="cpf"
                                     inputmode="numeric"
-                                    autocomplete="off"
                                     placeholder="000.000.000-00"
                                     maxlength="14"
-                                    required
                                 >
 
                                 <small>
-                                    Necessário para processar o pagamento.
+                                    Necessário para o processamento do pagamento.
                                 </small>
+
                             </div>
 
                         </div>
@@ -523,9 +622,7 @@
                     </div>
 
 
-                    <!-- =================================
-                         ENDEREÇO
-                    ================================== -->
+                    <!-- ENDEREÇO -->
 
                     <div class="checkout-card">
 
@@ -533,7 +630,9 @@
 
                         <div class="form-grid">
 
+
                             <div class="form-group full">
+
                                 <label for="endereco">
                                     Endereço *
                                 </label>
@@ -543,12 +642,13 @@
                                     id="endereco"
                                     autocomplete="street-address"
                                     placeholder="Rua, avenida, travessa..."
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="numero">
                                     Número *
                                 </label>
@@ -557,12 +657,13 @@
                                     type="text"
                                     id="numero"
                                     placeholder="Ex.: 125"
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="complemento">
                                     Complemento
                                 </label>
@@ -572,10 +673,12 @@
                                     id="complemento"
                                     placeholder="Apartamento, bloco..."
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="bairro">
                                     Bairro *
                                 </label>
@@ -583,14 +686,14 @@
                                 <input
                                     type="text"
                                     id="bairro"
-                                    autocomplete="address-level3"
                                     placeholder="Seu bairro"
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="cidade">
                                     Cidade *
                                 </label>
@@ -598,19 +701,19 @@
                                 <input
                                     type="text"
                                     id="cidade"
-                                    autocomplete="address-level2"
                                     placeholder="Sua cidade"
-                                    required
                                 >
+
                             </div>
 
 
                             <div class="form-group">
+
                                 <label for="estado">
                                     Estado *
                                 </label>
 
-                                <select id="estado" required>
+                                <select id="estado">
 
                                     <option value="">
                                         Selecione
@@ -645,6 +748,7 @@
                                     <option value="TO">Tocantins</option>
 
                                 </select>
+
                             </div>
 
                         </div>
@@ -652,15 +756,14 @@
                     </div>
 
 
-                    <!-- =================================
-                         PAGAMENTO
-                    ================================== -->
+                    <!-- PAGAMENTO -->
 
                     <div class="checkout-card">
 
                         <h2>3. Forma de pagamento</h2>
 
                         <div class="payment-options">
+
 
                             <div class="payment-option">
 
@@ -683,7 +786,7 @@
                                         <strong>PIX</strong>
 
                                         <span>
-                                            Pagamento instantâneo pelo Mercado Pago
+                                            Pagamento pelo Mercado Pago
                                         </span>
 
                                     </div>
@@ -715,7 +818,7 @@
                                         </strong>
 
                                         <span>
-                                            Pagamento seguro pela InfinitePay
+                                            Pagamento pela InfinitePay
                                         </span>
 
                                     </div>
@@ -747,7 +850,7 @@
                                         </strong>
 
                                         <span>
-                                            Pagamento seguro pela InfinitePay
+                                            Pagamento pela InfinitePay
                                         </span>
 
                                     </div>
@@ -761,34 +864,26 @@
                     </div>
 
 
-                    <div
-                        id="checkout-message"
-                        class="message"
-                    ></div>
+                    <div id="checkout-message" class="message"></div>
 
                 </div>
 
 
-                <!-- =================================
-                     RESUMO DO PEDIDO
-                ================================== -->
+                <!-- ======================================
+                     RESUMO
+                ======================================= -->
 
                 <aside class="checkout-card summary-card">
 
                     <h2>Resumo do pedido</h2>
 
-                    <div
-                        id="cart-products"
-                        class="cart-products"
-                    ></div>
+                    <div id="cart-products" class="cart-products"></div>
 
                     <div class="summary-divider"></div>
 
                     <div class="summary-line">
 
-                        <span>
-                            Produtos
-                        </span>
+                        <span>Produtos</span>
 
                         <span id="subtotal">
                             R$ 0,00
@@ -799,9 +894,7 @@
 
                     <div class="summary-line">
 
-                        <span>
-                            Frete
-                        </span>
+                        <span>Frete</span>
 
                         <span>
                             A calcular
@@ -836,9 +929,11 @@
 
 
                     <div class="secure-message">
-                        🔒 Seus dados de pagamento serão processados
-                        diretamente pelo gateway de pagamento.
+
+                        🔒 Seus dados de pagamento serão
+                        processados pelo gateway.
                         A GARDEN'S não armazena dados do cartão.
+
                     </div>
 
                 </aside>
@@ -848,9 +943,7 @@
         </div>
 
 
-        <!-- =====================================
-             CARRINHO VAZIO
-        ====================================== -->
+        <!-- CARRINHO VAZIO -->
 
         <div
             id="empty-checkout"
@@ -863,7 +956,8 @@
             </h2>
 
             <p>
-                Adicione uma peça ao carrinho antes de finalizar a compra.
+                Adicione uma peça ao carrinho antes
+                de finalizar a compra.
             </p>
 
             <a
@@ -880,15 +974,21 @@
 </main>
 
 
+<!-- ==================================================
+     RODAPÉ
+================================================== -->
+
 <footer class="footer">
 
     <div class="container">
 
         <div class="footer-logo">
+
             <img
                 src="logo.jpg"
                 alt="GARDEN'S"
             >
+
         </div>
 
         <p>
@@ -900,32 +1000,144 @@
 </footer>
 
 
-<script src="js/app.js"></script>
-
-
 <script>
-/* =========================================
-   CHECKOUT GARDEN'S
-========================================= */
+
+/* ==================================================
+   MENU
+================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    const menuButton =
+        document.getElementById("menu-button");
+
+    const mobileMenu =
+        document.getElementById("mobile-menu");
+
+
+    if (menuButton && mobileMenu) {
+
+        menuButton.addEventListener("click", function () {
+
+            if (mobileMenu.style.display === "block") {
+
+                mobileMenu.style.display = "none";
+
+                menuButton.textContent = "☰";
+
+            } else {
+
+                mobileMenu.style.display = "block";
+
+                menuButton.textContent = "✕";
+
+            }
+
+        });
+
+
+        mobileMenu
+            .querySelectorAll("a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    mobileMenu.style.display = "none";
+
+                    menuButton.textContent = "☰";
+
+                });
+
+            });
+
+    }
+
+
+    atualizarContador();
+
     carregarCarrinho();
 
-    configurarMascaraCPF();
+    configurarCPF();
 
-    configurarMascaraTelefone();
+    configurarTelefone();
 
-    document
-        .getElementById("btn-continuar")
-        .addEventListener("click", continuarPagamento);
+
+    const botao =
+        document.getElementById("btn-continuar");
+
+
+    if (botao) {
+
+        botao.addEventListener(
+            "click",
+            continuarPagamento
+        );
+
+    }
 
 });
 
 
-/* =========================================
-   LER CARRINHO
-========================================= */
+/* ==================================================
+   CONTADOR DO CARRINHO
+================================================== */
+
+function atualizarContador() {
+
+    const contador =
+        document.getElementById("cart-count");
+
+
+    if (!contador) return;
+
+
+    let carrinho = [];
+
+
+    try {
+
+        carrinho =
+            JSON.parse(
+                localStorage.getItem("gardens_cart")
+            ) || [];
+
+    } catch (erro) {
+
+        carrinho = [];
+
+    }
+
+
+    let quantidade = 0;
+
+
+    carrinho.forEach(function (item) {
+
+        quantidade +=
+            Number(item.quantidade) || 0;
+
+    });
+
+
+    contador.textContent = quantidade;
+
+
+    if (quantidade === 0) {
+
+        contador.style.display = "none";
+
+    } else {
+
+        contador.style.display = "inline-flex";
+
+    }
+
+}
+
+
+/* ==================================================
+   OBTER CARRINHO
+================================================== */
 
 function obterCarrinho() {
 
@@ -944,9 +1156,9 @@ function obterCarrinho() {
 }
 
 
-/* =========================================
-   CONVERTER PREÇO
-========================================= */
+/* ==================================================
+   PREÇO
+================================================== */
 
 function converterPreco(preco) {
 
@@ -973,10 +1185,6 @@ function converterPreco(preco) {
 }
 
 
-/* =========================================
-   FORMATAR DINHEIRO
-========================================= */
-
 function formatarPreco(valor) {
 
     return Number(valor).toLocaleString(
@@ -990,37 +1198,43 @@ function formatarPreco(valor) {
 }
 
 
-/* =========================================
-   CARREGAR CARRINHO
-========================================= */
+/* ==================================================
+   CARREGAR PRODUTOS
+================================================== */
 
 function carregarCarrinho() {
 
-    const carrinho = obterCarrinho();
+    const carrinho =
+        obterCarrinho();
 
-    const checkoutContent =
+
+    const conteudo =
         document.getElementById("checkout-content");
 
-    const emptyCheckout =
+
+    const vazio =
         document.getElementById("empty-checkout");
 
-    if (carrinho.length === 0) {
 
-        checkoutContent.style.display = "none";
+    if (!carrinho.length) {
 
-        emptyCheckout.style.display = "block";
+        conteudo.style.display = "none";
+
+        vazio.style.display = "block";
 
         return;
 
     }
 
-    checkoutContent.style.display = "block";
 
-    emptyCheckout.style.display = "none";
+    conteudo.style.display = "block";
+
+    vazio.style.display = "none";
 
 
     const container =
         document.getElementById("cart-products");
+
 
     container.innerHTML = "";
 
@@ -1030,33 +1244,48 @@ function carregarCarrinho() {
 
     carrinho.forEach(function (item) {
 
-        const preco = converterPreco(item.preco);
+        const preco =
+            converterPreco(item.preco);
+
 
         const quantidade =
             Number(item.quantidade) || 1;
 
+
         const subtotal =
             preco * quantidade;
+
 
         total += subtotal;
 
 
-        const produto = document.createElement("div");
+        const produto =
+            document.createElement("div");
 
-        produto.className = "cart-product";
+
+        produto.className =
+            "cart-product";
+
+
+        const imagem =
+            item.imagem || "";
+
+
+        const nome =
+            item.nome || "Produto";
 
 
         produto.innerHTML = `
 
             <img
-                src="${item.imagem}"
-                alt="${item.nome}"
+                src="${imagem}"
+                alt="${nome}"
             >
 
             <div class="cart-product-info">
 
                 <strong>
-                    ${item.nome}
+                    ${nome}
                 </strong>
 
                 <span>
@@ -1066,9 +1295,7 @@ function carregarCarrinho() {
             </div>
 
             <div class="cart-product-price">
-
                 ${formatarPreco(subtotal)}
-
             </div>
 
         `;
@@ -1079,23 +1306,29 @@ function carregarCarrinho() {
     });
 
 
-    document.getElementById("subtotal").textContent =
+    document.getElementById("subtotal")
+        .textContent =
         formatarPreco(total);
 
-    document.getElementById("total").textContent =
+
+    document.getElementById("total")
+        .textContent =
         formatarPreco(total);
 
 }
 
 
-/* =========================================
-   MÁSCARA CPF
-========================================= */
+/* ==================================================
+   CPF
+================================================== */
 
-function configurarMascaraCPF() {
+function configurarCPF() {
 
     const campo =
         document.getElementById("cpf");
+
+
+    if (!campo) return;
 
 
     campo.addEventListener("input", function () {
@@ -1104,7 +1337,8 @@ function configurarMascaraCPF() {
             campo.value.replace(/\D/g, "");
 
 
-        valor = valor.substring(0, 11);
+        valor =
+            valor.substring(0, 11);
 
 
         if (valor.length > 9) {
@@ -1141,14 +1375,17 @@ function configurarMascaraCPF() {
 }
 
 
-/* =========================================
-   MÁSCARA TELEFONE
-========================================= */
+/* ==================================================
+   TELEFONE
+================================================== */
 
-function configurarMascaraTelefone() {
+function configurarTelefone() {
 
     const campo =
         document.getElementById("telefone");
+
+
+    if (!campo) return;
 
 
     campo.addEventListener("input", function () {
@@ -1157,7 +1394,8 @@ function configurarMascaraTelefone() {
             campo.value.replace(/\D/g, "");
 
 
-        valor = valor.substring(0, 11);
+        valor =
+            valor.substring(0, 11);
 
 
         if (valor.length > 10) {
@@ -1194,76 +1432,80 @@ function configurarMascaraTelefone() {
 }
 
 
-/* =========================================
-   VALIDAR FORMULÁRIO
-========================================= */
+/* ==================================================
+   MENSAGEM
+================================================== */
+
+function mostrarMensagem(texto, tipo) {
+
+    const mensagem =
+        document.getElementById("checkout-message");
+
+
+    mensagem.textContent = texto;
+
+
+    mensagem.className =
+        "message " + tipo;
+
+
+    mensagem.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+/* ==================================================
+   VALIDAR
+================================================== */
 
 function validarFormulario() {
 
     const campos = [
 
-        {
-            id: "nome",
-            nome: "Nome completo"
-        },
+        ["nome", "Nome completo"],
 
-        {
-            id: "telefone",
-            nome: "Telefone / WhatsApp"
-        },
+        ["telefone", "Telefone / WhatsApp"],
 
-        {
-            id: "email",
-            nome: "E-mail"
-        },
+        ["email", "E-mail"],
 
-        {
-            id: "cpf",
-            nome: "CPF"
-        },
+        ["cpf", "CPF"],
 
-        {
-            id: "endereco",
-            nome: "Endereço"
-        },
+        ["endereco", "Endereço"],
 
-        {
-            id: "numero",
-            nome: "Número"
-        },
+        ["numero", "Número"],
 
-        {
-            id: "bairro",
-            nome: "Bairro"
-        },
+        ["bairro", "Bairro"],
 
-        {
-            id: "cidade",
-            nome: "Cidade"
-        },
+        ["cidade", "Cidade"],
 
-        {
-            id: "estado",
-            nome: "Estado"
-        }
+        ["estado", "Estado"]
 
     ];
 
 
-    for (const campo of campos) {
+    for (const item of campos) {
 
-        const elemento =
-            document.getElementById(campo.id);
+        const campo =
+            document.getElementById(item[0]);
 
 
-        if (!elemento.value.trim()) {
+        if (!campo || !campo.value.trim()) {
 
             mostrarMensagem(
-                "Preencha o campo: " + campo.nome,
+                "Preencha o campo: " + item[1],
                 "error"
             );
 
-            elemento.focus();
+
+            if (campo) {
+
+                campo.focus();
+
+            }
+
 
             return false;
 
@@ -1273,21 +1515,23 @@ function validarFormulario() {
 
 
     const email =
-        document.getElementById("email").value.trim();
+        document.getElementById("email")
+            .value
+            .trim();
 
 
-    const emailValido =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-
-    if (!emailValido) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
 
         mostrarMensagem(
             "Digite um e-mail válido.",
             "error"
         );
 
-        document.getElementById("email").focus();
+
+        document
+            .getElementById("email")
+            .focus();
+
 
         return false;
 
@@ -1304,11 +1548,15 @@ function validarFormulario() {
     if (cpf.length !== 11) {
 
         mostrarMensagem(
-            "Digite um CPF válido com 11 números.",
+            "Digite um CPF com 11 números.",
             "error"
         );
 
-        document.getElementById("cpf").focus();
+
+        document
+            .getElementById("cpf")
+            .focus();
+
 
         return false;
 
@@ -1320,9 +1568,9 @@ function validarFormulario() {
 }
 
 
-/* =========================================
-   CONTINUAR PARA PAGAMENTO
-========================================= */
+/* ==================================================
+   CONTINUAR
+================================================== */
 
 function continuarPagamento() {
 
@@ -1337,46 +1585,57 @@ function continuarPagamento() {
         obterCarrinho();
 
 
-    if (carrinho.length === 0) {
+    if (!carrinho.length) {
 
         mostrarMensagem(
             "Seu carrinho está vazio.",
             "error"
         );
 
+
         return;
 
     }
 
 
-    const metodoPagamento =
+    const pagamento =
         document.querySelector(
             'input[name="pagamento"]:checked'
-        ).value;
+        );
 
 
     const total =
-        carrinho.reduce(function (soma, item) {
+        carrinho.reduce(
+            function (soma, item) {
 
-            return soma +
-                (
+                return soma +
                     converterPreco(item.preco) *
-                    (Number(item.quantidade) || 1)
-                );
+                    (Number(item.quantidade) || 1);
 
-        }, 0);
+            },
+            0
+        );
 
 
     const pedido = {
 
         cliente_nome:
-            document.getElementById("nome").value.trim(),
+            document
+                .getElementById("nome")
+                .value
+                .trim(),
 
         telefone:
-            document.getElementById("telefone").value.trim(),
+            document
+                .getElementById("telefone")
+                .value
+                .trim(),
 
         email:
-            document.getElementById("email").value.trim(),
+            document
+                .getElementById("email")
+                .value
+                .trim(),
 
         cpf:
             document
@@ -1385,28 +1644,47 @@ function continuarPagamento() {
                 .replace(/\D/g, ""),
 
         endereco:
-            document.getElementById("endereco").value.trim(),
+            document
+                .getElementById("endereco")
+                .value
+                .trim(),
 
         numero:
-            document.getElementById("numero").value.trim(),
+            document
+                .getElementById("numero")
+                .value
+                .trim(),
 
         complemento:
-            document.getElementById("complemento").value.trim(),
+            document
+                .getElementById("complemento")
+                .value
+                .trim(),
 
         bairro:
-            document.getElementById("bairro").value.trim(),
+            document
+                .getElementById("bairro")
+                .value
+                .trim(),
 
         cidade:
-            document.getElementById("cidade").value.trim(),
+            document
+                .getElementById("cidade")
+                .value
+                .trim(),
 
         estado:
-            document.getElementById("estado").value,
+            document
+                .getElementById("estado")
+                .value,
 
         valor:
             total,
 
         metodo_pagamento:
-            metodoPagamento,
+            pagamento
+                ? pagamento.value
+                : "pix",
 
         status_pagamento:
             "pendente",
@@ -1415,23 +1693,6 @@ function continuarPagamento() {
             carrinho
 
     };
-
-
-    /*
-     * POR ENQUANTO, GUARDAMOS OS DADOS
-     * DO PEDIDO LOCALMENTE.
-     *
-     * NA PRÓXIMA ETAPA:
-     *
-     * PIX
-     * → Supabase Edge Function
-     * → Mercado Pago
-     * → QR Code
-     * → confirmação automática
-     *
-     * CARTÃO
-     * → InfinitePay
-     */
 
 
     localStorage.setItem(
@@ -1453,29 +1714,6 @@ function continuarPagamento() {
 
 }
 
-
-/* =========================================
-   MENSAGEM
-========================================= */
-
-function mostrarMensagem(texto, tipo) {
-
-    const mensagem =
-        document.getElementById("checkout-message");
-
-
-    mensagem.textContent = texto;
-
-    mensagem.className =
-        "message " + tipo;
-
-
-    mensagem.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
-
-}
 </script>
 
 </body>
