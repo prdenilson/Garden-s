@@ -865,6 +865,7 @@
 
 
                     <div id="checkout-message" class="message"></div>
+                    <div id="pix-payment" style="display:none; margin-top:20px;"></div>
 
                 </div>
 
@@ -1569,21 +1570,16 @@ function validarFormulario() {
 
 
 /* ==================================================
-   CONTINUAR
+   CONTINUAR PAGAMENTO
 ================================================== */
 
-function continuarPagamento() {
+async function continuarPagamento() {
 
     if (!validarFormulario()) {
-
         return;
-
     }
 
-
-    const carrinho =
-        obterCarrinho();
-
+    const carrinho = obterCarrinho();
 
     if (!carrinho.length) {
 
@@ -1592,128 +1588,268 @@ function continuarPagamento() {
             "error"
         );
 
-
         return;
-
     }
 
+    const pagamento = document.querySelector(
+        'input[name="pagamento"]:checked'
+    );
 
-    const pagamento =
-        document.querySelector(
-            'input[name="pagamento"]:checked'
-        );
+    const total = carrinho.reduce(
+        function (soma, item) {
 
+            return soma +
+                converterPreco(item.preco) *
+                (Number(item.quantidade) || 1);
 
-    const total =
-        carrinho.reduce(
-            function (soma, item) {
-
-                return soma +
-                    converterPreco(item.preco) *
-                    (Number(item.quantidade) || 1);
-
-            },
-            0
-        );
-
+        },
+        0
+    );
 
     const pedido = {
 
         cliente_nome:
-            document
-                .getElementById("nome")
-                .value
-                .trim(),
+            document.getElementById("nome").value.trim(),
 
         telefone:
-            document
-                .getElementById("telefone")
-                .value
-                .trim(),
+            document.getElementById("telefone").value.trim(),
 
         email:
-            document
-                .getElementById("email")
-                .value
-                .trim(),
+            document.getElementById("email").value.trim(),
 
         cpf:
-            document
-                .getElementById("cpf")
-                .value
-                .replace(/\D/g, ""),
+            document.getElementById("cpf").value.replace(/\D/g, ""),
 
         endereco:
-            document
-                .getElementById("endereco")
-                .value
-                .trim(),
+            document.getElementById("endereco").value.trim(),
 
         numero:
-            document
-                .getElementById("numero")
-                .value
-                .trim(),
+            document.getElementById("numero").value.trim(),
 
         complemento:
-            document
-                .getElementById("complemento")
-                .value
-                .trim(),
+            document.getElementById("complemento").value.trim(),
 
         bairro:
-            document
-                .getElementById("bairro")
-                .value
-                .trim(),
+            document.getElementById("bairro").value.trim(),
 
         cidade:
-            document
-                .getElementById("cidade")
-                .value
-                .trim(),
+            document.getElementById("cidade").value.trim(),
 
         estado:
-            document
-                .getElementById("estado")
-                .value,
+            document.getElementById("estado").value,
 
         valor:
             total,
 
         metodo_pagamento:
-            pagamento
-                ? pagamento.value
-                : "pix",
-
-        status_pagamento:
-            "pendente",
+            pagamento ? pagamento.value : "pix",
 
         produtos:
             carrinho
-
     };
-
 
     localStorage.setItem(
         "gardens_checkout",
         JSON.stringify(pedido)
     );
 
+    const botao =
+        document.getElementById("btn-continuar");
+
+    botao.disabled = true;
+
+    botao.textContent =
+        "Gerando pagamento...";
 
     mostrarMensagem(
-        "Dados preenchidos corretamente. O pagamento será conectado na próxima etapa.",
+        "Estamos preparando seu pagamento PIX...",
         "success"
     );
 
+    try {
 
-    console.log(
-        "Pedido preparado:",
-        pedido
-    );
+        const resposta = await fetch(
+            "https://kiefyoedeervkrtrkghj.supabase.co/functions/v1/criar-pix",
+            {
+                method: "POST",
 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(pedido)
+            }
+        );
+
+        const resultado =
+            await resposta.json();
+
+        console.log(
+            "Resposta do criar-pix:",
+            resultado
+        );
+
+        if (!resposta.ok || !resultado.sucesso) {
+
+            throw new Error(
+                resultado.error ||
+                "Não foi possível criar o pagamento."
+            );
+        }
+
+        localStorage.setItem(
+            "gardens_pix",
+            JSON.stringify(resultado)
+        );
+
+        mostrarPagamentoPix(resultado);
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao criar PIX:",
+            erro
+        );
+
+        mostrarMensagem(
+            "Não foi possível gerar o PIX. Verifique a função criar-pix no Supabase.",
+            "error"
+        );
+
+        botao.disabled = false;
+
+        botao.textContent =
+            "Continuar para pagamento";
+    }
 }
 
+function mostrarPagamentoPix(resultado) {
+
+    const area = document.getElementById("pix-payment");
+
+    if (!area) {
+        return;
+    }
+
+    area.style.display = "block";
+
+    area.innerHTML = `
+
+        <div style="
+            background:#fff;
+            border:1px solid #d8d3cd;
+            border-radius:10px;
+            padding:25px;
+            text-align:center;
+        ">
+
+            <h2 style="
+                color:var(--verde);
+                margin-bottom:10px;
+            ">
+                PIX gerado com sucesso
+            </h2>
+
+            <p style="
+                color:var(--texto-claro);
+                margin-bottom:20px;
+            ">
+                Escaneie o QR Code pelo aplicativo do seu banco
+                para realizar o pagamento.
+            </p>
+
+            ${
+                resultado.qr_code_base64
+                ?
+                `
+                <img
+                    src="data:image/png;base64,${resultado.qr_code_base64}"
+                    alt="QR Code PIX"
+                    style="
+                        width:260px;
+                        max-width:100%;
+                        margin:0 auto 20px;
+                    "
+                >
+                `
+                :
+                ""
+            }
+
+            <p style="
+                font-weight:700;
+                color:var(--verde);
+                margin-bottom:10px;
+            ">
+                PIX Copia e Cola
+            </p>
+
+            <textarea
+                id="pix-copia-cola"
+                readonly
+                style="
+                    width:100%;
+                    min-height:100px;
+                    padding:10px;
+                    border:1px solid #d8d3cd;
+                    border-radius:6px;
+                    resize:none;
+                    font-size:12px;
+                "
+            >${resultado.qr_code || ""}</textarea>
+
+            <button
+                type="button"
+                onclick="copiarPix()"
+                style="
+                    width:100%;
+                    border:0;
+                    border-radius:6px;
+                    background:var(--verde);
+                    color:#fff;
+                    padding:14px;
+                    margin-top:12px;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                Copiar código PIX
+            </button>
+
+            ${
+                resultado.ticket_url
+                ?
+                `
+                <a
+                    href="${resultado.ticket_url}"
+                    target="_blank"
+                    style="
+                        display:block;
+                        margin-top:15px;
+                        color:var(--verde);
+                        font-weight:700;
+                    "
+                >
+                    Abrir pagamento
+                </a>
+                `
+                :
+                ""
+            }
+
+            <p style="
+                color:#777;
+                font-size:12px;
+                margin-top:18px;
+            ">
+                Após o pagamento, a confirmação será feita
+                automaticamente pelo Mercado Pago.
+            </p>
+
+        </div>
+    `;
+}
+    
 </script>
 
 </body>
