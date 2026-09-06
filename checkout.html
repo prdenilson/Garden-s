@@ -1908,7 +1908,32 @@ function mostrarPagamentoPix(resultado) {
         </div>
     `;
 }
-    
+
+    `;
+}
+
+function copiarPix() {
+    const campoPix = document.getElementById("pix-copia-cola");
+
+    if (!campoPix) {
+        alert("Código PIX não encontrado.");
+        return;
+    }
+
+    const codigo = campoPix.value;
+
+    navigator.clipboard.writeText(codigo)
+        .then(() => {
+            alert("Código PIX copiado!");
+        })
+        .catch(() => {
+            campoPix.select();
+            document.execCommand("copy");
+            alert("Código PIX copiado!");
+        });
+
+        }
+      
 </script>
 
 </body>
