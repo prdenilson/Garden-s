@@ -1555,41 +1555,99 @@ function configurarTelefone() {
 
 function configurarCEP() {
 
-    const campo =
-        document.getElementById("cep");
-
+    const campo = document.getElementById("cep");
 
     if (!campo) return;
 
-
     campo.addEventListener("input", function () {
 
-        let valor =
-            campo.value.replace(/\D/g, "");
+        let valor = campo.value.replace(/\D/g, "");
 
-
-        valor =
-            valor.substring(0, 8);
-
+        valor = valor.substring(0, 8);
 
         if (valor.length > 5) {
-
-            valor =
-                valor.replace(
-                    /(\d{5})(\d{1,3})/,
-                    "$1-$2"
-                );
-
+            valor = valor.replace(
+                /(\d{5})(\d{1,3})/,
+                "$1-$2"
+            );
         }
 
+        campo.value = valor;
 
-        campo.value =
-            valor;
+    });
+
+
+    campo.addEventListener("blur", async function () {
+
+        const cep = campo.value.replace(/\D/g, "");
+
+        if (cep.length !== 8) {
+            return;
+        }
+
+        const endereco = document.getElementById("endereco");
+        const bairro = document.getElementById("bairro");
+        const cidade = document.getElementById("cidade");
+        const estado = document.getElementById("estado");
+
+        try {
+
+            endereco.value = "Consultando...";
+            bairro.value = "Consultando...";
+            cidade.value = "Consultando...";
+            estado.value = "Consultando...";
+
+            const resposta = await fetch(
+                `https://viacep.com.br/ws/${cep}/json/`
+            );
+
+            if (!resposta.ok) {
+                throw new Error(
+                    "Não foi possível consultar o CEP."
+                );
+            }
+
+            const dados = await resposta.json();
+
+            if (dados.erro) {
+
+                endereco.value = "";
+                bairro.value = "";
+                cidade.value = "";
+                estado.value = "";
+
+                alert("CEP não encontrado.");
+
+                return;
+            }
+
+            endereco.value = dados.logradouro || "";
+            bairro.value = dados.bairro || "";
+            cidade.value = dados.localidade || "";
+            estado.value = dados.uf || "";
+
+            document.getElementById("numero")?.focus();
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao consultar CEP:",
+                erro
+            );
+
+            endereco.value = "";
+            bairro.value = "";
+            cidade.value = "";
+            estado.value = "";
+
+            alert(
+                "Não foi possível consultar o CEP. Tente novamente."
+            );
+        }
 
     });
 
 }
-
 
 /* ==================================================
    MENSAGEM
