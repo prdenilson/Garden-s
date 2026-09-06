@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+
         /* ==================================================
            AJUSTE DA LOGO
         ================================================== */
@@ -455,32 +456,43 @@
             }
 
         }
+
     </style>
 </head>
 
 <body>
-
-<!-- ==================================================
-     CABEÇALHO
-================================================== -->
 
 <header class="header">
 
     <div class="container header-content">
 
         <a href="index.html" class="logo">
-            <img src="logo.jpg" alt="GARDEN'S">
+
+            <img
+                src="logo.jpg"
+                alt="GARDEN'S"
+            >
+
         </a>
 
         <nav class="menu">
 
-            <a href="index.html">Início</a>
+            <a href="index.html">
+                Início
+            </a>
 
-            <a href="pecas.html">Peças</a>
+            <a href="pecas.html">
+                Peças
+            </a>
 
             <a href="carinho.html">
+
                 Carrinho
-                <span id="cart-count">0</span>
+
+                <span id="cart-count">
+                    0
+                </span>
+
             </a>
 
         </nav>
@@ -496,22 +508,28 @@
 
     </div>
 
-    <div class="mobile-menu" id="mobile-menu">
 
-        <a href="index.html">Início</a>
+    <div
+        class="mobile-menu"
+        id="mobile-menu"
+    >
 
-        <a href="pecas.html">Peças</a>
+        <a href="index.html">
+            Início
+        </a>
 
-        <a href="carinho.html">Carrinho</a>
+        <a href="pecas.html">
+            Peças
+        </a>
+
+        <a href="carinho.html">
+            Carrinho
+        </a>
 
     </div>
 
 </header>
 
-
-<!-- ==================================================
-     CONTEÚDO
-================================================== -->
 
 <main class="checkout-page">
 
@@ -519,7 +537,9 @@
 
         <div class="checkout-title">
 
-            <h1>Finalizar compra</h1>
+            <h1>
+                Finalizar compra
+            </h1>
 
             <p>
                 Preencha seus dados para receber seu pedido.
@@ -532,22 +552,19 @@
 
             <div class="checkout-layout">
 
-
-                <!-- ======================================
-                     COLUNA ESQUERDA
-                ======================================= -->
-
                 <div>
 
-
-                    <!-- DADOS -->
+                    <!-- ==========================================
+                         DADOS DO CLIENTE
+                    =========================================== -->
 
                     <div class="checkout-card">
 
-                        <h2>1. Seus dados</h2>
+                        <h2>
+                            1. Seus dados
+                        </h2>
 
                         <div class="form-grid">
-
 
                             <div class="form-group full">
 
@@ -567,40 +584,44 @@
 
                             <div class="form-group">
 
-                               <label for="telefone">
-    Telefone / WhatsApp *
-</label>
+                                <label for="telefone">
+                                    Telefone / WhatsApp *
+                                </label>
 
-<div style="display:flex; align-items:center; gap:8px;">
+                                <div style="
+                                    display:flex;
+                                    align-items:center;
+                                    gap:8px;
+                                ">
 
-    <span style="
-        height:45px;
-        display:flex;
-        align-items:center;
-        padding:0 12px;
-        background:#f5f3f0;
-        border:1px solid #d8d3cd;
-        border-radius:6px;
-        font-size:14px;
-        font-weight:700;
-        color:#444;
-    ">
-        +55
-    </span>
+                                    <span style="
+                                        height:45px;
+                                        display:flex;
+                                        align-items:center;
+                                        padding:0 12px;
+                                        background:#f5f3f0;
+                                        border:1px solid #d8d3cd;
+                                        border-radius:6px;
+                                        font-size:14px;
+                                        font-weight:700;
+                                        color:#444;
+                                    ">
+                                        +55
+                                    </span>
 
-    <input
-        type="tel"
-        id="telefone"
-        autocomplete="tel"
-        placeholder="(00) 00000-0000"
-        style="flex:1;"
-    >
+                                    <input
+                                        type="tel"
+                                        id="telefone"
+                                        autocomplete="tel"
+                                        placeholder="(00) 00000-0000"
+                                        style="flex:1;"
+                                    >
 
-</div>
+                                </div>
 
-<small>
-    Digite apenas o DDD e o número do telefone.
-</small>
+                                <small>
+                                    Digite apenas o DDD e o número do telefone.
+                                </small>
 
                             </div>
 
@@ -646,13 +667,40 @@
                     </div>
 
 
-                    <!-- ENDEREÇO -->
+                    <!-- ==========================================
+                         ENDEREÇO
+                    =========================================== -->
 
                     <div class="checkout-card">
 
-                        <h2>2. Endereço de entrega</h2>
+                        <h2>
+                            2. Endereço de entrega
+                        </h2>
 
                         <div class="form-grid">
+
+                            <!-- CEP NOVO -->
+
+                            <div class="form-group">
+
+                                <label for="cep">
+                                    CEP *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cep"
+                                    inputmode="numeric"
+                                    autocomplete="postal-code"
+                                    placeholder="00000-000"
+                                    maxlength="9"
+                                >
+
+                                <small>
+                                    Digite o CEP com 8 números.
+                                </small>
+
+                            </div>
 
 
                             <div class="form-group full">
@@ -780,14 +828,17 @@
                     </div>
 
 
-                    <!-- PAGAMENTO -->
+                    <!-- ==========================================
+                         PAGAMENTO
+                    =========================================== -->
 
                     <div class="checkout-card">
 
-                        <h2>3. Forma de pagamento</h2>
+                        <h2>
+                            3. Forma de pagamento
+                        </h2>
 
                         <div class="payment-options">
-
 
                             <div class="payment-option">
 
@@ -807,7 +858,9 @@
 
                                     <div class="payment-info">
 
-                                        <strong>PIX</strong>
+                                        <strong>
+                                            PIX
+                                        </strong>
 
                                         <span>
                                             Pagamento pelo Mercado Pago
@@ -888,27 +941,44 @@
                     </div>
 
 
-                    <div id="checkout-message" class="message"></div>
-                    <div id="pix-payment" style="display:none; margin-top:20px;"></div>
+                    <div
+                        id="checkout-message"
+                        class="message"
+                    ></div>
+
+
+                    <div
+                        id="pix-payment"
+                        style="display:none; margin-top:20px;"
+                    ></div>
 
                 </div>
 
 
-                <!-- ======================================
+                <!-- ==========================================
                      RESUMO
-                ======================================= -->
+                =========================================== -->
 
                 <aside class="checkout-card summary-card">
 
-                    <h2>Resumo do pedido</h2>
+                    <h2>
+                        Resumo do pedido
+                    </h2>
 
-                    <div id="cart-products" class="cart-products"></div>
+                    <div
+                        id="cart-products"
+                        class="cart-products"
+                    ></div>
+
 
                     <div class="summary-divider"></div>
 
+
                     <div class="summary-line">
 
-                        <span>Produtos</span>
+                        <span>
+                            Produtos
+                        </span>
 
                         <span id="subtotal">
                             R$ 0,00
@@ -919,7 +989,9 @@
 
                     <div class="summary-line">
 
-                        <span>Frete</span>
+                        <span>
+                            Frete
+                        </span>
 
                         <span>
                             A calcular
@@ -968,7 +1040,9 @@
         </div>
 
 
-        <!-- CARRINHO VAZIO -->
+        <!-- ==========================================
+             CARRINHO VAZIO
+        =========================================== -->
 
         <div
             id="empty-checkout"
@@ -999,10 +1073,6 @@
 </main>
 
 
-<!-- ==================================================
-     RODAPÉ
-================================================== -->
-
 <footer class="footer">
 
     <div class="container">
@@ -1026,6 +1096,7 @@
 
 
 <script>
+
 
 /* ==================================================
    MENU
@@ -1085,6 +1156,8 @@ document.addEventListener("DOMContentLoaded", function () {
     configurarCPF();
 
     configurarTelefone();
+
+    configurarCEP();
 
     carregarDadosCliente();
 
@@ -1146,16 +1219,19 @@ function atualizarContador() {
     });
 
 
-    contador.textContent = quantidade;
+    contador.textContent =
+        quantidade;
 
 
     if (quantidade === 0) {
 
-        contador.style.display = "none";
+        contador.style.display =
+            "none";
 
     } else {
 
-        contador.style.display = "inline-flex";
+        contador.style.display =
+            "inline-flex";
 
     }
 
@@ -1195,11 +1271,13 @@ function converterPreco(preco) {
 
     }
 
+
     if (!preco) {
 
         return 0;
 
     }
+
 
     return Number(
         String(preco)
@@ -1236,31 +1314,41 @@ function carregarCarrinho() {
 
 
     const conteudo =
-        document.getElementById("checkout-content");
+        document.getElementById(
+            "checkout-content"
+        );
 
 
     const vazio =
-        document.getElementById("empty-checkout");
+        document.getElementById(
+            "empty-checkout"
+        );
 
 
     if (!carrinho.length) {
 
-        conteudo.style.display = "none";
+        conteudo.style.display =
+            "none";
 
-        vazio.style.display = "block";
+        vazio.style.display =
+            "block";
 
         return;
 
     }
 
 
-    conteudo.style.display = "block";
+    conteudo.style.display =
+        "block";
 
-    vazio.style.display = "none";
+    vazio.style.display =
+        "none";
 
 
     const container =
-        document.getElementById("cart-products");
+        document.getElementById(
+            "cart-products"
+        );
 
 
     container.innerHTML = "";
@@ -1395,7 +1483,8 @@ function configurarCPF() {
         }
 
 
-        campo.value = valor;
+        campo.value =
+            valor;
 
     });
 
@@ -1452,7 +1541,50 @@ function configurarTelefone() {
         }
 
 
-        campo.value = valor;
+        campo.value =
+            valor;
+
+    });
+
+}
+
+
+/* ==================================================
+   CEP
+================================================== */
+
+function configurarCEP() {
+
+    const campo =
+        document.getElementById("cep");
+
+
+    if (!campo) return;
+
+
+    campo.addEventListener("input", function () {
+
+        let valor =
+            campo.value.replace(/\D/g, "");
+
+
+        valor =
+            valor.substring(0, 8);
+
+
+        if (valor.length > 5) {
+
+            valor =
+                valor.replace(
+                    /(\d{5})(\d{1,3})/,
+                    "$1-$2"
+                );
+
+        }
+
+
+        campo.value =
+            valor;
 
     });
 
@@ -1466,10 +1598,13 @@ function configurarTelefone() {
 function mostrarMensagem(texto, tipo) {
 
     const mensagem =
-        document.getElementById("checkout-message");
+        document.getElementById(
+            "checkout-message"
+        );
 
 
-    mensagem.textContent = texto;
+    mensagem.textContent =
+        texto;
 
 
     mensagem.className =
@@ -1500,6 +1635,8 @@ function validarFormulario() {
 
         ["cpf", "CPF"],
 
+        ["cep", "CEP"],
+
         ["endereco", "Endereço"],
 
         ["numero", "Número"],
@@ -1516,13 +1653,16 @@ function validarFormulario() {
     for (const item of campos) {
 
         const campo =
-            document.getElementById(item[0]);
+            document.getElementById(
+                item[0]
+            );
 
 
         if (!campo || !campo.value.trim()) {
 
             mostrarMensagem(
-                "Preencha o campo: " + item[1],
+                "Preencha o campo: " +
+                item[1],
                 "error"
             );
 
@@ -1547,7 +1687,10 @@ function validarFormulario() {
             .trim();
 
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email)
+    ) {
 
         mostrarMensagem(
             "Digite um e-mail válido.",
@@ -1590,79 +1733,237 @@ function validarFormulario() {
     }
 
 
+    const cep =
+        document
+            .getElementById("cep")
+            .value
+            .replace(/\D/g, "");
+
+
+    if (cep.length !== 8) {
+
+        mostrarMensagem(
+            "Digite um CEP com 8 números.",
+            "error"
+        );
+
+
+        document
+            .getElementById("cep")
+            .focus();
+
+
+        return false;
+
+    }
+
+
     return true;
 
 }
 
-    function carregarDadosCliente() {
+
+/* ==================================================
+   SALVAR DADOS DO CLIENTE
+================================================== */
+
+function salvarDadosCliente() {
+
+    const dadosCliente = {
+
+        nome:
+            document.getElementById("nome")
+                .value
+                .trim(),
+
+        telefone:
+            document.getElementById("telefone")
+                .value
+                .trim(),
+
+        email:
+            document.getElementById("email")
+                .value
+                .trim(),
+
+        cep:
+            document.getElementById("cep")
+                .value
+                .trim(),
+
+        endereco:
+            document.getElementById("endereco")
+                .value
+                .trim(),
+
+        numero:
+            document.getElementById("numero")
+                .value
+                .trim(),
+
+        complemento:
+            document.getElementById("complemento")
+                .value
+                .trim(),
+
+        bairro:
+            document.getElementById("bairro")
+                .value
+                .trim(),
+
+        cidade:
+            document.getElementById("cidade")
+                .value
+                .trim(),
+
+        estado:
+            document.getElementById("estado")
+                .value
+
+    };
+
+
+    localStorage.setItem(
+        "gardens_cliente",
+        JSON.stringify(dadosCliente)
+    );
+
+}
+
+
+/* ==================================================
+   CARREGAR DADOS DO CLIENTE
+================================================== */
+
+function carregarDadosCliente() {
 
     let dadosCliente = null;
 
+
     try {
 
-        dadosCliente = JSON.parse(
-            localStorage.getItem("gardens_cliente")
-        );
+        dadosCliente =
+            JSON.parse(
+                localStorage.getItem(
+                    "gardens_cliente"
+                )
+            );
 
     } catch (erro) {
 
         dadosCliente = null;
+
     }
+
 
     if (!dadosCliente) {
+
         return;
+
     }
+
 
     if (dadosCliente.nome) {
-        document.getElementById("nome").value = dadosCliente.nome;
+
+        document.getElementById("nome").value =
+            dadosCliente.nome;
+
     }
+
 
     if (dadosCliente.telefone) {
-        document.getElementById("telefone").value = dadosCliente.telefone;
+
+        document.getElementById("telefone").value =
+            dadosCliente.telefone;
+
     }
+
 
     if (dadosCliente.email) {
-        document.getElementById("email").value = dadosCliente.email;
+
+        document.getElementById("email").value =
+            dadosCliente.email;
+
     }
+
+
+    if (dadosCliente.cep) {
+
+        document.getElementById("cep").value =
+            dadosCliente.cep;
+
+    }
+
 
     if (dadosCliente.endereco) {
-        document.getElementById("endereco").value = dadosCliente.endereco;
+
+        document.getElementById("endereco").value =
+            dadosCliente.endereco;
+
     }
+
 
     if (dadosCliente.numero) {
-        document.getElementById("numero").value = dadosCliente.numero;
+
+        document.getElementById("numero").value =
+            dadosCliente.numero;
+
     }
+
 
     if (dadosCliente.complemento) {
-        document.getElementById("complemento").value = dadosCliente.complemento;
+
+        document.getElementById("complemento").value =
+            dadosCliente.complemento;
+
     }
+
 
     if (dadosCliente.bairro) {
-        document.getElementById("bairro").value = dadosCliente.bairro;
+
+        document.getElementById("bairro").value =
+            dadosCliente.bairro;
+
     }
+
 
     if (dadosCliente.cidade) {
-        document.getElementById("cidade").value = dadosCliente.cidade;
+
+        document.getElementById("cidade").value =
+            dadosCliente.cidade;
+
     }
 
+
     if (dadosCliente.estado) {
-        document.getElementById("estado").value = dadosCliente.estado;
+
+        document.getElementById("estado").value =
+            dadosCliente.estado;
+
     }
+
 }
+
 
 /* ==================================================
    CONTINUAR PAGAMENTO
 ================================================== */
-     
+
 async function continuarPagamento() {
 
     if (!validarFormulario()) {
+
         return;
+
     }
-    
+
+
     salvarDadosCliente();
-    
-    const carrinho = obterCarrinho();
+
+
+    const carrinho =
+        obterCarrinho();
+
 
     if (!carrinho.length) {
 
@@ -1672,120 +1973,177 @@ async function continuarPagamento() {
         );
 
         return;
+
     }
 
-    const pagamento = document.querySelector(
-        'input[name="pagamento"]:checked'
-    );
 
-    const total = carrinho.reduce(
-        function (soma, item) {
+    const pagamento =
+        document.querySelector(
+            'input[name="pagamento"]:checked'
+        );
 
-            return soma +
-                converterPreco(item.preco) *
-                (Number(item.quantidade) || 1);
 
-        },
-        0
-    );
+    const total =
+        carrinho.reduce(
+            function (soma, item) {
+
+                return soma +
+                    converterPreco(item.preco) *
+                    (Number(item.quantidade) || 1);
+
+            },
+            0
+        );
+
 
     const pedido = {
 
         cliente_nome:
-            document.getElementById("nome").value.trim(),
+            document.getElementById("nome")
+                .value
+                .trim(),
 
         telefone:
-            document.getElementById("telefone").value.trim(),
+            document.getElementById("telefone")
+                .value
+                .trim(),
 
         email:
-            document.getElementById("email").value.trim(),
+            document.getElementById("email")
+                .value
+                .trim(),
 
         cpf:
-            document.getElementById("cpf").value.replace(/\D/g, ""),
+            document.getElementById("cpf")
+                .value
+                .replace(/\D/g, ""),
+
+        cep:
+            document.getElementById("cep")
+                .value
+                .replace(/\D/g, ""),
 
         endereco:
-            document.getElementById("endereco").value.trim(),
+            document.getElementById("endereco")
+                .value
+                .trim(),
 
         numero:
-            document.getElementById("numero").value.trim(),
+            document.getElementById("numero")
+                .value
+                .trim(),
 
         complemento:
-            document.getElementById("complemento").value.trim(),
+            document.getElementById("complemento")
+                .value
+                .trim(),
 
         bairro:
-            document.getElementById("bairro").value.trim(),
+            document.getElementById("bairro")
+                .value
+                .trim(),
 
         cidade:
-            document.getElementById("cidade").value.trim(),
+            document.getElementById("cidade")
+                .value
+                .trim(),
 
         estado:
-            document.getElementById("estado").value,
+            document.getElementById("estado")
+                .value,
 
         valor:
             total,
 
         metodo_pagamento:
-            pagamento ? pagamento.value : "pix",
+            pagamento
+                ? pagamento.value
+                : "pix",
 
         produtos:
             carrinho
+
     };
+
 
     localStorage.setItem(
         "gardens_checkout",
         JSON.stringify(pedido)
     );
 
+
     const botao =
-        document.getElementById("btn-continuar");
+        document.getElementById(
+            "btn-continuar"
+        );
+
 
     botao.disabled = true;
 
+
     botao.textContent =
         "Gerando pagamento...";
+
 
     mostrarMensagem(
         "Estamos preparando seu pagamento PIX...",
         "success"
     );
 
+
     try {
 
-        const resposta = await fetch(
-            "https://kiefyoedeervkrtrkghj.supabase.co/functions/v1/criar-pix",
-            {
-                method: "POST",
+        const resposta =
+            await fetch(
+                "https://kiefyoedeervkrtrkghj.supabase.co/functions/v1/criar-pix",
+                {
+                    method: "POST",
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                body: JSON.stringify(pedido)
-            }
-        );
+                    body:
+                        JSON.stringify(pedido)
+
+                }
+            );
+
 
         const resultado =
             await resposta.json();
+
 
         console.log(
             "Resposta do criar-pix:",
             resultado
         );
 
-        if (!resposta.ok || !resultado.sucesso) {
+
+        if (
+            !resposta.ok ||
+            !resultado.sucesso
+        ) {
 
             throw new Error(
                 resultado.error ||
                 "Não foi possível criar o pagamento."
             );
+
         }
+
 
         localStorage.setItem(
             "gardens_pix",
             JSON.stringify(resultado)
         );
 
-        mostrarPagamentoPix(resultado);
+
+        mostrarPagamentoPix(
+            resultado
+        );
+
 
     } catch (erro) {
 
@@ -1794,27 +2152,46 @@ async function continuarPagamento() {
             erro
         );
 
+
         mostrarMensagem(
             "Não foi possível gerar o PIX. Verifique a função criar-pix no Supabase.",
             "error"
         );
 
+
         botao.disabled = false;
+
 
         botao.textContent =
             "Continuar para pagamento";
+
     }
+
 }
+
+
+/* ==================================================
+   MOSTRAR PAGAMENTO PIX
+================================================== */
 
 function mostrarPagamentoPix(resultado) {
 
-    const area = document.getElementById("pix-payment");
+    const area =
+        document.getElementById(
+            "pix-payment"
+        );
+
 
     if (!area) {
+
         return;
+
     }
 
-    area.style.display = "block";
+
+    area.style.display =
+        "block";
+
 
     area.innerHTML = `
 
@@ -1833,6 +2210,7 @@ function mostrarPagamentoPix(resultado) {
                 PIX gerado com sucesso
             </h2>
 
+
             <p style="
                 color:var(--texto-claro);
                 margin-bottom:20px;
@@ -1840,6 +2218,7 @@ function mostrarPagamentoPix(resultado) {
                 Escaneie o QR Code pelo aplicativo do seu banco
                 para realizar o pagamento.
             </p>
+
 
             ${
                 resultado.qr_code_base64
@@ -1859,6 +2238,7 @@ function mostrarPagamentoPix(resultado) {
                 ""
             }
 
+
             <p style="
                 font-weight:700;
                 color:var(--verde);
@@ -1866,6 +2246,7 @@ function mostrarPagamentoPix(resultado) {
             ">
                 PIX Copia e Cola
             </p>
+
 
             <textarea
                 id="pix-copia-cola"
@@ -1880,6 +2261,7 @@ function mostrarPagamentoPix(resultado) {
                     font-size:12px;
                 "
             >${resultado.qr_code || ""}</textarea>
+
 
             <button
                 type="button"
@@ -1899,6 +2281,7 @@ function mostrarPagamentoPix(resultado) {
                 Copiar código PIX
             </button>
 
+
             ${
                 resultado.ticket_url
                 ?
@@ -1906,6 +2289,7 @@ function mostrarPagamentoPix(resultado) {
                 <a
                     href="${resultado.ticket_url}"
                     target="_blank"
+                    rel="noopener noreferrer"
                     style="
                         display:block;
                         margin-top:15px;
@@ -1920,42 +2304,131 @@ function mostrarPagamentoPix(resultado) {
                 ""
             }
 
+
             <p style="
                 color:#777;
                 font-size:12px;
                 margin-top:18px;
             ">
-                Após o pagamento, a confirmação será feita
-                automaticamente pelo Mercado Pago.
+                Após o pagamento, a confirmação será
+                feita automaticamente pelo Mercado Pago.
             </p>
 
         </div>
+
     `;
+
 }
 
 
+/* ==================================================
+   COPIAR PIX
+================================================== */
+
 function copiarPix() {
-    const campoPix = document.getElementById("pix-copia-cola");
+
+    const campoPix =
+        document.getElementById(
+            "pix-copia-cola"
+        );
+
 
     if (!campoPix) {
-        alert("Código PIX não encontrado.");
+
+        alert(
+            "Código PIX não encontrado."
+        );
+
         return;
+
     }
 
-    const codigo = campoPix.value;
 
-    navigator.clipboard.writeText(codigo)
-        .then(() => {
-            alert("Código PIX copiado!");
-        })
-        .catch(() => {
-            campoPix.select();
+    const codigo =
+        campoPix.value;
+
+
+    if (
+        navigator.clipboard &&
+        window.isSecureContext
+    ) {
+
+        navigator.clipboard
+            .writeText(codigo)
+            .then(function () {
+
+                alert(
+                    "Código PIX copiado!"
+                );
+
+            })
+            .catch(function () {
+
+                copiarPixFallback(
+                    campoPix
+                );
+
+            });
+
+    } else {
+
+        copiarPixFallback(
+            campoPix
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   FALLBACK COPIAR PIX
+================================================== */
+
+function copiarPixFallback(campoPix) {
+
+    campoPix.focus();
+
+
+    campoPix.select();
+
+
+    campoPix.setSelectionRange(
+        0,
+        campoPix.value.length
+    );
+
+
+    try {
+
+        const sucesso =
             document.execCommand("copy");
-            alert("Código PIX copiado!");
-        });
+
+
+        if (sucesso) {
+
+            alert(
+                "Código PIX copiado!"
+            );
+
+        } else {
+
+            alert(
+                "Não foi possível copiar automaticamente. Selecione o código PIX e copie manualmente."
+            );
 
         }
-      
+
+    } catch (erro) {
+
+        alert(
+            "Não foi possível copiar automaticamente. Selecione o código PIX e copie manualmente."
+        );
+
+    }
+
+}
+
 </script>
 
 </body>
