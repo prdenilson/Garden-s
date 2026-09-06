@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Finalizar compra | GARDEN'S</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
     <style>
 
@@ -332,6 +341,11 @@
             background: var(--verde-claro);
         }
 
+        .checkout-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         .secure-message {
             text-align: center;
             color: #777;
@@ -458,9 +472,12 @@
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
 <header class="header">
 
@@ -475,6 +492,7 @@
 
         </a>
 
+
         <nav class="menu">
 
             <a href="index.html">
@@ -486,16 +504,14 @@
             </a>
 
             <a href="carinho.html">
-
                 Carrinho
-
                 <span id="cart-count">
                     0
                 </span>
-
             </a>
 
         </nav>
+
 
         <button
             class="menu-button"
@@ -531,6 +547,7 @@
 </header>
 
 
+
 <main class="checkout-page">
 
     <div class="container">
@@ -554,6 +571,7 @@
 
                 <div>
 
+
                     <!-- ==========================================
                          DADOS DO CLIENTE
                     =========================================== -->
@@ -564,7 +582,9 @@
                             1. Seus dados
                         </h2>
 
+
                         <div class="form-grid">
+
 
                             <div class="form-group full">
 
@@ -582,11 +602,13 @@
                             </div>
 
 
+
                             <div class="form-group">
 
                                 <label for="telefone">
                                     Telefone / WhatsApp *
                                 </label>
+
 
                                 <div style="
                                     display:flex;
@@ -609,6 +631,7 @@
                                         +55
                                     </span>
 
+
                                     <input
                                         type="tel"
                                         id="telefone"
@@ -619,11 +642,13 @@
 
                                 </div>
 
+
                                 <small>
                                     Digite apenas o DDD e o número do telefone.
                                 </small>
 
                             </div>
+
 
 
                             <div class="form-group">
@@ -640,6 +665,7 @@
                                 >
 
                             </div>
+
 
 
                             <div class="form-group full">
@@ -667,6 +693,7 @@
                     </div>
 
 
+
                     <!-- ==========================================
                          ENDEREÇO
                     =========================================== -->
@@ -677,9 +704,9 @@
                             2. Endereço de entrega
                         </h2>
 
+
                         <div class="form-grid">
 
-                            <!-- CEP NOVO -->
 
                             <div class="form-group">
 
@@ -703,6 +730,7 @@
                             </div>
 
 
+
                             <div class="form-group full">
 
                                 <label for="endereco">
@@ -717,6 +745,7 @@
                                 >
 
                             </div>
+
 
 
                             <div class="form-group">
@@ -734,6 +763,7 @@
                             </div>
 
 
+
                             <div class="form-group">
 
                                 <label for="complemento">
@@ -747,6 +777,7 @@
                                 >
 
                             </div>
+
 
 
                             <div class="form-group">
@@ -764,6 +795,7 @@
                             </div>
 
 
+
                             <div class="form-group">
 
                                 <label for="cidade">
@@ -777,6 +809,7 @@
                                 >
 
                             </div>
+
 
 
                             <div class="form-group">
@@ -828,6 +861,7 @@
                     </div>
 
 
+
                     <!-- ==========================================
                          PAGAMENTO
                     =========================================== -->
@@ -838,7 +872,9 @@
                             3. Forma de pagamento
                         </h2>
 
+
                         <div class="payment-options">
+
 
                             <div class="payment-option">
 
@@ -873,6 +909,7 @@
                             </div>
 
 
+
                             <div class="payment-option">
 
                                 <input
@@ -903,6 +940,7 @@
                                 </label>
 
                             </div>
+
 
 
                             <div class="payment-option">
@@ -941,6 +979,7 @@
                     </div>
 
 
+
                     <div
                         id="checkout-message"
                         class="message"
@@ -955,6 +994,7 @@
                 </div>
 
 
+
                 <!-- ==========================================
                      RESUMO
                 =========================================== -->
@@ -964,6 +1004,7 @@
                     <h2>
                         Resumo do pedido
                     </h2>
+
 
                     <div
                         id="cart-products"
@@ -1040,6 +1081,7 @@
         </div>
 
 
+
         <!-- ==========================================
              CARRINHO VAZIO
         =========================================== -->
@@ -1073,6 +1115,7 @@
 </main>
 
 
+
 <footer class="footer">
 
     <div class="container">
@@ -1095,7 +1138,19 @@
 </footer>
 
 
+
 <script>
+
+
+/* ==================================================
+   CONFIGURAÇÕES
+================================================== */
+
+const HYPER_HANDLER_URL =
+    "https://kiefyoedeervkrtrkghj.supabase.co/functions/v1/hyper-handler";
+
+
+let monitoramentoPagamento = null;
 
 
 /* ==================================================
@@ -1555,59 +1610,99 @@ function configurarTelefone() {
 
 function configurarCEP() {
 
-    const campo = document.getElementById("cep");
+    const campo =
+        document.getElementById("cep");
+
 
     if (!campo) return;
 
+
     campo.addEventListener("input", function () {
 
-        let valor = campo.value.replace(/\D/g, "");
+        let valor =
+            campo.value.replace(/\D/g, "");
 
-        valor = valor.substring(0, 8);
+
+        valor =
+            valor.substring(0, 8);
+
 
         if (valor.length > 5) {
-            valor = valor.replace(
-                /(\d{5})(\d{1,3})/,
-                "$1-$2"
-            );
+
+            valor =
+                valor.replace(
+                    /(\d{5})(\d{1,3})/,
+                    "$1-$2"
+                );
+
         }
 
-        campo.value = valor;
+
+        campo.value =
+            valor;
 
     });
 
 
     campo.addEventListener("blur", async function () {
 
-        const cep = campo.value.replace(/\D/g, "");
+        const cep =
+            campo.value.replace(/\D/g, "");
+
 
         if (cep.length !== 8) {
+
             return;
+
         }
 
-        const endereco = document.getElementById("endereco");
-        const bairro = document.getElementById("bairro");
-        const cidade = document.getElementById("cidade");
-        const estado = document.getElementById("estado");
+
+        const endereco =
+            document.getElementById("endereco");
+
+        const bairro =
+            document.getElementById("bairro");
+
+        const cidade =
+            document.getElementById("cidade");
+
+        const estado =
+            document.getElementById("estado");
+
 
         try {
 
-            endereco.value = "Consultando...";
-            bairro.value = "Consultando...";
-            cidade.value = "Consultando...";
-            estado.value = "Consultando...";
+            endereco.value =
+                "Consultando...";
 
-            const resposta = await fetch(
-                `https://viacep.com.br/ws/${cep}/json/`
-            );
+            bairro.value =
+                "Consultando...";
+
+            cidade.value =
+                "Consultando...";
+
+            estado.value =
+                "Consultando...";
+
+
+            const resposta =
+                await fetch(
+                    `https://viacep.com.br/ws/${cep}/json/`
+                );
+
 
             if (!resposta.ok) {
+
                 throw new Error(
                     "Não foi possível consultar o CEP."
                 );
+
             }
 
-            const dados = await resposta.json();
+
+            const dados =
+                await resposta.json();
+
 
             if (dados.erro) {
 
@@ -1616,17 +1711,32 @@ function configurarCEP() {
                 cidade.value = "";
                 estado.value = "";
 
-                alert("CEP não encontrado.");
+                alert(
+                    "CEP não encontrado."
+                );
 
                 return;
+
             }
 
-            endereco.value = dados.logradouro || "";
-            bairro.value = dados.bairro || "";
-            cidade.value = dados.localidade || "";
-            estado.value = dados.uf || "";
 
-            document.getElementById("numero")?.focus();
+            endereco.value =
+                dados.logradouro || "";
+
+            bairro.value =
+                dados.bairro || "";
+
+            cidade.value =
+                dados.localidade || "";
+
+            estado.value =
+                dados.uf || "";
+
+
+            document
+                .getElementById("numero")
+                ?.focus();
+
 
         } catch (erro) {
 
@@ -1635,25 +1745,32 @@ function configurarCEP() {
                 erro
             );
 
+
             endereco.value = "";
             bairro.value = "";
             cidade.value = "";
             estado.value = "";
 
+
             alert(
                 "Não foi possível consultar o CEP. Tente novamente."
             );
+
         }
 
     });
 
 }
 
+
 /* ==================================================
    MENSAGEM
 ================================================== */
 
-function mostrarMensagem(texto, tipo) {
+function mostrarMensagem(
+    texto,
+    tipo
+) {
 
     const mensagem =
         document.getElementById(
@@ -1740,14 +1857,15 @@ function validarFormulario() {
 
 
     const email =
-        document.getElementById("email")
+        document
+            .getElementById("email")
             .value
             .trim();
 
 
     if (
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        .test(email)
+            .test(email)
     ) {
 
         mostrarMensagem(
@@ -2203,6 +2321,15 @@ async function continuarPagamento() {
         );
 
 
+        /* ==========================================
+           INICIAR MONITORAMENTO
+        ========================================== */
+
+        iniciarMonitoramentoPagamento(
+            resultado.payment_id
+        );
+
+
     } catch (erro) {
 
         console.error(
@@ -2363,13 +2490,29 @@ function mostrarPagamentoPix(resultado) {
             }
 
 
+            <div
+                id="status-pagamento"
+                style="
+                    margin-top:20px;
+                    padding:14px;
+                    border-radius:8px;
+                    background:#fff8e8;
+                    color:#795b16;
+                    font-size:13px;
+                    font-weight:600;
+                "
+            >
+                ⏳ Aguardando confirmação do pagamento...
+            </div>
+
+
             <p style="
                 color:#777;
                 font-size:12px;
                 margin-top:18px;
             ">
-                Após o pagamento, a confirmação será
-                feita automaticamente pelo Mercado Pago.
+                Assim que o pagamento for confirmado,
+                esta página será atualizada automaticamente.
             </p>
 
         </div>
@@ -2378,6 +2521,264 @@ function mostrarPagamentoPix(resultado) {
 
 }
 
+
+/* ==================================================
+   MONITORAR PAGAMENTO
+================================================== */
+
+function iniciarMonitoramentoPagamento(
+    paymentId
+) {
+
+    if (!paymentId) {
+
+        console.error(
+            "Payment ID não encontrado."
+        );
+
+        return;
+
+    }
+
+
+    pararMonitoramentoPagamento();
+
+
+    console.log(
+        "Iniciando monitoramento do pagamento:",
+        paymentId
+    );
+
+
+    consultarStatusPagamento(
+        paymentId
+    );
+
+
+    monitoramentoPagamento =
+        setInterval(
+            function () {
+
+                consultarStatusPagamento(
+                    paymentId
+                );
+
+            },
+            5000
+        );
+
+}
+
+
+/* ==================================================
+   PARAR MONITORAMENTO
+================================================== */
+
+function pararMonitoramentoPagamento() {
+
+    if (monitoramentoPagamento) {
+
+        clearInterval(
+            monitoramentoPagamento
+        );
+
+        monitoramentoPagamento =
+            null;
+
+    }
+
+}
+
+
+/* ==================================================
+   CONSULTAR STATUS DO PAGAMENTO
+================================================== */
+
+async function consultarStatusPagamento(
+    paymentId
+) {
+
+    try {
+
+        const resposta =
+            await fetch(
+                `${HYPER_HANDLER_URL}?payment_id=${encodeURIComponent(paymentId)}`,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!resposta.ok) {
+
+            console.log(
+                "Consulta de pagamento retornou:",
+                resposta.status
+            );
+
+            return;
+
+        }
+
+
+        const resultado =
+            await resposta.json();
+
+
+        console.log(
+            "Status do pagamento:",
+            resultado
+        );
+
+
+        if (
+            resultado.sucesso &&
+            resultado.status_pedido === "pago"
+        ) {
+
+            pagamentoAprovado();
+
+            return;
+
+        }
+
+
+        if (
+            resultado.sucesso &&
+            (
+                resultado.status_pedido === "rejeitado" ||
+                resultado.status_pedido === "cancelado"
+            )
+        ) {
+
+            pagamentoRecusado(
+                resultado.status_pedido
+            );
+
+        }
+
+    } catch (erro) {
+
+        console.log(
+            "Aguardando consulta do pagamento...",
+            erro
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   PAGAMENTO APROVADO
+================================================== */
+
+function pagamentoAprovado() {
+
+    pararMonitoramentoPagamento();
+
+
+    const status =
+        document.getElementById(
+            "status-pagamento"
+        );
+
+
+    if (status) {
+
+        status.style.background =
+            "#eef8f1";
+
+        status.style.color =
+            "#28633c";
+
+        status.style.border =
+            "1px solid #c9e4d1";
+
+        status.innerHTML =
+            "✅ Pagamento aprovado! Seu pedido foi confirmado.";
+
+    }
+
+
+    const botao =
+        document.getElementById(
+            "btn-continuar"
+        );
+
+
+    if (botao) {
+
+        botao.disabled = true;
+
+        botao.textContent =
+            "Pagamento aprovado ✓";
+
+    }
+
+
+    mostrarMensagem(
+        "Pagamento aprovado! Seu pedido foi confirmado com sucesso.",
+        "success"
+    );
+
+
+    localStorage.setItem(
+        "gardens_pagamento_status",
+        "pago"
+    );
+
+}
+
+
+/* ==================================================
+   PAGAMENTO RECUSADO / CANCELADO
+================================================== */
+
+function pagamentoRecusado(
+    statusPagamento
+) {
+
+    pararMonitoramentoPagamento();
+
+
+    const status =
+        document.getElementById(
+            "status-pagamento"
+        );
+
+
+    if (status) {
+
+        status.style.background =
+            "#fff1f1";
+
+        status.style.color =
+            "#a33";
+
+        status.style.border =
+            "1px solid #efcccc";
+
+
+        if (
+            statusPagamento ===
+            "rejeitado"
+        ) {
+
+            status.innerHTML =
+                "❌ O pagamento foi rejeitado.";
+
+        } else {
+
+            status.innerHTML =
+                "❌ O pagamento foi cancelado.";
+
+        }
+
+    }
+
+}
 
 
 /* ==================================================
@@ -2444,7 +2845,9 @@ function copiarPix() {
    FALLBACK COPIAR PIX
 ================================================== */
 
-function copiarPixFallback(campoPix) {
+function copiarPixFallback(
+    campoPix
+) {
 
     campoPix.focus();
 
@@ -2490,5 +2893,7 @@ function copiarPixFallback(campoPix) {
 
 </script>
 
+
 </body>
+
 </html>
