@@ -567,16 +567,40 @@
 
                             <div class="form-group">
 
-                                <label for="telefone">
-                                    Telefone / WhatsApp *
-                                </label>
+                               <label for="telefone">
+    Telefone / WhatsApp *
+</label>
 
-                                <input
-                                    type="tel"
-                                    id="telefone"
-                                    autocomplete="tel"
-                                    placeholder="(00) 00000-0000"
-                                >
+<div style="display:flex; align-items:center; gap:8px;">
+
+    <span style="
+        height:45px;
+        display:flex;
+        align-items:center;
+        padding:0 12px;
+        background:#f5f3f0;
+        border:1px solid #d8d3cd;
+        border-radius:6px;
+        font-size:14px;
+        font-weight:700;
+        color:#444;
+    ">
+        +55
+    </span>
+
+    <input
+        type="tel"
+        id="telefone"
+        autocomplete="tel"
+        placeholder="(00) 00000-0000"
+        style="flex:1;"
+    >
+
+</div>
+
+<small>
+    Digite apenas o DDD e o número do telefone.
+</small>
 
                             </div>
 
