@@ -471,6 +471,112 @@
 
         }
 
+        /* ==================================================
+           MODAL — CARTÃO DE CRÉDITO
+        ================================================== */
+
+        .modal-cartao {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.55);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-cartao.ativo {
+            display: flex;
+        }
+
+        .modal-cartao-conteudo {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            background: #fff;
+            border-radius: 14px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.20);
+            animation: aparecerModalCartao 0.2s ease-out;
+        }
+
+        .modal-cartao-icone {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .modal-cartao-conteudo h2 {
+            color: var(--verde);
+            font-size: 22px;
+            margin: 0 0 15px;
+        }
+
+        .modal-cartao-conteudo p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .modal-cartao-destaque {
+            background: #f7faf8;
+            border: 1px solid #dfe5e1;
+            border-radius: 8px;
+            padding: 14px;
+            margin: 18px 0;
+            color: #444;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .modal-cartao-fechar {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: var(--verde);
+            color: #fff;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .modal-cartao-fechar:hover {
+            background: var(--verde-claro);
+        }
+
+        @keyframes aparecerModalCartao {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .modal-cartao {
+                padding: 15px;
+            }
+
+            .modal-cartao-conteudo {
+                padding: 25px 20px;
+                max-width: 100%;
+            }
+
+            .modal-cartao-conteudo h2 {
+                font-size: 20px;
+            }
+
+        }
+        
     </style>
 
 </head>
@@ -1146,7 +1252,57 @@
 
 </footer>
 
+<!-- ==================================================
+     MODAL — CARTÃO DE CRÉDITO
+================================================== -->
 
+<div
+    id="modal-cartao-credito"
+    class="modal-cartao"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-modal-cartao"
+>
+
+    <div class="modal-cartao-conteudo">
+
+        <div class="modal-cartao-icone">
+            💳
+        </div>
+
+        <h2 id="titulo-modal-cartao">
+            Pagamento com cartão de crédito
+        </h2>
+
+        <p>
+            Estamos ajustando nosso site para receber
+            pagamentos com cartão de crédito.
+        </p>
+
+        <p>
+            No momento, essa modalidade ainda não está
+            disponível diretamente pelo site.
+        </p>
+
+        <div class="modal-cartao-destaque">
+            Se você deseja pagar com cartão de crédito,
+            entre em contato conosco.
+            <br><br>
+            Podemos levar a maquininha até você para
+            realizar o pagamento.
+        </div>
+
+        <button
+            type="button"
+            id="fechar-modal-cartao-credito"
+            class="modal-cartao-fechar"
+        >
+            VOLTAR AO CHECKOUT
+        </button>
+
+    </div>
+
+</div>
 
 <script>
 
@@ -1168,6 +1324,25 @@ let monitoramentoPagamento = null;
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    /* ==================================================
+       MODAL — CARTÃO DE CRÉDITO
+    ================================================== */
+
+    const modalCartaoCredito =
+        document.getElementById("modal-cartao-credito");
+
+    const fecharModalCartaoCredito =
+        document.getElementById("fechar-modal-cartao-credito");
+
+    if (fecharModalCartaoCredito) {
+        fecharModalCartaoCredito.addEventListener("click", function () {
+
+            modalCartaoCredito.classList.remove("ativo");
+
+            document.body.style.overflow = "";
+        });
+    }
+    
     const menuButton =
         document.getElementById("menu-button");
 
@@ -2136,6 +2311,30 @@ function carregarDadosCliente() {
 
 async function continuarPagamento() {
 
+    /* ==================================================
+       CARTÃO DE CRÉDITO — AVISO TEMPORÁRIO
+    ================================================== */
+
+    const pagamentoSelecionado =
+        document.querySelector(
+            'input[name="pagamento"]:checked'
+        );
+
+    if (
+        pagamentoSelecionado &&
+        pagamentoSelecionado.value === "cartao_credito"
+    ) {
+        const modalCartaoCredito =
+            document.getElementById("modal-cartao-credito");
+
+        if (modalCartaoCredito) {
+            modalCartaoCredito.classList.add("ativo");
+            document.body.style.overflow = "hidden";
+        }
+
+        return;
+    }
+    
     if (!validarFormulario()) {
 
         return;
