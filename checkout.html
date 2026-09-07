@@ -990,7 +990,16 @@
                         id="pix-payment"
                         style="display:none; margin-top:20px;"
                     ></div>
+                  
+    <!-- ==========================================
+     CONFIRMAÇÃO DO PEDIDO
+    =========================================== -->
 
+<div
+    id="confirmacao-pedido"
+    style="display:none; margin-top:20px;"
+></div>
+                    
                 </div>
 
 
@@ -2003,7 +2012,7 @@ function salvarDadosCliente() {
         "gardens_cliente",
         JSON.stringify(dadosCliente)
     );
-
+  
 }
 
 
@@ -2728,10 +2737,293 @@ function pagamentoAprovado() {
         "gardens_pagamento_status",
         "pago"
     );
-
+mostrarConfirmacaoPedido();
 }
 
+    function mostrarConfirmacaoPedido() {
 
+    const pedido = JSON.parse(
+        localStorage.getItem("gardens_checkout") || "{}"
+    );
+
+    const carrinho = JSON.parse(
+        localStorage.getItem("gardens_cart") || "[]"
+    );
+
+    const confirmacao =
+        document.getElementById("confirmacao-pedido");
+
+    if (!confirmacao) return;
+
+    let produtosHTML = "";
+
+    carrinho.forEach(produto => {
+
+        const quantidade =
+            produto.quantidade || produto.qtd || 1;
+
+        const preco =
+            Number(produto.preco || produto.price || 0);
+
+        produtosHTML += `
+            <div style="
+                padding:10px 0;
+                border-bottom:1px solid #eee;
+            ">
+                <strong>${produto.nome || produto.name || "Produto"}</strong><br>
+                Quantidade: ${quantidade}<br>
+                Valor: R$ ${(preco * quantidade).toFixed(2).replace(".", ",")}
+            </div>
+        `;
+    });
+
+    const valorTotal =
+        Number(pedido.valor || 0)
+            .toFixed(2)
+            .replace(".", ",");
+
+    confirmacao.innerHTML = `
+
+        <div style="
+            background:#fff;
+            border:1px solid #dfe5e1;
+            border-radius:12px;
+            padding:20px;
+        ">
+
+            <h2 style="
+                margin-top:0;
+                color:#28633c;
+            ">
+                ✅ Pedido confirmado
+            </h2>
+
+            <p>
+                <strong>Status:</strong>
+                <span style="color:#28633c;">
+                    PAGAMENTO APROVADO
+                </span>
+            </p>
+
+            <hr>
+
+            <h3>👤 Dados do cliente</h3>
+
+            <p>
+                <strong>Nome:</strong>
+                ${pedido.cliente_nome || "—"}
+            </p>
+
+            <p>
+                <strong>Telefone:</strong>
+                ${pedido.telefone || "—"}
+            </p>
+
+            <p>
+                <strong>E-mail:</strong>
+                ${pedido.email || "—"}
+            </p>
+
+            <h3>📍 Endereço de entrega</h3>
+
+            <p>
+                ${pedido.endereco || "—"},
+                ${pedido.numero || "—"}
+                ${pedido.complemento ? " - " + pedido.complemento : ""}
+            </p>
+
+            <p>
+                ${pedido.bairro || "—"} —
+                ${pedido.cidade || "—"} /
+                ${pedido.estado || "—"}
+            </p>
+
+            <p>
+                <strong>CEP:</strong>
+                ${pedido.cep || "—"}
+            </p>
+
+            <h3>🛍️ Produtos</h3>
+
+            ${produtosHTML || "<p>Produto não informado.</p>"}
+
+            <div style="
+                margin-top:15px;
+                padding-top:15px;
+                border-top:2px solid #ddd;
+            ">
+
+                <p>
+                    <strong>Forma de pagamento:</strong>
+                    PIX
+                </p>
+
+                <p style="
+                    font-size:20px;
+                    font-weight:bold;
+                    color:#28633c;
+                ">
+                    Total: R$ ${valorTotal}
+                </p>
+
+            </div>
+<div style="
+    margin-top:20px;
+    padding:15px;
+    background:#f7faf8;
+    border-radius:8px;
+">
+
+    <strong>
+        Confira seus dados antes de enviar.
+    </strong>
+
+    <p style="margin-bottom:15px;">
+        Se estiver tudo correto, confirme para enviar
+        os dados do pedido pelo WhatsApp.
+    </p>
+
+    <button
+        type="button"
+        id="btn-whatsapp-pedido"
+        style="
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:8px;
+            background:#28633c;
+            color:#fff;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+        "
+    >
+        CONFIRMAR DADOS E ENVIAR PELO WHATSAPP
+    </button>
+
+    <button
+        type="button"
+        id="btn-corrigir-dados"
+        style="
+            width:100%;
+            margin-top:10px;
+            padding:12px;
+            border:1px solid #28633c;
+            border-radius:8px;
+            background:#fff;
+            color:#28633c;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+        "
+    >
+        CORRIGIR DADOS
+    </button>
+
+</div>
+
+        </div>
+    `;
+
+    confirmacao.style.display = "block";
+}
+
+function enviarPedidoWhatsApp() {
+
+    const pedido = JSON.parse(
+        localStorage.getItem("gardens_checkout") || "{}"
+    );
+
+    const carrinho = JSON.parse(
+        localStorage.getItem("gardens_cart") || "[]"
+    );
+
+    const valorTotal =
+        Number(pedido.valor || 0)
+            .toFixed(2)
+            .replace(".", ",");
+
+    let produtos = "";
+
+    carrinho.forEach(produto => {
+
+        const quantidade =
+            produto.quantidade || produto.qtd || 1;
+
+        const preco =
+            Number(produto.preco || produto.price || 0);
+
+        produtos +=
+            `• ${produto.nome || produto.name || "Produto"}`
+            + ` — ${quantidade}x`
+            + ` — R$ ${(preco * quantidade)
+                .toFixed(2)
+                .replace(".", ",")}\n`;
+    });
+
+    const mensagem =
+`🛍️ *NOVO PEDIDO — GARDEN'S*
+
+✅ *PAGAMENTO PIX APROVADO*
+
+*CLIENTE*
+Nome: ${pedido.cliente_nome || "—"}
+Telefone: ${pedido.telefone || "—"}
+E-mail: ${pedido.email || "—"}
+
+*ENDEREÇO DE ENTREGA*
+${pedido.endereco || "—"}, ${pedido.numero || "—"}${pedido.complemento ? " - " + pedido.complemento : ""}
+${pedido.bairro || "—"}
+${pedido.cidade || "—"} - ${pedido.estado || "—"}
+CEP: ${pedido.cep || "—"}
+
+*PRODUTOS*
+${produtos || "Produto não informado."}
+
+*PAGAMENTO*
+Forma: PIX
+Status: APROVADO
+*TOTAL: R$ ${valorTotal}*
+
+Pedido enviado automaticamente pela loja GARDEN'S.`;
+
+    const numeroWhatsApp = "5585988590024";
+
+    const url =
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
+        encodeURIComponent(mensagem);
+
+    window.open(url, "_blank");
+}
+
+document.addEventListener("click", function(event) {
+
+    if (event.target.id === "btn-whatsapp-pedido") {
+
+        enviarPedidoWhatsApp();
+
+    }
+
+    if (event.target.id === "btn-corrigir-dados") {
+
+        const confirmacao =
+            document.getElementById("confirmacao-pedido");
+
+        if (confirmacao) {
+            confirmacao.style.display = "none";
+        }
+
+       window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
+
+    }
+
+});
+    
 /* ==================================================
    PAGAMENTO RECUSADO / CANCELADO
 ================================================== */
