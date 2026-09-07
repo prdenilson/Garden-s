@@ -2950,7 +2950,7 @@ function enviarPedidoWhatsApp() {
             produto.quantidade || produto.qtd || 1;
 
         const preco =
-            Number(produto.preco || produto.price || 0);
+    converterPreco(produto.preco || produto.price || 0);
 
         produtos +=
             `• ${produto.nome || produto.name || "Produto"}`
