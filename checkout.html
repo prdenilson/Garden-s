@@ -2949,15 +2949,18 @@ function enviarPedidoWhatsApp() {
         const quantidade =
             produto.quantidade || produto.qtd || 1;
 
-        const preco =
-    converterPreco(produto.preco || produto.price || 0);
+        const precoTexto =
+    produto.preco || produto.price || "0";
 
-        produtos +=
-            `• ${produto.nome || produto.name || "Produto"}`
-            + ` — ${quantidade}x`
-            + ` — R$ ${(preco * quantidade)
-                .toFixed(2)
-                .replace(".", ",")}\n`;
+const preco =
+    converterPreco(precoTexto);
+
+produtos +=
+    `• ${produto.nome || produto.name || "Produto"}`
+    + ` — ${quantidade}x`
+    + ` — R$ ${(preco * quantidade)
+        .toFixed(2)
+        .replace(".", ",")}\n`;
     });
 
     const mensagem =
