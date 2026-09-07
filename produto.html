@@ -753,43 +753,63 @@ const supabaseClient = window.supabase.createClient(
             document.title =
                 produto.nome + " | GARDEN'S";
 
-                        /*
-             * CONTROLE DE ESTOQUE
-             */
+                       /*
+ * CONTROLE DE ESTOQUE REAL
+ */
 
-            const botaoAdicionar =
-                document.getElementById("btn-adicionar");
+const botaoAdicionar =
+    document.getElementById("btn-adicionar");
 
-            if (produto.estoque <= 0) {
+const { data: produtoBanco, error: erroEstoque } =
+    await supabaseClient
+        .from("produtos")
+        .select("estoque")
+        .eq("id", idProduto)
+        .single();
 
-                const mensagemEstoque =
-                    document.createElement("div");
+if (erroEstoque) {
 
-                mensagemEstoque.textContent =
-                    "INDISPONÍVEL";
+    console.error(
+        "Erro ao consultar estoque:",
+        erroEstoque
+    );
 
-                mensagemEstoque.style.marginTop = "20px";
-                mensagemEstoque.style.padding = "14px";
-                mensagemEstoque.style.background = "#f4eeee";
-                mensagemEstoque.style.color = "#8b3a3a";
-                mensagemEstoque.style.fontSize = "14px";
-                mensagemEstoque.style.fontWeight = "bold";
-                mensagemEstoque.style.textAlign = "center";
-                mensagemEstoque.style.borderRadius = "5px";
+} else {
 
-                botaoAdicionar.disabled = true;
-                botaoAdicionar.textContent = "INDISPONÍVEL";
-                botaoAdicionar.style.background = "#cccccc";
-                botaoAdicionar.style.borderColor = "#cccccc";
-                botaoAdicionar.style.color = "#666666";
-                botaoAdicionar.style.cursor = "not-allowed";
+    produto.estoque = Number(produtoBanco.estoque);
 
-                botaoAdicionar.parentNode.insertBefore(
-                    mensagemEstoque,
-                    botaoAdicionar
-                );
+    if (produto.estoque <= 0) {
 
-            }
+        const mensagemEstoque =
+            document.createElement("div");
+
+        mensagemEstoque.textContent =
+            "INDISPONÍVEL";
+
+        mensagemEstoque.style.marginTop = "20px";
+        mensagemEstoque.style.padding = "14px";
+        mensagemEstoque.style.background = "#f4eeee";
+        mensagemEstoque.style.color = "#8b3a3a";
+        mensagemEstoque.style.fontSize = "14px";
+        mensagemEstoque.style.fontWeight = "bold";
+        mensagemEstoque.style.textAlign = "center";
+        mensagemEstoque.style.borderRadius = "5px";
+
+        botaoAdicionar.disabled = true;
+        botaoAdicionar.textContent = "INDISPONÍVEL";
+        botaoAdicionar.style.background = "#cccccc";
+        botaoAdicionar.style.borderColor = "#cccccc";
+        botaoAdicionar.style.color = "#666666";
+        botaoAdicionar.style.cursor = "not-allowed";
+
+        botaoAdicionar.parentNode.insertBefore(
+            mensagemEstoque,
+            botaoAdicionar
+        );
+
+    }
+
+}
 
             /*
              * ADICIONAR AO CARRINHO
