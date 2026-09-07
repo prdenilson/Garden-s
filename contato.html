@@ -14,18 +14,12 @@
 
     <style>
 
-        /* ==================================================
-           CONFIGURAÇÕES GERAIS
-        ================================================== */
-
         :root {
             --verde: #28633c;
             --verde-claro: #3d7d52;
             --dourado: #d4af37;
             --branco: #ffffff;
-            --texto-claro: #f8f8f8;
             --escuro: #171717;
-            --overlay: rgba(0, 0, 0, 0.48);
         }
 
         * {
@@ -34,15 +28,17 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
         }
 
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
             background: #111;
-            color: var(--texto-claro);
+            color: var(--branco);
             overflow-x: hidden;
         }
 
@@ -51,9 +47,17 @@
            ÁREA PRINCIPAL
         ================================================== */
 
-        .hero-section {
-            position: relative;
+        .pagina-contato {
+
             min-height: calc(100vh - 90px);
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px 20px;
 
             background-image:
                 linear-gradient(
@@ -65,29 +69,33 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-
-            display: flex;
-            flex-direction: column;
         }
 
 
         /* ==================================================
-           CABEÇALHO
+           CARTÃO DE CONTATO
         ================================================== */
 
-        header {
-            position: relative;
-            z-index: 20;
+        .contato-card {
 
             width: 100%;
-            max-width: 1200px;
+            max-width: 650px;
 
-            margin: 0 auto;
-            padding: 25px 30px;
+            padding: 45px 40px;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            text-align: center;
+
+            background: rgba(24, 24, 24, 0.78);
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.50);
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
 
@@ -96,159 +104,33 @@
         ================================================== */
 
         .logo {
+
+            margin-bottom: 25px;
+
             color: var(--branco);
-            text-decoration: none;
 
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 27px;
+
+            font-size: 28px;
             font-weight: bold;
 
-            letter-spacing: 3px;
-        }
-
-        .logo:hover {
-            color: var(--dourado);
+            letter-spacing: 4px;
         }
 
 
         /* ==================================================
-           MENU
+           TÍTULO
         ================================================== */
 
-        .nav-links {
-            list-style: none;
+        .contato-card h1 {
 
-            display: flex;
-            align-items: center;
-
-            gap: 30px;
-        }
-
-        .nav-links a {
-            position: relative;
-
-            color: var(--branco);
-            text-decoration: none;
-
-            font-size: 14px;
-            font-weight: 600;
-
-            text-transform: uppercase;
-            letter-spacing: 1px;
-
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: "";
-
-            position: absolute;
-            left: 0;
-            bottom: -7px;
-
-            width: 0;
-            height: 2px;
-
-            background: var(--dourado);
-
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--dourado);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-
-        /* ==================================================
-           BOTÃO HAMBÚRGUER
-        ================================================== */
-
-        .hamburger {
-            display: none;
-
-            width: 42px;
-            height: 42px;
-
-            padding: 7px;
-
-            border: none;
-            background: transparent;
-
-            cursor: pointer;
-
-            position: relative;
-            z-index: 30;
-        }
-
-        .hamburger span {
-            display: block;
-
-            width: 27px;
-            height: 2px;
-
-            margin: 6px auto;
-
-            background: var(--branco);
-
-            transition: 0.3s ease;
-        }
-
-
-        /* ==================================================
-           CONTEÚDO DE CONTATO
-        ================================================== */
-
-        .contact-area {
-            position: relative;
-            z-index: 10;
-
-            width: 100%;
-            max-width: 720px;
-
-            margin: auto;
-
-            padding: 40px 25px 70px;
-        }
-
-        .contact-card {
-            width: 100%;
-
-            padding: 45px 40px;
-
-            text-align: center;
-
-            background: rgba(24, 24, 24, 0.76);
-
-            border: 1px solid rgba(255, 255, 255, 0.16);
-
-            border-radius: 16px;
-
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.45);
-
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-
-        /* ==================================================
-           TÍTULOS
-        ================================================== */
-
-        .contact-card h1 {
             margin-bottom: 12px;
 
             color: var(--branco);
 
             font-family: Georgia, "Times New Roman", serif;
 
-            font-size: clamp(30px, 5vw, 46px);
+            font-size: clamp(30px, 5vw, 44px);
 
             font-weight: normal;
 
@@ -257,7 +139,13 @@
             text-transform: uppercase;
         }
 
-        .contact-card h2 {
+
+        /* ==================================================
+           SUBTÍTULO
+        ================================================== */
+
+        .contato-card h2 {
+
             margin-bottom: 25px;
 
             color: var(--dourado);
@@ -269,8 +157,14 @@
             font-weight: normal;
         }
 
-        .contact-card p {
-            max-width: 570px;
+
+        /* ==================================================
+           TEXTO
+        ================================================== */
+
+        .contato-card p {
+
+            max-width: 540px;
 
             margin: 0 auto 30px;
 
@@ -283,20 +177,25 @@
 
 
         /* ==================================================
-           WHATSAPP
+           BOTÃO WHATSAPP
         ================================================== */
 
         .whatsapp-btn {
-            display: inline-flex;
+
+            display: flex;
 
             align-items: center;
             justify-content: center;
 
             gap: 10px;
 
-            min-width: 270px;
+            width: 100%;
 
-            padding: 16px 25px;
+            max-width: 380px;
+
+            margin: 0 auto;
+
+            padding: 16px 24px;
 
             border-radius: 50px;
 
@@ -310,6 +209,7 @@
             font-weight: bold;
 
             text-transform: uppercase;
+
             letter-spacing: 0.8px;
 
             box-shadow:
@@ -322,6 +222,7 @@
         }
 
         .whatsapp-btn:hover {
+
             background: #20ba5a;
 
             transform: translateY(-3px);
@@ -330,8 +231,56 @@
                 0 12px 30px rgba(37, 211, 102, 0.45);
         }
 
-        .whatsapp-btn:active {
-            transform: translateY(0);
+
+        /* ==================================================
+           BOTÃO VOLTAR
+        ================================================== */
+
+        .voltar-btn {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            max-width: 380px;
+
+            margin: 14px auto 0;
+
+            padding: 14px 24px;
+
+            border-radius: 50px;
+
+            background: transparent;
+
+            border: 1px solid rgba(255, 255, 255, 0.55);
+
+            color: var(--branco);
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.8px;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .voltar-btn:hover {
+
+            background: var(--branco);
+
+            color: var(--escuro);
+
+            border-color: var(--branco);
         }
 
 
@@ -340,9 +289,10 @@
         ================================================== */
 
         footer {
+
             width: 100%;
 
-            padding: 25px 20px;
+            padding: 24px 20px;
 
             text-align: center;
 
@@ -352,6 +302,7 @@
         }
 
         .footer-brand {
+
             margin-bottom: 7px;
 
             color: var(--branco);
@@ -365,6 +316,7 @@
         }
 
         footer p {
+
             color: #aaaaaa;
 
             font-size: 13px;
@@ -372,109 +324,53 @@
 
 
         /* ==================================================
-           TABLETS E CELULARES
+           CELULAR
         ================================================== */
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
 
-            header {
-                padding: 20px;
+            .pagina-contato {
+
+                min-height: calc(100vh - 80px);
+
+                padding: 25px 15px;
+            }
+
+            .contato-card {
+
+                padding: 35px 20px;
+
+                border-radius: 14px;
             }
 
             .logo {
+
                 font-size: 23px;
+
+                margin-bottom: 20px;
             }
 
-            .hamburger {
-                display: block;
+            .contato-card h1 {
+
+                font-size: 28px;
             }
 
+            .contato-card h2 {
 
-            /* MENU MOBILE */
-
-            .nav-links {
-                position: fixed;
-
-                top: 0;
-                right: -100%;
-
-                width: min(320px, 82vw);
-                height: 100vh;
-
-                padding: 100px 30px 40px;
-
-                background: rgba(23, 23, 23, 0.98);
-
-                display: flex;
-                flex-direction: column;
-
-                justify-content: flex-start;
-                align-items: center;
-
-                gap: 28px;
-
-                box-shadow:
-                    -10px 0 35px rgba(0, 0, 0, 0.4);
-
-                transition: right 0.35s ease;
-
-                z-index: 25;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links a {
-                font-size: 16px;
-            }
-
-
-            /* ANIMAÇÃO HAMBÚRGUER */
-
-            .hamburger.active span:nth-child(1) {
-                transform:
-                    rotate(45deg)
-                    translate(6px, 6px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform:
-                    rotate(-45deg)
-                    translate(5px, -5px);
-            }
-
-
-            /* CONTATO */
-
-            .contact-area {
-                padding: 30px 15px 50px;
-            }
-
-            .contact-card {
-                padding: 35px 22px;
-            }
-
-            .contact-card h1 {
-                font-size: 29px;
-            }
-
-            .contact-card h2 {
                 font-size: 18px;
             }
 
-            .contact-card p {
+            .contato-card p {
+
                 font-size: 15px;
+
                 line-height: 1.7;
             }
 
-            .whatsapp-btn {
-                width: 100%;
-                min-width: 0;
+            .whatsapp-btn,
+            .voltar-btn {
+
+                max-width: 100%;
             }
         }
 
@@ -483,27 +379,32 @@
            CELULARES PEQUENOS
         ================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 380px) {
 
-            .contact-card {
-                padding: 30px 18px;
+            .contato-card {
+
+                padding: 30px 16px;
             }
 
-            .contact-card h1 {
-                font-size: 25px;
+            .contato-card h1 {
+
+                font-size: 24px;
             }
 
-            .contact-card h2 {
+            .contato-card h2 {
+
                 font-size: 17px;
             }
 
-            .contact-card p {
+            .contato-card p {
+
                 font-size: 14px;
             }
 
-            .whatsapp-btn {
-                font-size: 13px;
-                padding: 15px 12px;
+            .whatsapp-btn,
+            .voltar-btn {
+
+                font-size: 12px;
             }
         }
 
@@ -515,130 +416,73 @@
 
 
     <!-- ==================================================
-         ÁREA PRINCIPAL
+         PÁGINA DE CONTATO
     ================================================== -->
 
-    <section class="hero-section">
+    <main class="pagina-contato">
+
+        <section class="contato-card">
 
 
-        <!-- ==================================================
-             CABEÇALHO
-        ================================================== -->
+            <!-- LOGO -->
 
-        <header>
+            <div class="logo">
+                GARDEN'S
+            </div>
+
+
+            <!-- TÍTULO -->
+
+            <h1>
+                Entre em Contato
+            </h1>
+
+
+            <!-- SUBTÍTULO -->
+
+            <h2>
+                Estamos prontas para atender você.
+            </h2>
+
+
+            <!-- TEXTO -->
+
+            <p>
+                Entre em contato com a GARDEN'S pelo WhatsApp
+                para tirar dúvidas, consultar produtos,
+                tamanhos, disponibilidade ou receber um
+                atendimento personalizado.
+            </p>
+
+
+            <!-- ==================================================
+                 WHATSAPP
+            ================================================== -->
 
             <a
-                href="index.html"
-                class="logo"
-                aria-label="GARDEN'S - Página inicial"
+                href="https://wa.me/5585988590024?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GARDEN'S%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs."
+                class="whatsapp-btn"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-                GARDEN'S
+                💬 FALAR PELO WHATSAPP
             </a>
 
 
-            <nav aria-label="Navegação principal">
+            <!-- ==================================================
+                 VOLTAR PARA A PÁGINA PRINCIPAL
+            ================================================== -->
 
-                <ul class="nav-links" id="nav-links">
-
-                    <li>
-                        <a href="index.html">
-                            Início
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="produtos.html">
-                            Produtos
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="carrinho.html">
-                            Carrinho
-                        </a>
-                    </li>
-
-                    <li>
-                        <a
-                            href="contato.html"
-                            class="active"
-                            aria-current="page"
-                        >
-                            Contato
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-
-            <!-- MENU MOBILE -->
-
-            <button
-                type="button"
-                class="hamburger"
-                id="hamburger"
-                aria-label="Abrir menu"
-                aria-expanded="false"
-                aria-controls="nav-links"
+            <a
+                href="index.html"
+                class="voltar-btn"
             >
+                ← VOLTAR PARA A PÁGINA PRINCIPAL
+            </a>
 
-                <span></span>
-                <span></span>
-                <span></span>
+        </section>
 
-            </button>
-
-        </header>
-
-
-        <!-- ==================================================
-             CONTEÚDO PRINCIPAL
-        ================================================== -->
-
-        <main class="contact-area">
-
-            <div class="contact-card">
-
-                <h1>
-                    Entre em Contato
-                </h1>
-
-                <h2>
-                    Estamos prontas para atender você.
-                </h2>
-
-                <p>
-                    Entre em contato com a GARDEN'S pelo WhatsApp
-                    para tirar dúvidas, consultar produtos,
-                    tamanhos, disponibilidade ou receber um
-                    atendimento personalizado.
-                </p>
-
-
-                <!-- ==================================================
-                     BOTÃO WHATSAPP
-                ================================================== -->
-
-                <a
-                    href="https://wa.me/5585988590024?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20GARDEN'S%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs."
-                    class="whatsapp-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    <span aria-hidden="true">💬</span>
-
-                    Falar pelo WhatsApp
-
-                </a>
-
-            </div>
-
-        </main>
-
-    </section>
+    </main>
 
 
     <!-- ==================================================
@@ -656,103 +500,6 @@
         </p>
 
     </footer>
-
-
-    <!-- ==================================================
-         JAVASCRIPT — MENU MOBILE
-    ================================================== -->
-
-    <script>
-
-        const hamburger =
-            document.getElementById("hamburger");
-
-        const navLinks =
-            document.getElementById("nav-links");
-
-
-        /* ABRIR / FECHAR MENU */
-
-        hamburger.addEventListener("click", function () {
-
-            const aberto =
-                hamburger.classList.toggle("active");
-
-            navLinks.classList.toggle("active");
-
-            hamburger.setAttribute(
-                "aria-expanded",
-                aberto ? "true" : "false"
-            );
-
-            hamburger.setAttribute(
-                "aria-label",
-                aberto
-                    ? "Fechar menu"
-                    : "Abrir menu"
-            );
-
-        });
-
-
-        /* FECHAR MENU AO CLICAR EM UM LINK */
-
-        navLinks
-            .querySelectorAll("a")
-            .forEach(function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        hamburger.classList.remove("active");
-
-                        navLinks.classList.remove("active");
-
-                        hamburger.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                        hamburger.setAttribute(
-                            "aria-label",
-                            "Abrir menu"
-                        );
-
-                    }
-                );
-
-            });
-
-
-        /* FECHAR MENU AO PRESSIONAR ESC */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (event.key === "Escape") {
-
-                    hamburger.classList.remove("active");
-
-                    navLinks.classList.remove("active");
-
-                    hamburger.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    hamburger.setAttribute(
-                        "aria-label",
-                        "Abrir menu"
-                    );
-
-                }
-
-            }
-        );
-
-    </script>
 
 </body>
 
