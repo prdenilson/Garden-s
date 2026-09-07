@@ -527,7 +527,7 @@
         nome: "Conjunto Moderno Marinho",
         categoria: "Conjunto",
         preco: "R$ 54,90",
-        estoque: 1,
+        estoque: 0,
         imagem: "assets/vestidos/conjunto-moderno-marinho.jpg",
         descricao: "Um conjunto moderno e elegante, pensado para valorizar sua presença e trazer praticidade para diferentes ocasiões."
     },
@@ -743,6 +743,43 @@
             document.title =
                 produto.nome + " | GARDEN'S";
 
+                        /*
+             * CONTROLE DE ESTOQUE
+             */
+
+            const botaoAdicionar =
+                document.getElementById("btn-adicionar");
+
+            if (produto.estoque <= 0) {
+
+                const mensagemEstoque =
+                    document.createElement("div");
+
+                mensagemEstoque.textContent =
+                    "INDISPONÍVEL";
+
+                mensagemEstoque.style.marginTop = "20px";
+                mensagemEstoque.style.padding = "14px";
+                mensagemEstoque.style.background = "#f4eeee";
+                mensagemEstoque.style.color = "#8b3a3a";
+                mensagemEstoque.style.fontSize = "14px";
+                mensagemEstoque.style.fontWeight = "bold";
+                mensagemEstoque.style.textAlign = "center";
+                mensagemEstoque.style.borderRadius = "5px";
+
+                botaoAdicionar.disabled = true;
+                botaoAdicionar.textContent = "INDISPONÍVEL";
+                botaoAdicionar.style.background = "#cccccc";
+                botaoAdicionar.style.borderColor = "#cccccc";
+                botaoAdicionar.style.color = "#666666";
+                botaoAdicionar.style.cursor = "not-allowed";
+
+                botaoAdicionar.parentNode.insertBefore(
+                    mensagemEstoque,
+                    botaoAdicionar
+                );
+
+            }
 
             /*
              * ADICIONAR AO CARRINHO
