@@ -933,11 +933,11 @@ if (!produto) {
         try {
 
             const resultado =
-                await supabaseClient
-                    .from("produtos")
-                    .select("estoque")
-                    .eq("id", idProduto)
-                    .maybeSingle();
+    await supabaseClient
+        .from("produtos")
+        .select("estoque")
+        .eq("id", idProduto)
+        .limit(1);
 
 
             if (resultado.error) {
@@ -957,10 +957,10 @@ if (!produto) {
             }
 
 
-            const estoqueReal =
-                Number(
-                    resultado.data.estoque
-                );
+const estoqueReal =
+    Number(
+        resultado.data[0]?.estoque ?? 0
+    );
 
 
             console.log(
