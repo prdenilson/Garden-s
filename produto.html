@@ -937,7 +937,7 @@ if (!produto) {
                     .from("produtos")
                     .select("estoque")
                     .eq("id", idProduto)
-                    .single();
+                    .maybeSingle();
 
 
             if (resultado.error) {
