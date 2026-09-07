@@ -576,6 +576,70 @@
             }
 
         }
+
+                /* ==================================================
+           MODAL — CONFIRMAÇÃO DO PEDIDO
+        ================================================== */
+
+        .modal-confirmacao {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.55);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-confirmacao.ativo {
+            display: flex;
+        }
+
+        .modal-confirmacao-conteudo {
+            width: 100%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 14px;
+            padding: 30px 25px;
+            box-sizing: border-box;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.20);
+        }
+
+        .modal-confirmacao-titulo {
+            text-align: center;
+            color: var(--verde);
+            margin-bottom: 20px;
+        }
+
+        .modal-confirmacao-fechar {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #777;
+            color: #fff;
+            padding: 13px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+
+            .modal-confirmacao {
+                padding: 15px;
+            }
+
+            .modal-confirmacao-conteudo {
+                max-height: 92vh;
+                padding: 25px 18px;
+            }
+
+        }
         
     </style>
 
@@ -1341,6 +1405,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.body.style.overflow = "";
         });
+    }
+    
+    /* ==================================================
+       MODAL — FECHAR CONFIRMAÇÃO DO PEDIDO
+    ================================================== */
+
+    const modalConfirmacao =
+        document.getElementById("modal-confirmacao-pedido");
+
+    const fecharModalConfirmacao =
+        document.getElementById("fechar-modal-confirmacao");
+
+    if (fecharModalConfirmacao) {
+
+        fecharModalConfirmacao.addEventListener("click", function () {
+
+            modalConfirmacao.classList.remove("ativo");
+
+            document.body.style.overflow = "";
+
+        });
+
     }
     
     const menuButton =
@@ -3123,7 +3209,30 @@ mostrarConfirmacaoPedido();
         </div>
     `;
 
-    confirmacao.style.display = "block";
+       /* ==================================================
+       ABRIR CONFIRMAÇÃO EM MODAL
+    ================================================== */
+
+    const modalConfirmacao =
+        document.getElementById("modal-confirmacao-pedido");
+
+    const conteudoModal =
+        document.getElementById("conteudo-modal-confirmacao");
+
+    if (modalConfirmacao && conteudoModal) {
+
+        conteudoModal.innerHTML =
+            confirmacao.innerHTML;
+
+        modalConfirmacao.classList.add("ativo");
+
+        document.body.style.overflow = "hidden";
+
+    } else {
+
+        confirmacao.style.display = "block";
+
+    }
 }
 
 function enviarPedidoWhatsApp() {
