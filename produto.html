@@ -16,7 +16,9 @@
 
     <style>
 
-/* CONTROLE DA LOGO */
+/* ==================================================
+   CONTROLE DA LOGO
+   ================================================== */
 
 .header .logo {
     display: flex !important;
@@ -78,466 +80,554 @@
         max-height: 52px !important;
     }
 }
-        
-        .product-page {
-            background: #fdfbf7;
-            padding: 70px 0 100px;
-        }
 
-        .product-detail {
-            width: min(1100px, 92%);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
 
-        .product-photo {
-            background: #f5f2ee;
-            overflow: hidden;
-            border-radius: 6px;
-        }
+/* ==================================================
+   PÁGINA DO PRODUTO
+   ================================================== */
 
-        .product-photo img {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            display: block;
-        }
+.product-page {
+    background: #fdfbf7;
+    padding: 70px 0 100px;
+}
 
-        .product-information {
-            padding: 20px 0;
-        }
+.product-detail {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
 
-        .product-category-detail {
-            display: block;
-            margin-bottom: 12px;
-            color: #c5a059;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+.product-photo {
+    background: #f5f2ee;
+    overflow: hidden;
+    border-radius: 6px;
+}
 
-        .product-information h1 {
-            margin-bottom: 18px;
-            color: #2d4a3e;
-            font-family: Georgia, serif;
-            font-size: clamp(34px, 5vw, 52px);
-            font-weight: normal;
-            line-height: 1.1;
-        }
+.product-photo img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+}
 
-        .product-description {
-            margin-bottom: 25px;
-            color: #6f6f6f;
-            font-size: 17px;
-            line-height: 1.7;
-        }
+.product-information {
+    padding: 20px 0;
+}
 
-        .product-price-detail {
-            margin-bottom: 30px;
-            color: #c5a059;
-            font-size: 26px;
-            font-weight: bold;
-        }
+.product-category-detail {
+    display: block;
+    margin-bottom: 12px;
+    color: #c5a059;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-        .product-option {
-            margin-bottom: 25px;
-        }
+.product-information h1 {
+    margin-bottom: 18px;
+    color: #2d4a3e;
+    font-family: Georgia, serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: normal;
+    line-height: 1.1;
+}
 
-        .product-option label {
-            display: block;
-            margin-bottom: 10px;
-            color: #2d4a3e;
-            font-size: 14px;
-            font-weight: bold;
-        }
+.product-description {
+    margin-bottom: 25px;
+    color: #6f6f6f;
+    font-size: 17px;
+    line-height: 1.7;
+}
 
-        .size-options {
-            display: flex;
-        }
+.product-price-detail {
+    margin-bottom: 30px;
+    color: #c5a059;
+    font-size: 26px;
+    font-weight: bold;
+}
 
-        .size-option {
-            padding: 12px 20px;
-            background: #2d4a3e;
-            border: 1px solid #2d4a3e;
-            border-radius: 4px;
-            color: #ffffff;
-            font-weight: bold;
-            cursor: default;
-        }
+.product-option {
+    margin-bottom: 25px;
+}
 
-        .product-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 30px;
-        }
+.product-option label {
+    display: block;
+    margin-bottom: 10px;
+    color: #2d4a3e;
+    font-size: 14px;
+    font-weight: bold;
+}
 
-        .product-buttons button,
-        .product-buttons a {
-            width: 100%;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            box-sizing: border-box;
-        }
+.size-options {
+    display: flex;
+}
 
-        .btn-add {
-            border: 1px solid #2d4a3e;
-            background: #2d4a3e;
-            color: #ffffff;
-        }
+.size-option {
+    padding: 12px 20px;
+    background: #2d4a3e;
+    border: 1px solid #2d4a3e;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: default;
+}
 
-        .btn-add:hover {
-            background: #3d6353;
-            border-color: #3d6353;
-        }
+.product-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+}
 
-        .btn-back {
-            border: 1px solid #2d4a3e;
-            background: transparent;
-            color: #2d4a3e;
-        }
+.product-buttons button,
+.product-buttons a {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+}
 
-        .btn-back:hover {
-            background: #f1f4f2;
-        }
+.btn-add {
+    border: 1px solid #2d4a3e;
+    background: #2d4a3e;
+    color: #ffffff;
+}
 
-        .product-message {
-            display: none;
-            margin-top: 18px;
-            padding: 14px;
-            border-radius: 5px;
-            background: #edf4ef;
-            color: #2d4a3e;
-            font-size: 14px;
-            text-align: center;
-        }
+.btn-add:hover {
+    background: #3d6353;
+    border-color: #3d6353;
+}
 
-        .product-error {
-            width: min(700px, 92%);
-            margin: 50px auto;
-            padding: 40px 25px;
-            background: #ffffff;
-            border: 1px solid #e4e0dc;
-            text-align: center;
-            border-radius: 6px;
-        }
+.btn-add:disabled {
+    background: #cccccc;
+    border-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
 
-        .product-error h1 {
-            margin-bottom: 15px;
-            color: #2d4a3e;
-            font-family: Georgia, serif;
-            font-weight: normal;
-        }
+.btn-back {
+    border: 1px solid #2d4a3e;
+    background: transparent;
+    color: #2d4a3e;
+}
 
-        .product-error p {
-            margin-bottom: 25px;
-            color: #6f6f6f;
-        }
+.btn-back:hover {
+    background: #f1f4f2;
+}
 
-        @media (max-width: 800px) {
-            .product-page {
-                padding: 40px 0 70px;
-            }
+.product-message {
+    display: none;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 5px;
+    background: #edf4ef;
+    color: #2d4a3e;
+    font-size: 14px;
+    text-align: center;
+}
 
-            .product-detail {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
+.product-stock-unavailable {
+    margin-top: 20px;
+    padding: 14px;
+    background: #f4eeee;
+    color: #8b3a3a;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
 
-            .product-information {
-                padding: 5px 0;
-            }
+.product-error {
+    width: min(700px, 92%);
+    margin: 50px auto;
+    padding: 40px 25px;
+    background: #ffffff;
+    border: 1px solid #e4e0dc;
+    text-align: center;
+    border-radius: 6px;
+}
 
-            .product-information h1 {
-                font-size: 38px;
-            }
+.product-error h1 {
+    margin-bottom: 15px;
+    color: #2d4a3e;
+    font-family: Georgia, serif;
+    font-weight: normal;
+}
 
-            .product-description {
-                font-size: 16px;
-            }
-        }
+.product-error p {
+    margin-bottom: 25px;
+    color: #6f6f6f;
+}
 
-        @media (max-width: 480px) {
-            .product-detail {
-                width: 94%;
-            }
+@media (max-width: 800px) {
 
-            .product-information h1 {
-                font-size: 34px;
-            }
-        }
+    .product-page {
+        padding: 40px 0 70px;
+    }
+
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .product-information {
+        padding: 5px 0;
+    }
+
+    .product-information h1 {
+        font-size: 38px;
+    }
+
+    .product-description {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .product-detail {
+        width: 94%;
+    }
+
+    .product-information h1 {
+        font-size: 34px;
+    }
+}
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- CABEÇALHO -->
 
-    <header class="header">
+<!-- ==================================================
+     CABEÇALHO
+     ================================================== -->
 
-        <div class="container header-content">
+<header class="header">
 
-            <a href="index.html" class="logo">
-                <img
-                    src="logo.jpg"
-                    alt="GARDEN'S"
-                >
+    <div class="container header-content">
+
+        <a href="index.html" class="logo">
+
+            <img
+                src="logo.jpg"
+                alt="GARDEN'S"
+            >
+
+        </a>
+
+
+        <nav class="menu">
+
+            <a href="index.html">
+                Início
             </a>
 
-            <nav class="menu">
+            <a href="pecas.html">
+                Peças
+            </a>
 
-                <a href="index.html">
-                    Início
-                </a>
+            <a href="index.html#sobre">
+                Sobre
+            </a>
 
-                <a href="pecas.html">
-                    Peças
-                </a>
+            <a href="index.html#contato">
+                Contato
+            </a>
 
-                <a href="index.html#sobre">
-                    Sobre
-                </a>
+            <a href="carinho.html" class="cart-link">
 
-                <a href="index.html#contato">
-                    Contato
-                </a>
+                🛍️ Carrinho
 
-                <a href="carinho.html" class="cart-link">
-                    🛍️ Carrinho
-                    <span id="cart-count">0</span>
-                </a>
+                <span id="cart-count">
+                    0
+                </span>
 
-            </nav>
+            </a>
 
-            <button
-                class="menu-button"
-                id="menu-button"
-                type="button"
-                aria-label="Abrir menu"
-            >
-                ☰
-            </button>
+        </nav>
+
+
+        <button
+            class="menu-button"
+            id="menu-button"
+            type="button"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ==================================================
+     MENU MOBILE
+     ================================================== -->
+
+<div
+    class="mobile-menu"
+    id="mobile-menu"
+>
+
+    <a href="index.html">
+        Início
+    </a>
+
+    <a href="pecas.html">
+        Peças
+    </a>
+
+    <a href="index.html#sobre">
+        Sobre
+    </a>
+
+    <a href="index.html#contato">
+        Contato
+    </a>
+
+    <a href="carinho.html">
+        🛍️ Carrinho
+    </a>
+
+</div>
+
+
+<!-- ==================================================
+     PRODUTO
+     ================================================== -->
+
+<main class="product-page">
+
+
+    <div id="produto-container">
+
+        <div class="product-detail">
+
+
+            <!-- IMAGEM -->
+
+            <div class="product-photo">
+
+                <img
+                    id="produto-imagem"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="product-information">
+
+
+                <span
+                    class="product-category-detail"
+                    id="produto-categoria"
+                ></span>
+
+
+                <h1 id="produto-nome"></h1>
+
+
+                <p
+                    class="product-description"
+                    id="produto-descricao"
+                ></p>
+
+
+                <div
+                    class="product-price-detail"
+                    id="produto-preco"
+                ></div>
+
+
+                <!-- TAMANHO ÚNICO -->
+
+                <div class="product-option">
+
+                    <label>
+                        Tamanho:
+                    </label>
+
+                    <div class="size-options">
+
+                        <div class="size-option">
+                            Tamanho Único
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTÕES -->
+
+                <div class="product-buttons">
+
+                    <button
+                        type="button"
+                        class="btn-add"
+                        id="btn-adicionar"
+                    >
+                        🛍️ Adicionar ao carrinho
+                    </button>
+
+
+                    <a
+                        href="pecas.html"
+                        class="btn-back"
+                    >
+                        ← Voltar para as peças
+                    </a>
+
+                </div>
+
+
+                <!-- MENSAGEM -->
+
+                <div
+                    class="product-message"
+                    id="product-message"
+                >
+                    Produto adicionado ao carrinho!
+                </div>
+
+
+            </div>
 
         </div>
 
-    </header>
+    </div>
 
 
-    <!-- MENU MOBILE -->
+    <!-- ==================================================
+         ERRO
+         ================================================== -->
 
-    <div class="mobile-menu" id="mobile-menu">
+    <div
+        class="product-error"
+        id="produto-erro"
+        style="display:none;"
+    >
 
-        <a href="index.html">
-            Início
-        </a>
+        <h1>
+            Produto não encontrado
+        </h1>
 
-        <a href="pecas.html">
-            Peças
-        </a>
+        <p>
+            Não conseguimos encontrar essa peça.
+        </p>
 
-        <a href="index.html#sobre">
-            Sobre
-        </a>
-
-        <a href="index.html#contato">
-            Contato
-        </a>
-
-        <a href="carinho.html">
-            🛍️ Carrinho
+        <a
+            href="pecas.html"
+            class="button"
+        >
+            Ver todas as peças
         </a>
 
     </div>
 
 
-    <!-- PRODUTO -->
-
-    <main class="product-page">
-
-        <div id="produto-container">
-
-            <div class="product-detail">
-
-                <div class="product-photo">
-
-                    <img
-                        id="produto-imagem"
-                        src=""
-                        alt=""
-                    >
-
-                </div>
+</main>
 
 
-                <div class="product-information">
+<!-- ==================================================
+     RODAPÉ
+     ================================================== -->
 
-                    <span
-                        class="product-category-detail"
-                        id="produto-categoria"
-                    ></span>
+<footer class="footer">
 
-
-                    <h1 id="produto-nome"></h1>
+    <div class="container">
 
 
-                    <p
-                        class="product-description"
-                        id="produto-descricao"
-                    ></p>
+        <div class="footer-logo">
 
-
-                    <div
-                        class="product-price-detail"
-                        id="produto-preco"
-                    ></div>
-
-
-                    <!-- TAMANHO ÚNICO -->
-
-                    <div class="product-option">
-
-                        <label>
-                            Tamanho:
-                        </label>
-
-                        <div class="size-options">
-
-                            <div class="size-option">
-                                Tamanho Único
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="product-buttons">
-
-                        <button
-                            type="button"
-                            class="btn-add"
-                            id="btn-adicionar"
-                        >
-                            🛍️ Adicionar ao carrinho
-                        </button>
-
-                        <a
-                            href="pecas.html"
-                            class="btn-back"
-                        >
-                            ← Voltar para as peças
-                        </a>
-
-                    </div>
-
-
-                    <div
-                        class="product-message"
-                        id="product-message"
-                    >
-                        Produto adicionado ao carrinho!
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ERRO -->
-
-        <div
-            class="product-error"
-            id="produto-erro"
-            style="display:none;"
-        >
-
-            <h1>
-                Produto não encontrado
-            </h1>
-
-            <p>
-                Não conseguimos encontrar essa peça.
-            </p>
-
-            <a
-                href="pecas.html"
-                class="button"
+            <img
+                src="logo.jpg"
+                alt="GARDEN'S"
             >
-                Ver todas as peças
-            </a>
 
         </div>
 
-    </main>
+
+        <p>
+            Floresça a sua melhor versão.
+        </p>
 
 
-    <!-- RODAPÉ -->
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <div class="footer-logo">
-
-                <img
-                    src="logo.jpg"
-                    alt="GARDEN'S"
-                >
-
-            </div>
-
-            <p>
-                Floresça a sua melhor versão.
-            </p>
-
-            <p class="copyright">
-                © 2026 GARDEN'S. Todos os direitos reservados.
-            </p>
-
-        </div>
-
-    </footer>
+        <p class="copyright">
+            © 2026 GARDEN'S. Todos os direitos reservados.
+        </p>
 
 
-    <script src="js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </div>
 
-    <script>
+</footer>
 
-const SUPABASE_URL = "https://kiefyoedeervkrtrkghj.supabase.co";
 
-const SUPABASE_ANON_KEY = "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+<!-- ==================================================
+     JAVASCRIPT ORIGINAL DO SITE
+     ================================================== -->
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY
-);
-        console.log("Supabase conectado:", supabaseClient);
-        
-        /*
-         * CATÁLOGO DOS PRODUTOS
-         */
+<script src="js/app.js"></script>
 
-        const produtos = {
+
+<!-- ==================================================
+     SUPABASE
+     ================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* ==================================================
+   CONFIGURAÇÃO SUPABASE
+   ================================================== */
+
+const SUPABASE_URL =
+    "https://kiefyoedeervkrtrkghj.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+
+console.log("Supabase conectado");
+
+
+/* ==================================================
+   CATÁLOGO DOS PRODUTOS
+   ================================================== */
+
+const produtos = {
 
     "gardens-01": {
         nome: "Conjunto Moderno Marinho",
         categoria: "Conjunto",
         preco: "R$ 54,90",
-        estoque: 1,
         imagem: "assets/vestidos/conjunto-moderno-marinho.jpg",
         descricao: "Um conjunto moderno e elegante, pensado para valorizar sua presença e trazer praticidade para diferentes ocasiões."
     },
@@ -546,7 +636,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Conjunto Moderno Preto",
         categoria: "Conjunto",
         preco: "R$ 54,90",
-        estoque: 1,
         imagem: "assets/vestidos/conjunto-moderno-preto.jpg",
         descricao: "Um conjunto sofisticado e versátil para compor produções elegantes e marcantes."
     },
@@ -555,7 +644,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Conjunto Moderno Telha",
         categoria: "Conjunto",
         preco: "R$ 54,90",
-        estoque: 1,
         imagem: "assets/vestidos/conjunto-moderno-telha.jpg",
         descricao: "Uma peça moderna em tom telha, perfeita para quem deseja unir estilo, elegância e personalidade."
     },
@@ -564,7 +652,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Conjunto Elegance",
         categoria: "Conjunto",
         preco: "R$ 59,90",
-        estoque: 1,
         imagem: "assets/vestidos/conjuto.jpg",
         descricao: "Um conjunto pensado para mulheres que gostam de elegância, conforto e presença."
     },
@@ -573,7 +660,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Garden Classic",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-03.jpg",
         descricao: "Um vestido clássico e elegante para valorizar sua beleza em momentos especiais."
     },
@@ -582,7 +668,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Sofisticação",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-00001.jpg",
         descricao: "Uma escolha sofisticada para quem deseja transmitir elegância e confiança."
     },
@@ -591,7 +676,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Primavera",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-0001.jpg",
         descricao: "Leveza e feminilidade em uma peça escolhida para acompanhar diferentes momentos."
     },
@@ -600,7 +684,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Botânico",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-001.jpg",
         descricao: "Uma peça cheia de personalidade para mulheres que gostam de se destacar com elegância."
     },
@@ -609,7 +692,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Essencial",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-01.jpg",
         descricao: "Uma peça versátil para compor diferentes looks com praticidade e sofisticação."
     },
@@ -618,7 +700,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Encanto",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-002.jpg",
         descricao: "Um vestido pensado para trazer charme e elegância para sua produção."
     },
@@ -627,7 +708,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Serena",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-02.jpg",
         descricao: "Delicadeza e elegância em uma peça que combina beleza e personalidade."
     },
@@ -636,7 +716,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Aurora",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-0003.jpg",
         descricao: "Uma peça especial para quem deseja florescer sua melhor versão em cada ocasião."
     },
@@ -645,7 +724,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Harmonia",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-003.jpg",
         descricao: "Um modelo elegante e harmonioso para compor um visual marcante."
     },
@@ -654,7 +732,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Nobreza",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-04.jpg",
         descricao: "Elegância e presença em uma peça criada para momentos especiais."
     },
@@ -663,7 +740,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Delicadeza",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-0005.jpg",
         descricao: "Uma peça delicada e feminina para valorizar seu estilo."
     },
@@ -672,7 +748,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Graça",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-005.jpg",
         descricao: "Uma escolha elegante para mulheres que gostam de unir beleza e personalidade."
     },
@@ -681,7 +756,6 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Sublime",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido05.jpg",
         descricao: "Um modelo especial para quem deseja um visual elegante e sofisticado."
     },
@@ -690,171 +764,266 @@ const supabaseClient = window.supabase.createClient(
         nome: "Vestido Plenitude",
         categoria: "Vestido",
         preco: "R$ 74,90",
-        estoque: 1,
         imagem: "assets/vestidos/vestido-06.jpg",
         descricao: "Uma peça criada para você se sentir bonita, elegante e confiante."
     }
 
 };
 
-        /*
-         * IDENTIFICA O PRODUTO PELA URL
-         */
 
-        const parametros = new URLSearchParams(
-            window.location.search
-        );
+/* ==================================================
+   IDENTIFICA O PRODUTO
+   ================================================== */
 
-        const idProduto = parametros.get("id");
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
 
-        const produto = produtos[idProduto];
+const idProduto =
+    parametros.get("id");
+
+const produto =
+    produtos[idProduto];
 
 
-        /*
-         * MOSTRA O PRODUTO
-         */
+/* ==================================================
+   ELEMENTOS DA PÁGINA
+   ================================================== */
 
-        if (!produto) {
+const produtoContainer =
+    document.getElementById(
+        "produto-container"
+    );
 
-            document.getElementById(
-                "produto-container"
-            ).style.display = "none";
+const produtoErro =
+    document.getElementById(
+        "produto-erro"
+    );
 
-            document.getElementById(
-                "produto-erro"
-            ).style.display = "block";
+const produtoImagem =
+    document.getElementById(
+        "produto-imagem"
+    );
 
-        } else {
+const produtoCategoria =
+    document.getElementById(
+        "produto-categoria"
+    );
 
-            document.getElementById(
-                "produto-imagem"
-            ).src = produto.imagem;
+const produtoNome =
+    document.getElementById(
+        "produto-nome"
+    );
 
-            document.getElementById(
-                "produto-imagem"
-            ).alt = produto.nome;
+const produtoPreco =
+    document.getElementById(
+        "produto-preco"
+    );
 
-            document.getElementById(
-                "produto-categoria"
-            ).textContent = produto.categoria;
-
-            document.getElementById(
-                "produto-nome"
-            ).textContent = produto.nome;
-
-            document.getElementById(
-                "produto-preco"
-            ).textContent = produto.preco;
-
-            document.getElementById(
-                "produto-descricao"
-            ).textContent = produto.descricao;
-
-            document.title =
-                produto.nome + " | GARDEN'S";
-
-                       /*
- * CONTROLE DE ESTOQUE REAL
- */
+const produtoDescricao =
+    document.getElementById(
+        "produto-descricao"
+    );
 
 const botaoAdicionar =
-    document.getElementById("btn-adicionar");
-
-const { data: produtoBanco, error: erroEstoque } =
-    await supabaseClient
-        .from("produtos")
-        .select("estoque")
-        .eq("id", idProduto)
-        .single();
-
-if (erroEstoque) {
-
-    console.error(
-        "Erro ao consultar estoque:",
-        erroEstoque
+    document.getElementById(
+        "btn-adicionar"
     );
+
+const mensagemProduto =
+    document.getElementById(
+        "product-message"
+    );
+
+
+/* ==================================================
+   VERIFICA SE O PRODUTO EXISTE
+   ================================================== */
+
+if (!produto) {
+
+    produtoContainer.style.display =
+        "none";
+
+    produtoErro.style.display =
+        "block";
 
 } else {
 
-    produto.estoque = Number(produtoBanco.estoque);
 
-    if (produto.estoque <= 0) {
+    /* ==================================================
+       MOSTRA O PRODUTO
+       ================================================== */
 
-        const mensagemEstoque =
-            document.createElement("div");
+    produtoImagem.src =
+        produto.imagem;
 
-        mensagemEstoque.textContent =
-            "INDISPONÍVEL";
+    produtoImagem.alt =
+        produto.nome;
 
-        mensagemEstoque.style.marginTop = "20px";
-        mensagemEstoque.style.padding = "14px";
-        mensagemEstoque.style.background = "#f4eeee";
-        mensagemEstoque.style.color = "#8b3a3a";
-        mensagemEstoque.style.fontSize = "14px";
-        mensagemEstoque.style.fontWeight = "bold";
-        mensagemEstoque.style.textAlign = "center";
-        mensagemEstoque.style.borderRadius = "5px";
+    produtoCategoria.textContent =
+        produto.categoria;
 
-        botaoAdicionar.disabled = true;
-        botaoAdicionar.textContent = "INDISPONÍVEL";
-        botaoAdicionar.style.background = "#cccccc";
-        botaoAdicionar.style.borderColor = "#cccccc";
-        botaoAdicionar.style.color = "#666666";
-        botaoAdicionar.style.cursor = "not-allowed";
+    produtoNome.textContent =
+        produto.nome;
 
-        botaoAdicionar.parentNode.insertBefore(
-            mensagemEstoque,
-            botaoAdicionar
-        );
+    produtoPreco.textContent =
+        produto.preco;
 
-    }
+    produtoDescricao.textContent =
+        produto.descricao;
 
-}
-
-            /*
-             * ADICIONAR AO CARRINHO
-             */
-
-            document
-                .getElementById("btn-adicionar")
-                .addEventListener("click", () => {
-
-                    adicionarAoCarrinho({
-
-                        id: idProduto,
-
-                        nome: produto.nome + " - Tamanho Único",
-
-                        preco: produto.preco,
-
-                        imagem: produto.imagem,
-
-                        quantidade: 1
-
-                    });
+    document.title =
+        produto.nome +
+        " | GARDEN'S";
 
 
-                    const mensagem =
-                        document.getElementById(
-                            "product-message"
-                        );
+    /* ==================================================
+       SISTEMA ORIGINAL DO CARRINHO
+       ================================================== */
 
-                    mensagem.style.display = "block";
+    botaoAdicionar.addEventListener(
+        "click",
+        function () {
+
+            adicionarAoCarrinho({
+
+                id: idProduto,
+
+                nome:
+                    produto.nome +
+                    " - Tamanho Único",
+
+                preco:
+                    produto.preco,
+
+                imagem:
+                    produto.imagem,
+
+                quantidade: 1
+
+            });
 
 
-                    setTimeout(() => {
+            mensagemProduto.style.display =
+                "block";
 
-                        window.location.href =
-                            "carinho.html";
 
-                    }, 900);
+            setTimeout(
+                function () {
 
-                });
+                    window.location.href =
+                        "carinho.html";
+
+                },
+                900
+            );
+
+        }
+    );
+
+
+    /* ==================================================
+       ESTOQUE REAL DO SUPABASE
+       ================================================== */
+
+    async function verificarEstoque() {
+
+        try {
+
+            const resultado =
+                await supabaseClient
+                    .from("produtos")
+                    .select("estoque")
+                    .eq("id", idProduto)
+                    .single();
+
+
+            if (resultado.error) {
+
+                console.error(
+                    "Erro ao consultar estoque:",
+                    resultado.error
+                );
+
+                /*
+                 * Se houver erro de leitura,
+                 * preservamos o funcionamento
+                 * original do carrinho.
+                 */
+
+                return;
+            }
+
+
+            const estoqueReal =
+                Number(
+                    resultado.data.estoque
+                );
+
+
+            console.log(
+                "Estoque real:",
+                idProduto,
+                estoqueReal
+            );
+
+
+            /* ==================================================
+               SEM ESTOQUE
+               ================================================== */
+
+            if (estoqueReal <= 0) {
+
+                botaoAdicionar.disabled =
+                    true;
+
+                botaoAdicionar.textContent =
+                    "INDISPONÍVEL";
+
+
+                const mensagemEstoque =
+                    document.createElement(
+                        "div"
+                    );
+
+                mensagemEstoque.className =
+                    "product-stock-unavailable";
+
+                mensagemEstoque.textContent =
+                    "INDISPONÍVEL";
+
+
+                botaoAdicionar.parentNode.insertBefore(
+                    mensagemEstoque,
+                    botaoAdicionar
+                );
+
+            }
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao verificar estoque:",
+                erro
+            );
 
         }
 
-    </script>
+    }
+
+
+    /*
+     * Consulta o estoque sem bloquear
+     * a montagem da página.
+     */
+
+    verificarEstoque();
+
+}
+
+</script>
 
 </body>
-
 </html>
