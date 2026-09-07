@@ -2762,7 +2762,7 @@ mostrarConfirmacaoPedido();
             produto.quantidade || produto.qtd || 1;
 
         const preco =
-            Number(produto.preco || produto.price || 0);
+    converterPreco(produto.preco || produto.price || 0);
 
         produtosHTML += `
             <div style="
