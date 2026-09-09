@@ -1,554 +1,958 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Achadinhos | GARDEN'S</title>
+    <title>Achadinhos | GARDEN'S</title>
 
-<meta
-    name="description"
-    content="Achadinhos GARDEN'S — peças escolhidas para você florescer a sua melhor versão."
->
+    <meta
+        name="description"
+        content="Achadinhos GARDEN'S — detalhes escolhidos para florescer a sua melhor versão."
+    >
 
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+    <style>
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f8f5ef;
-        color: #304638;
-    }
+        /* ==================================================
+           BASE
+        ================================================== */
 
-    /* =========================
-       CABEÇALHO
-    ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-        background: #ffffff;
-        border-bottom: 1px solid #e4dfd5;
-        padding: 18px 30px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .topo {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f1e8;
+            color: #304638;
+        }
 
-    .logo {
-        width: 120px;
-        height: auto;
-        display: block;
-    }
+        a {
+            text-decoration: none;
+        }
 
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
 
-    nav a {
-        color: #304638;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: 0.3s;
-    }
 
-    nav a:hover {
-        color: #b08a45;
-    }
-
-    /* =========================
-       TÍTULO
-    ========================= */
-
-    .titulo {
-        text-align: center;
-        padding: 65px 20px 35px;
-    }
-
-    .titulo h1 {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 42px;
-        font-weight: normal;
-        margin-bottom: 14px;
-    }
-
-    .titulo p {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 18px;
-        font-style: italic;
-        color: #756d61;
-        max-width: 650px;
-        margin: auto;
-        line-height: 1.6;
-    }
-
-    .linha-titulo {
-        width: 50px;
-        height: 1px;
-        background: #b08a45;
-        margin: 25px auto 0;
-    }
-
-    /* =========================
-       CATEGORIAS
-    ========================= */
-
-    .categorias {
-        max-width: 1150px;
-        margin: auto;
-        padding: 30px 20px 70px;
-    }
-
-    .grade-categorias {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
-    }
-
-    .categoria {
-        background: #ffffff;
-        border: 1px solid #e3ddd2;
-        min-height: 230px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        text-align: center;
-        text-decoration: none;
-        color: #304638;
-
-        padding: 30px 25px;
-
-        transition: 0.3s;
-    }
-
-    .categoria:hover {
-        transform: translateY(-5px);
-        border-color: #b08a45;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    }
-
-    .categoria .linha {
-        width: 40px;
-        height: 1px;
-        background: #b08a45;
-        margin-bottom: 20px;
-    }
-
-    .categoria h2 {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 27px;
-        font-weight: normal;
-        margin-bottom: 13px;
-    }
-
-    .categoria p {
-        color: #756d61;
-        font-size: 14px;
-        line-height: 1.6;
-        max-width: 260px;
-    }
-
-    /* =========================
-       DESTAQUE
-    ========================= */
-
-    .destaque {
-        background: #eee8dc;
-        text-align: center;
-        padding: 55px 20px;
-    }
-
-    .destaque h2 {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 30px;
-        font-weight: normal;
-        margin-bottom: 12px;
-    }
-
-    .destaque p {
-        color: #756d61;
-        font-size: 16px;
-        line-height: 1.6;
-        max-width: 650px;
-        margin: auto;
-    }
-
-    /* =========================
-       BOTÃO
-    ========================= */
-
-    .botao {
-        display: inline-block;
-        margin-top: 25px;
-        background: #304638;
-        color: #ffffff;
-        text-decoration: none;
-        padding: 15px 32px;
-        font-size: 13px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: 0.3s;
-    }
-
-    .botao:hover {
-        background: #b08a45;
-    }
-
-    /* =========================
-       RODAPÉ
-    ========================= */
-
-    footer {
-        background: #304638;
-        color: #ffffff;
-        text-align: center;
-        padding: 38px 20px;
-    }
-
-    footer p {
-        font-size: 14px;
-        margin-bottom: 16px;
-    }
-
-    .whatsapp {
-        display: inline-block;
-        color: #ffffff;
-        text-decoration: none;
-        border: 1px solid rgba(255,255,255,0.6);
-        padding: 12px 24px;
-        transition: 0.3s;
-    }
-
-    .whatsapp:hover {
-        background: #b08a45;
-        border-color: #b08a45;
-    }
-
-    .copyright {
-        margin-top: 25px;
-        margin-bottom: 0;
-        font-size: 12px;
-        opacity: 0.7;
-    }
-
-    /* =========================
-       CELULAR
-    ========================= */
-
-    @media (max-width: 700px) {
+        /* ==================================================
+           CABEÇALHO
+        ================================================== */
 
         header {
-            padding: 15px 18px;
+            background: #304638;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            position: relative;
+            z-index: 20;
         }
 
         .topo {
-            flex-direction: column;
-            gap: 16px;
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
         }
 
         .logo {
-            width: 100px;
+            width: 125px;
+            height: auto;
+            display: block;
         }
 
         nav {
-            gap: 20px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
         nav a {
+            color: #ffffff;
             font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
         }
 
-        .titulo {
-            padding: 45px 20px 25px;
+        nav a:hover {
+            color: #c7a66a;
         }
 
-        .titulo h1 {
-            font-size: 32px;
+        .menu-mobile {
+            display: none;
+            color: #ffffff;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
-        .titulo p {
-            font-size: 16px;
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .hero {
+            position: relative;
+            min-height: 570px;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(25, 43, 34, 0.86) 0%,
+                    rgba(25, 43, 34, 0.62) 38%,
+                    rgba(25, 43, 34, 0.18) 75%,
+                    rgba(25, 43, 34, 0.08) 100%
+                ),
+                url("gardenia.jpg");
+
+            background-size: cover;
+            background-position: center center;
+
+            display: flex;
+            align-items: center;
         }
+
+        .hero-conteudo {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        .hero-texto {
+            max-width: 560px;
+            color: #ffffff;
+        }
+
+        .hero-linha {
+            width: 55px;
+            height: 2px;
+            background: #c7a66a;
+            margin-bottom: 25px;
+        }
+
+        .hero-pequeno {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            color: #e3cf9f;
+        }
+
+        .hero h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(50px, 7vw, 82px);
+            font-weight: normal;
+            line-height: 0.95;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 19px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.9);
+            max-width: 500px;
+        }
+
+
+        /* ==================================================
+           INTRODUÇÃO
+        ================================================== */
+
+        .introducao {
+            background: #f5f1e8;
+            padding: 75px 20px 55px;
+            text-align: center;
+        }
+
+        .introducao-pequeno {
+            color: #b08a45;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .introducao h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(30px, 4vw, 43px);
+            font-weight: normal;
+            color: #304638;
+            margin-bottom: 18px;
+        }
+
+        .introducao p {
+            max-width: 670px;
+            margin: auto;
+            color: #756d61;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .linha-dourada {
+            width: 45px;
+            height: 1px;
+            background: #b08a45;
+            margin: 25px auto 0;
+        }
+
+
+        /* ==================================================
+           CATEGORIAS
+        ================================================== */
 
         .categorias {
-            padding: 25px 20px 50px;
+            padding: 25px 0 90px;
+            background: #f5f1e8;
         }
 
-        .grade-categorias {
-            grid-template-columns: 1fr;
+        .grade {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
             gap: 18px;
         }
 
         .categoria {
-            min-height: 190px;
+            position: relative;
+            min-height: 330px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #304638,
+                    #23382c
+                );
+
+            color: #ffffff;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 30px 24px;
+
+            border: 1px solid rgba(176,138,69,0.35);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
         }
 
-        .destaque {
-            padding: 45px 20px;
+        .categoria:nth-child(1) {
+            grid-column: span 2;
         }
 
-        .destaque h2 {
-            font-size: 26px;
+        .categoria:nth-child(2) {
+            grid-column: span 2;
         }
+
+        .categoria:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        .categoria:nth-child(4) {
+            grid-column: span 3;
+        }
+
+        .categoria:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        .categoria::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(199,166,106,0.20),
+                    transparent 38%
+                );
+
+            pointer-events: none;
+        }
+
+        .categoria:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 35px rgba(35,56,44,0.20);
+        }
+
+        .categoria-conteudo {
+            position: relative;
+            z-index: 2;
+        }
+
+        .numero {
+            color: #c7a66a;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .categoria-linha {
+            width: 38px;
+            height: 1px;
+            background: #c7a66a;
+            margin-bottom: 17px;
+        }
+
+        .categoria h3 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 29px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .categoria p {
+            color: rgba(255,255,255,0.72);
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 310px;
+        }
+
+        .categoria-seta {
+            margin-top: 22px;
+            color: #c7a66a;
+            font-size: 22px;
+            transition: 0.3s ease;
+        }
+
+        .categoria:hover .categoria-seta {
+            transform: translateX(7px);
+        }
+
+
+        /* ==================================================
+           FRASE DE MARCA
+        ================================================== */
+
+        .manifesto {
+            position: relative;
+            background: #304638;
+            color: #ffffff;
+            padding: 90px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .manifesto::before {
+            content: "G";
+            position: absolute;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 300px;
+            line-height: 1;
+            color: rgba(255,255,255,0.025);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .manifesto-conteudo {
+            position: relative;
+            z-index: 2;
+        }
+
+        .manifesto h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: normal;
+            margin-bottom: 18px;
+        }
+
+        .manifesto p {
+            max-width: 650px;
+            margin: auto;
+            color: rgba(255,255,255,0.75);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 30px;
+
+            border: 1px solid #c7a66a;
+
+            color: #ffffff;
+
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            transition: 0.3s ease;
+        }
+
+        .botao:hover {
+            background: #c7a66a;
+            color: #304638;
+        }
+
+
+        /* ==================================================
+           RODAPÉ
+        ================================================== */
 
         footer {
-            padding: 32px 20px;
+            background: #1f3026;
+            color: #ffffff;
+            padding: 45px 20px;
+            text-align: center;
         }
-    }
-</style>
-```
 
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 105px;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 18px;
+        }
+
+        .whatsapp {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #ffffff;
+            padding: 11px 23px;
+            font-size: 12px;
+            transition: 0.3s ease;
+        }
+
+        .whatsapp:hover {
+            background: #c7a66a;
+            border-color: #c7a66a;
+            color: #1f3026;
+        }
+
+        .copyright {
+            margin-top: 28px;
+            margin-bottom: 0;
+            font-size: 11px;
+            opacity: 0.5;
+        }
+
+
+        /* ==================================================
+           RESPONSIVO
+        ================================================== */
+
+        @media (max-width: 850px) {
+
+            .topo {
+                min-height: 70px;
+            }
+
+            .logo {
+                width: 105px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            nav a {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .hero {
+                min-height: 520px;
+                background-position: 62% center;
+            }
+
+            .hero h1 {
+                font-size: 58px;
+            }
+
+            .grade {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categoria:nth-child(1),
+            .categoria:nth-child(2),
+            .categoria:nth-child(3),
+            .categoria:nth-child(4),
+            .categoria:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .categoria {
+                min-height: 290px;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 0 18px;
+            }
+
+            .topo {
+                min-height: 68px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-mobile {
+                display: block;
+            }
+
+            .hero {
+                min-height: 560px;
+
+                background-image:
+                    linear-gradient(
+                        90deg,
+                        rgba(25,43,34,0.88),
+                        rgba(25,43,34,0.42)
+                    ),
+                    url("gardenia.jpg");
+
+                background-position: 62% center;
+            }
+
+            .hero-conteudo {
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 54px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .introducao {
+                padding: 60px 20px 40px;
+            }
+
+            .introducao h2 {
+                font-size: 31px;
+            }
+
+            .introducao p {
+                font-size: 16px;
+            }
+
+            .categorias {
+                padding: 20px 0 65px;
+            }
+
+            .grade {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .categoria:nth-child(1),
+            .categoria:nth-child(2),
+            .categoria:nth-child(3),
+            .categoria:nth-child(4),
+            .categoria:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .categoria {
+                min-height: 225px;
+                padding: 27px 23px;
+            }
+
+            .categoria h3 {
+                font-size: 27px;
+            }
+
+            .manifesto {
+                padding: 70px 20px;
+            }
+
+            .manifesto h2 {
+                font-size: 31px;
+            }
+
+            .manifesto p {
+                font-size: 16px;
+            }
+
+            footer {
+                padding: 38px 20px;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-```
-<!-- =========================
-     TOPO
-========================= -->
+
+<!-- ==================================================
+     CABEÇALHO
+================================================== -->
 
 <header>
 
-    <div class="topo">
+    <div class="container topo">
 
-        <a href="index.html">
+        <a href="index.html" class="logo-area">
+
             <img
                 src="logo.jpg"
                 alt="GARDEN'S"
                 class="logo"
             >
+
         </a>
+
 
         <nav>
 
             <a href="index.html">
-                INÍCIO
+                Início
             </a>
 
             <a href="pecas.html">
-                PEÇAS
+                Moda
+            </a>
+
+            <a href="achadinhos.html">
+                Achadinhos
             </a>
 
             <a href="carinho.html">
-                CARRINHO
+                Carrinho
             </a>
 
             <a href="contato.html">
-                CONTATO
+                Contato
             </a>
 
         </nav>
+
+
+        <button
+            class="menu-mobile"
+            id="menuMobile"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
 
     </div>
 
 </header>
 
 
-<!-- =========================
-     TÍTULO
-========================= -->
+<!-- ==================================================
+     HERO
+================================================== -->
 
-<section class="titulo">
+<section class="hero">
 
-    <h1>
-        Achadinhos
-    </h1>
+    <div class="hero-conteudo">
 
-    <p>
-        Peças especiais escolhidas para você encontrar
-        aquele detalhe que combina com a sua essência.
-    </p>
+        <div class="hero-texto">
 
-    <div class="linha-titulo"></div>
+            <div class="hero-linha"></div>
+
+            <div class="hero-pequeno">
+                GARDEN'S COLLECTION
+            </div>
+
+            <h1>
+                Achadinhos
+            </h1>
+
+            <p>
+                Pequenos detalhes podem transformar
+                completamente a maneira como você se sente.
+                Descubra escolhas especiais que combinam
+                com a sua essência.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- ==================================================
+     INTRODUÇÃO
+================================================== -->
+
+<section class="introducao">
+
+    <div class="container">
+
+        <div class="introducao-pequeno">
+            Descubra
+        </div>
+
+        <h2>
+            Um detalhe pode fazer toda a diferença.
+        </h2>
+
+        <p>
+            Na GARDEN'S, os achadinhos foram escolhidos
+            para complementar seu estilo e revelar
+            aquela pequena surpresa que você não estava
+            procurando, mas simplesmente precisava encontrar.
+        </p>
+
+        <div class="linha-dourada"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
      CATEGORIAS
-========================= -->
+================================================== -->
 
 <section class="categorias">
 
-    <div class="grade-categorias">
+    <div class="container">
+
+        <div class="grade">
 
 
-        <!-- VESTIDOS -->
+            <!-- RELÓGIOS -->
 
-        <a href="pecas.html?categoria=vestidos" class="categoria">
+            <a
+                href="#"
+                class="categoria"
+            >
 
-            <div class="linha"></div>
+                <div class="categoria-conteudo">
 
-            <h2>
-                Vestidos
-            </h2>
+                    <div class="numero">
+                        01
+                    </div>
 
-            <p>
-                Modelos para diferentes momentos,
-                do casual ao especial.
-            </p>
+                    <div class="categoria-linha"></div>
 
-        </a>
+                    <h3>
+                        Relógios
+                    </h3>
 
+                    <p>
+                        Elegância no tempo certo.
+                        Modelos para acompanhar
+                        todos os seus momentos.
+                    </p>
 
-        <!-- BLUSAS -->
+                    <div class="categoria-seta">
+                        →
+                    </div>
 
-        <a href="pecas.html?categoria=blusas" class="categoria">
+                </div>
 
-            <div class="linha"></div>
-
-            <h2>
-                Blusas
-            </h2>
-
-            <p>
-                Leveza, elegância e versatilidade
-                para compor seus looks.
-            </p>
-
-        </a>
+            </a>
 
 
-        <!-- CALÇAS -->
+            <!-- ACESSÓRIOS -->
 
-        <a href="pecas.html?categoria=calcas" class="categoria">
+            <a
+                href="#"
+                class="categoria"
+            >
 
-            <div class="linha"></div>
+                <div class="categoria-conteudo">
 
-            <h2>
-                Calças
-            </h2>
+                    <div class="numero">
+                        02
+                    </div>
 
-            <p>
-                Peças para criar combinações
-                modernas e confortáveis.
-            </p>
+                    <div class="categoria-linha"></div>
 
-        </a>
+                    <h3>
+                        Acessórios
+                    </h3>
 
+                    <p>
+                        Detalhes que completam
+                        o visual e revelam
+                        sua personalidade.
+                    </p>
 
-        <!-- SAIAS -->
+                    <div class="categoria-seta">
+                        →
+                    </div>
 
-        <a href="pecas.html?categoria=saias" class="categoria">
+                </div>
 
-            <div class="linha"></div>
-
-            <h2>
-                Saias
-            </h2>
-
-            <p>
-                Feminilidade e estilo para
-                diferentes ocasiões.
-            </p>
-
-        </a>
+            </a>
 
 
-        <!-- CONJUNTOS -->
+            <!-- CINTA-BOLSA -->
 
-        <a href="pecas.html?categoria=conjuntos" class="categoria">
+            <a
+                href="#"
+                class="categoria"
+            >
 
-            <div class="linha"></div>
+                <div class="categoria-conteudo">
 
-            <h2>
-                Conjuntos
-            </h2>
+                    <div class="numero">
+                        03
+                    </div>
 
-            <p>
-                Looks coordenados para facilitar
-                suas escolhas.
-            </p>
+                    <div class="categoria-linha"></div>
 
-        </a>
+                    <h3>
+                        Cinta-bolsa
+                    </h3>
 
+                    <p>
+                        Praticidade, estilo e
+                        personalidade para
+                        acompanhar você.
+                    </p>
 
-        <!-- ACESSÓRIOS -->
+                    <div class="categoria-seta">
+                        →
+                    </div>
 
-        <a href="pecas.html?categoria=acessorios" class="categoria">
+                </div>
 
-            <div class="linha"></div>
-
-            <h2>
-                Acessórios
-            </h2>
-
-            <p>
-                Detalhes que completam e valorizam
-                a sua produção.
-            </p>
-
-        </a>
+            </a>
 
 
-        <!-- NOVIDADES -->
+            <!-- JOIAS -->
 
-        <a href="novidades.html" class="categoria">
+            <a
+                href="#"
+                class="categoria"
+            >
 
-            <div class="linha"></div>
+                <div class="categoria-conteudo">
 
-            <h2>
-                Novidades
-            </h2>
+                    <div class="numero">
+                        04
+                    </div>
 
-            <p>
-                Descubra as peças que acabaram
-                de chegar à GARDEN'S.
-            </p>
+                    <div class="categoria-linha"></div>
 
-        </a>
+                    <h3>
+                        Joias
+                    </h3>
 
+                    <p>
+                        Peças delicadas para
+                        valorizar momentos
+                        que merecem ser lembrados.
+                    </p>
 
-        <!-- PROMOÇÕES -->
+                    <div class="categoria-seta">
+                        →
+                    </div>
 
-        <a href="promocao.html" class="categoria">
+                </div>
 
-            <div class="linha"></div>
-
-            <h2>
-                Promoções
-            </h2>
-
-            <p>
-                Achadinhos especiais com condições
-                especiais para você.
-            </p>
-
-        </a>
+            </a>
 
 
-        <!-- DESTAQUES -->
+            <!-- PERFUMARIA -->
 
-        <a href="pecas.html?categoria=destaques" class="categoria">
+            <a
+                href="#"
+                class="categoria"
+            >
 
-            <div class="linha"></div>
+                <div class="categoria-conteudo">
 
-            <h2>
-                Destaques
-            </h2>
+                    <div class="numero">
+                        05
+                    </div>
 
-            <p>
-                As peças que estão conquistando
-                os olhares nesta temporada.
-            </p>
+                    <div class="categoria-linha"></div>
 
+                    <h3>
+                        Perfumaria
+                    </h3>
+
+                    <p>
+                        Fragrâncias que deixam
+                        presença, memória
+                        e personalidade.
+                    </p>
+
+                    <div class="categoria-seta">
+                        →
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     MANIFESTO
+================================================== -->
+
+<section class="manifesto">
+
+    <div class="manifesto-conteudo">
+
+        <h2>
+            Encontre aquilo que combina com você.
+        </h2>
+
+        <p>
+            Alguns achadinhos chegam até nós por acaso.
+            Outros parecem ter esperado exatamente
+            pelo momento certo para nos encontrar.
+        </p>
+
+        <a
+            href="pecas.html"
+            class="botao"
+        >
+            Conheça a Moda
         </a>
 
     </div>
@@ -556,33 +960,24 @@
 </section>
 
 
-<!-- =========================
-     FRASE FINAL
-========================= -->
-
-<section class="destaque">
-
-    <h2>
-        Encontre o seu próximo achadinho.
-    </h2>
-
-    <p>
-        Porque algumas peças simplesmente parecem
-        ter sido feitas para você.
-    </p>
-
-    <a href="pecas.html" class="botao">
-        VER TODAS AS PEÇAS
-    </a>
-
-</section>
-
-
-<!-- =========================
+<!-- ==================================================
      RODAPÉ
-========================= -->
+================================================== -->
 
 <footer>
+
+    <div class="footer-logo">
+
+        <img
+            src="logo.jpg"
+            alt="GARDEN'S"
+        >
+
+    </div>
+
+    <p>
+        Floresça a sua melhor versão.
+    </p>
 
     <p>
         Fale conosco pelo WhatsApp
@@ -598,13 +993,139 @@
     </a>
 
     <p class="copyright">
-        © 2026 GARDEN'S — Floresça a sua melhor versão
+        © 2026 GARDEN'S — Todos os direitos reservados
     </p>
 
 </footer>
-```
+
+
+<!-- ==================================================
+     MENU MOBILE
+================================================== -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const botao = document.getElementById("menuMobile");
+
+        botao.addEventListener("click", function () {
+
+            const menuExistente =
+                document.getElementById("menuMobileAberto");
+
+            if (menuExistente) {
+
+                menuExistente.remove();
+
+                return;
+            }
+
+
+            const menu = document.createElement("div");
+
+            menu.id = "menuMobileAberto";
+
+            menu.style.position = "absolute";
+            menu.style.top = "68px";
+            menu.style.left = "0";
+            menu.style.right = "0";
+            menu.style.background = "#304638";
+            menu.style.padding = "20px";
+            menu.style.zIndex = "100";
+
+            menu.innerHTML = `
+
+                <a
+                    href="index.html"
+                    style="
+                        display:block;
+                        color:white;
+                        padding:14px 0;
+                        border-bottom:1px solid rgba(255,255,255,0.12);
+                        font-size:13px;
+                        font-weight:bold;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    "
+                >
+                    Início
+                </a>
+
+                <a
+                    href="pecas.html"
+                    style="
+                        display:block;
+                        color:white;
+                        padding:14px 0;
+                        border-bottom:1px solid rgba(255,255,255,0.12);
+                        font-size:13px;
+                        font-weight:bold;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    "
+                >
+                    Moda
+                </a>
+
+                <a
+                    href="achadinhos.html"
+                    style="
+                        display:block;
+                        color:#c7a66a;
+                        padding:14px 0;
+                        border-bottom:1px solid rgba(255,255,255,0.12);
+                        font-size:13px;
+                        font-weight:bold;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    "
+                >
+                    Achadinhos
+                </a>
+
+                <a
+                    href="carinho.html"
+                    style="
+                        display:block;
+                        color:white;
+                        padding:14px 0;
+                        border-bottom:1px solid rgba(255,255,255,0.12);
+                        font-size:13px;
+                        font-weight:bold;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    "
+                >
+                    Carrinho
+                </a>
+
+                <a
+                    href="contato.html"
+                    style="
+                        display:block;
+                        color:white;
+                        padding:14px 0;
+                        font-size:13px;
+                        font-weight:bold;
+                        letter-spacing:1px;
+                        text-transform:uppercase;
+                    "
+                >
+                    Contato
+                </a>
+
+            `;
+
+            document.querySelector("header").appendChild(menu);
+
+        });
+
+    });
+
+</script>
+
 
 </body>
 
 </html>
-
