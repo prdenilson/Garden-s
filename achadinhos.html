@@ -1,1 +1,610 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Achadinhos | GARDEN'S</title>
+
+<meta
+    name="description"
+    content="Achadinhos GARDEN'S — peças escolhidas para você florescer a sua melhor versão."
+>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f8f5ef;
+        color: #304638;
+    }
+
+    /* =========================
+       CABEÇALHO
+    ========================= */
+
+    header {
+        background: #ffffff;
+        border-bottom: 1px solid #e4dfd5;
+        padding: 18px 30px;
+    }
+
+    .topo {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 120px;
+        height: auto;
+        display: block;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    nav a {
+        color: #304638;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: #b08a45;
+    }
+
+    /* =========================
+       TÍTULO
+    ========================= */
+
+    .titulo {
+        text-align: center;
+        padding: 65px 20px 35px;
+    }
+
+    .titulo h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 42px;
+        font-weight: normal;
+        margin-bottom: 14px;
+    }
+
+    .titulo p {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+        font-style: italic;
+        color: #756d61;
+        max-width: 650px;
+        margin: auto;
+        line-height: 1.6;
+    }
+
+    .linha-titulo {
+        width: 50px;
+        height: 1px;
+        background: #b08a45;
+        margin: 25px auto 0;
+    }
+
+    /* =========================
+       CATEGORIAS
+    ========================= */
+
+    .categorias {
+        max-width: 1150px;
+        margin: auto;
+        padding: 30px 20px 70px;
+    }
+
+    .grade-categorias {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .categoria {
+        background: #ffffff;
+        border: 1px solid #e3ddd2;
+        min-height: 230px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        text-decoration: none;
+        color: #304638;
+
+        padding: 30px 25px;
+
+        transition: 0.3s;
+    }
+
+    .categoria:hover {
+        transform: translateY(-5px);
+        border-color: #b08a45;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .categoria .linha {
+        width: 40px;
+        height: 1px;
+        background: #b08a45;
+        margin-bottom: 20px;
+    }
+
+    .categoria h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 27px;
+        font-weight: normal;
+        margin-bottom: 13px;
+    }
+
+    .categoria p {
+        color: #756d61;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 260px;
+    }
+
+    /* =========================
+       DESTAQUE
+    ========================= */
+
+    .destaque {
+        background: #eee8dc;
+        text-align: center;
+        padding: 55px 20px;
+    }
+
+    .destaque h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 30px;
+        font-weight: normal;
+        margin-bottom: 12px;
+    }
+
+    .destaque p {
+        color: #756d61;
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 650px;
+        margin: auto;
+    }
+
+    /* =========================
+       BOTÃO
+    ========================= */
+
+    .botao {
+        display: inline-block;
+        margin-top: 25px;
+        background: #304638;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 15px 32px;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: 0.3s;
+    }
+
+    .botao:hover {
+        background: #b08a45;
+    }
+
+    /* =========================
+       RODAPÉ
+    ========================= */
+
+    footer {
+        background: #304638;
+        color: #ffffff;
+        text-align: center;
+        padding: 38px 20px;
+    }
+
+    footer p {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .whatsapp {
+        display: inline-block;
+        color: #ffffff;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.6);
+        padding: 12px 24px;
+        transition: 0.3s;
+    }
+
+    .whatsapp:hover {
+        background: #b08a45;
+        border-color: #b08a45;
+    }
+
+    .copyright {
+        margin-top: 25px;
+        margin-bottom: 0;
+        font-size: 12px;
+        opacity: 0.7;
+    }
+
+    /* =========================
+       CELULAR
+    ========================= */
+
+    @media (max-width: 700px) {
+
+        header {
+            padding: 15px 18px;
+        }
+
+        .topo {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        nav {
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 12px;
+        }
+
+        .titulo {
+            padding: 45px 20px 25px;
+        }
+
+        .titulo h1 {
+            font-size: 32px;
+        }
+
+        .titulo p {
+            font-size: 16px;
+        }
+
+        .categorias {
+            padding: 25px 20px 50px;
+        }
+
+        .grade-categorias {
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .categoria {
+            min-height: 190px;
+        }
+
+        .destaque {
+            padding: 45px 20px;
+        }
+
+        .destaque h2 {
+            font-size: 26px;
+        }
+
+        footer {
+            padding: 32px 20px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     TOPO
+========================= -->
+
+<header>
+
+    <div class="topo">
+
+        <a href="index.html">
+            <img
+                src="logo.jpg"
+                alt="GARDEN'S"
+                class="logo"
+            >
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                INÍCIO
+            </a>
+
+            <a href="pecas.html">
+                PEÇAS
+            </a>
+
+            <a href="carinho.html">
+                CARRINHO
+            </a>
+
+            <a href="contato.html">
+                CONTATO
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     TÍTULO
+========================= -->
+
+<section class="titulo">
+
+    <h1>
+        Achadinhos
+    </h1>
+
+    <p>
+        Peças especiais escolhidas para você encontrar
+        aquele detalhe que combina com a sua essência.
+    </p>
+
+    <div class="linha-titulo"></div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIAS
+========================= -->
+
+<section class="categorias">
+
+    <div class="grade-categorias">
+
+
+        <!-- VESTIDOS -->
+
+        <a href="pecas.html?categoria=vestidos" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Vestidos
+            </h2>
+
+            <p>
+                Modelos para diferentes momentos,
+                do casual ao especial.
+            </p>
+
+        </a>
+
+
+        <!-- BLUSAS -->
+
+        <a href="pecas.html?categoria=blusas" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Blusas
+            </h2>
+
+            <p>
+                Leveza, elegância e versatilidade
+                para compor seus looks.
+            </p>
+
+        </a>
+
+
+        <!-- CALÇAS -->
+
+        <a href="pecas.html?categoria=calcas" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Calças
+            </h2>
+
+            <p>
+                Peças para criar combinações
+                modernas e confortáveis.
+            </p>
+
+        </a>
+
+
+        <!-- SAIAS -->
+
+        <a href="pecas.html?categoria=saias" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Saias
+            </h2>
+
+            <p>
+                Feminilidade e estilo para
+                diferentes ocasiões.
+            </p>
+
+        </a>
+
+
+        <!-- CONJUNTOS -->
+
+        <a href="pecas.html?categoria=conjuntos" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Conjuntos
+            </h2>
+
+            <p>
+                Looks coordenados para facilitar
+                suas escolhas.
+            </p>
+
+        </a>
+
+
+        <!-- ACESSÓRIOS -->
+
+        <a href="pecas.html?categoria=acessorios" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Acessórios
+            </h2>
+
+            <p>
+                Detalhes que completam e valorizam
+                a sua produção.
+            </p>
+
+        </a>
+
+
+        <!-- NOVIDADES -->
+
+        <a href="novidades.html" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Novidades
+            </h2>
+
+            <p>
+                Descubra as peças que acabaram
+                de chegar à GARDEN'S.
+            </p>
+
+        </a>
+
+
+        <!-- PROMOÇÕES -->
+
+        <a href="promocao.html" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Promoções
+            </h2>
+
+            <p>
+                Achadinhos especiais com condições
+                especiais para você.
+            </p>
+
+        </a>
+
+
+        <!-- DESTAQUES -->
+
+        <a href="pecas.html?categoria=destaques" class="categoria">
+
+            <div class="linha"></div>
+
+            <h2>
+                Destaques
+            </h2>
+
+            <p>
+                As peças que estão conquistando
+                os olhares nesta temporada.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FRASE FINAL
+========================= -->
+
+<section class="destaque">
+
+    <h2>
+        Encontre o seu próximo achadinho.
+    </h2>
+
+    <p>
+        Porque algumas peças simplesmente parecem
+        ter sido feitas para você.
+    </p>
+
+    <a href="pecas.html" class="botao">
+        VER TODAS AS PEÇAS
+    </a>
+
+</section>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
+<footer>
+
+    <p>
+        Fale conosco pelo WhatsApp
+    </p>
+
+    <a
+        href="https://wa.me/5585988590024"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp"
+    >
+        WhatsApp: (85) 98859-0024
+    </a>
+
+    <p class="copyright">
+        © 2026 GARDEN'S — Floresça a sua melhor versão
+    </p>
+
+</footer>
+```
+
+</body>
+
+</html>
 
