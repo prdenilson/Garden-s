@@ -2397,30 +2397,7 @@ function carregarDadosCliente() {
 
 async function continuarPagamento() {
 
-    /* ==================================================
-       CARTÃO DE CRÉDITO — AVISO TEMPORÁRIO
-    ================================================== */
-
-    const pagamentoSelecionado =
-        document.querySelector(
-            'input[name="pagamento"]:checked'
-        );
-
-    if (
-        pagamentoSelecionado &&
-        pagamentoSelecionado.value === "cartao_credito"
-    ) {
-        const modalCartaoCredito =
-            document.getElementById("modal-cartao-credito");
-
-        if (modalCartaoCredito) {
-            modalCartaoCredito.classList.add("ativo");
-            document.body.style.overflow = "hidden";
-        }
-
-        return;
-    }
-    
+       
     if (!validarFormulario()) {
 
         return;
@@ -2535,7 +2512,101 @@ async function continuarPagamento() {
 
     };
 
+    /* ==================================================
+       CARTÃO DE CRÉDITO — INFINITEPAY
+    ================================================== */
 
+    if (
+        pagamento &&
+        pagamento.value === "cartao_credito"
+    ) {
+
+        const botao =
+            document.getElementById(
+                "btn-continuar"
+            );
+
+        botao.disabled = true;
+
+        botao.textContent =
+            "Abrindo pagamento...";
+
+        mostrarMensagem(
+            "Estamos preparando seu pagamento com cartão...",
+            "success"
+        );
+
+        try {
+
+            const resposta =
+                await fetch(
+                    "https://kiefyoedeervkrtrkghj.supabase.co/functions/v1/criar-infinitepay",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(pedido)
+                    }
+                );
+
+            const resultado =
+                await resposta.json();
+
+            console.log(
+                "Resposta do criar-infinitepay:",
+                resultado
+            );
+
+            if (
+                !resposta.ok ||
+                !resultado.sucesso ||
+                !resultado.url
+            ) {
+
+                throw new Error(
+                    resultado.error ||
+                    "Não foi possível criar o pagamento com cartão."
+                );
+
+            }
+
+            localStorage.setItem(
+                "gardens_infinitepay",
+                JSON.stringify(resultado)
+            );
+
+            window.location.href =
+                resultado.url;
+
+            return;
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao criar pagamento InfinitePay:",
+                erro
+            );
+
+            botao.disabled = false;
+
+            botao.textContent =
+                "Continuar para pagamento";
+
+            mostrarMensagem(
+                erro.message ||
+                "Não foi possível iniciar o pagamento com cartão.",
+                "error"
+            );
+
+            return;
+        }
+    }
+    
     localStorage.setItem(
         "gardens_checkout",
         JSON.stringify(pedido)
