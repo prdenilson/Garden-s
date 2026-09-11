@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -270,6 +270,43 @@
                 padding: 9px 6px;
             }
         }
+
+        /* CARIMBO DE PRODUTO VENDIDO */
+.produto-imagem.vendido {
+    position: relative;
+}
+
+.produto-imagem.vendido::after {
+    content: "VENDIDO";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-12deg);
+
+    padding: 10px 24px;
+    background: rgba(45, 74, 62, 0.92);
+    color: #fff;
+
+    border: 2px solid #fff;
+    border-radius: 4px;
+
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    white-space: nowrap;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+.produto-imagem.vendido img {
+    filter: brightness(0.72);
+}
+
+.produto-imagem.vendido:hover img {
+    transform: none;
+}
+        
     </style>
 </head>
 
@@ -503,7 +540,7 @@
 
                     <a
                         href="produto.html?id=gardens-04"
-                        class="produto-imagem"
+                        class="produto-imagem vendido"
                     >
                         <img
                             src="assets/vestidos/conjuto.jpg"
