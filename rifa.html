@@ -324,7 +324,11 @@
 
         <div class="numeros" id="gradeNumeros"></div>
 
-        <section class="formulario">
+<button type="button" class="botao" onclick="abrirFormulario()">
+    FINALIZAR PEDIDO
+</button>
+
+<section class="formulario" id="formulario" style="display: none;">
 
             <h3>Seus dados</h3>
 
@@ -443,6 +447,25 @@
                 });
         }
 
+function abrirFormulario() {
+
+    if (selecionados.length === 0) {
+        alert("Escolha pelo menos um número.");
+        return;
+    }
+
+    atualizarResumo();
+
+    const formulario = document.getElementById("formulario");
+
+    formulario.style.display = "block";
+
+    formulario.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+        
         function participar() {
 
             const nome = document.getElementById("nome").value.trim();
