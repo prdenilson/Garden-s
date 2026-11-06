@@ -346,6 +346,13 @@
                 placeholder="(00) 00000-0000"
             >
 
+        <label for="email">E-mail</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Digite seu e-mail"
+        >
+    
             <div class="resumo">
                 <div>
                     Números selecionados:
@@ -510,27 +517,63 @@ function abrirFormulario() {
     });
 }
         
-        function participar() {
+       async function participar() {
+    const nome = document.getElementById("nome").value.trim();
+    const whatsapp = document.getElementById("whatsapp").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-            const nome = document.getElementById("nome").value.trim();
-            const whatsapp = document.getElementById("whatsapp").value.trim();
+    if (selecionados.length === 0) {
+        alert("Escolha pelo menos um número.");
+        return;
+    }
 
-            if (selecionados.length === 0) {
-                alert("Escolha pelo menos um número.");
-                return;
+    if (!nome || !whatsapp || !email) {
+        alert("Preencha nome, WhatsApp e e-mail.");
+        return;
+    }
+
+    const botao = document.querySelector("#formulario .botao");
+
+    botao.disabled = true;
+    botao.textContent = "AGUARDE...";
+
+    try {
+        const { data, error } = await supabaseClient.functions.invoke(
+            "criar-pagamento-rifa",
+            {
+                body: {
+                    nome: nome,
+                    whatsapp: whatsapp,
+                    email: email,
+                    numeros: selecionados
+                }
             }
+        );
 
-            if (!nome || !whatsapp) {
-                alert("Preencha seu nome e WhatsApp.");
-                return;
-            }
-
-            alert(
-                "Esta é uma versão demonstrativa. " +
-                "O cadastro e o pagamento ainda não estão ativados."
-            );
+        if (error) {
+            throw error;
         }
-    </script>
+
+        if (!data || data.erro) {
+            throw new Error(data?.erro || "Não foi possível criar o pagamento.");
+        }
+
+        console.log("Resposta do pagamento:", data);
+
+        if (data.qr_code) {
+            alert("Pedido criado! O PIX foi gerado. Vamos exibir os dados de pagamento na próxima etapa.");
+        } else {
+            alert("Pedido criado, mas não recebemos o código PIX. Verifique os dados retornados.");
+        }
+
+    } catch (erro) {
+        console.error("Erro ao criar pedido:", erro);
+        alert("Não foi possível finalizar o pedido: " + (erro.message || "Erro de comunicação."));
+    } finally {
+        botao.disabled = false;
+        botao.textContent = "CONTINUAR";
+    }
+}    </script>
 
 </body>
 </html>
