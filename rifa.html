@@ -370,7 +370,30 @@
             </button>
 
         </section>
+            
+        <section id="pixArea" class="formulario" style="display:none; margin-top:20px;">
 
+    <h3>Finalize seu pagamento</h3>
+
+    <p style="text-align:center; margin-bottom:15px;">
+        Escaneie o QR Code abaixo para pagar com PIX.
+    </p>
+
+    <img id="pixImagem" src="" alt="QR Code PIX"
+         style="display:block; width:220px; max-width:100%; margin:15px auto;">
+
+    <label for="pixCodigo">Ou copie o código PIX:</label>
+
+    <textarea id="pixCodigo" readonly
+        style="width:100%; min-height:100px; padding:10px;"></textarea>
+
+    <button type="button" class="botao"
+        onclick="navigator.clipboard.writeText(document.getElementById('pixCodigo').value).then(() => alert('Código PIX copiado!'));">
+        COPIAR CÓDIGO PIX
+    </button>
+
+</section>
+        
         <section class="participantes">
 
             <h3>Números participantes</h3>
@@ -561,11 +584,22 @@ function abrirFormulario() {
         console.log("Resposta do pagamento:", data);
 
         if (data.qr_code) {
-            alert("Pedido criado! O PIX foi gerado. Vamos exibir os dados de pagamento na próxima etapa.");
-        } else {
-            alert("Pedido criado, mas não recebemos o código PIX. Verifique os dados retornados.");
-        }
+    document.getElementById("pixArea").style.display = "block";
+    document.getElementById("pixCodigo").value = data.qr_code;
 
+    if (data.qr_code_base64) {
+        document.getElementById("pixImagem").src =
+            "data:image/png;base64," + data.qr_code_base64;
+    }
+
+    document.getElementById("pixArea").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+} else {
+    alert("Pedido criado, mas não recebemos o código PIX.");
+}
     } catch (erro) {
         console.error("Erro ao criar pedido:", erro);
         alert("Não foi possível finalizar o pedido: " + (erro.message || "Erro de comunicação."));
