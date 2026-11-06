@@ -271,9 +271,12 @@
             }
         }
 
-        /* CARIMBO DE PRODUTO VENDIDO */
+      /* CARIMBO DE ESTOQUE ZERADO */
+
 .produto-imagem.vendido {
-    position: relative;
+    position: relative !important;
+    display: block;
+    overflow: hidden;
 }
 
 .produto-imagem.vendido::after {
@@ -283,24 +286,28 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(-12deg);
 
-    padding: 8px 10px;
-    background: rgba(45, 74, 62, 0.92);
-    color: #fff;
+    width: max-content;
+    padding: 10px 14px;
 
-    border: 2px solid #fff;
+    background: rgba(48, 70, 56, 0.95);
+    color: #ffffff;
+
+    border: 2px solid #ffffff;
     border-radius: 4px;
 
-    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     white-space: nowrap;
 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    z-index: 2;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .produto-imagem.vendido img {
-    filter: brightness(0.72);
+    filter: brightness(0.65);
 }
 
 .produto-imagem.vendido:hover img {
