@@ -2,491 +2,431 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Rifa Garden's</title>
+    <title>Rifa Garden's</title>
 
-  <meta name="description" content="Rifa Garden's - Participe e concorra a um lindo vestido.">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  <style>
-    :root {
-      --verde: #304638;
-      --dourado: #b08a45;
-      --bege: #f8f5ef;
-      --bege-secundario: #eee8dc;
-      --texto: #292820;
-    }
+        body {
+            background: #f8f5ef;
+            color: #304638;
+            font-family: Arial, sans-serif;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        header {
+            background: #304638;
+            color: #fff;
+            text-align: center;
+            padding: 22px 15px;
+        }
 
-    body {
-      background: var(--bege);
-      color: var(--texto);
-      font-family: Arial, sans-serif;
-    }
+        header h1 {
+            font-family: Georgia, serif;
+            font-size: 27px;
+            letter-spacing: 2px;
+        }
 
-    header {
-      background: var(--verde);
-      color: white;
-      text-align: center;
-      padding: 24px 15px;
-    }
+        header p {
+            margin-top: 7px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
 
-    header h1 {
-      font-family: Georgia, serif;
-      font-size: 30px;
-      letter-spacing: 2px;
-    }
+        .container {
+            width: 92%;
+            max-width: 650px;
+            margin: 25px auto 45px;
+        }
 
-    header p {
-      margin-top: 8px;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
+        .apresentacao {
+            text-align: center;
+            margin-bottom: 22px;
+        }
 
-    main {
-      width: 92%;
-      max-width: 650px;
-      margin: 30px auto;
-    }
+        .apresentacao h2 {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
 
-    .apresentacao {
-      text-align: center;
-      margin-bottom: 25px;
-    }
+        .apresentacao p {
+            line-height: 1.6;
+            color: #555;
+        }
 
-    .apresentacao h2 {
-      font-family: Georgia, serif;
-      color: var(--verde);
-      font-size: 27px;
-      margin-bottom: 12px;
-    }
+        .preco {
+            color: #a17b36;
+            font-size: 23px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
 
-    .vestido {
-      width: 100%;
-      max-width: 390px;
-      height: auto;
-      max-height: 430px;
-      object-fit: contain;
-      border-radius: 12px;
-      margin: 15px auto;
-      display: block;
-      background: var(--bege-secundario);
-    }
+        /* IMAGEM NO CABEÇALHO DA RIFA */
 
-    .preco {
-      color: var(--dourado);
-      font-family: Georgia, serif;
-      font-size: 34px;
-      font-weight: bold;
-      margin: 15px 0 5px;
-    }
+        .imagem-cabecalho {
+            text-align: center;
+            margin: 25px auto;
+        }
 
-    .informacao {
-      color: #777;
-      font-size: 14px;
-    }
+        .imagem-cabecalho img {
+            display: block;
+            width: 100%;
+            max-width: 380px;
+            max-height: 460px;
+            object-fit: contain;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
 
-    .painel {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      margin-top: 25px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-    }
+        .titulo-numeros {
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 21px;
+            margin: 25px 0 15px;
+        }
 
-    .painel h3 {
-      color: var(--verde);
-      font-family: Georgia, serif;
-      font-size: 21px;
-      margin-bottom: 10px;
-    }
+        .legenda {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 18px;
+        }
 
-    .legenda {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 18px 0;
-      font-size: 12px;
-    }
+        .numeros {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 9px;
+            margin-bottom: 28px;
+        }
 
-    .legenda span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        .numero {
+            background: #eee8dc;
+            color: #304638;
+            border: 1px solid #d8cbb5;
+            border-radius: 7px;
+            padding: 13px 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .cor {
-      width: 13px;
-      height: 13px;
-      border-radius: 3px;
-      display: inline-block;
-    }
+        .numero.selecionado {
+            background: #304638;
+            color: #fff;
+            border-color: #304638;
+        }
 
-    .disponivel {
-      background: #e7eee7;
-      border: 1px solid #9aaf9b;
-    }
+        .numero.indisponivel {
+            background: #ccc;
+            color: #777;
+            border-color: #ccc;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
 
-    .selecionado {
-      background: var(--verde);
-    }
+        .formulario {
+            background: #fff;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+        }
 
-    .vendido {
-      background: #ddd;
-    }
+        .formulario h3 {
+            font-family: Georgia, serif;
+            margin-bottom: 18px;
+            text-align: center;
+        }
 
-    .numeros {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 9px;
-    }
+        label {
+            display: block;
+            font-size: 14px;
+            margin: 13px 0 6px;
+        }
 
-    .numero {
-      border: 1px solid #cbd7ca;
-      background: #e7eee7;
-      color: var(--verde);
-      padding: 13px 5px;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
 
-    .numero.selecionado {
-      background: var(--verde);
-      color: white;
-    }
+        .resumo {
+            background: #f8f5ef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 18px;
+            line-height: 1.8;
+        }
 
-    .numero.vendido {
-      background: #ddd;
-      border-color: #ccc;
-      color: #888;
-      cursor: not-allowed;
-    }
+        .resumo strong {
+            color: #304638;
+        }
 
-    .resumo {
-      margin-top: 20px;
-      padding: 15px;
-      background: var(--bege);
-      border-radius: 8px;
-      line-height: 1.8;
-    }
+        .botao {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+            padding: 15px;
+            background: #b08a45;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .campo {
-      margin-top: 18px;
-    }
+        .botao:hover {
+            background: #304638;
+        }
 
-    .campo label {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 14px;
-      font-weight: bold;
-    }
+        .participantes {
+            margin-top: 35px;
+        }
 
-    .campo input {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ddd;
-      border-radius: 7px;
-      font-size: 15px;
-    }
+        .participantes h3 {
+            font-family: Georgia, serif;
+            text-align: center;
+            margin-bottom: 15px;
+        }
 
-    .botao {
-      width: 100%;
-      background: var(--verde);
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 7px;
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 22px;
-      cursor: pointer;
-    }
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-    .botao:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+        .tabela th,
+        .tabela td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            font-size: 13px;
+        }
 
-    .aviso {
-      color: #777;
-      text-align: center;
-      font-size: 12px;
-      margin-top: 15px;
-      line-height: 1.5;
-    }
+        .tabela th {
+            background: #304638;
+            color: #fff;
+        }
 
-    .tabela-publica {
-      margin-top: 25px;
-      overflow-x: auto;
-    }
+        .aviso {
+            margin-top: 20px;
+            color: #777;
+            font-size: 12px;
+            text-align: center;
+            line-height: 1.5;
+        }
 
-    .tabela-publica table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
+        footer {
+            background: #304638;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
 
-    .tabela-publica th,
-    .tabela-publica td {
-      border-bottom: 1px solid #eee;
-      padding: 11px;
-      text-align: left;
-    }
+        @media (max-width: 400px) {
+            .numeros {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 6px;
+            }
 
-    .tabela-publica th {
-      color: var(--verde);
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #888;
-      font-size: 12px;
-    }
-
-    @media (max-width: 400px) {
-      .numeros {
-        gap: 6px;
-      }
-
-      .numero {
-        padding: 12px 3px;
-        font-size: 13px;
-      }
-    }
-  </style>
+            .numero {
+                padding: 11px 3px;
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>GARDEN'S</h1>
-    <p>UMA EXPERIÊNCIA ESPECIAL</p>
-  </header>
+    <header>
+        <h1>GARDEN'S</h1>
+        <p>MODA • ESTILO • ELEGÂNCIA</p>
+    </header>
 
-  <main>
+    <main class="container">
 
-    <section class="apresentacao">
+        <section class="apresentacao">
+            <h2>RIFA GARDEN'S</h2>
 
-      <h2>RIFA GARDEN'S</h2>
+            <p>
+                Participe da nossa rifa e concorra a um presente especial!
+                A pessoa ganhadora poderá escolher um modelo de sua preferência
+                entre as peças disponíveis no catálogo Garden's.
+            </p>
 
-      <p>Participe e concorra a um lindo vestido!</p>
+            <div class="preco">R$ 2,00 por número</div>
+        </section>
 
-      <img
-        src="vestidodarifa.jpeg"
-        alt="Vestido da Rifa Garden's"
-        class="vestido"
-      >
+        <!-- IMAGEM ACIMA DA TABELA DE NÚMEROS -->
 
-      <div class="preco">R$ 2,00</div>
-
-      <p class="informacao">
-        Valor de cada número
-      </p>
-
-    </section>
-
-    <section class="painel">
-
-      <h3>Escolha seus números</h3>
-
-      <p class="informacao">
-        Selecione um ou mais números.
-      </p>
-
-      <div class="legenda">
-        <span>
-          <i class="cor disponivel"></i>
-          Disponível
-        </span>
-
-        <span>
-          <i class="cor selecionado"></i>
-          Selecionado
-        </span>
-
-        <span>
-          <i class="cor vendido"></i>
-          Indisponível
-        </span>
-      </div>
-
-      <div class="numeros" id="numeros"></div>
-
-      <div class="resumo">
-
-        <div>
-          Números escolhidos:
-          <strong id="quantidade">0</strong>
+        <div class="imagem-cabecalho">
+            <img
+                src="vestidodarifa.jpeg"
+                alt="Imagem de divulgação da Rifa Garden's"
+            >
         </div>
 
-        <div>
-          Total:
-          <strong id="total">R$ 0,00</strong>
-        </div>
+        <h3 class="titulo-numeros">Escolha seus números</h3>
 
-      </div>
+        <p class="legenda">
+            Selecione os números que deseja escolher.
+        </p>
 
-      <div class="campo">
+        <div class="numeros" id="gradeNumeros"></div>
 
-        <label for="nome">Nome completo</label>
+        <section class="formulario">
 
-        <input
-          type="text"
-          id="nome"
-          placeholder="Digite seu nome"
-        >
+            <h3>Seus dados</h3>
 
-      </div>
+            <label for="nome">Nome completo</label>
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome completo"
+            >
 
-      <div class="campo">
+            <label for="whatsapp">WhatsApp</label>
+            <input
+                type="tel"
+                id="whatsapp"
+                placeholder="(00) 00000-0000"
+            >
 
-        <label for="whatsapp">WhatsApp</label>
+            <div class="resumo">
+                <div>
+                    Números selecionados:
+                    <strong id="quantidade">0</strong>
+                </div>
 
-        <input
-          type="tel"
-          id="whatsapp"
-          placeholder="(00) 00000-0000"
-        >
+                <div>
+                    Total:
+                    <strong id="total">R$ 0,00</strong>
+                </div>
+            </div>
 
-      </div>
+            <button class="botao" onclick="participar()">
+                CONTINUAR
+            </button>
 
-      <button
-        class="botao"
-        id="continuar"
-        disabled
-      >
-        CONTINUAR
-      </button>
+        </section>
 
-      <p class="aviso">
-        A seleção exibida nesta versão é apenas demonstrativa.
-        Nenhum número está sendo reservado ou vendido.
-      </p>
+        <section class="participantes">
 
-    </section>
+            <h3>Números participantes</h3>
 
-    <section class="painel tabela-publica">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Participante</th>
+                    </tr>
+                </thead>
 
-      <h3>Números registrados</h3>
+                <tbody id="listaParticipantes">
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            Nenhuma participação registrada.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-      <table>
+        </section>
 
-        <thead>
-          <tr>
-            <th>Número</th>
-            <th>Participante</th>
-          </tr>
-        </thead>
+        <p class="aviso">
+            A seleção visual dos números nesta versão é apenas demonstrativa.
+            A reserva, o pagamento e a confirmação dos números ainda precisam
+            ser integrados ao sistema.
+        </p>
 
-        <tbody id="participantes">
+    </main>
 
-          <tr>
-            <td colspan="2">
-              Nenhuma participação registrada.
-            </td>
-          </tr>
+    <footer>
+        © 2026 Garden's Loja — Todos os direitos reservados.
+    </footer>
 
-        </tbody>
+    <script>
+        const valorNumero = 2.00;
+        const selecionados = [];
 
-      </table>
+        const grade = document.getElementById("gradeNumeros");
 
-    </section>
+        // Criar os números de 01 a 50
 
-  </main>
+        for (let i = 1; i <= 50; i++) {
 
-  <footer>
-    RIFA GARDEN'S
-  </footer>
+            const botao = document.createElement("button");
 
-  <script>
-    const numeros = document.getElementById("numeros");
-    const quantidade = document.getElementById("quantidade");
-    const total = document.getElementById("total");
-    const continuar = document.getElementById("continuar");
+            botao.type = "button";
+            botao.className = "numero";
+            botao.textContent = String(i).padStart(2, "0");
 
-    let selecionados = [];
+            botao.addEventListener("click", function () {
 
-    for (let i = 1; i <= 50; i++) {
+                const indice = selecionados.indexOf(i);
 
-      const botao = document.createElement("button");
+                if (indice === -1) {
+                    selecionados.push(i);
+                    botao.classList.add("selecionado");
+                } else {
+                    selecionados.splice(indice, 1);
+                    botao.classList.remove("selecionado");
+                }
 
-      botao.type = "button";
-      botao.className = "numero";
-      botao.textContent = String(i).padStart(2, "0");
+                atualizarResumo();
+            });
 
-      botao.addEventListener("click", () => {
-
-        if (selecionados.includes(i)) {
-
-          selecionados = selecionados.filter(n => n !== i);
-
-          botao.classList.remove("selecionado");
-
-        } else {
-
-          selecionados.push(i);
-
-          botao.classList.add("selecionado");
-
+            grade.appendChild(botao);
         }
 
-        atualizarResumo();
+        function atualizarResumo() {
 
-      });
+            document.getElementById("quantidade").textContent =
+                selecionados.length;
 
-      numeros.appendChild(botao);
+            const total = selecionados.length * valorNumero;
 
-    }
+            document.getElementById("total").textContent =
+                total.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL"
+                });
+        }
 
-    function atualizarResumo() {
+        function participar() {
 
-      quantidade.textContent = selecionados.length;
+            const nome = document.getElementById("nome").value.trim();
+            const whatsapp = document.getElementById("whatsapp").value.trim();
 
-      total.textContent = (selecionados.length * 2)
-        .toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL"
-        });
+            if (selecionados.length === 0) {
+                alert("Escolha pelo menos um número.");
+                return;
+            }
 
-      continuar.disabled = selecionados.length === 0;
+            if (!nome || !whatsapp) {
+                alert("Preencha seu nome e WhatsApp.");
+                return;
+            }
 
-    }
-
-    continuar.addEventListener("click", () => {
-
-      const nome = document.getElementById("nome").value.trim();
-
-      const whatsapp = document.getElementById("whatsapp").value.trim();
-
-      if (!nome || !whatsapp) {
-
-        alert("Preencha seu nome e WhatsApp.");
-
-        return;
-
-      }
-
-      alert(
-        "Demonstração concluída!\n\n" +
-        "Nome: " + nome + "\n" +
-        "WhatsApp: " + whatsapp + "\n" +
-        "Números: " + selecionados.sort((a,b) => a-b).join(", ") + "\n" +
-        "Total: " + total.textContent +
-        "\n\nO sistema de pagamento será integrado posteriormente."
-      );
-
-    });
-  </script>
+            alert(
+                "Esta é uma versão demonstrativa. " +
+                "O cadastro e o pagamento ainda não estão ativados."
+            );
+        }
+    </script>
 
 </body>
 </html>
