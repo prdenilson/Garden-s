@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rifa Garden's</title>
+
+  <meta name="description" content="Rifa Garden's - Participe e concorra a um lindo vestido.">
+
+  <style>
+    :root {
+      --verde: #304638;
+      --dourado: #b08a45;
+      --bege: #f8f5ef;
+      --bege-secundario: #eee8dc;
+      --texto: #292820;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bege);
+      color: var(--texto);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: var(--verde);
+      color: white;
+      text-align: center;
+      padding: 24px 15px;
+    }
+
+    header h1 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    main {
+      width: 92%;
+      max-width: 650px;
+      margin: 30px auto;
+    }
+
+    .apresentacao {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .apresentacao h2 {
+      font-family: Georgia, serif;
+      color: var(--verde);
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .vestido {
+      width: 100%;
+      max-width: 390px;
+      height: auto;
+      max-height: 430px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin: 15px auto;
+      display: block;
+      background: var(--bege-secundario);
+    }
+
+    .preco {
+      color: var(--dourado);
+      font-family: Georgia, serif;
+      font-size: 34px;
+      font-weight: bold;
+      margin: 15px 0 5px;
+    }
+
+    .informacao {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .painel {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      margin-top: 25px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    }
+
+    .painel h3 {
+      color: var(--verde);
+      font-family: Georgia, serif;
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .legenda {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+      font-size: 12px;
+    }
+
+    .legenda span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cor {
+      width: 13px;
+      height: 13px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .disponivel {
+      background: #e7eee7;
+      border: 1px solid #9aaf9b;
+    }
+
+    .selecionado {
+      background: var(--verde);
+    }
+
+    .vendido {
+      background: #ddd;
+    }
+
+    .numeros {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 9px;
+    }
+
+    .numero {
+      border: 1px solid #cbd7ca;
+      background: #e7eee7;
+      color: var(--verde);
+      padding: 13px 5px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .numero.selecionado {
+      background: var(--verde);
+      color: white;
+    }
+
+    .numero.vendido {
+      background: #ddd;
+      border-color: #ccc;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    .resumo {
+      margin-top: 20px;
+      padding: 15px;
+      background: var(--bege);
+      border-radius: 8px;
+      line-height: 1.8;
+    }
+
+    .campo {
+      margin-top: 18px;
+    }
+
+    .campo label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .campo input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .botao {
+      width: 100%;
+      background: var(--verde);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 7px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 22px;
+      cursor: pointer;
+    }
+
+    .botao:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .aviso {
+      color: #777;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    .tabela-publica {
+      margin-top: 25px;
+      overflow-x: auto;
+    }
+
+    .tabela-publica table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .tabela-publica th,
+    .tabela-publica td {
+      border-bottom: 1px solid #eee;
+      padding: 11px;
+      text-align: left;
+    }
+
+    .tabela-publica th {
+      color: var(--verde);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #888;
+      font-size: 12px;
+    }
+
+    @media (max-width: 400px) {
+      .numeros {
+        gap: 6px;
+      }
+
+      .numero {
+        padding: 12px 3px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>GARDEN'S</h1>
+    <p>UMA EXPERIÊNCIA ESPECIAL</p>
+  </header>
+
+  <main>
+
+    <section class="apresentacao">
+
+      <h2>RIFA GARDEN'S</h2>
+
+      <p>Participe e concorra a um lindo vestido!</p>
+
+      <img
+        src="vestidodarifa.jpeg"
+        alt="Vestido da Rifa Garden's"
+        class="vestido"
+      >
+
+      <div class="preco">R$ 2,00</div>
+
+      <p class="informacao">
+        Valor de cada número
+      </p>
+
+    </section>
+
+    <section class="painel">
+
+      <h3>Escolha seus números</h3>
+
+      <p class="informacao">
+        Selecione um ou mais números.
+      </p>
+
+      <div class="legenda">
+        <span>
+          <i class="cor disponivel"></i>
+          Disponível
+        </span>
+
+        <span>
+          <i class="cor selecionado"></i>
+          Selecionado
+        </span>
+
+        <span>
+          <i class="cor vendido"></i>
+          Indisponível
+        </span>
+      </div>
+
+      <div class="numeros" id="numeros"></div>
+
+      <div class="resumo">
+
+        <div>
+          Números escolhidos:
+          <strong id="quantidade">0</strong>
+        </div>
+
+        <div>
+          Total:
+          <strong id="total">R$ 0,00</strong>
+        </div>
+
+      </div>
+
+      <div class="campo">
+
+        <label for="nome">Nome completo</label>
+
+        <input
+          type="text"
+          id="nome"
+          placeholder="Digite seu nome"
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="whatsapp">WhatsApp</label>
+
+        <input
+          type="tel"
+          id="whatsapp"
+          placeholder="(00) 00000-0000"
+        >
+
+      </div>
+
+      <button
+        class="botao"
+        id="continuar"
+        disabled
+      >
+        CONTINUAR
+      </button>
+
+      <p class="aviso">
+        A seleção exibida nesta versão é apenas demonstrativa.
+        Nenhum número está sendo reservado ou vendido.
+      </p>
+
+    </section>
+
+    <section class="painel tabela-publica">
+
+      <h3>Números registrados</h3>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Participante</th>
+          </tr>
+        </thead>
+
+        <tbody id="participantes">
+
+          <tr>
+            <td colspan="2">
+              Nenhuma participação registrada.
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+  </main>
+
+  <footer>
+    RIFA GARDEN'S
+  </footer>
+
+  <script>
+    const numeros = document.getElementById("numeros");
+    const quantidade = document.getElementById("quantidade");
+    const total = document.getElementById("total");
+    const continuar = document.getElementById("continuar");
+
+    let selecionados = [];
+
+    for (let i = 1; i <= 50; i++) {
+
+      const botao = document.createElement("button");
+
+      botao.type = "button";
+      botao.className = "numero";
+      botao.textContent = String(i).padStart(2, "0");
+
+      botao.addEventListener("click", () => {
+
+        if (selecionados.includes(i)) {
+
+          selecionados = selecionados.filter(n => n !== i);
+
+          botao.classList.remove("selecionado");
+
+        } else {
+
+          selecionados.push(i);
+
+          botao.classList.add("selecionado");
+
+        }
+
+        atualizarResumo();
+
+      });
+
+      numeros.appendChild(botao);
+
+    }
+
+    function atualizarResumo() {
+
+      quantidade.textContent = selecionados.length;
+
+      total.textContent = (selecionados.length * 2)
+        .toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL"
+        });
+
+      continuar.disabled = selecionados.length === 0;
+
+    }
+
+    continuar.addEventListener("click", () => {
+
+      const nome = document.getElementById("nome").value.trim();
+
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+
+      if (!nome || !whatsapp) {
+
+        alert("Preencha seu nome e WhatsApp.");
+
+        return;
+
+      }
+
+      alert(
+        "Demonstração concluída!\n\n" +
+        "Nome: " + nome + "\n" +
+        "WhatsApp: " + whatsapp + "\n" +
+        "Números: " + selecionados.sort((a,b) => a-b).join(", ") + "\n" +
+        "Total: " + total.textContent +
+        "\n\nO sistema de pagamento será integrado posteriormente."
+      );
+
+    });
+  </script>
+
+</body>
+</html>
