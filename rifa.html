@@ -39,6 +39,38 @@
             letter-spacing: 1px;
         }
 
+        .botao-inicio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 11px 22px;
+    color: #f8f5ef;
+    background: transparent;
+    border: 1px solid #b08a45;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+        }
+
+        .botao-inicio span:first-child {
+            color: #d6b56f;
+            font-size: 19px;
+        }
+
+        .botao-inicio:hover {
+            background: #b08a45;
+            color: #fff;
+        }
+
+        .botao-inicio:hover span:first-child {
+        color: #fff;
+        }
+        
         .container {
             width: 92%;
             max-width: 650px;
@@ -256,7 +288,8 @@
     <p>MODA • ESTILO • ELEGÂNCIA</p>
 
     <a href="index.html" class="botao-inicio">
-        <span>←</span> VOLTAR À LOJA
+    <span>←</span>
+    <span>VOLTAR À LOJA</span>
     </a>
 </header>
 
