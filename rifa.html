@@ -399,21 +399,62 @@
         © 2026 Garden's Loja — Todos os direitos reservados.
     </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
+
+        // CONEXÃO COM O SUPABASE
+        const SUPABASE_URL = "https://kiefyoedeervkrtrkghj.supabase.co";
+
+       const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+        
         const valorNumero = 2.00;
         const selecionados = [];
 
         const grade = document.getElementById("gradeNumeros");
 
-        // Criar os números de 01 a 50
+       // CARREGAR OS NÚMEROS DO SUPABASE
 
-        for (let i = 1; i <= 50; i++) {
+async function carregarNumeros() {
 
-            const botao = document.createElement("button");
+    grade.innerHTML = "";
 
-            botao.type = "button";
-            botao.className = "numero";
-            botao.textContent = String(i).padStart(2, "0");
+    const { data, error } = await supabaseClient
+        .from("rifa_numeros")
+        .select("numero, status")
+        .order("numero");
+
+    if (error) {
+        console.error("Erro ao carregar números:", error);
+        alert("Não foi possível carregar os números da rifa.");
+        return;
+    }
+
+    const numerosBanco = new Map(
+        data.map(item => [item.numero, item.status])
+    );
+
+    for (let i = 1; i <= 50; i++) {
+
+        const botao = document.createElement("button");
+
+        botao.type = "button";
+        botao.className = "numero";
+        botao.textContent = String(i).padStart(2, "0");
+
+        const status = numerosBanco.get(i);
+
+        if (status !== "disponivel") {
+
+            botao.classList.add("indisponivel");
+            botao.disabled = true;
+
+        } else {
 
             botao.addEventListener("click", function () {
 
@@ -429,11 +470,14 @@
 
                 atualizarResumo();
             });
-
-            grade.appendChild(botao);
         }
 
-        function atualizarResumo() {
+        grade.appendChild(botao);
+    }
+}
+
+        carregarNumeros();
+         function atualizarResumo() {
 
             document.getElementById("quantidade").textContent =
                 selecionados.length;
