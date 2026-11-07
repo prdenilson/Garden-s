@@ -373,25 +373,13 @@
         <h3>Seus dados</h3>
 
         <label for="nome">Nome completo</label>
-        <input
-            type="text"
-            id="nome"
-            placeholder="Digite seu nome completo"
-        >
+        <input type="text" id="nome" placeholder="Digite seu nome completo">
 
         <label for="whatsapp">WhatsApp</label>
-        <input
-            type="tel"
-            id="whatsapp"
-            placeholder="(00) 00000-0000"
-        >
+        <input type="tel" id="whatsapp" placeholder="(00) 00000-0000">
 
         <label for="email">E-mail</label>
-        <input
-            type="email"
-            id="email"
-            placeholder="Digite seu e-mail"
-        >
+        <input type="email" id="email" placeholder="Digite seu e-mail">
 
         <div class="resumo">
             <div>
@@ -434,11 +422,7 @@
             style="width:100%; min-height:100px; padding:10px;"
         ></textarea>
 
-        <button
-            type="button"
-            class="botao"
-            onclick="copiarPix()"
-        >
+        <button type="button" class="botao" onclick="copiarPix()">
             COPIAR CÓDIGO PIX
         </button>
 
@@ -522,6 +506,7 @@
     let temporizadorConsulta = null;
     let consultaEmAndamento = false;
     let pagamentoFinalizado = false;
+    let consultaEncerrada = false;
     let inicioConsulta = null;
 
     const intervaloConsulta = 5000;
@@ -541,6 +526,12 @@
         if (error) {
             console.error("Erro ao carregar números:", error);
             alert("Não foi possível carregar os números da rifa.");
+            return;
+        }
+
+        if (!data) {
+            console.error("O Supabase não retornou os números.");
+            alert("Não foi possível obter os números da rifa.");
             return;
         }
 
@@ -707,21 +698,21 @@
                 );
             }
 
-            // GUARDAR O IDENTIFICADOR DA ORDER
+            // GUARDAR O IDENTIFICADOR DO PEDIDO
 
             orderIdAtual = String(data.order_id);
 
             // PREPARAR CONTROLE DA CONSULTA
 
             pagamentoFinalizado = false;
+            consultaEncerrada = false;
             inicioConsulta = Date.now();
 
             // EXIBIR QR CODE
 
             document.getElementById("pixArea").style.display = "block";
 
-            document.getElementById("pixCodigo").value =
-                data.qr_code;
+            document.getElementById("pixCodigo").value = data.qr_code;
 
             if (data.qr_code_base64) {
 
@@ -764,11 +755,8 @@
     function pararConsulta() {
 
         if (temporizadorConsulta) {
-
             clearTimeout(temporizadorConsulta);
-
             temporizadorConsulta = null;
-
         }
 
         consultaEmAndamento = false;
@@ -778,8 +766,16 @@
 
     function agendarConsulta() {
 
-        if (pagamentoFinalizado || !orderIdAtual) {
+        if (
+            pagamentoFinalizado ||
+            consultaEncerrada ||
+            !orderIdAtual
+        ) {
             return;
+        }
+
+        if (temporizadorConsulta) {
+            clearTimeout(temporizadorConsulta);
         }
 
         temporizadorConsulta = setTimeout(
@@ -794,6 +790,7 @@
 
         if (
             pagamentoFinalizado ||
+            consultaEncerrada ||
             consultaEmAndamento ||
             !orderIdAtual
         ) {
@@ -802,10 +799,11 @@
 
         if (Date.now() - inicioConsulta >= limiteConsulta) {
 
+            consultaEncerrada = true;
             pararConsulta();
 
             document.getElementById("statusPagamento").textContent =
-                "Não foi possível confirmar o pagamento neste período. Não gere outro PIX antes de verificar a situação do pedido com a Garden's.";
+                "Não foi possível confirmar o pagamento neste período. Se você já pagou, entre em contato para conferência.";
 
             return;
         }
@@ -823,77 +821,51 @@
                 }
             );
 
-            if (error) {
-                throw error;
-            }
+            if (error) throw error;
+            if (!data) throw new Error("Resposta vazia da consulta.");
 
-            console.log("Consulta do pagamento:", data);
+            // PAGAMENTO APROVADO
 
-            if (!data) {
-                throw new Error("Resposta vazia da consulta.");
-            }
+            if (data.pedido_status === "pago") {
 
-            // O BANCO DE DADOS É A FONTE DA CONFIRMAÇÃO
+                pagamentoFinalizado = true;
+                consultaEncerrada = true;
 
-           // O BANCO DE DADOS É A FONTE DA CONFIRMAÇÃO
+                pararConsulta();
 
-if (data.pedido_status === "pago") {
+                // ENVIAR DADOS PARA A PLANILHA
 
-    // ENVIAR PARTICIPANTE PARA A PLANILHA
-    try {
-        await fetch(
-            "https://script.google.com/macros/s/AKfycbxiQExSCk2VAztgku9iSo0bLBpfKh9Iw6oZvrK2u1ve_orwQtLyXJECQ-OcPHmeVVWJFQ/exec",
-            {
-                method: "POST",
-                mode: "no-cors",
-                body: new URLSearchParams({
-                    nome: document.getElementById("nome").value.trim(),
-                    telefone: document.getElementById("whatsapp").value.trim(),
-                    numeroEscolhido: selecionados
-                        .map(n => String(n).padStart(2, "0"))
-                        .join(", ")
-                })
-            }
-        );
-    } catch (erro) {
-        console.error("Erro ao enviar para a planilha:", erro);
-    }
+                try {
 
-    pagamentoFinalizado = true;
+                    await fetch(
+                        "https://script.google.com/macros/s/AKfycbxiQExSCk2VAztgku9iSo0bLBpfKh9Iw6oZvrK2u1ve_orwQtLyXJECQ-OcPHmeVVWJFQ/exec",
+                        {
+                            method: "POST",
+                            mode: "no-cors",
+                            body: new URLSearchParams({
+                                nome: document.getElementById("nome").value.trim(),
+                                telefone: document.getElementById("whatsapp").value.trim(),
+                                numeroEscolhido: selecionados
+                                    .map(n => String(n).padStart(2, "0"))
+                                    .join(", ")
+                            })
+                        }
+                    );
 
-    pararConsulta();
+                } catch (erro) {
 
-    document.getElementById("pixArea").style.display = "none";
+                    console.error(
+                        "Erro ao enviar para a planilha:",
+                        erro
+                    );
 
-    document.getElementById("formulario").style.display = "none";
+                }
 
-    document.getElementById("confirmacao").style.display = "block";
-
-    selecionados.length = 0;
-
-    atualizarResumo();
-
-    await carregarNumeros();
-
-    document.getElementById("confirmacao").scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
-
-    return;
-}
-
-                document.getElementById("pixArea").style.display =
-                    "none";
-
-                document.getElementById("formulario").style.display =
-                    "none";
-
-                document.getElementById("confirmacao").style.display =
-                    "block";
+                document.getElementById("pixArea").style.display = "none";
+                document.getElementById("formulario").style.display = "none";
+                document.getElementById("confirmacao").style.display = "block";
 
                 selecionados.length = 0;
-
                 atualizarResumo();
 
                 await carregarNumeros();
@@ -906,39 +878,45 @@ if (data.pedido_status === "pago") {
                 return;
             }
 
+            // PEDIDO EXPIRADO OU CANCELADO
+
             if (
                 data.pedido_status === "expirado" ||
                 data.pedido_status === "cancelado"
             ) {
 
+                consultaEncerrada = true;
                 pararConsulta();
 
+                orderIdAtual = null;
+
                 document.getElementById("statusPagamento").textContent =
-                    "A reserva deste pedido expirou ou foi cancelada. Entre em contato com a Garden's antes de realizar uma nova tentativa.";
+                    "A reserva expirou ou foi cancelada. Você pode escolher os números novamente.";
 
                 await carregarNumeros();
 
                 return;
             }
 
+            // PAGAMENTO AINDA PENDENTE
+
             document.getElementById("statusPagamento").textContent =
-                "Ainda aguardando o pagamento. Verificaremos novamente em alguns segundos.";
+                "Aguardando confirmação do pagamento.";
 
         } catch (erro) {
 
             console.error("Erro ao consultar pagamento:", erro);
 
             document.getElementById("statusPagamento").textContent =
-                "Não foi possível consultar o pagamento neste momento. Tentaremos novamente automaticamente.";
+                "Não foi possível consultar o pagamento. Tentaremos novamente.";
 
         } finally {
 
             consultaEmAndamento = false;
 
-            if (!pagamentoFinalizado) {
+            if (!pagamentoFinalizado && !consultaEncerrada) {
                 agendarConsulta();
             }
-
         }
     }
 
