@@ -835,11 +835,53 @@
 
             // O BANCO DE DADOS É A FONTE DA CONFIRMAÇÃO
 
-            if (data.pedido_status === "pago") {
+           // O BANCO DE DADOS É A FONTE DA CONFIRMAÇÃO
 
-                pagamentoFinalizado = true;
+if (data.pedido_status === "pago") {
 
-                pararConsulta();
+    // ENVIAR PARTICIPANTE PARA A PLANILHA
+    try {
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbxiQExSCk2VAztgku9iSo0bLBpfKh9Iw6oZvrK2u1ve_orwQtLyXJECQ-OcPHmeVVWJFQ/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                body: new URLSearchParams({
+                    nome: document.getElementById("nome").value.trim(),
+                    telefone: document.getElementById("whatsapp").value.trim(),
+                    numeroEscolhido: selecionados
+                        .map(n => String(n).padStart(2, "0"))
+                        .join(", ")
+                })
+            }
+        );
+    } catch (erro) {
+        console.error("Erro ao enviar para a planilha:", erro);
+    }
+
+    pagamentoFinalizado = true;
+
+    pararConsulta();
+
+    document.getElementById("pixArea").style.display = "none";
+
+    document.getElementById("formulario").style.display = "none";
+
+    document.getElementById("confirmacao").style.display = "block";
+
+    selecionados.length = 0;
+
+    atualizarResumo();
+
+    await carregarNumeros();
+
+    document.getElementById("confirmacao").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    return;
+}
 
                 document.getElementById("pixArea").style.display =
                     "none";
