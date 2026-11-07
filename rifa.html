@@ -40,21 +40,21 @@
         }
 
         .botao-inicio {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    padding: 11px 22px;
-    color: #f8f5ef;
-    background: transparent;
-    border: 1px solid #b08a45;
-    border-radius: 3px;
-    text-decoration: none;
-    font-family: Georgia, serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 11px 22px;
+            color: #f8f5ef;
+            background: transparent;
+            border: 1px solid #b08a45;
+            border-radius: 3px;
+            text-decoration: none;
+            font-family: Georgia, serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
         }
 
         .botao-inicio span:first-child {
@@ -68,9 +68,9 @@
         }
 
         .botao-inicio:hover span:first-child {
-        color: #fff;
+            color: #fff;
         }
-        
+
         .container {
             width: 92%;
             max-width: 650px;
@@ -100,22 +100,20 @@
             margin-top: 12px;
         }
 
-        /* IMAGEM NO CABEÇALHO DA RIFA */
-
         .imagem-cabecalho {
             text-align: center;
             margin: 25px auto;
         }
 
-       .imagem-cabecalho img {
-    display: block;
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto;
-    border-radius: 12px;
-}
+        .imagem-cabecalho img {
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            object-fit: contain;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
 
         .titulo-numeros {
             text-align: center;
@@ -220,6 +218,11 @@
             background: #304638;
         }
 
+        .botao:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .participantes {
             margin-top: 35px;
         }
@@ -259,6 +262,45 @@
             line-height: 1.5;
         }
 
+        .status-pagamento {
+            margin-top: 18px;
+            padding: 14px;
+            background: #f8f5ef;
+            border-radius: 8px;
+            color: #555;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .confirmacao {
+            display: none;
+            margin-top: 20px;
+            padding: 25px 18px;
+            background: #fff;
+            border: 1px solid #b08a45;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+        }
+
+        .confirmacao .icone {
+            font-size: 42px;
+            color: #304638;
+            margin-bottom: 12px;
+        }
+
+        .confirmacao h3 {
+            font-family: Georgia, serif;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .confirmacao p {
+            color: #555;
+            line-height: 1.7;
+        }
+
         footer {
             background: #304638;
             color: #fff;
@@ -283,68 +325,66 @@
 
 <body>
 
-    <header>
+<header>
     <h1>GARDEN'S</h1>
     <p>MODA • ESTILO • ELEGÂNCIA</p>
 
     <a href="index.html" class="botao-inicio">
-    <span>←</span>
-    <span>VOLTAR À LOJA</span>
+        <span>←</span>
+        <span>VOLTAR À LOJA</span>
     </a>
 </header>
 
-    <main class="container">
+<main class="container">
 
-        <section class="apresentacao">
-            <h2>RIFA GARDEN'S</h2>
+    <section class="apresentacao">
+        <h2>RIFA GARDEN'S</h2>
 
-            <p>
-                Participe da nossa rifa e concorra a um presente especial!
-                A pessoa ganhadora poderá escolher um modelo de sua preferência
-                entre as peças disponíveis no catálogo Garden's.
-            </p>
-
-            <div class="preco">R$ 2,00 por número</div>
-        </section>
-
-        <!-- IMAGEM ACIMA DA TABELA DE NÚMEROS -->
-
-        <div class="imagem-cabecalho">
-            <img
-                src="vestidodarifa.jpeg"
-                alt="Imagem de divulgação da Rifa Garden's"
-            >
-        </div>
-
-        <h3 class="titulo-numeros">Escolha seus números</h3>
-
-        <p class="legenda">
-            Selecione os números que deseja escolher.
+        <p>
+            Participe da nossa rifa e concorra a um presente especial!
+            A pessoa ganhadora poderá escolher um modelo de sua preferência
+            entre as peças disponíveis no catálogo Garden's.
         </p>
 
-        <div class="numeros" id="gradeNumeros"></div>
+        <div class="preco">R$ 2,00 por número</div>
+    </section>
 
-<button type="button" class="botao" onclick="abrirFormulario()">
-    FINALIZAR PEDIDO
-</button>
+    <div class="imagem-cabecalho">
+        <img
+            src="vestidodarifa.jpeg"
+            alt="Imagem de divulgação da Rifa Garden's"
+        >
+    </div>
 
-<section class="formulario" id="formulario" style="display: none;">
+    <h3 class="titulo-numeros">Escolha seus números</h3>
 
-            <h3>Seus dados</h3>
+    <p class="legenda">
+        Selecione os números que deseja escolher.
+    </p>
 
-            <label for="nome">Nome completo</label>
-            <input
-                type="text"
-                id="nome"
-                placeholder="Digite seu nome completo"
-            >
+    <div class="numeros" id="gradeNumeros"></div>
 
-            <label for="whatsapp">WhatsApp</label>
-            <input
-                type="tel"
-                id="whatsapp"
-                placeholder="(00) 00000-0000"
-            >
+    <button type="button" class="botao" onclick="abrirFormulario()">
+        FINALIZAR PEDIDO
+    </button>
+
+    <section class="formulario" id="formulario" style="display:none;">
+
+        <h3>Seus dados</h3>
+
+        <label for="nome">Nome completo</label>
+        <input
+            type="text"
+            id="nome"
+            placeholder="Digite seu nome completo"
+        >
+
+        <label for="whatsapp">WhatsApp</label>
+        <input
+            type="tel"
+            id="whatsapp"
+            placeholder="(00) 00000-0000"
+        >
 
         <label for="email">E-mail</label>
         <input
@@ -352,262 +392,519 @@
             id="email"
             placeholder="Digite seu e-mail"
         >
-    
-            <div class="resumo">
-                <div>
-                    Números selecionados:
-                    <strong id="quantidade">0</strong>
-                </div>
 
-                <div>
-                    Total:
-                    <strong id="total">R$ 0,00</strong>
-                </div>
+        <div class="resumo">
+            <div>
+                Números selecionados:
+                <strong id="quantidade">0</strong>
             </div>
 
-            <button class="botao" onclick="participar()">
-                CONTINUAR
-            </button>
+            <div>
+                Total:
+                <strong id="total">R$ 0,00</strong>
+            </div>
+        </div>
 
-        </section>
-            
-        <section id="pixArea" class="formulario" style="display:none; margin-top:20px;">
+        <button class="botao" id="botaoContinuar" onclick="participar()">
+            CONTINUAR
+        </button>
 
-    <h3>Finalize seu pagamento</h3>
+    </section>
 
-    <p style="text-align:center; margin-bottom:15px;">
-        Escaneie o QR Code abaixo para pagar com PIX.
-    </p>
+    <section id="pixArea" class="formulario" style="display:none; margin-top:20px;">
 
-    <img id="pixImagem" src="" alt="QR Code PIX"
-         style="display:block; width:220px; max-width:100%; margin:15px auto;">
+        <h3>Finalize seu pagamento</h3>
 
-    <label for="pixCodigo">Ou copie o código PIX:</label>
-
-    <textarea id="pixCodigo" readonly
-        style="width:100%; min-height:100px; padding:10px;"></textarea>
-
-    <button type="button" class="botao"
-        onclick="navigator.clipboard.writeText(document.getElementById('pixCodigo').value).then(() => alert('Código PIX copiado!'));">
-        COPIAR CÓDIGO PIX
-    </button>
-
-</section>
-        
-        <section class="participantes">
-
-            <h3>Números participantes</h3>
-
-            <table class="tabela">
-                <thead>
-                    <tr>
-                        <th>Número</th>
-                        <th>Participante</th>
-                    </tr>
-                </thead>
-
-                <tbody id="listaParticipantes">
-                    <tr>
-                        <td colspan="2" style="text-align:center;">
-                            Nenhuma participação registrada.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </section>
-
-        <p class="aviso">
-            A seleção visual dos números nesta versão é apenas demonstrativa.
-            A reserva, o pagamento e a confirmação dos números ainda precisam
-            ser integrados ao sistema.
+        <p style="text-align:center; margin-bottom:15px;">
+            Escaneie o QR Code abaixo para pagar com PIX.
         </p>
 
-    </main>
+        <img
+            id="pixImagem"
+            src=""
+            alt="QR Code PIX"
+            style="display:block; width:220px; max-width:100%; margin:15px auto;"
+        >
 
-    <footer>
-        © 2026 Garden's Loja — Todos os direitos reservados.
-    </footer>
+        <label for="pixCodigo">Ou copie o código PIX:</label>
+
+        <textarea
+            id="pixCodigo"
+            readonly
+            style="width:100%; min-height:100px; padding:10px;"
+        ></textarea>
+
+        <button
+            type="button"
+            class="botao"
+            onclick="copiarPix()"
+        >
+            COPIAR CÓDIGO PIX
+        </button>
+
+        <div class="status-pagamento" id="statusPagamento">
+            Aguardando a confirmação do pagamento. Esta página verificará
+            automaticamente o status do seu pedido.
+        </div>
+
+    </section>
+
+    <section id="confirmacao" class="confirmacao">
+
+        <div class="icone">✓</div>
+
+        <h3>Pagamento confirmado!</h3>
+
+        <p>
+            Seus números estão garantidos.
+            Obrigado por participar da Rifa Garden's!
+        </p>
+
+    </section>
+
+    <section class="participantes">
+
+        <h3>Números participantes</h3>
+
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Participante</th>
+                </tr>
+            </thead>
+
+            <tbody id="listaParticipantes">
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        Nenhuma participação registrada.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+    <p class="aviso">
+        Os números são reservados durante o processo de pagamento.
+        A participação é confirmada após a aprovação do PIX.
+    </p>
+
+</main>
+
+<footer>
+    © 2026 Garden's Loja — Todos os direitos reservados.
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <script>
 
-        // CONEXÃO COM O SUPABASE
-        const SUPABASE_URL = "https://kiefyoedeervkrtrkghj.supabase.co";
+<script>
 
-       const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+    // CONEXÃO COM O SUPABASE
 
-        const supabaseClient = window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
-        );
-        
-        const valorNumero = 2.00;
-        const selecionados = [];
+    const SUPABASE_URL = "https://kiefyoedeervkrtrkghj.supabase.co";
 
-        const grade = document.getElementById("gradeNumeros");
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
 
-       // CARREGAR OS NÚMEROS DO SUPABASE
-
-async function carregarNumeros() {
-
-    grade.innerHTML = "";
-
-    const { data, error } = await supabaseClient
-        .from("rifa_numeros")
-        .select("numero, status")
-        .order("numero");
-
-    if (error) {
-        console.error("Erro ao carregar números:", error);
-        alert("Não foi possível carregar os números da rifa.");
-        return;
-    }
-
-    const numerosBanco = new Map(
-        data.map(item => [item.numero, item.status])
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
     );
 
-    for (let i = 1; i <= 50; i++) {
+    const valorNumero = 2.00;
+    const selecionados = [];
 
-        const botao = document.createElement("button");
+    const grade = document.getElementById("gradeNumeros");
 
-        botao.type = "button";
-        botao.className = "numero";
-        botao.textContent = String(i).padStart(2, "0");
+    // CONTROLE DA CONSULTA AUTOMÁTICA
 
-        const status = numerosBanco.get(i);
+    let orderIdAtual = null;
+    let temporizadorConsulta = null;
+    let consultaEmAndamento = false;
+    let pagamentoFinalizado = false;
+    let inicioConsulta = null;
 
-        if (status !== "disponivel") {
+    const intervaloConsulta = 5000;
+    const limiteConsulta = 40 * 60 * 1000;
 
-            botao.classList.add("indisponivel");
-            botao.disabled = true;
+    // CARREGAR OS NÚMEROS DO SUPABASE
 
-        } else {
+    async function carregarNumeros() {
 
-            botao.addEventListener("click", function () {
+        grade.innerHTML = "";
 
-                const indice = selecionados.indexOf(i);
-
-                if (indice === -1) {
-                    selecionados.push(i);
-                    botao.classList.add("selecionado");
-                } else {
-                    selecionados.splice(indice, 1);
-                    botao.classList.remove("selecionado");
-                }
-
-                atualizarResumo();
-            });
-        }
-
-        grade.appendChild(botao);
-    }
-}
-
-        carregarNumeros();
-         function atualizarResumo() {
-
-            document.getElementById("quantidade").textContent =
-                selecionados.length;
-
-            const total = selecionados.length * valorNumero;
-
-            document.getElementById("total").textContent =
-                total.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL"
-                });
-        }
-
-function abrirFormulario() {
-
-    if (selecionados.length === 0) {
-        alert("Escolha pelo menos um número.");
-        return;
-    }
-
-    atualizarResumo();
-
-    const formulario = document.getElementById("formulario");
-
-    formulario.style.display = "block";
-
-    formulario.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-}
-        
-       async function participar() {
-    const nome = document.getElementById("nome").value.trim();
-    const whatsapp = document.getElementById("whatsapp").value.trim();
-    const email = document.getElementById("email").value.trim();
-
-    if (selecionados.length === 0) {
-        alert("Escolha pelo menos um número.");
-        return;
-    }
-
-    if (!nome || !whatsapp || !email) {
-        alert("Preencha nome, WhatsApp e e-mail.");
-        return;
-    }
-
-    const botao = document.querySelector("#formulario .botao");
-
-    botao.disabled = true;
-    botao.textContent = "AGUARDE...";
-
-    try {
-        const { data, error } = await supabaseClient.functions.invoke(
-            "criar-pagamento-rifa",
-            {
-                body: {
-                    nome: nome,
-                    whatsapp: whatsapp,
-                    email: email,
-                    numeros: selecionados
-                }
-            }
-        );
+        const { data, error } = await supabaseClient
+            .from("rifa_numeros")
+            .select("numero, status")
+            .order("numero");
 
         if (error) {
-            throw error;
+            console.error("Erro ao carregar números:", error);
+            alert("Não foi possível carregar os números da rifa.");
+            return;
         }
 
-        if (!data || data.erro) {
-            throw new Error(data?.erro || "Não foi possível criar o pagamento.");
+        const numerosBanco = new Map(
+            data.map(item => [item.numero, item.status])
+        );
+
+        for (let i = 1; i <= 50; i++) {
+
+            const botao = document.createElement("button");
+
+            botao.type = "button";
+            botao.className = "numero";
+            botao.textContent = String(i).padStart(2, "0");
+
+            const status = numerosBanco.get(i);
+
+            if (status !== "disponivel") {
+
+                botao.classList.add("indisponivel");
+                botao.disabled = true;
+
+            } else {
+
+                botao.addEventListener("click", function () {
+
+                    const indice = selecionados.indexOf(i);
+
+                    if (indice === -1) {
+                        selecionados.push(i);
+                        botao.classList.add("selecionado");
+                    } else {
+                        selecionados.splice(indice, 1);
+                        botao.classList.remove("selecionado");
+                    }
+
+                    atualizarResumo();
+                });
+            }
+
+            grade.appendChild(botao);
+        }
+    }
+
+    // ATUALIZAR RESUMO DO PEDIDO
+
+    function atualizarResumo() {
+
+        document.getElementById("quantidade").textContent =
+            selecionados.length;
+
+        const total = selecionados.length * valorNumero;
+
+        document.getElementById("total").textContent =
+            total.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+    }
+
+    // ABRIR FORMULÁRIO
+
+    function abrirFormulario() {
+
+        if (selecionados.length === 0) {
+            alert("Escolha pelo menos um número.");
+            return;
         }
 
-        console.log("Resposta do pagamento:", data);
+        atualizarResumo();
 
-        if (data.qr_code) {
-    document.getElementById("pixArea").style.display = "block";
-    document.getElementById("pixCodigo").value = data.qr_code;
+        const formulario = document.getElementById("formulario");
 
-    if (data.qr_code_base64) {
-        document.getElementById("pixImagem").src =
-            "data:image/png;base64," + data.qr_code_base64;
+        formulario.style.display = "block";
+
+        formulario.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
 
-    document.getElementById("pixArea").scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    // COPIAR CÓDIGO PIX
 
-} else {
-    alert("Pedido criado, mas não recebemos o código PIX.");
-}
-    } catch (erro) {
-        console.error("Erro ao criar pedido:", erro);
-        alert("Não foi possível finalizar o pedido: " + (erro.message || "Erro de comunicação."));
-    } finally {
-        botao.disabled = false;
-        botao.textContent = "CONTINUAR";
+    async function copiarPix() {
+
+        const codigo = document.getElementById("pixCodigo").value;
+
+        if (!codigo) {
+            alert("Código PIX não encontrado.");
+            return;
+        }
+
+        try {
+
+            await navigator.clipboard.writeText(codigo);
+
+            alert("Código PIX copiado!");
+
+        } catch (erro) {
+
+            console.error("Erro ao copiar PIX:", erro);
+
+            const campo = document.getElementById("pixCodigo");
+
+            campo.select();
+            document.execCommand("copy");
+
+            alert("Código PIX copiado!");
+        }
     }
-}    </script>
+
+    // CRIAR PEDIDO E GERAR PIX
+
+    async function participar() {
+
+        const nome = document.getElementById("nome").value.trim();
+        const whatsapp = document.getElementById("whatsapp").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        if (selecionados.length === 0) {
+            alert("Escolha pelo menos um número.");
+            return;
+        }
+
+        if (!nome || !whatsapp || !email) {
+            alert("Preencha nome, WhatsApp e e-mail.");
+            return;
+        }
+
+        const botao = document.getElementById("botaoContinuar");
+
+        botao.disabled = true;
+        botao.textContent = "AGUARDE...";
+
+        try {
+
+            const { data, error } = await supabaseClient.functions.invoke(
+                "criar-pagamento-rifa",
+                {
+                    body: {
+                        nome: nome,
+                        whatsapp: whatsapp,
+                        email: email,
+                        numeros: [...selecionados]
+                    }
+                }
+            );
+
+            if (error) {
+                throw error;
+            }
+
+            if (!data || data.erro) {
+                throw new Error(
+                    data?.erro || "Não foi possível criar o pagamento."
+                );
+            }
+
+            console.log("Resposta do pagamento:", data);
+
+            if (!data.qr_code || !data.order_id) {
+                throw new Error(
+                    "O pagamento foi solicitado, mas não recebemos todos os dados necessários. Não tente gerar outro PIX. Entre em contato para conferência."
+                );
+            }
+
+            // GUARDAR O IDENTIFICADOR DA ORDER
+
+            orderIdAtual = String(data.order_id);
+
+            // PREPARAR CONTROLE DA CONSULTA
+
+            pagamentoFinalizado = false;
+            inicioConsulta = Date.now();
+
+            // EXIBIR QR CODE
+
+            document.getElementById("pixArea").style.display = "block";
+
+            document.getElementById("pixCodigo").value =
+                data.qr_code;
+
+            if (data.qr_code_base64) {
+
+                document.getElementById("pixImagem").src =
+                    "data:image/png;base64," + data.qr_code_base64;
+
+            }
+
+            document.getElementById("statusPagamento").textContent =
+                "Aguardando a confirmação do pagamento. Esta página verificará automaticamente o status do seu pedido.";
+
+            document.getElementById("pixArea").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            // INICIAR CONSULTA AUTOMÁTICA
+
+            consultarPagamento();
+
+        } catch (erro) {
+
+            console.error("Erro ao criar pedido:", erro);
+
+            alert(
+                "Não foi possível finalizar o pedido: " +
+                (erro.message || "Erro de comunicação.")
+            );
+
+        } finally {
+
+            botao.disabled = false;
+            botao.textContent = "CONTINUAR";
+
+        }
+    }
+
+    // PARAR CONSULTA AUTOMÁTICA
+
+    function pararConsulta() {
+
+        if (temporizadorConsulta) {
+
+            clearTimeout(temporizadorConsulta);
+
+            temporizadorConsulta = null;
+
+        }
+
+        consultaEmAndamento = false;
+    }
+
+    // AGENDAR PRÓXIMA CONSULTA
+
+    function agendarConsulta() {
+
+        if (pagamentoFinalizado || !orderIdAtual) {
+            return;
+        }
+
+        temporizadorConsulta = setTimeout(
+            consultarPagamento,
+            intervaloConsulta
+        );
+    }
+
+    // CONSULTAR SITUAÇÃO DO PAGAMENTO
+
+    async function consultarPagamento() {
+
+        if (
+            pagamentoFinalizado ||
+            consultaEmAndamento ||
+            !orderIdAtual
+        ) {
+            return;
+        }
+
+        if (Date.now() - inicioConsulta >= limiteConsulta) {
+
+            pararConsulta();
+
+            document.getElementById("statusPagamento").textContent =
+                "Não foi possível confirmar o pagamento neste período. Não gere outro PIX antes de verificar a situação do pedido com a Garden's.";
+
+            return;
+        }
+
+        consultaEmAndamento = true;
+
+        try {
+
+            const { data, error } = await supabaseClient.functions.invoke(
+                "consultar-pagamento-rifa",
+                {
+                    body: {
+                        order_id: orderIdAtual
+                    }
+                }
+            );
+
+            if (error) {
+                throw error;
+            }
+
+            console.log("Consulta do pagamento:", data);
+
+            if (!data) {
+                throw new Error("Resposta vazia da consulta.");
+            }
+
+            // O BANCO DE DADOS É A FONTE DA CONFIRMAÇÃO
+
+            if (data.pedido_status === "pago") {
+
+                pagamentoFinalizado = true;
+
+                pararConsulta();
+
+                document.getElementById("pixArea").style.display =
+                    "none";
+
+                document.getElementById("formulario").style.display =
+                    "none";
+
+                document.getElementById("confirmacao").style.display =
+                    "block";
+
+                selecionados.length = 0;
+
+                atualizarResumo();
+
+                await carregarNumeros();
+
+                document.getElementById("confirmacao").scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                return;
+            }
+
+            if (
+                data.pedido_status === "expirado" ||
+                data.pedido_status === "cancelado"
+            ) {
+
+                pararConsulta();
+
+                document.getElementById("statusPagamento").textContent =
+                    "A reserva deste pedido expirou ou foi cancelada. Entre em contato com a Garden's antes de realizar uma nova tentativa.";
+
+                await carregarNumeros();
+
+                return;
+            }
+
+            document.getElementById("statusPagamento").textContent =
+                "Ainda aguardando o pagamento. Verificaremos novamente em alguns segundos.";
+
+        } catch (erro) {
+
+            console.error("Erro ao consultar pagamento:", erro);
+
+            document.getElementById("statusPagamento").textContent =
+                "Não foi possível consultar o pagamento neste momento. Tentaremos novamente automaticamente.";
+
+        } finally {
+
+            consultaEmAndamento = false;
+
+            if (!pagamentoFinalizado) {
+                agendarConsulta();
+            }
+
+        }
+    }
+
+    // INICIALIZAÇÃO
+
+    carregarNumeros();
+
+</script>
 
 </body>
 </html>
