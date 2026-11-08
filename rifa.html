@@ -650,7 +650,7 @@ const todosVendidos = data.length === 50 &&
 const selo = document.getElementById("seloRifaPreenchida");
 
 if (selo) {
-    selo.style.display = "block";
+    selo.style.display = todosVendidos ? "block" : "none";
 }
         
         for (let i = 1; i <= 50; i++) {
