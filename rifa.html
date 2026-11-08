@@ -320,6 +320,53 @@
                 font-size: 13px;
             }
         }
+
+/* LISTA DE COMPRADORES */
+
+.lista-compradores {
+    margin-top: 22px;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.lista-compradores h3 {
+    font-family: Georgia, serif;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #304638;
+}
+
+.comprador {
+    padding: 12px 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.comprador:last-child {
+    border-bottom: none;
+}
+
+.comprador strong {
+    display: block;
+    color: #304638;
+    font-size: 14px;
+}
+
+.comprador span {
+    display: block;
+    margin-top: 5px;
+    color: #a17b36;
+    font-size: 13px;
+}
+
+.sem-compradores {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    padding: 15px 0;
+}
+        
     </style>
 </head>
 
@@ -469,6 +516,18 @@
 
     </section>
 
+    <section class="lista-compradores">
+
+        <h3>Quem já está participando</h3>
+
+        <div id="listaCompradores">
+            <p class="sem-compradores">
+                Carregando participantes...
+            </p>
+        </div>
+
+    </section>
+    
     <p class="aviso">
         Os números são reservados durante o processo de pagamento.
         A participação é confirmada após a aprovação do PIX.
@@ -920,9 +979,59 @@
         }
     }
 
+    // CARREGAR LISTA DE COMPRADORES CONFIRMADOS
+
+    async function carregarCompradores() {
+
+        const lista = document.getElementById("listaCompradores");
+
+        const { data, error } = await supabaseClient
+            .from("rifa_participantes_publicos")
+            .select("nome, numeros")
+            .order("nome");
+
+        if (error) {
+            console.error("Erro ao carregar compradores:", error);
+            lista.innerHTML = `
+                <p class="sem-compradores">
+                    Não foi possível carregar os participantes.
+                </p>
+            `;
+            return;
+        }
+
+        if (!data || data.length === 0) {
+            lista.innerHTML = `
+                <p class="sem-compradores">
+                    Seja o primeiro a participar da Rifa Garden's!
+                </p>
+            `;
+            return;
+        }
+
+        lista.innerHTML = "";
+
+        data.forEach(participante => {
+            const item = document.createElement("div");
+            item.className = "comprador";
+
+            const nome = document.createElement("strong");
+            nome.textContent = participante.nome;
+
+            const numeros = document.createElement("span");
+            numeros.textContent = "Números: " + participante.numeros;
+
+            item.appendChild(nome);
+            item.appendChild(numeros);
+            lista.appendChild(item);
+        });
+    }
+    
     // INICIALIZAÇÃO
 
-    carregarNumeros();
+        carregarNumeros();
+    carregarCompradores();
+    setInterval(carregarCompradores, 30000);
 
 </script>
 
