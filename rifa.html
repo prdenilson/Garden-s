@@ -8,6 +8,42 @@
     <title>Rifa Garden's</title>
 
     <style>
+
+/* SELO RIFA PREENCHIDA */
+.selo-rifa-preenchida {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    z-index: 20;
+    width: 90%;
+    max-width: 430px;
+    padding: 22px 12px;
+    background: linear-gradient(135deg, #171513, #302719);
+    color: #d9b65d;
+    border: 4px solid #d9b65d;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+}
+
+.selo-rifa-preenchida small {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.area-tabela-rifa {
+    position: relative;
+}
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -403,13 +439,22 @@
         >
     </div>
 
-    <h3 class="titulo-numeros">Escolha seus números</h3>
+<h3 class="titulo-numeros">Escolha seus números</h3>
 
-    <p class="legenda">
-        Selecione os números que deseja escolher.
-    </p>
+<p class="legenda">
+    Selecione os números que deseja escolher.
+</p>
+
+<div class="area-tabela-rifa">
+
+    <div id="seloRifaPreenchida" class="selo-rifa-preenchida">
+        RIFA PREENCHIDA!
+        <small>TODOS OS NÚMEROS VENDIDOS</small>
+    </div>
 
     <div class="numeros" id="gradeNumeros"></div>
+
+</div>
 
     <button type="button" class="botao" onclick="abrirFormulario()">
         FINALIZAR PEDIDO
@@ -598,6 +643,16 @@
             data.map(item => [item.numero, item.status])
         );
 
+        // VERIFICAR SE TODOS OS NÚMEROS FORAM VENDIDOS
+const todosVendidos = data.length === 50 &&
+    data.every(item => item.status === "vendido");
+
+const selo = document.getElementById("seloRifaPreenchida");
+
+if (selo) {
+    selo.style.display = todosVendidos ? "block" : "none";
+}
+        
         for (let i = 1; i <= 50; i++) {
 
             const botao = document.createElement("button");
