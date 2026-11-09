@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -62,11 +61,6 @@ input {
 
 button {
     cursor: pointer;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
 
 #entrar {
@@ -133,40 +127,21 @@ button:disabled {
     transform: scale(1.12);
 }
 
-.grupoBotoes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+#iniciar {
     margin-top: 30px;
-}
-
-.botaoSorteio {
-    width: 100%;
-    max-width: 320px;
-    padding: 15px 20px;
+    padding: 16px 30px;
+    background: linear-gradient(135deg, #e4c477, #a77b28);
+    color: #111;
     border: none;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;
 }
 
-#botaoTeste {
-    background: #292929;
-    color: #d4af61;
-    border: 1px solid #d4af61;
-}
-
-#botaoOficial {
-    background: linear-gradient(135deg, #e4c477, #a77b28);
-    color: #111;
-}
-
-#botaoRevelar {
-    background: #171717;
-    color: #f5d77d;
-    border: 1px solid #f5d77d;
+#iniciar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 #resultado {
@@ -175,7 +150,7 @@ button:disabled {
     padding: 20px;
 }
 
-#textoResultado {
+#resultado h2 {
     color: #d4af61;
     font-size: 17px;
 }
@@ -274,7 +249,7 @@ footer {
 <main id="painel">
 
     <div class="aviso">
-        GRADE DE SORTEIO GARDEN'S
+        TESTE DE INTEGRAÇÃO COM SUPABASE
     </div>
 
     <h2 style="color:#fff;">
@@ -287,40 +262,14 @@ footer {
 
     <div class="grade" id="grade"></div>
 
-    <div class="grupoBotoes">
-
-        <button
-            id="botaoTeste"
-            class="botaoSorteio"
-            onclick="iniciarTeste()"
-        >
-            SORTEIO TESTE
-        </button>
-
-        <button
-            id="botaoOficial"
-            class="botaoSorteio"
-            onclick="iniciarOficial()"
-        >
-            SORTEIO OFICIAL
-        </button>
-
-        <button
-            id="botaoRevelar"
-            class="botaoSorteio"
-            onclick="verGanhador()"
-            disabled
-        >
-            VER GANHADOR
-        </button>
-
-    </div>
-
+    <button id="iniciar" onclick="iniciarTeste()">
+        INICIAR TESTE
+    </button>
 
     <section id="resultado">
 
         <h2 id="textoResultado">
-            AGUARDANDO SORTEIO
+            AGUARDANDO TESTE
         </h2>
 
         <span id="numeroFinal">--</span>
@@ -367,24 +316,6 @@ const supabaseClient = window.supabase.createClient(
 const login = document.getElementById("login");
 const painel = document.getElementById("painel");
 const grade = document.getElementById("grade");
-
-const botaoTeste = document.getElementById("botaoTeste");
-const botaoOficial = document.getElementById("botaoOficial");
-const botaoRevelar = document.getElementById("botaoRevelar");
-
-const textoResultado = document.getElementById("textoResultado");
-const numeroFinal = document.getElementById("numeroFinal");
-const nomeVencedor = document.getElementById("nomeVencedor");
-const mensagemResultado = document.getElementById("mensagemResultado");
-
-
-// CONTROLE DO SORTEIO
-
-let sorteioEmAndamento = false;
-
-let sorteioOficialAtual = null;
-
-let ganhadorRevelado = false;
 
 
 // CRIAR OS 50 NÚMEROS
@@ -464,9 +395,6 @@ async function fazerLogin() {
     const autorizado = await verificarAdmin();
 
     if (!autorizado) {
-
-        await supabaseClient.auth.signOut();
-
         mensagem.textContent =
             "Acesso não autorizado.";
         return;
@@ -529,9 +457,96 @@ function tocarTicTac() {
 }
 
 
-// PREPARAR ÁUDIO
+// APAGAR LUZES
 
-async function prepararAudio() {
+function apagarLuzes() {
+
+    document.querySelectorAll(".numero").forEach(
+        elemento => {
+            elemento.classList.remove(
+                "aceso",
+                "vencedor"
+            );
+        }
+    );
+
+}
+
+
+// CONSULTAR O GANHADOR NO SUPABASE
+
+async function consultarGanhador(numero) {
+
+    const { data, error } =
+        await supabaseClient.rpc(
+            "buscar_ganhador_por_numero",
+            {
+                p_numero: numero
+            }
+        );
+
+    if (error) {
+        console.error(
+            "Erro na consulta ao Supabase:",
+            error
+        );
+
+        throw new Error(
+            "Não foi possível consultar o Supabase."
+        );
+    }
+
+    if (!data) {
+        throw new Error(
+            "O número sorteado não foi encontrado na tabela."
+        );
+    }
+
+    return data;
+}
+
+
+// SORTEIO DE TESTE COM CONSULTA REAL
+
+let testeEmAndamento = false;
+
+async function iniciarTeste() {
+
+    if (testeEmAndamento) return;
+
+    testeEmAndamento = true;
+
+    const botao =
+        document.getElementById("iniciar");
+
+    const texto =
+        document.getElementById("textoResultado");
+
+    const numeroFinal =
+        document.getElementById("numeroFinal");
+
+    const nomeVencedor =
+        document.getElementById("nomeVencedor");
+
+    const mensagem =
+        document.getElementById("mensagemResultado");
+
+    botao.disabled = true;
+
+    botao.textContent = "SORTEANDO...";
+
+    texto.textContent = "A SORTE ESTÁ LANÇADA!";
+
+    numeroFinal.textContent = "--";
+
+    nomeVencedor.textContent = "";
+
+    mensagem.textContent = "";
+
+    apagarLuzes();
+
+
+    // INICIAR ÁUDIO
 
     try {
 
@@ -549,38 +564,21 @@ async function prepararAudio() {
         contextoAudio = null;
 
     }
-}
 
 
-// APAGAR LUZES
+    // ESCOLHER NÚMERO ENTRE 1 E 50
 
-function apagarLuzes() {
-
-    document.querySelectorAll(".numero").forEach(
-        elemento => {
-            elemento.classList.remove(
-                "aceso",
-                "vencedor"
-            );
-        }
-    );
-
-}
+    const vencedor =
+        Math.floor(Math.random() * 50) + 1;
 
 
-// ANIMAÇÃO DA GRADE
-
-async function animarSorteio(vencedor) {
+    // ANIMAÇÃO DAS LUZES
 
     let anterior = 0;
 
     const totalEtapas = 65;
 
-    for (
-        let etapa = 0;
-        etapa < totalEtapas;
-        etapa++
-    ) {
+    for (let etapa = 0; etapa < totalEtapas; etapa++) {
 
         let intervalo;
 
@@ -625,6 +623,9 @@ async function animarSorteio(vencedor) {
 
     }
 
+
+    // DESTACAR O NÚMERO SORTEADO
+
     apagarLuzes();
 
     document
@@ -633,252 +634,50 @@ async function animarSorteio(vencedor) {
 
     numeroFinal.textContent =
         String(vencedor).padStart(2, "0");
-}
+
+    texto.textContent =
+        "CONSULTANDO O GANHADOR...";
 
 
-// PREPARAR A TELA PARA UM NOVO SORTEIO
-
-function prepararNovoSorteio() {
-
-    numeroFinal.textContent = "--";
-
-    nomeVencedor.textContent = "";
-
-    mensagemResultado.textContent = "";
-
-    apagarLuzes();
-
-    botaoRevelar.disabled = true;
-
-    ganhadorRevelado = false;
-}
-
-
-// SORTEIO DE TESTE
-
-async function iniciarTeste() {
-
-    if (sorteioEmAndamento) return;
-
-    sorteioEmAndamento = true;
-
-    // Um teste não mantém a identificação
-    // de um sorteio oficial anterior na tela.
-
-    sorteioOficialAtual = null;
-
-    botaoTeste.disabled = true;
-    botaoOficial.disabled = true;
-
-    botaoTeste.textContent = "SORTEANDO...";
-
-    prepararNovoSorteio();
-
-    textoResultado.textContent =
-        "SORTEIO DE TESTE EM ANDAMENTO";
-
-    mensagemResultado.textContent =
-        "Esta rodada é apenas uma demonstração.";
+    // CONSULTAR NOME NO SUPABASE
 
     try {
 
-        await prepararAudio();
+        const nome = await consultarGanhador(vencedor);
 
-        const vencedor =
-            Math.floor(Math.random() * 50) + 1;
+        texto.textContent =
+            "NÚMERO SORTEADO!";
 
-        await animarSorteio(vencedor);
+        nomeVencedor.textContent =
+            nome;
 
-        textoResultado.textContent =
-            "NÚMERO DO TESTE";
+        mensagem.textContent =
+            "Ganhador identificado no Supabase.";
 
-        mensagemResultado.textContent =
-            "Nenhum resultado oficial foi registrado.";
+        botao.textContent =
+            "TESTE CONCLUÍDO";
 
     } catch (erro) {
 
         console.error(erro);
 
-        textoResultado.textContent =
-            "NÃO FOI POSSÍVEL REALIZAR O TESTE";
+        texto.textContent =
+            "CONSULTA NÃO CONCLUÍDA";
 
-        mensagemResultado.textContent =
-            "Tente novamente.";
+        nomeVencedor.textContent = "";
 
-    }
+        mensagem.textContent =
+            erro.message;
 
-    botaoTeste.textContent = "SORTEIO TESTE";
-
-    botaoTeste.disabled = false;
-    botaoOficial.disabled = false;
-
-    sorteioEmAndamento = false;
-}
-
-
-// SORTEIO OFICIAL
-
-async function iniciarOficial() {
-
-    if (sorteioEmAndamento) return;
-
-    sorteioEmAndamento = true;
-
-    sorteioOficialAtual = null;
-
-    botaoTeste.disabled = true;
-    botaoOficial.disabled = true;
-    botaoRevelar.disabled = true;
-
-    botaoOficial.textContent = "SORTEANDO...";
-
-    prepararNovoSorteio();
-
-    textoResultado.textContent =
-        "SORTEIO OFICIAL EM ANDAMENTO";
-
-    mensagemResultado.textContent =
-        "Aguardando a escolha do número...";
-
-    try {
-
-        await prepararAudio();
-
-        // O SUPABASE ESCOLHE E REGISTRA O NÚMERO
-
-        const { data, error } =
-            await supabaseClient.rpc(
-                "realizar_sorteio_oficial"
-            );
-
-        if (error) {
-            throw error;
-        }
-
-        const registro =
-            Array.isArray(data) ? data[0] : data;
-
-        if (
-            !registro ||
-            !registro.sorteio_id ||
-            !registro.numero
-        ) {
-            throw new Error(
-                "O Supabase não retornou o resultado esperado."
-            );
-        }
-
-        // GUARDAR O ID DO SORTEIO OFICIAL
-
-        sorteioOficialAtual = registro.sorteio_id;
-
-        // A ANIMAÇÃO TERMINA NO NÚMERO DO BANCO
-
-        await animarSorteio(registro.numero);
-
-        textoResultado.textContent =
-            "NÚMERO OFICIAL SORTEADO!";
-
-        mensagemResultado.textContent =
-            "O resultado foi registrado. Clique em VER GANHADOR.";
-
-        botaoRevelar.disabled = false;
-
-    } catch (erro) {
-
-        console.error(
-            "Erro no sorteio oficial:",
-            erro
-        );
-
-        textoResultado.textContent =
-            "NÃO FOI POSSÍVEL CONCLUIR";
-
-        mensagemResultado.textContent =
-            erro.message ||
-            "Verifique sua conexão e tente novamente.";
+        botao.textContent =
+            "TENTAR NOVAMENTE";
 
     }
 
-    botaoOficial.textContent = "SORTEIO OFICIAL";
+    testeEmAndamento = false;
 
-    botaoTeste.disabled = false;
-    botaoOficial.disabled = false;
+    botao.disabled = false;
 
-    sorteioEmAndamento = false;
-}
-
-
-// REVELAR O NOME DO GANHADOR
-
-async function verGanhador() {
-
-    if (
-        sorteioEmAndamento ||
-        !sorteioOficialAtual ||
-        ganhadorRevelado
-    ) {
-        return;
-    }
-
-    sorteioEmAndamento = true;
-
-    botaoRevelar.disabled = true;
-
-    botaoRevelar.textContent = "REVELANDO...";
-
-    mensagemResultado.textContent =
-        "Consultando o ganhador...";
-
-    try {
-
-        const { data, error } =
-            await supabaseClient.rpc(
-                "revelar_ganhador",
-                {
-                    p_sorteio_id: sorteioOficialAtual
-                }
-            );
-
-        if (error) {
-            throw error;
-        }
-
-        if (!data) {
-            throw new Error(
-                "Não foi possível encontrar o ganhador."
-            );
-        }
-
-        nomeVencedor.textContent = data;
-
-        mensagemResultado.textContent =
-            "GANHADOR DO SORTEIO OFICIAL";
-
-        ganhadorRevelado = true;
-
-        botaoRevelar.textContent =
-            "GANHADOR REVELADO";
-
-    } catch (erro) {
-
-        console.error(
-            "Erro ao revelar ganhador:",
-            erro
-        );
-
-        mensagemResultado.textContent =
-            erro.message ||
-            "Não foi possível revelar o ganhador.";
-
-        botaoRevelar.disabled = false;
-
-        botaoRevelar.textContent =
-            "VER GANHADOR";
-
-    }
-
-    sorteioEmAndamento = false;
 }
 
 
