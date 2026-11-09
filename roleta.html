@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -145,7 +146,7 @@ button {
 }
 
 #resultado {
-    min-height: 120px;
+    min-height: 145px;
     margin: 30px auto;
     padding: 20px;
 }
@@ -162,6 +163,20 @@ button {
     font-weight: bold;
     margin-top: 10px;
     text-shadow: 0 0 20px #d4af61;
+}
+
+#nomeVencedor {
+    display: block;
+    margin-top: 15px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#mensagemResultado {
+    color: #d4af61;
+    font-size: 13px;
+    margin-top: 12px;
 }
 
 #sair {
@@ -235,7 +250,7 @@ footer {
 <main id="painel">
 
     <div class="aviso">
-        TESTE VISUAL — SIMULAÇÃO
+        TESTE DE INTEGRAÇÃO COM SUPABASE
     </div>
 
     <h2 style="color:#fff;">
@@ -259,6 +274,10 @@ footer {
         </h2>
 
         <span id="numeroFinal">--</span>
+
+        <span id="nomeVencedor"></span>
+
+        <p id="mensagemResultado"></p>
 
     </section>
 
@@ -439,7 +458,7 @@ function tocarTicTac() {
 }
 
 
-// DESTACAR UM NÚMERO
+// APAGAR LUZES
 
 function apagarLuzes() {
 
@@ -455,7 +474,40 @@ function apagarLuzes() {
 }
 
 
-// TESTE VISUAL
+// CONSULTAR O GANHADOR NO SUPABASE
+
+async function consultarGanhador(numero) {
+
+    const { data, error } =
+        await supabaseClient.rpc(
+            "buscar_ganhador_por_numero",
+            {
+                p_numero: numero
+            }
+        );
+
+    if (error) {
+        console.error(
+            "Erro na consulta ao Supabase:",
+            error
+        );
+
+        throw new Error(
+            "Não foi possível consultar o Supabase."
+        );
+    }
+
+    if (!data) {
+        throw new Error(
+            "O número sorteado não foi encontrado na tabela."
+        );
+    }
+
+    return data;
+}
+
+
+// SORTEIO DE TESTE COM CONSULTA REAL
 
 let testeEmAndamento = false;
 
@@ -474,6 +526,12 @@ async function iniciarTeste() {
     const numeroFinal =
         document.getElementById("numeroFinal");
 
+    const nomeVencedor =
+        document.getElementById("nomeVencedor");
+
+    const mensagem =
+        document.getElementById("mensagemResultado");
+
     botao.disabled = true;
 
     botao.textContent = "SORTEANDO...";
@@ -482,16 +540,23 @@ async function iniciarTeste() {
 
     numeroFinal.textContent = "--";
 
+    nomeVencedor.textContent = "";
+
+    mensagem.textContent = "";
+
     apagarLuzes();
 
-    // O áudio começa após o clique do usuário.
+
+    // INICIAR ÁUDIO
 
     try {
 
-        contextoAudio = new (
-            window.AudioContext ||
-            window.webkitAudioContext
-        )();
+        if (!contextoAudio) {
+            contextoAudio = new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+        }
 
         await contextoAudio.resume();
 
@@ -502,13 +567,13 @@ async function iniciarTeste() {
     }
 
 
-    // NÚMERO DE TESTE
+    // ESCOLHER NÚMERO ENTRE 1 E 50
 
     const vencedor =
         Math.floor(Math.random() * 50) + 1;
 
 
-    // MOVIMENTO DAS LUZES
+    // ANIMAÇÃO DAS LUZES
 
     let anterior = 0;
 
@@ -560,7 +625,7 @@ async function iniciarTeste() {
     }
 
 
-    // RESULTADO FINAL
+    // DESTACAR O NÚMERO SORTEADO
 
     apagarLuzes();
 
@@ -568,18 +633,52 @@ async function iniciarTeste() {
         .getElementById("numero-" + vencedor)
         .classList.add("vencedor");
 
-    texto.textContent =
-        "NÚMERO DO TESTE";
-
     numeroFinal.textContent =
         String(vencedor).padStart(2, "0");
 
+    texto.textContent =
+        "CONSULTANDO O GANHADOR...";
 
-    botao.textContent = "TESTE CONCLUÍDO";
+
+    // CONSULTAR NOME NO SUPABASE
+
+    try {
+
+        const nome = await consultarGanhador(vencedor);
+
+        texto.textContent =
+            "NÚMERO SORTEADO!";
+
+        nomeVencedor.textContent =
+            nome;
+
+        mensagem.textContent =
+            "Ganhador identificado no Supabase.";
+
+        botao.textContent =
+            "TESTE CONCLUÍDO";
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        texto.textContent =
+            "CONSULTA NÃO CONCLUÍDA";
+
+        nomeVencedor.textContent = "";
+
+        mensagem.textContent =
+            erro.message;
+
+        botao.textContent =
+            "TENTAR NOVAMENTE";
+
+    }
 
     testeEmAndamento = false;
 
-    // Não existe gravação nem consulta ao Supabase.
+    botao.disabled = false;
+
 }
 
 
