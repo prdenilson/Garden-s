@@ -81,5 +81,57 @@
 
     <div id="resultado"></div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://kiefyoedeervkrtrkghj.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+async function testarConexao() {
+
+    const resultado = document.getElementById("resultado");
+
+    resultado.textContent = "Conectando ao Supabase...";
+
+    const { data, error } = await supabaseClient
+        .from("rifa_pedidos")
+        .select("nome, numeros");
+
+    if (error) {
+        console.error(error);
+        resultado.textContent = "Erro na conexão: " + error.message;
+        return;
+    }
+
+    const participantes = new Map();
+
+    data.forEach(pedido => {
+        (pedido.numeros || []).forEach(numero => {
+            participantes.set(Number(numero), pedido.nome);
+        });
+    });
+
+    if (participantes.size !== 50) {
+        resultado.textContent =
+            "Atenção: foram encontrados " +
+            participantes.size + " números diferentes.";
+        return;
+    }
+
+    resultado.textContent =
+        "CONEXÃO REALIZADA! 50 números encontrados.";
+}
+
+testarConexao();
+</script>
+
 </body>
 </html>
+
