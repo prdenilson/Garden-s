@@ -1,206 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sorteio Oficial | Garden's</title>
+<title>Garden's | Área de Sorteio</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    min-height: 100vh;
-    background: #111;
-    color: #d4af37;
-    font-family: Georgia, serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
+    background: #090909;
+    color: #fff;
+    font-family: Arial, sans-serif;
     text-align: center;
-    padding: 25px 15px;
 }
 
-h1 {
-    font-size: 38px;
+header {
+    margin: 20px 0 30px;
+}
+
+header h1 {
+    color: #d4af61;
     letter-spacing: 4px;
-    margin-bottom: 5px;
+    font-size: 30px;
 }
 
-.subtitulo {
-    color: white;
-    letter-spacing: 3px;
-    margin-bottom: 30px;
+header p {
+    color: #aaa;
+    letter-spacing: 2px;
+    font-size: 12px;
 }
 
 #login {
-    width: 100%;
-    max-width: 360px;
+    max-width: 380px;
+    margin: 60px auto;
     padding: 25px;
-    border: 1px solid #80651c;
+    background: #171717;
+    border: 1px solid #b89548;
     border-radius: 12px;
-    background: #1b1b1b;
-}
-
-#login h2 {
-    font-size: 20px;
-    margin-top: 0;
 }
 
 input {
     width: 100%;
-    padding: 15px;
+    padding: 13px;
     margin: 8px 0;
-    border: 1px solid #d4af37;
+    background: #090909;
+    border: 1px solid #555;
     border-radius: 6px;
-    background: #111;
     color: white;
-    font-size: 16px;
 }
 
 button {
-    padding: 16px 30px;
-    margin-top: 15px;
-    background: #d4af37;
-    color: #111;
-    border: none;
-    border-radius: 7px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
 
 #entrar {
     width: 100%;
-}
-
-#mensagemLogin {
-    color: white;
-    font-size: 14px;
+    padding: 13px;
+    margin-top: 12px;
+    background: #d4af61;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
 }
 
 #painel {
     display: none;
-    width: 100%;
-    max-width: 500px;
-}
-
-#roletaArea {
-    position: relative;
-    width: 330px;
-    height: 330px;
-    max-width: 90vw;
-    max-height: 90vw;
-    margin: 25px auto;
-}
-
-#ponteiro {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    width: 0;
-    height: 0;
-    border-left: 17px solid transparent;
-    border-right: 17px solid transparent;
-    border-top: 35px solid #d4af37;
-}
-
-#roleta {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 8px solid #d4af37;
-    background: #222;
-    box-shadow: 0 0 30px #80651c;
-    transition: transform 6s cubic-bezier(.12,.65,.12,1);
-}
-
-.numero-roleta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 24px;
-    height: 20px;
-    margin-left: -12px;
-    margin-top: -10px;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#centro {
-    position: absolute;
-    width: 75px;
-    height: 75px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #d4af37;
-    color: #111;
-    border: 5px solid #111;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    z-index: 3;
-}
-
-#sortear {
-    width: 100%;
-    max-width: 330px;
-}
-
-#resultado {
-    margin-top: 30px;
-    color: white;
-    font-size: 19px;
-    line-height: 1.7;
-}
-
-#numeroVencedor {
-    display: block;
-    color: #d4af37;
-    font-size: 65px;
-    font-weight: bold;
-}
-
-#nomeVencedor {
-    display: block;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-#sair {
-    background: transparent;
-    border: 1px solid #d4af37;
-    color: #d4af37;
-    font-size: 13px;
+    max-width: 650px;
+    margin: auto;
 }
 
 .aviso {
-    color: #aaa;
-    font-family: Arial, sans-serif;
+    color: #d4af61;
     font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.numero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    background: #202020;
+    border: 1px solid #454545;
+    border-radius: 8px;
+    color: #eee;
+    font-size: clamp(17px, 4vw, 23px);
+    font-weight: bold;
+    transition: background 0.08s, box-shadow 0.08s;
+}
+
+.numero.aceso {
+    background: #d4af61;
+    color: #111;
+    border: 2px solid #fff0b0;
+    box-shadow: 0 0 12px #d4af61, 0 0 25px #d4af61;
+    transform: scale(1.05);
+}
+
+.numero.vencedor {
+    background: #f5d77d;
+    color: #000;
+    border: 3px solid white;
+    box-shadow: 0 0 20px #f5d77d, 0 0 45px #d4af61;
+    transform: scale(1.12);
+}
+
+#iniciar {
     margin-top: 30px;
+    padding: 16px 30px;
+    background: linear-gradient(135deg, #e4c477, #a77b28);
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#iniciar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#resultado {
+    min-height: 120px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+#resultado h2 {
+    color: #d4af61;
+    font-size: 17px;
+}
+
+#numeroFinal {
+    display: block;
+    color: #f5d77d;
+    font-size: 65px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-shadow: 0 0 20px #d4af61;
+}
+
+#sair {
+    margin: 20px;
+    padding: 10px 20px;
+    color: #ddd;
+    background: transparent;
+    border: 1px solid #777;
+    border-radius: 6px;
+}
+
+footer {
+    margin-top: 40px;
+    color: #777;
+    font-size: 12px;
+}
+
+@media (max-width: 400px) {
+    body {
+        padding: 12px;
+    }
+
+    .grade {
+        gap: 6px;
+    }
 }
 
 </style>
@@ -208,78 +192,94 @@ button:disabled {
 
 <body>
 
-<h1>GARDEN'S</h1>
+<header>
+    <h1>GARDEN'S</h1>
+    <p>ÁREA DE SORTEIO</p>
+</header>
 
-<p class="subtitulo">SORTEIO OFICIAL</p>
+<section id="login">
 
-<!-- LOGIN ADMINISTRATIVO -->
+    <h2 style="color:#d4af61;">
+        ACESSO RESTRITO
+    </h2>
 
-<div id="login">
-
-    <h2>ACESSO ADMINISTRATIVO</h2>
+    <p style="color:#aaa;font-size:13px;">
+        Área exclusiva do administrador.
+    </p>
 
     <input
         type="email"
         id="email"
-        placeholder="Seu e-mail"
+        placeholder="E-mail"
         autocomplete="username"
     >
 
     <input
         type="password"
         id="senha"
-        placeholder="Sua senha"
+        placeholder="Senha"
         autocomplete="current-password"
     >
 
-    <button id="entrar">ENTRAR</button>
+    <button id="entrar" onclick="fazerLogin()">
+        ENTRAR
+    </button>
 
-    <p id="mensagemLogin"></p>
+    <p id="mensagemLogin" style="color:#d4af61;"></p>
 
-</div>
+</section>
 
-<!-- PAINEL DO SORTEIO -->
 
-<div id="painel">
+<main id="painel">
 
-    <p>50 NÚMEROS PARTICIPANTES</p>
-
-    <div id="roletaArea">
-
-        <div id="ponteiro"></div>
-
-        <div id="roleta"></div>
-
-        <div id="centro">G</div>
-
+    <div class="aviso">
+        TESTE VISUAL — SIMULAÇÃO
     </div>
 
-    <button id="sortear">
-        GIRAR ROLETA
+    <h2 style="color:#fff;">
+        SORTEIO GARDEN'S
+    </h2>
+
+    <p style="color:#aaa;font-size:13px;">
+        Acompanhe os números iluminados.
+    </p>
+
+    <div class="grade" id="grade"></div>
+
+    <button id="iniciar" onclick="iniciarTeste()">
+        INICIAR TESTE
     </button>
 
-    <div id="resultado"></div>
+    <section id="resultado">
 
-    <button id="sair">
-        SAIR DA ÁREA ADMINISTRATIVA
+        <h2 id="textoResultado">
+            AGUARDANDO TESTE
+        </h2>
+
+        <span id="numeroFinal">--</span>
+
+    </section>
+
+    <button id="sair" onclick="sair()">
+        SAIR DO ACESSO RESTRITO
     </button>
 
-</div>
+</main>
 
-<p class="aviso">
-    GARDEN'S LOJA • SORTEIO OFICIAL
-</p>
+
+<footer>
+    © 2026 Garden's Loja — Todos os direitos reservados.
+</footer>
+
 
 <script>
 
-// ======================================
-// CONEXÃO SUPABASE
-// ======================================
+// CONFIGURAÇÃO DO SUPABASE
 
 const SUPABASE_URL =
 "https://kiefyoedeervkrtrkghj.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
 "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
 
 const UID_ADMIN =
@@ -287,75 +287,48 @@ const UID_ADMIN =
 
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_KEY
 );
 
-// ======================================
-// ELEMENTOS
-// ======================================
+
+// ELEMENTOS DA PÁGINA
 
 const login = document.getElementById("login");
 const painel = document.getElementById("painel");
+const grade = document.getElementById("grade");
 
-const email = document.getElementById("email");
-const senha = document.getElementById("senha");
 
-const entrar = document.getElementById("entrar");
-const mensagemLogin = document.getElementById("mensagemLogin");
-
-const roleta = document.getElementById("roleta");
-const sortear = document.getElementById("sortear");
-const resultado = document.getElementById("resultado");
-const sair = document.getElementById("sair");
-
-let sorteioRealizado = false;
-let girando = false;
-let rotacaoAtual = 0;
-
-// ======================================
-// CRIAR OS 50 NÚMEROS DA ROLETA
-// ======================================
+// CRIAR OS 50 NÚMEROS
 
 for (let i = 1; i <= 50; i++) {
 
-    const numero = document.createElement("div");
+    const elemento = document.createElement("div");
 
-    numero.className = "numero-roleta";
-    numero.textContent = String(i).padStart(2, "0");
+    elemento.className = "numero";
 
-    const angulo = (i - 1) * 7.2 - 90;
+    elemento.id = "numero-" + i;
 
-    numero.style.transform =
-        `rotate(${angulo}deg) translateY(-135px)`;
+    elemento.textContent =
+        String(i).padStart(2, "0");
 
-    roleta.appendChild(numero);
+    grade.appendChild(elemento);
 }
 
-// ======================================
-// VERIFICAR ADMINISTRADOR
-// ======================================
+
+// VERIFICAR ACESSO ADMINISTRATIVO
 
 async function verificarAdmin() {
 
     const { data, error } =
         await supabaseClient.auth.getUser();
 
-    if (error || !data.user) {
+    if (
+        error ||
+        !data.user ||
+        data.user.id !== UID_ADMIN
+    ) {
         login.style.display = "block";
         painel.style.display = "none";
-        return false;
-    }
-
-    if (data.user.id !== UID_ADMIN) {
-
-        await supabaseClient.auth.signOut();
-
-        login.style.display = "block";
-        painel.style.display = "none";
-
-        mensagemLogin.textContent =
-            "Esta conta não possui autorização.";
-
         return false;
     }
 
@@ -365,174 +338,250 @@ async function verificarAdmin() {
     return true;
 }
 
-// ======================================
-// ENTRAR NO SISTEMA
-// ======================================
 
-entrar.addEventListener("click", async () => {
+// FAZER LOGIN
 
-    entrar.disabled = true;
+async function fazerLogin() {
 
-    mensagemLogin.textContent = "Verificando acesso...";
+    const email =
+        document.getElementById("email").value.trim();
 
-    const { data, error } =
+    const senha =
+        document.getElementById("senha").value;
+
+    const mensagem =
+        document.getElementById("mensagemLogin");
+
+    if (!email || !senha) {
+        mensagem.textContent =
+            "Informe seu e-mail e sua senha.";
+        return;
+    }
+
+    mensagem.textContent = "Verificando acesso...";
+
+    const { error } =
         await supabaseClient.auth.signInWithPassword({
-
-            email: email.value.trim(),
-            password: senha.value
-
+            email: email,
+            password: senha
         });
 
     if (error) {
-
-        mensagemLogin.textContent =
-            "Falha no acesso. Confira e-mail e senha.";
-
-        entrar.disabled = false;
+        mensagem.textContent =
+            "E-mail ou senha incorretos.";
         return;
     }
-
-    if (data.user.id !== UID_ADMIN) {
-
-        await supabaseClient.auth.signOut();
-
-        mensagemLogin.textContent =
-            "Acesso não autorizado.";
-
-        entrar.disabled = false;
-        return;
-    }
-
-    mensagemLogin.textContent = "";
-
-    await verificarAdmin();
-
-    entrar.disabled = false;
-
-});
-
-// ======================================
-// SORTEIO ALEATÓRIO
-// ======================================
-
-function gerarNumeroAleatorio() {
-
-    const limite =
-        Math.floor(4294967296 / 50) * 50;
-
-    const valores = new Uint32Array(1);
-
-    do {
-        crypto.getRandomValues(valores);
-    } while (valores[0] >= limite);
-
-    return (valores[0] % 50) + 1;
-}
-
-// ======================================
-// REALIZAR SORTEIO
-// ======================================
-
-sortear.addEventListener("click", async () => {
-
-    if (girando || sorteioRealizado) return;
 
     const autorizado = await verificarAdmin();
 
-    if (!autorizado) return;
+    if (!autorizado) {
+        mensagem.textContent =
+            "Acesso não autorizado.";
+        return;
+    }
+}
 
-    girando = true;
-    sortear.disabled = true;
 
-    resultado.textContent = "A SORTE ESTÁ LANÇADA!";
-
-    const numeroSorteado = gerarNumeroAleatorio();
-
-    const indice = numeroSorteado - 1;
-
-    const anguloPorNumero = 360 / 50;
-
-    const voltas = 8 * 360;
-
-    const destino =
-        voltas +
-        ((360 - (indice * anguloPorNumero)) % 360);
-
-    rotacaoAtual += destino;
-
-    roleta.style.transform =
-        `rotate(${rotacaoAtual}deg)`;
-
-    setTimeout(async () => {
-
-        resultado.textContent =
-            "CONSULTANDO O GANHADOR...";
-
-        const { data, error } =
-            await supabaseClient.rpc(
-                "buscar_ganhador_por_numero",
-                {
-                    p_numero: numeroSorteado
-                }
-            );
-
-        if (error || !data) {
-
-            resultado.textContent =
-                "Não foi possível identificar o ganhador. " +
-                "Não considere o resultado confirmado.";
-
-            console.error(error);
-
-            girando = false;
-            sortear.disabled = false;
-
-            return;
-        }
-
-        sorteioRealizado = true;
-
-        resultado.innerHTML = `
-            <div>TEMOS UM GANHADOR!</div>
-            <span id="numeroVencedor">
-                ${String(numeroSorteado).padStart(2, "0")}
-            </span>
-            <span id="nomeVencedor"></span>
-        `;
-
-        document.getElementById("nomeVencedor")
-            .textContent = data;
-
-        sortear.textContent = "SORTEIO REALIZADO";
-
-        girando = false;
-
-    }, 6200);
-
-});
-
-// ======================================
 // SAIR
-// ======================================
 
-sair.addEventListener("click", async () => {
+async function sair() {
 
     await supabaseClient.auth.signOut();
 
-    login.style.display = "block";
-    painel.style.display = "none";
+    location.reload();
+}
 
-    email.value = "";
-    senha.value = "";
 
-    mensagemLogin.textContent =
-        "Sessão encerrada.";
+// ÁUDIO DE TIC-TAC
 
-});
+let contextoAudio = null;
 
-// ======================================
-// RESTAURAR SESSÃO
-// ======================================
+function tocarTicTac() {
+
+    if (!contextoAudio) return;
+
+    const oscilador =
+        contextoAudio.createOscillator();
+
+    const volume =
+        contextoAudio.createGain();
+
+    oscilador.type = "sine";
+
+    oscilador.frequency.value = 850;
+
+    volume.gain.setValueAtTime(
+        0.0001,
+        contextoAudio.currentTime
+    );
+
+    volume.gain.exponentialRampToValueAtTime(
+        0.12,
+        contextoAudio.currentTime + 0.005
+    );
+
+    volume.gain.exponentialRampToValueAtTime(
+        0.0001,
+        contextoAudio.currentTime + 0.055
+    );
+
+    oscilador.connect(volume);
+
+    volume.connect(contextoAudio.destination);
+
+    oscilador.start();
+
+    oscilador.stop(
+        contextoAudio.currentTime + 0.06
+    );
+}
+
+
+// DESTACAR UM NÚMERO
+
+function apagarLuzes() {
+
+    document.querySelectorAll(".numero").forEach(
+        elemento => {
+            elemento.classList.remove(
+                "aceso",
+                "vencedor"
+            );
+        }
+    );
+
+}
+
+
+// TESTE VISUAL
+
+let testeEmAndamento = false;
+
+async function iniciarTeste() {
+
+    if (testeEmAndamento) return;
+
+    testeEmAndamento = true;
+
+    const botao =
+        document.getElementById("iniciar");
+
+    const texto =
+        document.getElementById("textoResultado");
+
+    const numeroFinal =
+        document.getElementById("numeroFinal");
+
+    botao.disabled = true;
+
+    botao.textContent = "SORTEANDO...";
+
+    texto.textContent = "A SORTE ESTÁ LANÇADA!";
+
+    numeroFinal.textContent = "--";
+
+    apagarLuzes();
+
+    // O áudio começa após o clique do usuário.
+
+    try {
+
+        contextoAudio = new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+        await contextoAudio.resume();
+
+    } catch (erro) {
+
+        contextoAudio = null;
+
+    }
+
+
+    // NÚMERO DE TESTE
+
+    const vencedor =
+        Math.floor(Math.random() * 50) + 1;
+
+
+    // MOVIMENTO DAS LUZES
+
+    let anterior = 0;
+
+    const totalEtapas = 65;
+
+    for (let etapa = 0; etapa < totalEtapas; etapa++) {
+
+        let intervalo;
+
+        if (etapa < 35) {
+            intervalo = 75;
+        } else if (etapa < 50) {
+            intervalo = 110;
+        } else if (etapa < 60) {
+            intervalo = 180;
+        } else {
+            intervalo = 300;
+        }
+
+        apagarLuzes();
+
+        let atual;
+
+        if (etapa === totalEtapas - 1) {
+
+            atual = vencedor;
+
+        } else {
+
+            do {
+                atual =
+                    Math.floor(Math.random() * 50) + 1;
+            } while (atual === anterior);
+
+        }
+
+        document
+            .getElementById("numero-" + atual)
+            .classList.add("aceso");
+
+        anterior = atual;
+
+        tocarTicTac();
+
+        await new Promise(resolve =>
+            setTimeout(resolve, intervalo)
+        );
+
+    }
+
+
+    // RESULTADO FINAL
+
+    apagarLuzes();
+
+    document
+        .getElementById("numero-" + vencedor)
+        .classList.add("vencedor");
+
+    texto.textContent =
+        "NÚMERO DO TESTE";
+
+    numeroFinal.textContent =
+        String(vencedor).padStart(2, "0");
+
+
+    botao.textContent = "TESTE CONCLUÍDO";
+
+    testeEmAndamento = false;
+
+    // Não existe gravação nem consulta ao Supabase.
+}
+
+
+// VERIFICAR SESSÃO AO ABRIR A PÁGINA
 
 verificarAdmin();
 
