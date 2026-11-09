@@ -2,136 +2,541 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorteio Garden's</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Sorteio Oficial | Garden's</title>
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #111;
-            color: #d4af37;
-            font-family: Georgia, serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 25px;
-        }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        h1 {
-            font-size: 34px;
-            letter-spacing: 3px;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        .subtitulo {
-            color: #fff;
-            margin-bottom: 30px;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111;
+    color: #d4af37;
+    font-family: Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px 15px;
+}
 
-        #roleta {
-            width: 300px;
-            height: 300px;
-            border: 8px solid #d4af37;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #222;
-            box-shadow: 0 0 30px #80651c;
-            font-size: 65px;
-            font-weight: bold;
-        }
+h1 {
+    font-size: 38px;
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+}
 
-        button {
-            margin-top: 35px;
-            padding: 18px 45px;
-            background: #d4af37;
-            color: #111;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.subtitulo {
+    color: white;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
 
-        #resultado {
-            margin-top: 30px;
-            color: white;
-            font-size: 24px;
-        }
-    </style>
+#login {
+    width: 100%;
+    max-width: 360px;
+    padding: 25px;
+    border: 1px solid #80651c;
+    border-radius: 12px;
+    background: #1b1b1b;
+}
+
+#login h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+}
+
+button {
+    padding: 16px 30px;
+    margin-top: 15px;
+    background: #d4af37;
+    color: #111;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#entrar {
+    width: 100%;
+}
+
+#mensagemLogin {
+    color: white;
+    font-size: 14px;
+}
+
+#painel {
+    display: none;
+    width: 100%;
+    max-width: 500px;
+}
+
+#roletaArea {
+    position: relative;
+    width: 330px;
+    height: 330px;
+    max-width: 90vw;
+    max-height: 90vw;
+    margin: 25px auto;
+}
+
+#ponteiro {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    width: 0;
+    height: 0;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-top: 35px solid #d4af37;
+}
+
+#roleta {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8px solid #d4af37;
+    background: #222;
+    box-shadow: 0 0 30px #80651c;
+    transition: transform 6s cubic-bezier(.12,.65,.12,1);
+}
+
+.numero-roleta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 20px;
+    margin-left: -12px;
+    margin-top: -10px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#centro {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #d4af37;
+    color: #111;
+    border: 5px solid #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 3;
+}
+
+#sortear {
+    width: 100%;
+    max-width: 330px;
+}
+
+#resultado {
+    margin-top: 30px;
+    color: white;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+#numeroVencedor {
+    display: block;
+    color: #d4af37;
+    font-size: 65px;
+    font-weight: bold;
+}
+
+#nomeVencedor {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#sair {
+    background: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    font-size: 13px;
+}
+
+.aviso {
+    color: #aaa;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+</style>
 </head>
 
 <body>
 
-    <h1>GARDEN'S</h1>
+<h1>GARDEN'S</h1>
 
-    <p class="subtitulo">SORTEIO OFICIAL</p>
+<p class="subtitulo">SORTEIO OFICIAL</p>
 
-    <div id="roleta">?</div>
+<!-- LOGIN ADMINISTRATIVO -->
 
-    <button id="sortear">REALIZAR SORTEIO</button>
+<div id="login">
+
+    <h2>ACESSO ADMINISTRATIVO</h2>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Seu e-mail"
+        autocomplete="username"
+    >
+
+    <input
+        type="password"
+        id="senha"
+        placeholder="Sua senha"
+        autocomplete="current-password"
+    >
+
+    <button id="entrar">ENTRAR</button>
+
+    <p id="mensagemLogin"></p>
+
+</div>
+
+<!-- PAINEL DO SORTEIO -->
+
+<div id="painel">
+
+    <p>50 NÚMEROS PARTICIPANTES</p>
+
+    <div id="roletaArea">
+
+        <div id="ponteiro"></div>
+
+        <div id="roleta"></div>
+
+        <div id="centro">G</div>
+
+    </div>
+
+    <button id="sortear">
+        GIRAR ROLETA
+    </button>
 
     <div id="resultado"></div>
 
+    <button id="sair">
+        SAIR DA ÁREA ADMINISTRATIVA
+    </button>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</div>
+
+<p class="aviso">
+    GARDEN'S LOJA • SORTEIO OFICIAL
+</p>
 
 <script>
-const SUPABASE_URL = "https://kiefyoedeervkrtrkghj.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+// ======================================
+// CONEXÃO SUPABASE
+// ======================================
+
+const SUPABASE_URL =
+"https://kiefyoedeervkrtrkghj.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_4jnOI6Pnkjqe-D-ygXnQzw_sF7lpCr1";
+
+const UID_ADMIN =
+"468b21fd-98d8-47c8-b48c-dc849207c858";
 
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
 );
 
-async function testarConexao() {
+// ======================================
+// ELEMENTOS
+// ======================================
 
-    const resultado = document.getElementById("resultado");
+const login = document.getElementById("login");
+const painel = document.getElementById("painel");
 
-    resultado.textContent = "Conectando ao Supabase...";
+const email = document.getElementById("email");
+const senha = document.getElementById("senha");
 
-    const { data, error } = await supabaseClient
-        .from("rifa_pedidos")
-        .select("nome, numeros");
+const entrar = document.getElementById("entrar");
+const mensagemLogin = document.getElementById("mensagemLogin");
 
-    if (error) {
-        console.error(error);
-        resultado.textContent = "Erro na conexão: " + error.message;
-        return;
-    }
+const roleta = document.getElementById("roleta");
+const sortear = document.getElementById("sortear");
+const resultado = document.getElementById("resultado");
+const sair = document.getElementById("sair");
 
-    const participantes = new Map();
+let sorteioRealizado = false;
+let girando = false;
+let rotacaoAtual = 0;
 
-    data.forEach(pedido => {
-        (pedido.numeros || []).forEach(numero => {
-            participantes.set(Number(numero), pedido.nome);
-        });
-    });
+// ======================================
+// CRIAR OS 50 NÚMEROS DA ROLETA
+// ======================================
 
-    if (participantes.size !== 50) {
-        resultado.textContent =
-            "Atenção: foram encontrados " +
-            participantes.size + " números diferentes.";
-        return;
-    }
+for (let i = 1; i <= 50; i++) {
 
-    resultado.textContent =
-        "CONEXÃO REALIZADA! 50 números encontrados.";
+    const numero = document.createElement("div");
+
+    numero.className = "numero-roleta";
+    numero.textContent = String(i).padStart(2, "0");
+
+    const angulo = (i - 1) * 7.2 - 90;
+
+    numero.style.transform =
+        `rotate(${angulo}deg) translateY(-135px)`;
+
+    roleta.appendChild(numero);
 }
 
-testarConexao();
+// ======================================
+// VERIFICAR ADMINISTRADOR
+// ======================================
+
+async function verificarAdmin() {
+
+    const { data, error } =
+        await supabaseClient.auth.getUser();
+
+    if (error || !data.user) {
+        login.style.display = "block";
+        painel.style.display = "none";
+        return false;
+    }
+
+    if (data.user.id !== UID_ADMIN) {
+
+        await supabaseClient.auth.signOut();
+
+        login.style.display = "block";
+        painel.style.display = "none";
+
+        mensagemLogin.textContent =
+            "Esta conta não possui autorização.";
+
+        return false;
+    }
+
+    login.style.display = "none";
+    painel.style.display = "block";
+
+    return true;
+}
+
+// ======================================
+// ENTRAR NO SISTEMA
+// ======================================
+
+entrar.addEventListener("click", async () => {
+
+    entrar.disabled = true;
+
+    mensagemLogin.textContent = "Verificando acesso...";
+
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email.value.trim(),
+            password: senha.value
+
+        });
+
+    if (error) {
+
+        mensagemLogin.textContent =
+            "Falha no acesso. Confira e-mail e senha.";
+
+        entrar.disabled = false;
+        return;
+    }
+
+    if (data.user.id !== UID_ADMIN) {
+
+        await supabaseClient.auth.signOut();
+
+        mensagemLogin.textContent =
+            "Acesso não autorizado.";
+
+        entrar.disabled = false;
+        return;
+    }
+
+    mensagemLogin.textContent = "";
+
+    await verificarAdmin();
+
+    entrar.disabled = false;
+
+});
+
+// ======================================
+// SORTEIO ALEATÓRIO
+// ======================================
+
+function gerarNumeroAleatorio() {
+
+    const limite =
+        Math.floor(4294967296 / 50) * 50;
+
+    const valores = new Uint32Array(1);
+
+    do {
+        crypto.getRandomValues(valores);
+    } while (valores[0] >= limite);
+
+    return (valores[0] % 50) + 1;
+}
+
+// ======================================
+// REALIZAR SORTEIO
+// ======================================
+
+sortear.addEventListener("click", async () => {
+
+    if (girando || sorteioRealizado) return;
+
+    const autorizado = await verificarAdmin();
+
+    if (!autorizado) return;
+
+    girando = true;
+    sortear.disabled = true;
+
+    resultado.textContent = "A SORTE ESTÁ LANÇADA!";
+
+    const numeroSorteado = gerarNumeroAleatorio();
+
+    const indice = numeroSorteado - 1;
+
+    const anguloPorNumero = 360 / 50;
+
+    const voltas = 8 * 360;
+
+    const destino =
+        voltas +
+        ((360 - (indice * anguloPorNumero)) % 360);
+
+    rotacaoAtual += destino;
+
+    roleta.style.transform =
+        `rotate(${rotacaoAtual}deg)`;
+
+    setTimeout(async () => {
+
+        resultado.textContent =
+            "CONSULTANDO O GANHADOR...";
+
+        const { data, error } =
+            await supabaseClient.rpc(
+                "buscar_ganhador_por_numero",
+                {
+                    p_numero: numeroSorteado
+                }
+            );
+
+        if (error || !data) {
+
+            resultado.textContent =
+                "Não foi possível identificar o ganhador. " +
+                "Não considere o resultado confirmado.";
+
+            console.error(error);
+
+            girando = false;
+            sortear.disabled = false;
+
+            return;
+        }
+
+        sorteioRealizado = true;
+
+        resultado.innerHTML = `
+            <div>TEMOS UM GANHADOR!</div>
+            <span id="numeroVencedor">
+                ${String(numeroSorteado).padStart(2, "0")}
+            </span>
+            <span id="nomeVencedor"></span>
+        `;
+
+        document.getElementById("nomeVencedor")
+            .textContent = data;
+
+        sortear.textContent = "SORTEIO REALIZADO";
+
+        girando = false;
+
+    }, 6200);
+
+});
+
+// ======================================
+// SAIR
+// ======================================
+
+sair.addEventListener("click", async () => {
+
+    await supabaseClient.auth.signOut();
+
+    login.style.display = "block";
+    painel.style.display = "none";
+
+    email.value = "";
+    senha.value = "";
+
+    mensagemLogin.textContent =
+        "Sessão encerrada.";
+
+});
+
+// ======================================
+// RESTAURAR SESSÃO
+// ======================================
+
+verificarAdmin();
+
 </script>
 
 </body>
 </html>
-
